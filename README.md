@@ -37,7 +37,7 @@ Run `npm start` to see your app at `localhost:3000`
 
 
 ## A Tip of the Hat
->Although this project is original work, its foundation was largely based on `react boilerplate`.
+>Although this project is original work, its foundation was based on `react boilerplate`.
 > Visit the repo [here](https://github.com/react-boilerplate/react-boilerplate).
 
 ---
