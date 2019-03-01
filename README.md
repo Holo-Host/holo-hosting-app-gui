@@ -1,4 +1,4 @@
-# Holo Hosting App
+# Holo Hosting App GUI
 **Status:** Closed-Alpha. Early development and testing.
 
 The hosting app is a space for Hosts and App Providers to interact
@@ -7,15 +7,17 @@ The hosting app is a space for Hosts and App Providers to interact
 
 **Hosts** declare their intention to host an app and record their private signed service logs here. They can also compile invoices for their app Providers.
 
-## How to test?
+### Development
+Run `npm start` to see your app at `localhost:4100`
 
-```
-cd dna-src && hc test
-```
+### Building & Deploying
+1.  Run `npm run build`, which will compile all the necessary files to the
+    `build` folder.
+
+2.  Upload the contents of the `build` folder to your web server's root folder.
+
 ## Documentaion:
-
 **[Holo-Hosting-App ADR]():** Doc outlining the interaction between the HHA GUI and the HHA Holochain DNA.
-
 
 ## Built With
 * [React](https://reactjs.org/)
@@ -35,7 +37,7 @@ cd dna-src && hc test
 
 
 ## A Tip of the Hat
->Although this project is original work, its foundation was largely based on `react boilerplate`.
+>Although this project is original work, its foundation was based on `react boilerplate`.
 > Visit the repo [here](https://github.com/react-boilerplate/react-boilerplate).
 
 ---
