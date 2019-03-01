@@ -1,2 +1,43 @@
-# holo-hosting-app_GUI
-A simple and clean UI pairing with the Holo Hosting App to provide a space for Hosts and App Providers to interact when hosting on Holo.
+# Holo Hosting App
+**Status:** Closed-Alpha. Early development and testing.
+
+The hosting app is a space for Hosts and App Providers to interact
+
+**App Providers** list their apps along with their hosting preferences. This makes the app available for hosting. It registers a domain name for the app and other stuff.
+
+**Hosts** declare their intention to host an app and record their private signed service logs here. They can also compile invoices for their app Providers.
+
+## How to test?
+
+```
+cd dna-src && hc test
+```
+## Documentaion:
+
+**[Holo-Hosting-App ADR]():** Doc outlining the interaction between the HHA GUI and the HHA Holochain DNA.
+
+
+## Built With
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+
+* [Material UI](https://material-ui.com/)
+* [Styled Components](https://www.styled-components.com/)
+
+* [Webpack](https://webpack.js.org/)
+
+<!-- * [Typescript](https://www.typescriptlang.org/) -->
+
+
+## Authors
+* **Lisa Jetton** - [JettTech](https://github.com/JettTech)
+* **Joel Ulahanna** - [Zo-El](https://github.com/zo-el)
+
+
+## A Tip of the Hat
+>Although this project is original work, its foundation was largely based on `react boilerplate`.
+> Visit the repo [here](https://github.com/react-boilerplate/react-boilerplate).
+
+---
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
