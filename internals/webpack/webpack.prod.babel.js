@@ -13,7 +13,7 @@ module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
   entry: [
     require.resolve('react-app-polyfill/ie11'),
-    path.join(process.cwd(), 'app/app.js'),
+    path.join(process.cwd(), 'app/app.tsx'),
   ],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
@@ -21,6 +21,19 @@ module.exports = require('./webpack.base.babel')({
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
   },
+
+  tsLoaders: [
+    {
+      loader: 'awesome-typescript-loader',
+      options: {
+        useBabel: true,
+        babelOptions: {
+          babelrc: true,
+        },
+        useCache: false,
+      },
+    },
+  ],
 
   optimization: {
     minimize: true,

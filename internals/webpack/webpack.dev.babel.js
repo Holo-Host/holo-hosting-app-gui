@@ -7,6 +7,13 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
+  .default;
+
+// 2. create a transformer;
+// the factory additionally accepts an options object which described below
+const styledComponentsTransformer = createStyledComponentsTransformer();
+
 module.exports = require('./webpack.base.babel')({
   mode: 'development',
 
@@ -14,7 +21,7 @@ module.exports = require('./webpack.base.babel')({
   entry: [
     require.resolve('react-app-polyfill/ie11'),
     'webpack-hot-middleware/client?reload=true',
-    path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
+    path.join(process.cwd(), 'app/app.tsx'), // Start with js/app.js
   ],
 
   // Don't use hashes in dev mode for better performance
@@ -40,6 +47,22 @@ module.exports = require('./webpack.base.babel')({
       exclude: /a\.js|node_modules/, // exclude node_modules
       failOnError: false, // show a warning when there is a circular dependency
     }),
+  ],
+
+  tsLoaders: [
+    {
+      loader: 'awesome-typescript-loader',
+      options: {
+        useBabel: true,
+        babelOptions: {
+          babelrc: true,
+        },
+        useCache: true,
+        getCustomTransformers: () => ({
+          before: [styledComponentsTransformer],
+        }),
+      },
+    },
   ],
 
   // Emit a source map for easier debugging

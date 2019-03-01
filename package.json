@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "7.0.0",
+    "awesome-typescript-loader": "^5.2.1",
     "chalk": "^2.4.2",
     "compression": "1.7.3",
     "connected-react-router": "4.5.0",
@@ -86,6 +87,8 @@
     "reselect": "4.0.0",
     "sanitize.css": "4.1.0",
     "styled-components": "4.0.2",
+    "typescript": "^3.3.3333",
+    "typescript-plugin-styled-components": "^1.2.0",
     "warning": "4.0.2"
   },
   "devDependencies": {

@@ -57,7 +57,7 @@ function JS2SVG(config) {
     if (config) {
         this.config = Object.assign({}, defaults, config);
     } else {
-        this.config = Object.assign({}, defaults);
+        this.config = defaults;
     }
 
     var indent = this.config.indent;
