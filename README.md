@@ -7,15 +7,17 @@ The hosting app is a space for Hosts and App Providers to interact
 
 **Hosts** declare their intention to host an app and record their private signed service logs here. They can also compile invoices for their app Providers.
 
-## How to test?
+### Development
+Run `npm start` to see your app at `localhost:3000`
 
-```
-cd dna-src && hc test
-```
+### Building & Deploying
+1.  Run `npm run build`, which will compile all the necessary files to the
+    `build` folder.
+
+2.  Upload the contents of the `build` folder to your web server's root folder.
+
 ## Documentaion:
-
 **[Holo-Hosting-App ADR]():** Doc outlining the interaction between the HHA GUI and the HHA Holochain DNA.
-
 
 ## Built With
 * [React](https://reactjs.org/)
