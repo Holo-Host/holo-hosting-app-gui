@@ -8,7 +8,7 @@ The hosting app is a space for Hosts and App Providers to interact
 **Hosts** declare their intention to host an app and record their private signed service logs here. They can also compile invoices for their app Providers.
 
 ### Development
-Run `npm start` to see your app at `localhost:3000`
+Run `npm start` to see your app at `localhost:4100`
 
 ### Building & Deploying
 1.  Run `npm run build`, which will compile all the necessary files to the
