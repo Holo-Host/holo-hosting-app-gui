@@ -10,6 +10,6 @@ export const scope = 'app.containers.NotFoundPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: '404! Your query was not matched with any endpoint...',
+    defaultMessage: 'This is the NotFoundPage container!',
   },
 });

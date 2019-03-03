@@ -1,4 +1,5 @@
 # Holo Hosting App GUI
+# Holo Hosting App GUI
 **Status:** Closed-Alpha. Early development and testing.
 
 The hosting app is a space for Hosts and App Providers to interact
@@ -22,13 +23,13 @@ Run `npm start` to see your app at `localhost:4100`
 ## Built With
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
+* [Typescript](https://www.typescriptlang.org/)
 
 * [Material UI](https://material-ui.com/)
 * [Styled Components](https://www.styled-components.com/)
 
 * [Webpack](https://webpack.js.org/)
 
-<!-- * [Typescript](https://www.typescriptlang.org/) -->
 
 
 ## Authors
