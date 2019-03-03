@@ -34,7 +34,7 @@ module.exports = function generate__limitItems(it, $keyword, $ruleType) {
       if ($keyword == 'maxItems') {
         out += 'more';
       } else {
-        out += 'fewer';
+        out += 'less';
       }
       out += ' than ';
       if ($isData) {
@@ -59,8 +59,7 @@ module.exports = function generate__limitItems(it, $keyword, $ruleType) {
   }
   var __err = out;
   out = $$outStack.pop();
-  if (!it.compositeRule && $breakOnError) {
-    /* istanbul ignore if */
+  if (!it.compositeRule && $breakOnError) { /* istanbul ignore if */
     if (it.async) {
       out += ' throw new ValidationError([' + (__err) + ']); ';
     } else {

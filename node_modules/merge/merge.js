@@ -1,5 +1,5 @@
 /*!
- * @name JavaScript/NodeJS Merge v1.2.1
+ * @name JavaScript/NodeJS Merge v1.2.0
  * @author yeikos
  * @repository https://github.com/yeikos/js.merge
 
@@ -127,8 +127,6 @@
 			if (type !== 'object') continue;
 
 			for (var key in item) {
-
-				if (key === '__proto__') continue;
 
 				var sitem = clone ? Public.clone(item[key]) : item[key];
 
