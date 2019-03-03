@@ -1,5 +1,4 @@
 # Holo Hosting App GUI
-# Holo Hosting App GUI
 **Status:** Closed-Alpha. Early development and testing.
 
 The hosting app is a space for Hosts and App Providers to interact
