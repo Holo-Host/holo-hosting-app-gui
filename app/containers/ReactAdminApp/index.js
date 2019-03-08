@@ -11,24 +11,24 @@ import { PostList, PostCreate, PostEdit, PostShow } from './posts';
 import { UserList } from './users';
 
 const ReactAdminApp = () => {
-  console.log("INSIDE THE ReactAdminApp")
+  console.log('INSIDE THE ReactAdminApp');
   return (
-      <Admin
-        authProvider={authProvider}
-        history={history}
-        dashboard={Dashboard}
-        title="My Admin"
-      >
-        <Resource
-          name="posts"
-          icon={PostIcon}
-          list={PostList}
-          edit={PostEdit}
-          create={PostCreate}
-          show={PostShow}
-        />
-        <Resource name="users" icon={UserIcon} list={UserList} />
-        <Resource name="comments" list={ListGuesser} />
+    <Admin
+      authProvider={authProvider}
+      history={history}
+      dashboard={Dashboard}
+      title="My Admin"
+    >
+      <Resource
+        name="posts"
+        icon={PostIcon}
+        list={PostList}
+        edit={PostEdit}
+        create={PostCreate}
+        show={PostShow}
+      />
+      <Resource name="users" icon={UserIcon} list={UserList} />
+      <Resource name="comments" list={ListGuesser} />
     </Admin>
   );
 };

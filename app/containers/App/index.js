@@ -34,7 +34,10 @@ export default function App() {
         titleTemplate="%s - Holo Hosting App"
         defaultTitle="Holo Hosting Application"
       >
-        <meta name="description" content="Holo Hosting: A more human internet." />
+        <meta
+          name="description"
+          content="Holo Hosting: A more human internet."
+        />
       </Helmet>
       <Header />
       <Switch>

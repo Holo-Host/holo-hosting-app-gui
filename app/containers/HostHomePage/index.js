@@ -11,21 +11,21 @@ import { FormattedMessage } from 'react-intl';
 
 // Redux & State-Control Imports
 import {
-  FetchAgentStringAsyncAction // ,
+  makeSelectRepos,
+  makeSelectLoading,
+  makeSelectError,
+} from 'containers/App/selectors';
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import {
+  FetchAgentStringAsyncAction, // ,
   // ,
   // ,
 } from './actions';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
-import {
-  makeSelectRepos,
-  makeSelectLoading,
-  makeSelectError,
-} from 'containers/App/selectors';
-import injectSaga from 'utils/injectSaga';
 import saga from './saga';
-import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
 
 // Component Imports
@@ -33,7 +33,6 @@ import CenteredSection from '../../components/CenteredSection/index';
 
 // Message Imports
 import messages from './messages';
-
 
 export class HostHomePage extends React.Component {
   componentDidMount() {
@@ -43,7 +42,7 @@ export class HostHomePage extends React.Component {
   }
 
   render() {
-    console.log('INSIDE THE HOST HOMEPAGE', this.props)
+    console.log('INSIDE THE HOST HOMEPAGE', this.props);
 
     const { loading, error, repos } = this.props;
     const reposListProps = {
@@ -56,10 +55,7 @@ export class HostHomePage extends React.Component {
       <article>
         <Helmet>
           <title>Host Homepage</title>
-          <meta
-            name="description"
-            content="Holo Host: Host Homepage"
-          />
+          <meta name="description" content="Holo Host: Host Homepage" />
         </Helmet>
         <div>
           <CenteredSection>
@@ -82,7 +78,6 @@ export class HostHomePage extends React.Component {
               </label>
             </form>
           </section>
-
         </div>
       </article>
     );
@@ -98,30 +93,28 @@ HostHomePage.propTypes = {
   onChangeUsername: PropTypes.func,
 };
 
-/******************** * HC Action - Redux Handlers * ********************/
-export const mapStateToProps = createStructuredSelector ({
+/** ****************** * HC Action - Redux Handlers * ******************* */
+export const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   error: makeSelectError(),
 
   repos: makeSelectRepos(),
-  username: makeSelectUsername()
+  username: makeSelectUsername(),
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetch_agent_string: () => {
-      console.log("dispatching fetch_agent_string");
-      dispatch(FetchAgentStringAsyncAction.create([]))
-    },
-    onChangeUsername: event => dispatch(changeUsername(event.target.value)),
-    onSubmitForm: event => {
-      if (event !== undefined && event.preventDefault) event.preventDefault();
-      dispatch(loadRepos());
-    }
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  fetch_agent_string: () => {
+    console.log('dispatching fetch_agent_string');
+    dispatch(FetchAgentStringAsyncAction.create([]));
+  },
+  onChangeUsername: event => dispatch(changeUsername(event.target.value)),
+  onSubmitForm: event => {
+    if (event !== undefined && event.preventDefault) event.preventDefault();
+    dispatch(loadRepos());
+  },
+});
 
-/******************** ****************************** * ********************/
+/** ****************** ****************************** * ******************* */
 
 // export default connect(mapStateToProps, mapDispatchToProps)(HostHomePage);
 //
@@ -137,7 +130,6 @@ export default compose(
   withSaga,
   withConnect,
 )(HostHomePage);
-
 
 /*
 * NOTE: while this component should technically be a stateless functional

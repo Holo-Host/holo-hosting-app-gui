@@ -14,8 +14,7 @@ export default defineMessages({
   },
   startProjectMessage: {
     id: `${scope}.start_project.message`,
-    defaultMessage:
-      'Welcome to your Holo Host HomePage',
+    defaultMessage: 'Welcome to your Holo Host HomePage',
   },
   trymeHeader: {
     id: `${scope}.tryme.header`,

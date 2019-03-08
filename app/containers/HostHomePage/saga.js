@@ -6,11 +6,10 @@ import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 import request from 'utils/dataProviderCall';
 import { makeSelectUsername } from 'containers/HostHomePage/selectors';
 
-
 /* Github repos request/response handler */
 export function* getRepos() {
   // Select username from store
-  console.log("getRepos");
+  console.log('getRepos');
   const username = yield select(makeSelectUsername());
   const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
 
@@ -23,16 +22,14 @@ export function* getRepos() {
   }
 }
 
-
 /*  Root saga manages watcher lifecycle */
 export default function* githubData() {
   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
-  console.log("tirggered githubData, calling getRepos");
+  console.log('tirggered githubData, calling getRepos');
   yield takeLatest(LOAD_REPOS, getRepos);
 }
 
-
-/******************** * HC Action - Saga Handlers * ********************/
+/** ****************** * HC Action - Saga Handlers * ******************* */

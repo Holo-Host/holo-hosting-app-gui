@@ -8,7 +8,7 @@
  */
 
 // Main Imports :
- import { fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 /* HC Action Constants Import: */
 import { DNA_INSTANCE, HOST_ZOME_NAME, WHOAMI_ZOME_NAME } from './constants';
 /* NON-HC Action Constants Import: */
@@ -18,14 +18,14 @@ import { CHANGE_USERNAME } from './constants';
 export const INITIAL_STATE = fromJS({
   username: '',
   my_agent_string: '',
-  my_agent_hash:''
+  my_agent_hash: '',
 });
 
 function homeReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case CHANGE_USERNAME:
       // Delete prefixed '@' from the github username
-      console.log("Reducer Changes username");
+      console.log('Reducer Changes username');
       return state.set('username', action.name.replace(/@/gi, ''));
 
     // FETCH_AGENT_STRING  >> Success message & Result
@@ -36,7 +36,7 @@ function homeReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         my_agent_string,
-        my_agent_hash
+        my_agent_hash,
       };
     }
 
