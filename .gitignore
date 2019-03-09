@@ -1,7 +1,9 @@
 # Don't check auto-generated stuff into git
 coverage
-build
-node_modules
+
+
+ui-src/build
+ui-src/node_modules
 stats.json
 
 # Cruft
