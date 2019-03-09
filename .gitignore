@@ -1,6 +1,7 @@
 # Don't check auto-generated stuff into git
 coverage
-
+ui
+ui-holohost
 
 ui-src/build
 ui-src/node_modules
