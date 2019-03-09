@@ -4,9 +4,9 @@
 //  import { createHolochainAsyncAction } from '@holochain/hc-redux-middleware';
 
 /* HC Action Constants Import: */
-import { UPDATE } from 'react-admin';
 import { DNA_INSTANCE, HOST_ZOME_NAME, WHOAMI_ZOME_NAME } from './constants';
 /*  React Admin Imports  */
+// import { UPDATE } from 'react-admin';
 
 /** *************************** NON-HC ACTIONS: ************************************ */
 /* NON-HC Action Constants Import: */
@@ -22,10 +22,10 @@ export function fetch_agent() {
   return {
     type: 'FETCH_AGENT',
     payload: [],
-    meta: {
-      holochainAction: true,
-      callString: `${DNA_INSTANCE}/${WHOAMI_ZOME_NAME}/handle_get_agent`,
-    },
+    // meta: {
+    //   holochainAction: true,
+    //   callString: `${DNA_INSTANCE}/${WHOAMI_ZOME_NAME}/handle_get_agent`,
+    // },
   };
 }
 

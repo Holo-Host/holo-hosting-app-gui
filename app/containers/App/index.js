@@ -1,17 +1,13 @@
-/**
- *
- * App
- *
- * This component is the skeleton around the actual pages, and should only
+/* App Router-Container Page :  This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Redirect, Route } from 'react-router-dom';
 
-import HostHomePage from 'containers/HomePage/Loadable';
+import HostHomePage from 'containers/HostHomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -24,7 +20,7 @@ const AppWrapper = styled.div`
   display: flex;
   min-height: 100%;
   padding: 0 16px;
-  flex-direction: column;
+  flex-direction: column;s
 `;
 
 export default function App() {
@@ -41,7 +37,7 @@ export default function App() {
       </Helmet>
       <Header />
       <Switch>
-        <Redirect exact path="/" to={HostHomePage} />
+        <Redirect exact path="/" to="/holohost"/>
         <Route path="/holohost" component={HostHomePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>

@@ -15,12 +15,14 @@ import createRootReducer from '../reducers';
 import * as appActions from '../containers/App/actions';
 // import { setPort } from '../../utils/constants'
 
-const url = 'ws:localhost:3100';
+/* * Holochain Web Socket Setup * */
 // const url = `ws:localhost:${setPort()}`
+const url = 'ws:localhost:3100';
 const hcWc = connect(url);
+
 const history = createHashHistory();
 const sagaMiddleware = createSagaMiddleware();
-const rootReducer = createRootReducer();
+const rootReducer = createRootReducer(history);
 
 const configureStore = (initialState = {}) => {
   // Redux Configuration
@@ -48,9 +50,6 @@ const configureStore = (initialState = {}) => {
   // ** HC Rust Container Middleware ** >> Push HC middleware into middleware array //
   middleware.push(holochainMiddleware(hcWc));
 
-  // ** react-admin middleware ** >> Push react-admin middleware into middleware array //
-  middleware.push(formMiddleware);
-
   // Redux DevTools Configuration
   const actionCreators = {
     ...appActions,
@@ -71,11 +70,7 @@ const configureStore = (initialState = {}) => {
   const storeEnhancer = composeEnhancers(...enhancers);
 
   // Create Store
-  const store = createStore(
-    rootReducer,
-    fromJS(initialState),
-    storeEnhancer,
-  );
+  const store = createStore(rootReducer, fromJS(initialState), storeEnhancer);
 
   // Extensions
   store.runSaga = () => sagaMiddleware.run();
@@ -86,10 +81,10 @@ const configureStore = (initialState = {}) => {
     module.hot.accept(
       '../reducers',
       // eslint-disable-next-line global-require
-      () => store.replaceReducer(createRootReducer(store.injectedReducers)),
+      () => store.replaceReducer(createRootReducer(history, store.injectedReducers)),
     );
   }
   return store;
 };
 
-export default configureStore;
+export default { configureStore, history };

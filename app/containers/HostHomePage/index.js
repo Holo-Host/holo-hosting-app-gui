@@ -18,8 +18,8 @@ import {
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {
-  FetchAgentStringAsyncAction, // ,
-  // ,
+  // FetchAgentStringAsyncAction, // ,
+  fetch_agent,
   // ,
 } from './actions';
 import { loadRepos } from '../App/actions';

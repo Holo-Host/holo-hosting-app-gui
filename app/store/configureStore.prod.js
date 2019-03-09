@@ -6,7 +6,7 @@ import { routerMiddleware } from 'connected-react-router';
 // ** Middleware for HC Rust Container Communication ** >> Reference Holochain-UI //
 import { holochainMiddleware } from '@holochain/hc-redux-middleware';
 import { connect } from '@holochain/hc-web-client'; // '@holochain/hc-web-client'
-import createRootReducer from '../reducers/index';
+import createRootReducer from '../reducers';
 // import { setPort } from '../../utils/constants'
 
 const history = createHashHistory();
@@ -19,7 +19,7 @@ const hcWc = connect(url);
 const holochain = holochainMiddleware(hcWc);
 const enhancer = applyMiddleware(sagaMiddleware, router, holochain);
 
-function configureStore(initialState) {
+const configureStore = (initialState) => {
   return createStore(rootReducer, initialState, enhancer);
 }
 

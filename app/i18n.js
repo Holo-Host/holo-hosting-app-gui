@@ -1,5 +1,4 @@
-/**
- * i18n.js
+/* i18n.js : International Language Support Tool
  *
  * This will setup the i18n language files and locale data for your app.
  *
