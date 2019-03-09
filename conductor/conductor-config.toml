@@ -3,8 +3,8 @@
 [[agents]]
 id = "holo_user1"
 name = "HoloHostTester1"
-public_address = "HcScihipMAm6moqjkpSFc8XMOMRpyte484SjbyuFS9Uun7jadwIBoZzn4p7hpvz"
-key_file = "/home/lisa/.config/holochain/keys/HcScihipMAm6moqjkpSFc8XMOMRpyte484SjbyuFS9Uun7jadwIBoZzn4p7hpvz"
+public_address = "HcSCiVqngbUaorhcb439ENPb98NnyojcnIgFrYU3Dafc49of7y9a4nvMks57Zcz"
+key_file = "/home/lisa/.config/holochain/keys/HcSCiVqngbUaorhcb439ENPb98NnyojcnIgFrYU3Dafc49of7y9a4nvMks57Zcz"
 
 # [[agents]]
 # id = "test_agent2"
@@ -21,13 +21,13 @@ key_file = "/home/lisa/.config/holochain/keys/HcScihipMAm6moqjkpSFc8XMOMRpyte484
 # -----------  DNA  -----------
 [[dnas]]
 id = "holohost"
-file = "dnas/HoloHostingApp.dna.json"
+file = "dnas/HoloHostingApp.json"
 hash = "Qm328wyq38924y"
 
 [[instances]]
 id = "holo-hosting-app_instance"
 dna = "holohost"
-agent = "test_agent1"
+agent = "holo_user1"
 [instances.logger]
 type = "simple"
 file = "app_spec1.log"
