@@ -120,8 +120,10 @@ module.exports = options => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        REACT_APP_DNA_INSTANCE: JSON.stringify(process.env.REACT_APP_DNA_INSTANCE),
+        NODE_PORT: JSON.stringify(process.env.NODE_PORT)
       },
-    }),
+    })
   ]),
   resolve: {
     modules: ['node_modules', 'app'],

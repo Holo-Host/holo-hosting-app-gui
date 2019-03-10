@@ -6,6 +6,7 @@ tmp-storage
 
 ui-src/build
 ui-src/node_modules
+ui-src/.env
 stats.json
 
 # Cruft
