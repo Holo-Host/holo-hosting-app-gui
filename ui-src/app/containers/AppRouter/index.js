@@ -1,4 +1,4 @@
-/* App Router-Container Page :  This component is the skeleton around the actual pages, and should only
+/* AppRouter Router-Container Page :  This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
@@ -14,7 +14,7 @@ import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
-const AppWrapper = styled.div`
+const AppRouterWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
@@ -23,9 +23,9 @@ const AppWrapper = styled.div`
   flex-direction: column;s
 `;
 
-export default function App() {
+export default function AppRouter() {
   return (
-    <AppWrapper>
+    <AppRouterWrapper>
       <Helmet
         titleTemplate="%s - Holo Hosting App"
         defaultTitle="Holo Hosting Application"
@@ -43,6 +43,6 @@ export default function App() {
       </Switch>
       <Footer />
       <GlobalStyle />
-    </AppWrapper>
+    </AppRouterWrapper>
   );
 }

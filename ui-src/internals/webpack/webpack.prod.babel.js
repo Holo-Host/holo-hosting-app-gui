@@ -1,3 +1,5 @@
+/* * PRODUCTION WEBPACK CONFIGURATION * */
+
 // Important modules this config uses
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -121,9 +123,9 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     new WebpackPwaManifest({
-      name: 'React Boilerplate',
-      short_name: 'React BP',
-      description: 'My React Boilerplate-based project!',
+      name: 'Holo Hosting',
+      short_name: 'Holo Host',
+      description: 'A more human internet.',
       background_color: '#fafafa',
       theme_color: '#b1624d',
       inject: true,

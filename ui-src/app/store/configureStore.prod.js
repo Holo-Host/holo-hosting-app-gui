@@ -7,13 +7,13 @@ import { routerMiddleware } from 'connected-react-router';
 import { holochainMiddleware } from '@holochain/hc-redux-middleware';
 import { connect } from '@holochain/hc-web-client'; // '@holochain/hc-web-client'
 import createRootReducer from '../reducers';
-// import { setPort } from '../../utils/constants'
+import { setPort } from '../utils/constants'
 
 const history = createHashHistory();
 const rootReducer = createRootReducer(history);
 const router = routerMiddleware(history);
-const url = 'ws:localhost:3000';
-// const url = `ws:localhost:${setPort()}`
+/* The url PORT is now a env.process variable set within the package.json scripts: */
+const url = `ws:localhost:${setPort()}`
 const sagaMiddleware = createSagaMiddleware();
 const hcWc = connect(url);
 const holochain = holochainMiddleware(hcWc);

@@ -12,10 +12,11 @@ import createSagaMiddleware from 'redux-saga';
 import { holochainMiddleware } from '@holochain/hc-redux-middleware';
 import { connect } from '@holochain/hc-web-client';
 import createRootReducer from '../reducers';
-import * as appActions from '../containers/App/actions';
+import * as appActions from '../containers/AppRouter/actions';
 import { setPort } from '../utils/constants'
 
 /* * Holochain Web Socket Setup * */
+/* The below url PORT is now a env.process variable set within the package.json scripts : ... */
 const url = `ws:localhost:${setPort()}`
 // const url = 'ws:localhost:3000';
 const hcWc = connect(url);

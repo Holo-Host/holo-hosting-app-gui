@@ -2,7 +2,7 @@
 
 import { combineReducers } from 'redux-immutable';
 import { connectRouter } from 'connected-react-router/immutable';
-import globalReducer from 'containers/App/reducer';
+import globalReducer from 'containers/AppRouter/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 // ** Reducer Middleware for React-Admin **
 // import history from 'utils/history';

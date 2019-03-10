@@ -4,21 +4,21 @@ import { Route } from 'react-router-dom';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import App from '../index';
+import AppRouter from '../index';
 
-describe('<App />', () => {
+describe('<AppRouter />', () => {
   it('should render the header', () => {
-    const renderedComponent = shallow(<App />);
+    const renderedComponent = shallow(<AppRouter />);
     expect(renderedComponent.find(Header)).toHaveLength(1);
   });
 
   it('should render some routes', () => {
-    const renderedComponent = shallow(<App />);
+    const renderedComponent = shallow(<AppRouter />);
     expect(renderedComponent.find(Route)).not.toHaveLength(0);
   });
 
   it('should render the footer', () => {
-    const renderedComponent = shallow(<App />);
+    const renderedComponent = shallow(<AppRouter />);
     expect(renderedComponent.find(Footer)).toHaveLength(1);
   });
 });

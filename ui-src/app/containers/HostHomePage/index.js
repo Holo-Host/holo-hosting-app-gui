@@ -14,7 +14,7 @@ import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
-} from 'containers/App/selectors';
+} from 'containers/AppRouter/selectors';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {
@@ -22,7 +22,7 @@ import {
   fetch_agent,
   // ,
 } from './actions';
-import { loadRepos } from '../App/actions';
+import { loadRepos } from '../AppRouter/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import saga from './saga';
