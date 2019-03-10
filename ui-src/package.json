@@ -4,7 +4,7 @@
   "description": "The hosting app is a space for Hosts and App Providers to interact",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/Holo-Host/holo-hosting-app_GUI.git"
   },
   "engines": {
     "npm": ">=5",
