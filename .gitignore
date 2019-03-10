@@ -2,7 +2,7 @@
 coverage
 ui
 ui-holohost
-
+tmp-storage
 
 ui-src/build
 ui-src/node_modules
