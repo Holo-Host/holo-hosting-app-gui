@@ -22,10 +22,10 @@ export function fetch_agent() {
   return {
     type: 'FETCH_AGENT',
     payload: [],
-    // meta: {
-    //   holochainAction: true,
-    //   callString: `${DNA_INSTANCE}/${WHOAMI_ZOME_NAME}/handle_get_agent`,
-    // },
+    meta: {
+      holochainAction: true,
+      callString: `${DNA_INSTANCE}/${WHOAMI_ZOME_NAME}/handle_get_agent`,
+    },
   };
 }
 

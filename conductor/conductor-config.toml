@@ -3,8 +3,8 @@
 [[agents]]
 id = "holo_user1"
 name = "HoloHostTester1"
-public_address = "HcSCiVqngbUaorhcb439ENPb98NnyojcnIgFrYU3Dafc49of7y9a4nvMks57Zcz"
-key_file = "/home/lisa/.config/holochain/keys/HcSCiVqngbUaorhcb439ENPb98NnyojcnIgFrYU3Dafc49of7y9a4nvMks57Zcz"
+public_address = "HcScJPHedTj3wqwwxeX8feBuWXr93onx4TY5xKjdz3Dotsb5bDoxjn75WMw6h4z"
+key_file = "/home/lisa/.config/holochain/keys/HcScJPHedTj3wqwwxeX8feBuWXr93onx4TY5xKjdz3Dotsb5bDoxjn75WMw6h4z"
 
 # [[agents]]
 # id = "test_agent2"
@@ -81,7 +81,7 @@ dna_interface = "websocket_interface"
 
 # -----------  Networking  -----------
 [network]
-n3h_path = "/home/lisa/Documents/gitrepos/holochain/Networking/n3h-0.0.4-alpha1"
+n3h_path = "/home/lisa/Documents/gitrepos/holochain/n3h"
 n3h_persistence_path = "/tmp"
 bootstrap_nodes = []
 

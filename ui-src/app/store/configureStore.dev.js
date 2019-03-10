@@ -13,11 +13,11 @@ import { holochainMiddleware } from '@holochain/hc-redux-middleware';
 import { connect } from '@holochain/hc-web-client';
 import createRootReducer from '../reducers';
 import * as appActions from '../containers/App/actions';
-// import { setPort } from '../../utils/constants'
+import { setPort } from '../utils/constants'
 
 /* * Holochain Web Socket Setup * */
-// const url = `ws:localhost:${setPort()}`
-const url = 'ws:localhost:3100';
+const url = `ws:localhost:${setPort()}`
+// const url = 'ws:localhost:3000';
 const hcWc = connect(url);
 
 const history = createHashHistory();

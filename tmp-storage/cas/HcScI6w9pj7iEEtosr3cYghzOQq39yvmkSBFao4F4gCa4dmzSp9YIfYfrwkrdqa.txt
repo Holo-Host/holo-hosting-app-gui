@@ -1,0 +1,1 @@
+{"AgentId":{"nick":"HoloHostTester1","pub_sign_key":"HcScI6w9pj7iEEtosr3cYghzOQq39yvmkSBFao4F4gCa4dmzSp9YIfYfrwkrdqa"}}

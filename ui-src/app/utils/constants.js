@@ -9,6 +9,7 @@ export const setInstance = () => {
 };
 
 export const setPort = () => {
-  if (process.env.PORT) return process.env.PORT;
-  return 'ERROR: PORT not found';
+  // return 3000
+  if (process.env.NODE_PORT) return process.env.NODE_PORT;
+  return 'ERROR: NODE_PORT not found at '+ process.env.NODE_PORT;
 };
