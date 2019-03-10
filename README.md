@@ -36,7 +36,7 @@ Run `npm start` to see your app at `localhost:4100`
 * **Joel Ulahanna** - [Zo-El](https://github.com/zo-el)
 
 
-## A Tip of the Hat
+#### A Tip of the Hat
 >Although this project is original work, its foundation was based on `react boilerplate`.
 > Visit the repo [here](https://github.com/react-boilerplate/react-boilerplate).
 
