@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
 import { stringify } from 'query-string';
-
+// local component imports:
 import products from '../products';
 
 const styles = {

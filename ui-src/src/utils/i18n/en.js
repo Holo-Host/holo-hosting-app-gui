@@ -2,6 +2,7 @@ import englishMessages from 'ra-language-english';
 
 export default {
     ...englishMessages,
+    Not_Found: 'Not Found',
     pos: {
         search: 'Search',
         configuration: 'Configuration',
@@ -15,14 +16,14 @@ export default {
             monthly_revenue: 'Monthly Revenue',
             new_orders: 'New Orders',
             pending_reviews: 'Pending Reviews',
-            new_customers: 'New Customers',
+            new_users: 'New Customers',
             pending_orders: 'Pending Orders',
             order: {
                 items:
                     'by %{customer_name}, one item |||| by %{customer_name}, %{nb_items} items',
             },
             welcome: {
-                title: 'Welcome to react-admin demo',
+                title: 'Welcome to Holo Hosting',
                 subtitle:
                     "This is the admin of an imaginary poster shop. Fell free to explore and modify the data - it's local to your computer, and will reset each time you reload.",
                 aor_button: 'react-admin site',
@@ -32,11 +33,11 @@ export default {
         menu: {
             sales: 'Sales',
             catalog: 'Catalog',
-            customers: 'Customers',
+            users: 'Customers',
         },
     },
     resources: {
-        customers: {
+        users: {
             name: 'Customer |||| Customers',
             fields: {
                 commands: 'Orders',
@@ -146,7 +147,7 @@ export default {
         segments: {
             name: 'Segments',
             fields: {
-                customers: 'Customers',
+                users: 'Customers',
                 name: 'Name',
             },
             data: {

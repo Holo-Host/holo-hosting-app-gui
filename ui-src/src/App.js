@@ -18,7 +18,7 @@ import { Login, Layout, Menu } from './layout';
 import './App.css';
 
 // app page imports:
-import { Dashboard } from './dashboard';
+import { Dashboard } from './pages/dashboard';
 import visitors from './pages/visitors';
 import products from './pages/products';
 import categories from './pages/categories';
@@ -26,7 +26,7 @@ import reviews from './pages/reviews';
 
 const i18nProvider = locale => {
     if (locale === 'fr') {
-        return import('./i18n/fr').then(messages => messages.default);
+        return import('./utils/i18n/fr').then(messages => messages.default);
     }
     // Always fallback on english
     return englishMessages;

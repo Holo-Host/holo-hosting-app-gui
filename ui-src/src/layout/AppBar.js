@@ -4,8 +4,9 @@ import { AppBar, UserMenu, MenuItemLink, translate } from 'react-admin';
 import Typography from '@material-ui/core/Typography';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { withStyles } from '@material-ui/core/styles';
+
 // app constant imports:
-import APP_TITLE from "../utils/constants";
+// import APP_TITLE from "../utils/constants";
 
 const styles = {
     title: {

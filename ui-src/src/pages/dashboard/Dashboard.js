@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { GET_LIST, GET_MANY, Responsive } from 'react-admin';
 
 import Welcome from './Welcome';
-import MonthlyRevenue from './MonthlyRevenue';
-import PendingReviews from './PendingReviews';
-import NewUsers from './NewUsers';
-import dataProviderFactory from '../dataProvider';
+// import MonthlyRevenue from './MonthlyRevenue';
+// import PendingReviews from './PendingReviews';
+// import NewUsers from './NewUsers';
+import reducerState from '../../utils/reducer';
 
 const styles = {
     flex: { display: 'flex' },
@@ -22,7 +22,7 @@ class Dashboard extends Component {
         const aMonthAgo = new Date();
         aMonthAgo.setDate(aMonthAgo.getDate() - 30);
 
-        dataProviderFactory(process.env.REACT_APP_DATA_PROVIDER).then(
+        reducerState(process.env.REACT_APP_DATA_PROVIDER).then(
             dataProvider => {
               dataProvider(GET_LIST, 'reviews', {
                   filter: { status: 'pending' },
@@ -76,13 +76,13 @@ class Dashboard extends Component {
     }
 
     render() {
-        const {
-            nbNewUsers,
-            nbPendingReviews,
-            newUsers,
-            pendingReviews,
-            pendingReviewsUsers
-        } = this.state;
+        // const {
+        //     nbNewUsers,
+        //     nbPendingReviews,
+        //     newUsers,
+        //     pendingReviews,
+        //     pendingReviewsUsers
+        // } = this.state;
         return (
             <Responsive
                 xsmall={

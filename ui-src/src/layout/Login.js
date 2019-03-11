@@ -107,7 +107,6 @@ class Login extends Component {
                         </Avatar>
                     </div>
                     <form onSubmit={handleSubmit(this.login)}>
-                        <div className={classes.hint}>Hint: demo / demo</div>
                         <div className={classes.form}>
                             <div className={classes.input}>
                                 <Field
@@ -197,3 +196,5 @@ const LoginWithTheme = props => (
 );
 
 export default LoginWithTheme;
+
+// <div className={classes.hint}>Hint:{this.props.hint}</div>

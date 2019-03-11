@@ -1,9 +1,7 @@
-/* Under the hood, the react-admin uses Redux to manage state.
-*
-* The state has the following keys:
-* {
-    admin: { ... }, // used by react-admin
-    form: { ... }, // used by redux-form
-    routing: { ... }, // used by react-router-redux
-  }
-*/
+// // in src/exampleReducer.js
+// export default (previousState = 0, { type, payload }) => {
+//     if (type === 'ROI_RATE_RECEIVED') {
+//         return payload.rate;
+//     }
+//     return previousState;
+// }
