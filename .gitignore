@@ -1,21 +1,32 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
+# Don't check auto-generated stuff into git
+
+# production
+ui
+ui-holohost
+tmp-storage
+ui-src/build
+
+# testing
+coverage
 
 # dependencies
 /node_modules
-
-# testing
-/coverage
-
-# production
-/build
+ui-src/node_modules
+ui-src/package-lock.json
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+stats.json
+ui-src/.DS_Store
+ui-src/.env.local
+ui-src/.env.development.local
+ui-src/.env.test.local
+ui-src/.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Cruft
+.DS_Store
+npm-debug.log
+ui-src/npm-debug.log*
+ui-src/yarn-debug.log*
+ui-src/yarn-error.log*
+.idea

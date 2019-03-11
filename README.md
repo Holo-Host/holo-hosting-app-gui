@@ -8,7 +8,7 @@ The hosting app is a space for Hosts and App Providers to interact
 **Hosts** declare their intention to host an app and record their private signed service logs here. They can also compile invoices for their app Providers.
 
 ### Development
-Run `npm start` to see your app at `localhost:4100`
+Run `npm start` to see your app at `localhost:3000`
 
 ### Building & Deploying
 1.  Run `npm run build`, which will compile all the necessary files to the
@@ -16,19 +16,13 @@ Run `npm start` to see your app at `localhost:4100`
 
 2.  Upload the contents of the `build` folder to your web server's root folder.
 
-## Documentaion:
+## Documentation:
 **[Holo-Hosting-App ADR]():** Doc outlining the interaction between the HHA GUI and the HHA Holochain DNA.
 
 ## Built With
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
-
 * [Material UI](https://material-ui.com/)
-* [Styled Components](https://www.styled-components.com/)
-
-* [Webpack](https://webpack.js.org/)
-
-<!-- * [Typescript](https://www.typescriptlang.org/) -->
 
 
 ## Authors
@@ -36,9 +30,9 @@ Run `npm start` to see your app at `localhost:4100`
 * **Joel Ulahanna** - [Zo-El](https://github.com/zo-el)
 
 
-## A Tip of the Hat
->Although this project is original work, its foundation was based on `react boilerplate`.
-> Visit the repo [here](https://github.com/react-boilerplate/react-boilerplate).
+<!-- #### A Tip of the Hat
+>Although this project is original work, its foundation was based on `react admin`.
+> Visit the repo [here](https://github.com/marmelab/react-admin). -->
 
 ---
 ## License
