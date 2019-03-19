@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Notification, translate, userLogin } from 'react-admin';
 import PropTypes from 'prop-types';
 import { propTypes, reduxForm, Field } from 'redux-form';
@@ -18,6 +18,8 @@ import {
 import LockIcon from '@material-ui/icons/Lock';
 // local component imports:
 import { lightTheme } from './themes';
+
+import TestButton from '../pages/categories/TestButton';
 
 const backgroundImages = [
   'https://holo.host/wp-content/themes/holo/images/hero/jesse3.jpg',
@@ -87,7 +89,7 @@ const renderInput = ({
     />
 );
 
-class Login extends Component {
+class Login extends React.Component {
     login = auth =>
         this.props.userLogin(
             auth,
@@ -97,10 +99,17 @@ class Login extends Component {
         );
 
     render() {
-        const { classes, handleSubmit, isLoading, translate } = this.props;
+        const { classes, handleSubmit, isLoading, translate, whoami } = this.props;
         return (
             <div className={classes.main}>
                 <Card className={classes.card}>
+
+                    <div className={classes.avatar}>
+                      <TestButton/>
+                      <div>{whoami ? `Hello ${whoami.hash}` : null }</div>
+                    </div>
+                    <br/>
+
                     <div className={classes.avatar}>
                         <Avatar className={classes.icon}>
                             <LockIcon />
@@ -157,9 +166,10 @@ Login.propTypes = {
     previousRoute: PropTypes.string,
     translate: PropTypes.func.isRequired,
     userLogin: PropTypes.func.isRequired,
+    whoami: PropTypes.string,
 };
 
-const mapStateToProps = state => ({ isLoading: state.admin.loading > 0 });
+const mapStateToProps = state => ({ isLoading: state.admin.loading > 0, whoami: state.whoami});
 
 const enhance = compose(
     translate,

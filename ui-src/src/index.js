@@ -24,8 +24,8 @@ const i18nProvider = locale => {
 };
 
 const initialState = {
-  authProvider,
   // dataProvider,
+  authProvider,
   i18nProvider,
   history
 };

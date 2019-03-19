@@ -1,16 +1,19 @@
-// Main Imports:
 import {combineReducers, applyMiddleware, compose, createStore } from 'redux';
+// import { createHashHistory } from 'history';
 import { fromJS } from 'immutable';
 import { createLogger } from 'redux-logger';
-import { reducer as formReducer } from 'redux-form';
 // import reducer from '../utils/reducer';
-// import injectReducers from '../utils/injectReducers';
+import injectReducers from '../utils/injectReducers';
+import { reducer as formReducer } from 'redux-form';
+// import * as appActions from '../containers/App/actions';
 
 // ** Middleware for ROUTING**
 import { setPort } from '../utils/constants'
 import { routerMiddleware } from 'connected-react-router/immutable';
 // import { routerReducer } from 'react-router-redux';
 import { connectRouter } from 'connected-react-router'
+import whoami from "../utils/injectReducers/categoriesReducer";
+import theme from "../utils/injectReducers/themeReducer"
 // ** Middleware for Redux Saga **
 import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
@@ -32,7 +35,7 @@ import { connect } from '@holochain/hc-web-client';
 
 // const history = createHashHistory();
 // const url = 'ws:localhost:3000';
-const url = `ws:localhost:${setPort()}`;
+const url = `ws:localhost:${setPort()}`
 const hcWc = connect(url);
 const sagaMiddleware = createSagaMiddleware();
 
@@ -57,10 +60,10 @@ const configureStore = ({
         // router: routerReducer,
 
         /* add your own reducers here */
-        /* injectReducers */
+        theme,
+        whoami
     });
-    const resettableAppReducer = (state, action) =>
-        reducer(action.type !== USER_LOGOUT ? state : undefined, action);
+    const resettableAppReducer = (state, action) => reducer(action.type !== USER_LOGOUT ? state : undefined, action);
 
     const combinedSagas = adminSaga(authProvider, i18nProvider);
     const saga = function* rootSaga() {
@@ -68,6 +71,7 @@ const configureStore = ({
             [
                 combinedSagas,
                 // add your own sagas here :// injectedSagas
+
             ].map(fork)
         );
     };
@@ -82,6 +86,8 @@ const configureStore = ({
     console.log("THIS APP: Local Reducer:", reducer);
     console.log("THIS APP: Local Reducer ACTION >>> :", reducer.action);
     console.log("THIS APP: Local Reducer STATE >>>>:", reducer.state);
+    console.log("THIS APP: adminReducer >>> :", adminReducer);
+    console.log("THIS APP: formReducer >>> :", formReducer);
     console.log("resettableAppReducer: ", resettableAppReducer);
     console.log(":::::::::::::::::::::::::::::::::::");
 

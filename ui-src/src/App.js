@@ -5,9 +5,12 @@ import { Admin, Resource } from 'react-admin';
 // app utils imports:
 import customRoutes from './utils/routes';
 import authProvider from './utils/authProvider';
-import themeReducer from './utils/injectReducers/themeReducer';
 import sagas from './utils/injectSagas/review_sagas';
 import englishMessages from './utils/i18n/en';
+
+// page reducers
+import themeReducer from './utils/injectReducers/themeReducer';
+import whoamiReducer from './utils/injectReducers/categoriesReducer';
 
 import restProvider from 'ra-data-simple-rest';
 // import dataProviderFactory from './dataProvider';
@@ -18,11 +21,11 @@ import { Login, Layout, Menu } from './layout';
 import './App.css';
 
 // app page imports:
-import { Dashboard } from './pages/dashboard';
-import visitors from './pages/visitors';
 import products from './pages/products';
 import categories from './pages/categories';
 import reviews from './pages/reviews';
+import { Dashboard } from './pages/dashboard';
+import visitors from './pages/visitors';
 
 const i18nProvider = locale => {
     if (locale === 'fr') {
@@ -68,9 +71,10 @@ class App extends Component {
             <Admin
                 title=""
                 dataProvider={dataProvider}
-                // NOTE: HC-Actions will be added to each component where the `record` for each component type is injected.
-                // TODO: Add HC-Reducers to customReducers:
-                customReducers={{ theme: themeReducer }}
+                customReducers={{
+                  theme: themeReducer,
+                  whoami: whoamiReducer
+                }}
                 customSagas={sagas}
                 customRoutes={customRoutes}
                 authProvider={authProvider}

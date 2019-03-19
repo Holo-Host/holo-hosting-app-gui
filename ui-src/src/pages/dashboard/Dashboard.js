@@ -5,7 +5,7 @@ import Welcome from './Welcome';
 // import MonthlyRevenue from './MonthlyRevenue';
 // import PendingReviews from './PendingReviews';
 // import NewUsers from './NewUsers';
-import reducerState from '../../utils/reducer';
+import reducerState from '../../utils/injectReducers';
 
 const styles = {
     flex: { display: 'flex' },
