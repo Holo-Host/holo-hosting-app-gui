@@ -38,6 +38,8 @@
         "redux-saga": "~0.16.0"
     },
     "scripts": {
+        "start-ui-agent1": "PORT=8800 REACT_APP_NODE_PORT=3000 REACT_APP_DNA_INSTANCE=test-instance NODE_ENV=development PUBLIC_URL='./' react-scripts start",
+        "start-ui-agent2": "PORT=9300 REACT_APP_NODE_PORT=3100 REACT_APP_DNA_INSTANCE=test-instance NODE_ENV=development PUBLIC_URL='./' react-scripts start",
         "start": " REACT_APP_DNA_INSTANCE=holo-hosting-app_instance REACT_APP_NODE_PORT=3000 NODE_ENV=development PUBLIC_URL='./' react-scripts start",
         "build": " NODE_ENV=production PUBLIC_URL='./' react-scripts build && node copy-to-ui.js",
         "eject": "react-scripts eject"

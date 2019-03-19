@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build:holohost": "cp -a ./ui/. ./ui-holohost/",
-    "ui:build": "cd ui-src && npm run build && cd .. && npm run build:holohost",
-    "hc:start": " npm run ui:build && holochain -c ./conductor/conductor-config.toml && node scripts/start.js",
-    "ui:start": "cd ui-src && npm run start",
-    "quick-start": "holochain -c ./conductor/conductor-config.toml"
+    "start-dna-agent1":"cd ./HoloHostingApp && HC_N3H_PATH=/home/zo-el/n3h HC_AGENT=testAgent1 hc run --port 3000",
+    "start-dna-agent2":"cd ./HoloHostingApp && HC_N3H_BOOTSTRAP_NODE=wss://192.168.0.8:40867/?a=hkauWw0c4cH_8wkJNDNrMr4ZOyZWs-vcb-JsKVbzo6IdW73y6Pu1D6jDC7dBbjjyfjp172gjbhh-zfVUgNeHa0dYAXaOAVv2 HC_N3H_IPC_URI=wss://127.0.0.1:33999/ HC_N3H_PATH=/home/zo-el/n3h HC_AGENT=testAgent2 hc run --port 3100",
+    "start-ui-agent1": "cd ui-src && npm run start-ui-agent1",
+    "start-ui-agent2": "cd ui-src && npm run start-ui-agent2",
+    "build": "cd ui-src && npm run build"
   },
   "authors": [
     "Lisa Jetton",
