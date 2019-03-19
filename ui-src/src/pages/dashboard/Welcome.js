@@ -8,9 +8,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import HomeIcon from '@material-ui/icons/Home';
 import CodeIcon from '@material-ui/icons/Code';
+import DnsIcon from '@material-ui/icons/Dns';
 import { withStyles } from '@material-ui/core/styles';
 import { translate } from 'react-admin';
-
+import RegisterProvider from './registerProvider';
+import RegisterHost from './registerHost';
 const styles = {
     media: {
         height: '18em',
@@ -22,27 +24,19 @@ const mediaUrl = `https://marmelab.com/posters/dog-${parseInt(
     10
 ) + 1}.jpeg`;
 
-const Welcome = ({ classes, translate }) => (
+const Welcome = ({ classes, translate ,username}) => (
     <Card>
-        <CardMedia image={mediaUrl} className={classes.media} />
-        <CardContent>
-            <Typography variant="headline" component="h2">
-                {translate('pos.dashboard.welcome.title')}
-            </Typography>
-            <Typography component="p">
-                {translate('pos.dashboard.welcome.subtitle')}
-            </Typography>
-        </CardContent>
-        <CardActions style={{ justifyContent: 'flex-end' }}>
-            <Button href="#">
-                <HomeIcon style={{ paddingRight: '0.5em' }} />
-                {translate('pos.dashboard.welcome.aor_button')}
-            </Button>
-            <Button href="#">
-                <CodeIcon style={{ paddingRight: '0.5em' }} />
-                {translate('pos.dashboard.welcome.demo_button')}
-            </Button>
+      <CardContent>
+        <Typography variant="headline" component="h2">
+          {translate('pos.dashboard.welcome.title')}
+          {username}
+        </Typography>
+      </CardContent>
+        <CardActions style={{ justifyContent: 'center' }}>
+          <RegisterProvider/>
+          <RegisterHost/>
         </CardActions>
+        <CardMedia image={mediaUrl} className={classes.media} />
     </Card>
 );
 

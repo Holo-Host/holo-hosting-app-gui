@@ -14,8 +14,12 @@ export const setInstance = () => {
 };
 
 export const setPort = () => {
-  // return 3000
-  console.log("PORT: ",process.env);
   if (process.env.REACT_APP_NODE_PORT) return process.env.REACT_APP_NODE_PORT;
   return 'ERROR: REACT_APP_NODE_PORT not found at '+ process.env.REACT_APP_NODE_PORT;
 };
+
+export const DNA_INSTANCE = setInstance();
+
+
+export const REGISTER_PROVIDER = DNA_INSTANCE+'/provider/register_as_provider'
+export const REGISTER_HOST = DNA_INSTANCE+'/host/register_as_host'

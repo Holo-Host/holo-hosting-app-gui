@@ -12,7 +12,7 @@ import { setPort } from '../utils/constants'
 import { routerMiddleware } from 'connected-react-router/immutable';
 // import { routerReducer } from 'react-router-redux';
 import { connectRouter } from 'connected-react-router'
-import whoami from "../utils/injectReducers/categoriesReducer";
+import {whoami , is_registered_provider, is_registered_host} from "../utils/injectReducers/categoriesReducer";
 import theme from "../utils/injectReducers/themeReducer"
 // ** Middleware for Redux Saga **
 import createSagaMiddleware from 'redux-saga';
@@ -61,7 +61,9 @@ const configureStore = ({
 
         /* add your own reducers here */
         theme,
-        whoami
+        whoami,
+        is_registered_provider,
+        is_registered_host
     });
     const resettableAppReducer = (state, action) => reducer(action.type !== USER_LOGOUT ? state : undefined, action);
 
@@ -82,14 +84,14 @@ const configureStore = ({
       collapsed: true
     });
 
-    console.log(":::::::::::::::::::::::::::::::::::");
-    console.log("THIS APP: Local Reducer:", reducer);
-    console.log("THIS APP: Local Reducer ACTION >>> :", reducer.action);
-    console.log("THIS APP: Local Reducer STATE >>>>:", reducer.state);
-    console.log("THIS APP: adminReducer >>> :", adminReducer);
-    console.log("THIS APP: formReducer >>> :", formReducer);
-    console.log("resettableAppReducer: ", resettableAppReducer);
-    console.log(":::::::::::::::::::::::::::::::::::");
+    // console.log(":::::::::::::::::::::::::::::::::::");
+    // console.log("THIS APP: Local Reducer:", reducer);
+    // console.log("THIS APP: Local Reducer ACTION >>> :", reducer.action);
+    // console.log("THIS APP: Local Reducer STATE >>>>:", reducer.state);
+    // console.log("THIS APP: adminReducer >>> :", adminReducer);
+    // console.log("THIS APP: formReducer >>> :", formReducer);
+    // console.log("resettableAppReducer: ", resettableAppReducer);
+    // console.log(":::::::::::::::::::::::::::::::::::");
 
     const store = createStore(
         resettableAppReducer,

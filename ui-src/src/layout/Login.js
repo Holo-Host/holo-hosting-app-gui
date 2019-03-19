@@ -116,26 +116,6 @@ class Login extends React.Component {
                         </Avatar>
                     </div>
                     <form onSubmit={handleSubmit(this.login)}>
-                        <div className={classes.form}>
-                            <div className={classes.input}>
-                                <Field
-                                    autoFocus
-                                    name="username"
-                                    component={renderInput}
-                                    label={translate('ra.auth.username')}
-                                    disabled={isLoading}
-                                />
-                            </div>
-                            <div className={classes.input}>
-                                <Field
-                                    name="password"
-                                    component={renderInput}
-                                    label={translate('ra.auth.password')}
-                                    type="password"
-                                    disabled={isLoading}
-                                />
-                            </div>
-                        </div>
                         <CardActions className={classes.actions}>
                             <Button
                                 variant="raised"

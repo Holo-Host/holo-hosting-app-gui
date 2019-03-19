@@ -10,7 +10,7 @@ import englishMessages from './utils/i18n/en';
 
 // page reducers
 import themeReducer from './utils/injectReducers/themeReducer';
-import whoamiReducer from './utils/injectReducers/categoriesReducer';
+import {whoami} from './utils/injectReducers/categoriesReducer';
 
 import restProvider from 'ra-data-simple-rest';
 // import dataProviderFactory from './dataProvider';
@@ -47,7 +47,7 @@ class App extends Component {
         //     process.env.REACT_APP_DATA_PROVIDER
         // );
 
-        const dataProvider = restProvider('http://localhost:3000');
+        const dataProvider = restProvider('http://localhost:8800');
 
         this.setState({ dataProvider });
     }
@@ -73,11 +73,12 @@ class App extends Component {
                 dataProvider={dataProvider}
                 customReducers={{
                   theme: themeReducer,
-                  whoami: whoamiReducer
+                  // whoami
                 }}
                 customSagas={sagas}
                 customRoutes={customRoutes}
                 authProvider={authProvider}
+                dashboard={Dashboard}
                 loginPage={Login}
                 appLayout={Layout}
                 menu={Menu}

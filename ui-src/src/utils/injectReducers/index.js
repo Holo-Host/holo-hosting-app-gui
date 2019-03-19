@@ -1,6 +1,6 @@
 /* Combine all reducers in this file and export the combined reducers. */
 import { combineReducers } from 'redux';
-import whoamiReducer from "./categoriesReducer";
+import {whoami} from "./categoriesReducer";
 import themeReducer from "./themeReducer"
 
 const createRootReducer = (history: any) => {
@@ -11,7 +11,7 @@ const createRootReducer = (history: any) => {
     i18n: {}, // used by react-admin
     form: {}, // used by redux-form
     themeReducer,
-    whoamiReducer
+    whoami
   });
 };
 
