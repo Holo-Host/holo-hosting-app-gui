@@ -1,7 +1,5 @@
-import { FETCH_AGENT } from '../../pages/categories/categories_actions';
-
 export default (previousState = null, { type, payload }) => {
-    if (type === FETCH_AGENT) {
+    if (type === "FETCH_AGENT_SUCCESS") {
         return payload;
     }
     return previousState;
