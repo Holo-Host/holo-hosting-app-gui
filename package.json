@@ -6,7 +6,7 @@
   "scripts": {
     "build:holohost": "cp -a ./ui/. ./ui-holohost/",
     "ui:build": "cd ui-src && npm run build && cd .. && npm run build:holohost",
-    "hc:start": " npm run ui:build && holochain -c ./conductor/conductor-config.toml",
+    "hc:start": " npm run ui:build && holochain -c ./conductor/conductor-config.toml && node scripts/start.js",
     "ui:start": "cd ui-src && npm run start",
     "quick-start": "holochain -c ./conductor/conductor-config.toml"
   },

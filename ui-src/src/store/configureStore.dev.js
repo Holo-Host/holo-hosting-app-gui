@@ -1,11 +1,10 @@
+// Main Imports:
 import {combineReducers, applyMiddleware, compose, createStore } from 'redux';
-// import { createHashHistory } from 'history';
 import { fromJS } from 'immutable';
 import { createLogger } from 'redux-logger';
-import reducer from '../utils/reducer';
-import injectReducers from '../utils/injectReducers';
 import { reducer as formReducer } from 'redux-form';
-// import * as appActions from '../containers/App/actions';
+// import reducer from '../utils/reducer';
+// import injectReducers from '../utils/injectReducers';
 
 // ** Middleware for ROUTING**
 import { setPort } from '../utils/constants'
@@ -33,7 +32,7 @@ import { connect } from '@holochain/hc-web-client';
 
 // const history = createHashHistory();
 // const url = 'ws:localhost:3000';
-const url = `ws:localhost:${setPort()}`
+const url = `ws:localhost:${setPort()}`;
 const hcWc = connect(url);
 const sagaMiddleware = createSagaMiddleware();
 
@@ -69,7 +68,6 @@ const configureStore = ({
             [
                 combinedSagas,
                 // add your own sagas here :// injectedSagas
-
             ].map(fork)
         );
     };

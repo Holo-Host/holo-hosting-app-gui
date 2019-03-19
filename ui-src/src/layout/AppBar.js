@@ -44,6 +44,7 @@ const CustomAppBar = ({ classes, ...props }) => (
             className={classes.title}
             id="react-admin-title"
         />
+        <img src={process.env.PUBLIC_URL + '/icons/hc-logo.png'} alt='' />
         <span className={classes.spacer} />
         <Typography variant="title" color="inherit"className={classnames(classes.title, classes.header)}>Holo Hosting</Typography>
         <span className={classes.spacer} />
