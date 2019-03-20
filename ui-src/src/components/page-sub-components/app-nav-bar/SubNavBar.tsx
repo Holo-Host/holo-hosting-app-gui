@@ -47,35 +47,35 @@ class SubNavBar extends React.Component<Props, State> {
     const {classes} = this.props;
     return (
       <div className={classes.subnavRoot}>
-        <AppBar position="static" style={{margin: '0 auto', marginTop:"64px", background: "#0e3658"}}>
+        <AppBar position="static" style={{margin: '0 auto', marginTop:"64px", background: "#D3D3D3"}}>
           <Toolbar style={{margin: '0 auto'}}>
             <div>
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button}>
               <Link to='/home' className={classes.subheaderLink}>
-                <ListItemIcon style={{color:"#799ab6"}}>
+                <ListItemIcon style={{color:"#000", fontWeight: "bold"}}>
                   <img src="/assets/icons/home.png" alt="tx-history-logo" width="25px" height="25px"/>
                 </ListItemIcon>
-                <Typography variant="subheading" style={{color:"#799ab6", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
+                <Typography variant="subheading" style={{color:"#000", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
                   Home
                 </Typography>
               </Link>
             </ListItem>
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button} onClick={this.handleTransferBtnClick}>
               <Link to='#' className={classes.subheaderLink}>
-                <ListItemIcon style={{color:"#799ab6"}}>
+                <ListItemIcon style={{color:"#000", fontWeight: "bold"}}>
                   <img src="/assets/icons/upload.png" alt="transfer-logo" width="25px" height="25px"/>
                 </ListItemIcon>
-                <Typography variant="subheading" style={{color:"#799ab6", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
+                <Typography variant="subheading" style={{color:"#000", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
                   Register App
                 </Typography>
               </Link>
             </ListItem>
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button}>
               <Link to='/settings' className={classes.subheaderLink}>
-              <ListItemIcon style={{color:"#799ab6"}}>
+              <ListItemIcon style={{color:"#000", fontWeight: "bold"}}>
                 <img src="/assets/icons/settings.png" alt="settings-logo" width="25px" height="25px"/>
               </ListItemIcon>
-              <Typography variant="subheading" style={{color:"#799ab6", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
+              <Typography variant="subheading" style={{color:"#000", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
                 Settings
               </Typography>
             </Link>

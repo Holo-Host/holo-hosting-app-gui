@@ -108,19 +108,8 @@ class AppNavBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="fixed" style={{margin: '0 auto',  background: "#0e094b"}}>
+        <AppBar position="fixed" style={{margin: '0 auto',  background: "#D3D3D3"}}>
           <Toolbar>
-            <div>
-              <IconButton
-                className={classes.iconButton}
-                color="inherit"
-                aria-label="Icon"
-              >
-                <Link to='/home'>
-                  <img src="/assets/icons/holo-logo.png" alt="holo-logo" width="50"/>
-                </Link>
-              </IconButton>
-            </div>
 
             { scrolledUp ?
               <Slide direction="left" in={scrolledUp} mountOnEnter unmountOnExit>

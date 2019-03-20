@@ -15,7 +15,7 @@ const styles : StyleRulesCallback  = (theme: Theme) => ({
     width: 30,
     height: 30,
     minHeight:30,
-    background: "#0e3658",
+    background: "#808080",
     "&:hover": {
       color: '#003087',
     }

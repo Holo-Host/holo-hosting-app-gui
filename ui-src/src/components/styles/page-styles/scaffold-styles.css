@@ -18,10 +18,7 @@ body {
 body, html{
 	padding:0;
 	margin:0;
-	background: #4b6a7d; /* // 0e3658 */
-	/* background: -moz-linear-gradient(top, #fbfbfb 0%, #ededed 46%, #ededed 100%); */
-	/* background: -webkit-linear-gradient(top, #fbfbfb 0%, #ededed 46%, #ededed 100%); */
-	/* background: linear-gradient(to bottom, #fbfbfb 0%, #ededed 46%, #ededed 100%); */
+	background: #FFF;
 	text-align:center;
 }
 
@@ -141,7 +138,7 @@ input {
 }
 
 .DateInput_input__focused {
-  border-bottom: 2px solid #3f51b5;
+  border-bottom: 2px solid #696969;
 }
 
 .CalendarDay__selected_span {
@@ -177,7 +174,7 @@ input {
 
 /* for the dropdown paper color:  */
 .MuiPaper-root-92 {
-  background: #3f51b5;
+  background: #696969;
   border-color: #789bb4;
 }
 

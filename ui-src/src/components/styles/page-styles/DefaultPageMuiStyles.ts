@@ -83,7 +83,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
     },
     appBar: {
       top: 64,
-      backgroundColor: '#0e3658',
+      backgroundColor: '#D3D3D3',
       zIndex: 2
     },
     appBarFullPageModal:{
@@ -94,7 +94,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       top: '84vh',
       position: 'fixed',
       bottom: 0,
-      backgroundColor: '#0e3658',
+      backgroundColor: '#808080',
       zIndex: 2
     },
     headerAvatar: {
@@ -201,7 +201,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
     content: {
       flexGrow: 1,
       padding: theme.spacing.unit * 3,
-      background: '#4b6a7d',
+      // background: '#4b6a7d',
       // background: "#111a58eb" // 343752eb 111a58eb
       // background: 'linear-gradient(45deg,#47499063 10%, #111a58eb)', // #08125feb ; #030831eb
     },
@@ -273,7 +273,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       textAlign: 'center',
       borderRadius: 10,
       marginBottom: '1rem',
-      border: '1px solid #0e3658'
+      border: '1px solid #808080'
     },
     jumbotronImg: {
       display: 'block',
@@ -312,7 +312,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       display: 'inline',
       width: 'calc(100vw / 2.85)',
       padding: 10,
-      background: '#0e3658', // #05939a, #d8dee3
+      background: '#808080', // #05939a, #d8dee3
       border: '1px solid #799ab6', // #446164, #0e094b, #d8dee3
       "&:hover": {
         border: '2px solid #799ab6', // #0e094b
@@ -329,7 +329,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       width: '40px !important',
       height: 40,
       padding: 0,
-      background: '#0e3658', // #05939a, #d8dee3
+      background: '#808080', // #05939a, #d8dee3
       border: '1px solid #799ab6', // #446164, #0e094b, #d8dee3
       boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)',
       "&:hover": {
@@ -429,7 +429,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       // padding: 4,
     },
     filterTextTitle : {
-      color: '#e9ecef', // alts: #799ab6,  #0e3658
+      color: '#e9ecef', // alts: #799ab6,  #808080
       // marginTop: '11px',
       // marginBottom: '3px',
     },
@@ -459,7 +459,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       margin: '0 auto',
       padding: 15,
       paddingBottom: 45,
-      // border: '1px solid #0e3658', //#e9ecef, #799ab6
+      // border: '1px solid #808080', //#e9ecef, #799ab6
       borderRadius: 46,
       width: '52%',
       // minwidth:'32%',
@@ -621,8 +621,8 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
        padding: theme.spacing.unit,
        margin: `${theme.spacing.unit}px 0`,
        marginTop: 25,
-       background:'#2e4f6a', // alternative-color : #0e3658
-       border: '1px solid #0e3658', // ##e9ecef
+       background:'#2e4f6a', // alternative-color : #808080
+       border: '1px solid #808080', // ##e9ecef
        color: '#e9ecef'
      },
      muiSimpleTableRoot: {
@@ -639,7 +639,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
        width: '85%',
        display:'flex',
        background: '#2e4f6a',
-       border: '2px solid #0e3658',
+       border: '2px solid #808080',
        borderRadius: 4,
        marginBottom: 115
      },
@@ -656,7 +656,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
      tableCell: {
        fontSize: '.7rem',
        textTransform: 'capitalize',
-       color: '#0e3658 !important',
+       color: '#808080 !important',
        padding: 0,
        minWidth: 20,
        maxWidth: 71,

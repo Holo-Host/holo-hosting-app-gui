@@ -14,7 +14,7 @@ import styles from '../../styles/page-styles/DefaultPageMuiStyles'
 const NohApps = (props:any) => {
   const { classes, tableText } = props;
     return(
-    <div className={classnames(classes.NohAppsMessage, "error-container", "text-center")} style={{ margin:'0 auto', marginTop:'-130px'}}>
+    <div className={classnames(classes.NohAppsMessage, "error-container", "text-center")} style={{ margin:'0 auto', marginTop:'-130px',background: "#D3D3D3"}}>
       <div className="error" style={{textAlign:'center', margin:'0 auto'}}>
         <h2 className={classes.NohAppsMessageText} >No {tableText} hApps</h2>
       </div>
