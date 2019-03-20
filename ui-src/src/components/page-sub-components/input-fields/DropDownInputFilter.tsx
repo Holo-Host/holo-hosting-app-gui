@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 // local imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import FabSearchBtn from './FabSearchBtn';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 

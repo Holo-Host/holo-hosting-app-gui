@@ -10,7 +10,7 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 // local page-views imports :
 import MainNavListItems from './MainNavListItems';
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 // custom styles
 import styles from '../../styles/page-sub-component-styles/DashboardMuiStyles';
 

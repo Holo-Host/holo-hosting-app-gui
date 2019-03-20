@@ -116,7 +116,7 @@ class AppNavBar extends React.Component {
                 color="inherit"
                 aria-label="Icon"
               >
-                <Link to='/holofuelsummary'>
+                <Link to='/home'>
                   <img src="/assets/icons/holo-logo.png" alt="holo-logo" width="50"/>
                 </Link>
               </IconButton>
@@ -125,12 +125,12 @@ class AppNavBar extends React.Component {
             { scrolledUp ?
               <Slide direction="left" in={scrolledUp} mountOnEnter unmountOnExit>
                 <Typography variant="h6" color="inherit" className={classnames(classes.grow, scrolledUp ? classes.minimizeHeader : classes.fullSizeHeader)}>
-                  HoloFuel
+                  Holo Hosting App
                 </Typography>
               </Slide>
             :
               <Typography variant="h6" color="inherit" className={classnames(classes.grow, scrolledUp ? classes.minimizeHeader : classes.fullSizeHeader)}>
-                HoloFuel
+                Holo Hosting App
               </Typography>
           }
 
@@ -144,7 +144,7 @@ class AppNavBar extends React.Component {
                       className={classes.icon}
                       aria-haspopup="false"
                     >
-                      <Link to='/holofuelsummary'>
+                      <Link to='/home'>
                         <img src="/assets/icons/tx-history.png" alt="tx-history-logo" width="18px" height="18px"/>
                       </Link>
                     </IconButton>

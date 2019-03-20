@@ -2,7 +2,7 @@ import * as React from 'react';
 // MUI CUSTOM style imports
 import { withStyles } from '@material-ui/core/styles';
 // local imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 
 export interface OwnProps {

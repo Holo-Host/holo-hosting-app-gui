@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as moment from 'moment';
 // MUI styles
 import { withStyles } from '@material-ui/core/styles';
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 
 

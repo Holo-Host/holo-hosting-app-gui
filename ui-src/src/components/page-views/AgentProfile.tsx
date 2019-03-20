@@ -9,7 +9,7 @@ import Portal from '@material-ui/core/Portal';
 import Slide from '@material-ui/core/Slide';
 import Typography from '@material-ui/core/Typography';
 // local imports :
-import { StateProps, DispatchProps } from '../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
 import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar';
 import ProfileInfoCard from '../page-sub-components/info-card/ProfileInfoCard';
 import QrGenerator from '../page-sub-components/qr-generator/QrGenerator';

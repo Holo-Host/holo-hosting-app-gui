@@ -9,7 +9,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from '@material-ui/core/Typography';
 
 // Local Imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 
 
@@ -51,22 +51,22 @@ class SubNavBar extends React.Component<Props, State> {
           <Toolbar style={{margin: '0 auto'}}>
             <div>
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button}>
-              <Link to='/holofuelsummary' className={classes.subheaderLink}>
+              <Link to='/home' className={classes.subheaderLink}>
                 <ListItemIcon style={{color:"#799ab6"}}>
-                  <img src="/assets/icons/tx-history.png" alt="tx-history-logo" width="25px" height="25px"/>
+                  <img src="/assets/icons/home.png" alt="tx-history-logo" width="25px" height="25px"/>
                 </ListItemIcon>
                 <Typography variant="subheading" style={{color:"#799ab6", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
-                  HoloFuel History
+                  Home
                 </Typography>
               </Link>
             </ListItem>
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button} onClick={this.handleTransferBtnClick}>
               <Link to='#' className={classes.subheaderLink}>
                 <ListItemIcon style={{color:"#799ab6"}}>
-                  <img src="/assets/icons/transfer.png" alt="transfer-logo" width="25px" height="25px"/>
+                  <img src="/assets/icons/upload.png" alt="transfer-logo" width="25px" height="25px"/>
                 </ListItemIcon>
                 <Typography variant="subheading" style={{color:"#799ab6", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
-                  Transfer HoloFuel
+                  Register App
                 </Typography>
               </Link>
             </ListItem>

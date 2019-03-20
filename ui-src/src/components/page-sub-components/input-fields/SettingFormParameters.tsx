@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography'
 // local imports :
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import { HashString } from '../../../utils/types';
 import OutlinedButton from '../outlined-button/OutlinedButton';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles'
@@ -179,7 +179,7 @@ class CreateNewSettings extends React.Component<Props, State>  {
             <OutlinedButton
               text="Save"
               color="primary"
-              link="/holofuelsummary"
+              link="/home"
               showTransferBar={this.props.showTransferBar}
               fnName=""
               style={{display: "block", margin:"auto", width:"5%", padding:"30px"

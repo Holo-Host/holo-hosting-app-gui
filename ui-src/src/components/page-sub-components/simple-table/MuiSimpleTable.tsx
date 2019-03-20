@@ -12,7 +12,7 @@ import Today from '@material-ui/icons/Today';
 import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
 import MessageIcon from '@material-ui/icons/Message';
 // local imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import HoloFuelTransactionDetailPage from '../../page-views/HoloFuelTransactionDetailPage';
 import FabFullScreenBtn from '../input-fields/FabFullScreenBtn';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';

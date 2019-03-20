@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 // local imports :
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
-// import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+// import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 
 export interface OwnProps {
   classes: any,

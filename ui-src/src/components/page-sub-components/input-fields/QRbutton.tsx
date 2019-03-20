@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
 // local imports :
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import QrGenerator from '../qr-generator/QrGenerator';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles'
 

@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
 // local imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import { ReactInputParam } from '../../../utils/types';
 import FabSearchBtn from '../input-fields/FabSearchBtn';
 import DropDownInputFilter from '../input-fields/DropDownInputFilter';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 // local page-views imports :
-import HoloFuelSummaryPage from '../components/page-views/HoloFuelSummaryPage';
+import HomeSummaryPage from '../components/page-views/HomeSummaryPage';
 // import HoloFuelTxSummary from '../components/page-views/HoloFuelTxSummary';
 import HoloFuelRequestPage from '../components/page-views/HoloFuelRequestPage';
 import HoloFuelProposalPage from '../components/page-views/HoloFuelProposalPage';
@@ -69,7 +69,7 @@ export interface State {
   prevProps: any,
 }
 
-class HoloFuelAppRouterContainer extends React.Component<Props, State> {
+class HomeRouterContainer extends React.Component<Props, State> {
   constructor(props:Props){
     super(props);
     this.state = {
@@ -94,8 +94,7 @@ class HoloFuelAppRouterContainer extends React.Component<Props, State> {
 
 // Find a dynamic way to connect the ui to the dna >> play with info_instances && agent_string >> access prior to running?!?!
   public render() {
-    console.log('State in HoloFuelAppContainer:', this.state);
-    const { classes, staticContext, ...newProps } = this.props; //TODO: Locate staticContext.. AND REMOVE from outer props
+    const { classes, staticContext, ...newProps } = this.props;
     const { location } = this.props.history;
 
     if(!this.props.ledger_state || !this.props.list_of_transactions){
@@ -109,9 +108,9 @@ class HoloFuelAppRouterContainer extends React.Component<Props, State> {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <div>
-            {location.pathname === "/" || location.pathname === "/holofuelsummary" ?
+            {location.pathname === "/" || location.pathname === "/home" ?
             // default to HF Summary Page, if no path match
-            <HoloFuelSummaryPage
+            <HomeSummaryPage
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}
@@ -174,4 +173,4 @@ class HoloFuelAppRouterContainer extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(styles)(HoloFuelAppRouterContainer);
+export default withStyles(styles)(HomeRouterContainer);

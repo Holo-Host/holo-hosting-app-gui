@@ -1,7 +1,7 @@
 import * as React from 'react';
 // local imports
 import '../../styles/page-styles/scaffold-styles.css'; // custom stylesheet :
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 
 export interface OwnProps { data: any }
 export type Props = OwnProps & StateProps & DispatchProps;

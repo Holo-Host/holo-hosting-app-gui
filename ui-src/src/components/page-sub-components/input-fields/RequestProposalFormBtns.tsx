@@ -19,7 +19,7 @@ import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
 import Timer from '@material-ui/icons/Timer';
 // import OutlinedInput from '@material-ui/core/OutlinedInput';
 // local imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import VerificationMessage from '../modal/VerificationMessage';
 import OutlinedButton from '../outlined-button/OutlinedButton';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
@@ -416,7 +416,7 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
                 <OutlinedButton
                   text="Cancel"
                   color="primary"
-                  link="/holofuelsummary"
+                  link="/home"
                   showTransferBar={this.props.showTransferBar}
                   fnName=""
                 />
@@ -434,7 +434,7 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
                 <OutlinedButton
                   text="Cancel"
                   color="primary"
-                  link="/holofuelsummary"
+                  link="/home"
                   showTransferBar={this.props.showTransferBar}
                   fnName=""
                 />

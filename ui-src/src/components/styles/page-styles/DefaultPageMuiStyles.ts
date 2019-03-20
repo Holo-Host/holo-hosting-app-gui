@@ -2,15 +2,6 @@
 import { StyleRulesCallback } from '@material-ui/core/';
 import { Theme } from '@material-ui/core/styles';
 
-// MUI Custom Colors:
-// import purple from '@material-ui/core/colors/purple';
-// import green from '@material-ui/core/colors/green';
-
-// NoTransactionsMessage
-// NoTransactionsMessageText
-
-// #057266f2
-
 const styles: StyleRulesCallback  = (theme: Theme) => ({
     root: {
       display: 'flex',
@@ -45,7 +36,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
     noDisplay: {
       display: 'none',
     },
-    NoTransactionsMessage: {
+    NohAppsMessage: {
       // margin: '0 auto',
       // margin: -60,
       padding: 5,
@@ -55,7 +46,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       borderRadius: 6,
       boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)'
     },
-    NoTransactionsMessageText:{
+    NohAppsMessageText:{
       color: 'rgb(121, 154, 182)',// previously was "#0e094b"
       justifyContent:'center',
       fontWeight: 'lighter'
@@ -582,47 +573,6 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
         borderColor: '#0b1a42',
       },
     },
-    // customUnderline: {
-    //   '&:after': {
-    //     borderBottom: `2px solid  #0b1a42`, // '#ced4da
-    //     left: 0,
-    //     bottom: 0,
-    //     content: '""',
-    //     position: 'absolute',
-    //     right: 0,
-    //     transform: 'scaleX(0)',
-    //     transition: theme.transitions.create('transform', {
-    //       duration: theme.transitions.duration.shorter,
-    //       easing: theme.transitions.easing.easeOut,
-    //     }),
-    //     pointerEvents: 'none',
-    //   },
-    //   '&$focused:after': {
-    //     transform: 'scaleX(1)',
-    //   },
-    //   '&:before': {
-    //     borderBottom: `1px solid #0b1a42`, //  #ced4da
-    //     left: 0,
-    //     bottom: 0,
-    //     content: '"\\00a0"',
-    //     position: 'absolute',
-    //     right: 0,
-    //     transition: theme.transitions.create('border-bottom-color', {
-    //       duration: theme.transitions.duration.shorter,
-    //     }),
-    //     pointerEvents: 'none', // Transparent to the hover style.
-    //   },
-    //   '&:hover:not($disabled):not($focused):not($error):before': {
-    //     borderBottom: `2px solid #3f51b5`, //  #ced4da
-    //     // Reset on touch devices, it doesn't add specificity
-    //     '@media (hover: none)': {
-    //       borderBottom: `1px solid #3f51b5`,
-    //     },
-    //   },
-    //   '&$disabled:before': {
-    //     borderBottomStyle: 'dotted',
-    //   },
-    // },
     areaTextBox : {
       marginTop: 55,
     },

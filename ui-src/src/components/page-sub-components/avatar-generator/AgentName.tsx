@@ -1,6 +1,6 @@
 import * as React from 'react';
 // local imports :
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 // custom mui styles :
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';

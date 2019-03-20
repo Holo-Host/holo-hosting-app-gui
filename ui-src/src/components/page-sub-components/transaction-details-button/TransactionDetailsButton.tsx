@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 // Local Imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import { ProposalActionParam } from '../../../utils/types';
 import InformativeModal from '../modal/InformativeModal';
 import HoloFuelTransactionDetailPage from '../../page-views/HoloFuelTransactionDetailPage';

@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Portal from '@material-ui/core/Portal';
 import Slide from '@material-ui/core/Slide';
 // local imports :
-import { StateProps, DispatchProps } from '../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
 import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar';
 import SettingFormParameters from '../page-sub-components/input-fields/SettingFormParameters';
 

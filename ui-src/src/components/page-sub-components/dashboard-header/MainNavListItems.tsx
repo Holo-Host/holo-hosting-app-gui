@@ -11,7 +11,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import LayersIcon from '@material-ui/icons/Layers';
 // import AssignmentIcon from '@material-ui/icons/Assignment';
 // Local Imports
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 // import styles from '../../styles/page-sub-component-styles/DashboardMuiStyles';
 
 export interface OwnProps {
@@ -48,7 +48,7 @@ class MainListItems extends React.Component<Props, State> {
       <div>
         <br />
         <ListItem style={{paddingTop: "10px"}} button={button}>
-          <Link to='/holofuelsummary'>
+          <Link to='/home'>
             <ListItemIcon style={{color:"#0e88efde"}}>
               <DashboardIcon />
             </ListItemIcon>

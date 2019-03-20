@@ -21,11 +21,9 @@ ProposalAsyncAction,
 ReceivePaymentAsyncAction,
 // RejectPaymentAsyncAction
 } from '../actions/transactionActions';
-import HoloFuelAppRouterContainer, { StateProps, DispatchProps } from './HoloFuelAppRouterContainer';
+import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
 
 export interface OwnProps {
-  // These are props the component has received from its parent component
-  // e.g. what you write in <ExampleComponent ...>
   staticContext: any,
   className: any,
   classes: any,
@@ -33,14 +31,14 @@ export interface OwnProps {
 }
 export type Props = OwnProps & StateProps & DispatchProps;
 
-class HoloFuelAppContainer extends React.Component<Props> {
+class HomeAppContainer extends React.Component<Props> {
   constructor(props:Props){
     super(props);
   };
 
   public render() {
     return (
-      <HoloFuelAppRouterContainer {...this.props}/>
+      <HomeRouterContainer {...this.props}/>
     )
   }
 }
@@ -132,4 +130,4 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HoloFuelAppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeAppContainer);

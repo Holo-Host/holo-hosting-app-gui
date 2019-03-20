@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as moment from 'moment';
 // local imports :
-import { StateProps, DispatchProps } from '../../../containers/HoloFuelAppRouterContainer';
+import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import TransactionDetailsButton from "../transaction-details-button/TransactionDetailsButton";
 import Jdenticon from "../avatar-generator/Jdenticon";
 // MUI Custom Style Imports :
