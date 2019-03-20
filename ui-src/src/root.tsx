@@ -5,14 +5,12 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route, Redirect } from 'react-router';
 import HomeAppContainer from './containers/HomeAppContainer';
 
-import BankViewAppContainer from './containers/BankViewAppContainer';
 
 const Root = ({ store, history }: { store: Store, history: any }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
         <Redirect exact path='/' to='home' />
-        // <Route path = '/bankstyleapp' component={BankViewAppContainer} />
         <Route path = '/home' component={HomeAppContainer} />
       //   <Route path = '/holofuelproposal' component={HomeAppContainer} />
       //   <Route path = '/holofuelrequest' component={HomeAppContainer} />
