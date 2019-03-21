@@ -47,7 +47,8 @@ class HomeSummaryPage extends React.Component<Props, State> {
  testingCalls(){
    // Testign Calls
    this.props.register_hApp_bundle({ui_hash:"Quiououo", dna_list:["Qoauxjnva","Qkiauihsnvkk"]});
-   this.props.register_hApp_bundle({ui_hash:"Quiououo", dna_list:["Qoauxjnva","Qkiauihsnvkk"]});
+   this.props.register_hApp_bundle({ui_hash:"Quiasdfouo", dna_list:["Qoauasdfxva","Qkiauiasdfnvkk"]});
+   this.props.get_all_hApps();
 
  }
   public componentDidMount () {
@@ -56,8 +57,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
     this.props.get_agent_details();
 
     this.testingCalls();
-    
-    this.props.get_all_hApps();
+
   }
 
   // componentDidUpdate(prevProps:any, prevState:any ) {

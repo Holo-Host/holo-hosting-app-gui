@@ -3,6 +3,7 @@ import * as actions from '../actions/transactionActions';
 import { Ledger, ListTransactionsResult, Address, Proposal, Transaction, PendingResult } from '../utils/types';
 import { setInstance, TABLE_DATA_BATCH_LIMIT , PROVIDER, HOST} from '../utils/constants'
 export type Action = ActionType<typeof actions>;
+import { refactorAllApps } from '../utils/data-refactor'
 
 const DNA_INSTANCE = setInstance();
 
@@ -25,7 +26,7 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
      return { ...state, is_registered_host : payload };
    }
    case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
-     return { ...state, all_hApps : payload };
+     return { ...state, all_hApps : refactorAllApps(payload) };
    }
 
      /*Manages WhoAmI Returns*/

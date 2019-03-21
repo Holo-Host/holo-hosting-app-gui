@@ -1,13 +1,21 @@
 export const table_data = (payload:any) => {
   console.log("Refactoring data",payload)
   let table_data:any[]=[]
-  if(payload.hasOwnProperty("addresses")){
-    payload.addresses.forEach((hash:string)=>{
+  payload.forEach((bundle:any)=>{
       table_data.push({
-        hApps_hash:hash,
+        app_bundle:bundle.app_bundle,
+        app_details:bundle.app_details,
+        payment_pref:bundle.payment_pref,
         status:"Disable"
       })
-    })
-  }
+  })
   return table_data
+}
+
+export const refactorAllApps = ( payload:any ) => {
+  let all_apps:any[]=[]
+  payload.forEach((app:any)=>{
+    all_apps.push(JSON.parse(app).Ok);
+  })
+  return all_apps;
 }

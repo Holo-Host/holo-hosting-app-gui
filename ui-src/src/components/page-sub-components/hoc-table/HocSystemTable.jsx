@@ -181,11 +181,6 @@ export const advancedExpandTableHOC = TableComponent =>
           onClick: (e) => {
             this.handleClick(rowInfo.index);
           },
-          onMouseOver: (e) => {
-            this.setState({
-              selected: rowInfo.index
-            })
-          },
           style: {
             overflowX: scroll,
             fontSize: '.7525rem',

@@ -85,6 +85,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
                 }
               }}
               SubComponent={(row:any) => {
+              // this.props.get_hApp_details({app_hash:row.original.hApps_hash});
               return (
                   <div className={classes.subtable} style={{ padding: "10px", margin: '0 auto', marginBottom:"8px", width:'95%' }}>
                     <DropDownHomeTable

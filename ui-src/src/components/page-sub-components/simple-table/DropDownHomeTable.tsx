@@ -19,35 +19,28 @@ export interface OwnProps {
 export type Props = OwnProps & StateProps & DispatchProps;
 
 export interface State {
-  txDetailModal: boolean
 }
-
-let id: number = 0;
 
 class DropDownHomeTable extends React.Component<Props, State> {
   constructor(props:Props){
     super(props);
     this.state = {
-      txDetailModal: false,
     };
   }
 
-  toggleTxDetailModal = ()=> {
-    this.setState({
-      txDetailModal: !this.state.txDetailModal
-    });
+  componentDidMount(){
+    this.fetchDetails();
   }
 
-  createData = (due_date: string, tx_initiation_date: string, notes: string) => {
-    id =0;
-    return { id, due_date, tx_initiation_date, notes };
+  fetchDetails(){
+    // this.props.get_hApp_details({app_hash:this.props.rowInfo.original.hApps_hash});
   }
+
   public render() {
     const { classes } = this.props;
     const {
-      hApps_hash,
-      status,
-      details
+      app_bundle,
+      app_details
      } = this.props.rowInfo.original;
 
      console.log("Props of the DropDownHomeTable: ", this.props)
@@ -69,13 +62,13 @@ class DropDownHomeTable extends React.Component<Props, State> {
               </TableRow>
               <TableRow key={'1'}>
                 <TableCell align="center" className={classes.tableCell}>
-                    <h4>{ hApps_hash}</h4>
+                    <h4>{ app_bundle.ui_hash }</h4>
                     </TableCell>
                 <TableCell align="center" className={classes.tableCell} scope="currentRow">
-                    <h4>{ status }</h4>
+                    <h4>{ app_bundle.dna_list }</h4>
                     </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
-                  {details}
+                  {app_details}
                 </TableCell>
               </TableRow>
             </TableBody>
