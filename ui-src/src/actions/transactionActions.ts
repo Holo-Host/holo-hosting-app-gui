@@ -4,6 +4,8 @@ import { createHolochainAsyncAction } from '@holochain/hc-redux-middleware';
 import { setInstance } from '../utils/constants'
 // const DNA_INSTANCE = 'holofuel instance';
 const TX_ZOME_NAME = 'transactions';
+const PROVIDER = 'provider';
+const HOST = 'host';
 const DNA_INSTANCE = setInstance();
 ////////////////////////////////////////////////////////////////////////////
                     /* Verfiy State - TESTING */
@@ -73,6 +75,9 @@ export const DeclineRequestAsyncAction = createHolochainAsyncAction<{}, Array<an
 
 // Call for LIST_REQUESTS ()
 export const ListRequestsAsyncAction = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, TX_ZOME_NAME, 'list_requests');
+
+export const IsRegisterProviderAction = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, PROVIDER, 'is_registered_as_provider');
+export const IsRegisterHostAction = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'is_registered_as_host');
 
 // Call for LIST_PROPOSALS ()
 export const ListProposalsAsyncAction = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, TX_ZOME_NAME, 'list_proposals');

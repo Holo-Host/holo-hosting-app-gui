@@ -17,6 +17,8 @@ export interface OwnProps {
   txType: any,
   showTransferBar: (txType:any) => void,
   transferBtnBar: boolean,
+  is_registered_provider:any,
+  is_registered_host:any
 }
 export type Props = OwnProps & StateProps & DispatchProps;
 export interface State {
@@ -42,10 +44,12 @@ class HomeSummaryPage extends React.Component<Props, State> {
   };
 
   public componentDidMount () {
-    this.props.list_transactions({});
-    this.props.list_proposals();
-    this.props.list_requests();
-    this.props.list_pending();
+    this.props.is_registered_as_provider();
+    this.props.is_registered_as_host();
+    // this.props.list_transactions({});
+    // this.props.list_proposals();
+    // this.props.list_requests();
+    // this.props.list_pending();
   }
 
   componentDidUpdate(prevProps:any, prevState:any ) {
@@ -65,14 +69,14 @@ class HomeSummaryPage extends React.Component<Props, State> {
               <div className={classes.flexItem}>
                 <h3 className={classes.h3}>Provider</h3>
                 <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                  {this.props.ledger_state.balance ? `${this.props.ledger_state.balance} HF` : `Not Registered..`}
+                  {this.props.is_registered_provider ?  this.props.is_registered_provider.addresses.length !== 0 ? `Registered` : `Not Registered..` : `Loading...`}
                 </Typography>
               </div>
               <div className={classes.verticalLine}/>
               <div className={classes.flexItem}>
                 <h3 className={classes.h3}>Host</h3>
                 <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                    {this.props.ledger_state.credit ? `${this.props.ledger_state.credit} HF`: `Not Registered..`}
+                {this.props.is_registered_host ?  this.props.is_registered_host.addresses.length !== 0 ? `Registered` : `Not Registered..` : `Loading...`}
                 </Typography>
               </div>
             </div>

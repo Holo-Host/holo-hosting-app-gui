@@ -34,7 +34,10 @@ export interface StateProps {
   list_of_requests: Array<any>,
   list_of_proposals: Array<any>,
   view_specific_request: Array<any>,
-  view_specific_proposal: Array<any>
+  view_specific_proposal: Array<any>,
+  is_registered_provider:any,
+  is_registered_host:any
+
 }
 export interface DispatchProps {
 // Props that are set by mapDispatchToProps
@@ -47,6 +50,8 @@ export interface DispatchProps {
     list_transactions: (payload? : any) => void,
     list_pending: () => void,
     list_requests: () => void,
+    is_registered_as_provider: () => void,
+    is_registered_as_host: () => void,
     list_proposals: () => void,
     get_single_request: ({request_address}: any) => void,
     get_single_proposal: ({proposal_address}: any) => void,

@@ -11,6 +11,8 @@ TransactionListAsyncAction,
 PendingListAsyncAction,
 LedgerStateAsyncAction,
 ListRequestsAsyncAction,
+IsRegisterProviderAction,
+IsRegisterHostAction,
 ListProposalsAsyncAction,
 GetRequestAsyncAction,
 GetProposalAsyncAction,
@@ -43,26 +45,28 @@ class HomeAppContainer extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = ({ transactionReducer }: any): StateProps => {
-  // console.log("transactionReducer", transactionReducer);
+const mapStateToProps = ({ reducers }: any): StateProps => {
+  // console.log("reducers", reducers);
   return {
 // global identifiers :
-  list_of_instance_info: transactionReducer.list_of_instance_info,
-  list_of_agents: transactionReducer.list_of_agents,
-  my_agent_string: transactionReducer.my_agent_string,
-  my_agent_hash: transactionReducer.my_agent_hash,
-  hf_base_dna_hash:  transactionReducer.hf_base_dna_hash,
+  is_registered_provider:reducers.is_registered_provider,
+  is_registered_host:reducers.is_registered_host,
+  list_of_instance_info: reducers.list_of_instance_info,
+  list_of_agents: reducers.list_of_agents,
+  my_agent_string: reducers.my_agent_string,
+  my_agent_hash: reducers.my_agent_hash,
+  hf_base_dna_hash:  reducers.hf_base_dna_hash,
 
 // holofuel specific states :
-  ledger_state: transactionReducer.ledger_state,
-  list_of_transactions: transactionReducer.list_of_transactions,
-  list_of_pending:transactionReducer.list_of_pending,
-  mostRecentProposalCommit:transactionReducer.mostRecentProposalCommit,
-  mostRecentRequestCommit:transactionReducer.mostRecentRequestCommit,
-  list_of_requests: transactionReducer.list_of_requests,
-  list_of_proposals: transactionReducer.list_of_proposals,
-  view_specific_request: transactionReducer.view_specific_request,
-  view_specific_proposal: transactionReducer.view_specific_proposal // ,
+  ledger_state: reducers.ledger_state,
+  list_of_transactions: reducers.list_of_transactions,
+  list_of_pending:reducers.list_of_pending,
+  mostRecentProposalCommit:reducers.mostRecentProposalCommit,
+  mostRecentRequestCommit:reducers.mostRecentRequestCommit,
+  list_of_requests: reducers.list_of_requests,
+  list_of_proposals: reducers.list_of_proposals,
+  view_specific_request: reducers.view_specific_request,
+  view_specific_proposal: reducers.view_specific_proposal // ,
   // status
   };
 }
@@ -97,6 +101,13 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
       list_requests : () => {
         // console.log("dispatching list_transactions");
        dispatch(ListRequestsAsyncAction.create({}))},
+      is_registered_as_provider : () => {
+         // console.log("dispatching list_transactions");
+        dispatch(IsRegisterProviderAction.create({}))},
+      is_registered_as_host : () => {
+       // console.log("dispatching list_transactions");
+        dispatch(IsRegisterHostAction.create({}))},
+
 
       list_proposals : () => {
         // console.log("dispatching list_proposals");
