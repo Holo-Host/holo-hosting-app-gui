@@ -12,7 +12,7 @@ const Root = ({ store, history }: { store: Store, history: any }) => (
       <Switch>
         <Redirect exact path='/' to='home' />
         <Route path = '/home' component={HomeAppContainer} />
-      //   <Route path = '/holofuelproposal' component={HomeAppContainer} />
+        <Route path = '/provider/hApps' component={HomeAppContainer} />
       //   <Route path = '/holofuelrequest' component={HomeAppContainer} />
       //   <Route path = '/holofueltransactiondetails' component={HomeAppContainer} />
       //   <Route path = '/profile' component={HomeAppContainer} />

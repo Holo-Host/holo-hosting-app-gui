@@ -1,18 +1,12 @@
 import * as React from 'react';
-// local page-views imports :
 import HomeSummaryPage from '../components/page-views/HomeSummaryPage';
-// import HoloFuelTxSummary from '../components/page-views/HoloFuelTxSummary';
-import HoloFuelRequestPage from '../components/page-views/HoloFuelRequestPage';
-import HoloFuelProposalPage from '../components/page-views/HoloFuelProposalPage';
+import RegisterhAppPage from '../components/page-views/RegisterhAppPage';
 import SettingsHolo from "../components/page-views/SettingsHolo";
 import AgentProfile from "../components/page-views/AgentProfile";
 import HoloFuelTransactionDetailPage from '../components/page-views/HoloFuelTransactionDetailPage';
-// import Dashboard from '../components/page-sub-components/dashboard-header/Dashboard';
-// import createMockApiData, { instanceListData } from  '../utils/seed-data/mock-api-data'; //
 import { Ledger, ListTransactionsResult, PendingResult } from '../utils/types'; // RequestActionParam, ProposalActionParam, Address, DateTimeString
 import AppNavBar from '../components/page-sub-components/app-nav-bar/AppNavBar';
 import SubNavBar from '../components/page-sub-components/app-nav-bar/SubNavBar';
-// custom styles :
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../components/styles/page-styles/DefaultPageMuiStyles';
 import '../components/styles/page-styles/scaffold-styles.css';
@@ -118,19 +112,8 @@ class HomeRouterContainer extends React.Component<Props, State> {
               {...newProps}
             />
           :
-            location.pathname === "/holofuelrequest" ?
-            // this should be the transaction creation form for HoloFuel
-            <HoloFuelRequestPage
-              transferBtnBar={this.state.chooseTxBtnBarOpen}
-              showTransferBar={this.toggleTransferBtnBar}
-              txType={this.state.transactionType}
-              className={classes.appTable}
-              {...newProps}
-            />
-          :
-            location.pathname === "/holofuelproposal" ?
-            // this should be the HoloFuel Transaction Details Page
-            <HoloFuelProposalPage
+            location.pathname === "/provider/hApps" ?
+            <RegisterhAppPage
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}

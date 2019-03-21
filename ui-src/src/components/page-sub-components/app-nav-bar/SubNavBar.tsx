@@ -53,9 +53,9 @@ class SubNavBar extends React.Component<Props, State> {
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button}>
               <Link to='/home' className={classes.subheaderLink}>
                 <ListItemIcon style={{color:"#000", fontWeight: "bold"}}>
-                  <img src="/assets/icons/home.png" alt="tx-history-logo" width="25px" height="25px"/>
+                  <img src="/assets/icons/home.svg" alt="tx-history-logo" width="25px" height="25px"/>
                 </ListItemIcon>
-                <Typography variant="subheading" style={{color:"#000", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
+                <Typography variant="subheading" style={{color:"#000", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
                   Home
                 </Typography>
               </Link>
@@ -63,7 +63,7 @@ class SubNavBar extends React.Component<Props, State> {
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button} onClick={this.handleTransferBtnClick}>
               <Link to='#' className={classes.subheaderLink}>
                 <ListItemIcon style={{color:"#000", fontWeight: "bold"}}>
-                  <img src="/assets/icons/upload.png" alt="transfer-logo" width="25px" height="25px"/>
+                  <img src="/assets/icons/upload.svg" alt="tra  nsfer-logo" width="25px" height="25px"/>
                 </ListItemIcon>
                 <Typography variant="subheading" style={{color:"#000", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
                   Register App
@@ -73,10 +73,10 @@ class SubNavBar extends React.Component<Props, State> {
             <ListItem style={{display: 'inline', paddingTop: "10px"}} button={button}>
               <Link to='/settings' className={classes.subheaderLink}>
               <ListItemIcon style={{color:"#000", fontWeight: "bold"}}>
-                <img src="/assets/icons/settings.png" alt="settings-logo" width="25px" height="25px"/>
+                <img src="/assets/icons/fingerprint.svg" alt="settings-logo" width="25px" height="25px"/>
               </ListItemIcon>
               <Typography variant="subheading" style={{color:"#000", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
-                Settings
+                Upgrade
               </Typography>
             </Link>
             </ListItem>

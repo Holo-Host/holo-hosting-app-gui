@@ -61,10 +61,21 @@ class HomeSummaryPage extends React.Component<Props, State> {
       return (
         <div>
           <div className={classes.jumbotron}>
-            <h3 className={classes.h3}>Status</h3>
-            <Typography className={classes.mainHeader} variant="display1" gutterBottom={gutterBottom} component="h1" >
-              {this.props.ledger_state.balance ? `${this.props.ledger_state.balance} HF` : `Not Registered...`}
-            </Typography>
+            <div className={classnames(classes.flexContainer, classes.reducedJumbotron)}>
+              <div className={classes.flexItem}>
+                <h3 className={classes.h3}>Provider</h3>
+                <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
+                  {this.props.ledger_state.balance ? `${this.props.ledger_state.balance} HF` : `Not Registered..`}
+                </Typography>
+              </div>
+              <div className={classes.verticalLine}/>
+              <div className={classes.flexItem}>
+                <h3 className={classes.h3}>Host</h3>
+                <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
+                    {this.props.ledger_state.credit ? `${this.props.ledger_state.credit} HF`: `Not Registered..`}
+                </Typography>
+              </div>
+            </div>
             <hr style={{color:"#0e094b8f"}} />
             <h3 className={classes.h3}>You Public Address : {this.props.ledger_state.credit ? `${this.props.ledger_state.credit}`: `N/A`} </h3>
           </div>

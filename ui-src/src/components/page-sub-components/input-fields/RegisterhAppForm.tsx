@@ -2,38 +2,25 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import * as moment from 'moment';
-import {DateFormatInput, TimeFormatInput} from 'material-ui-next-pickers'
-// mui custom style imports
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
-// import FormControl from '@material-ui/core/FormControl';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import PersonPin from '@material-ui/icons/PersonPin';
 import Message from '@material-ui/icons/Message';
-import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
-import Timer from '@material-ui/icons/Timer';
-// import OutlinedInput from '@material-ui/core/OutlinedInput';
-// local imports
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import VerificationMessage from '../modal/VerificationMessage';
 import OutlinedButton from '../outlined-button/OutlinedButton';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
-// import Memo from '../memo/Memo';
 
 
 type StateKeyType = string | number | symbol | any;
 type LabelRef = HTMLElement | null | undefined;
 type Moment = moment.Moment;
-// type StateInput = Pick<State, StateKeyType>| null;
 
 export interface OwnProps {
-  // These are props the component has received from its parent component
-  // e.g. what you write in <ExampleComponent ...>
   classes: any,
   txType: string,
   showTransferBar: (txType:any) => void,
@@ -43,8 +30,8 @@ export interface OwnProps {
 export type Props = OwnProps & StateProps & DispatchProps;
 
 export interface State {
-  recipient: string,
-  amount: string,
+  appname: string,
+  dns: string,
   notes: string,
   deadline: string | Moment,
   deadlineDate: Date,
@@ -54,12 +41,12 @@ export interface State {
   transactionType: string
 }
 
-class RequestProposalFormBtns extends React.Component<Props, State> {
+class RegisterhAppForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      recipient: "",
-      amount: "",
+      appname: "",
+      dns: "",
       notes: "",
       deadline: "",
       deadlineDate: new Date(),
@@ -80,23 +67,16 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
   // }
 
   handleChange = (name: StateKeyType) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log("selected event : ", event);
-    // console.log("selected name : ", name);
-  //TODO: Find a typed solution that allows the following instead of switch case:
-  // The non-ts way:
-    // this.setState({
-    //   [name]: event.target.value,
-    // });
     switch (name) {
-      case 'recipient':
+      case 'appname':
         this.setState({
-          recipient: event.target.value.trim(),
+          appname: event.target.value.trim(),
         });
         break;
 
-      case 'amount':
+      case 'dns':
         this.setState({
-          amount: event.target.value.trim(),
+          dns: event.target.value.trim(),
         });
         break;
 
@@ -123,8 +103,8 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
 
   handleMakePayment = (tx_obj: object) => {
     this.setState({
-      recipient: "",
-      amount: "",
+      appname: "",
+      dns: "",
       notes: "",
       deadline: ""
     })
@@ -136,8 +116,8 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
 
   handleRequestPayment = (tx_obj: object) => {
     this.setState({
-      recipient: "",
-      amount: "",
+      appname: "",
+      dns: "",
       notes: "",
       deadline: ""
     })
@@ -169,7 +149,7 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
   }
 
   digestTxContent = (txDeadline:Moment) => {
-    const { recipient, amount, deadline, notes } = this.state;
+    const { appname, dns, deadline, notes } = this.state;
     console.log("deadline", deadline);
 
     const isoDeadline: Moment = moment(txDeadline, moment.ISO_8601);
@@ -177,38 +157,24 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
 
     // NOTE : verify the tx inputs here :
       // 1. Deadline: make sure the deadline datetime is not less than current datetime (ie: cannot choose  past date as the datetime for the transaction deadline)
-      // 2. Amount: ensure amount is not negative or zero AND exists (ie: !== NULL)
+      // 2. Amount: ensure dns is not negative or zero AND exists (ie: !== NULL)
       // 3. Counterparty: Enusre exists (!== NULL)
 
-      if (!recipient || !amount || !txDeadline) {
+      if (!appname || !dns || !txDeadline) {
         this.setState({
-          errorMessage: `Opps! \n It looks like we're missing some important transaction details. \n Please ensure that you have provided a counterparty, an amount, and a deadline for your transaction before submitting your transaction.`
+          errorMessage: `Opps! \n It looks like we're missing some important transaction details. \n Please ensure that you have provided a counterparty, an dns, and a deadline for your transaction before submitting your transaction.`
         });
 
         // TODO: Update Alert to custom MUI Dialog Box
         return alert(this.state.errorMessage);
       }
-      else if (recipient && amount && txDeadline) {
-        console.log("Counterparty(AKA.Recipient), Amount, and Deadline SHOULD NOT BE an empty string || undefined ===>>");
-        console.log(" TX Counterparty: ", recipient);
-        console.log("TX Amount", amount);
-        console.log("TX Deadline", txDeadline);
-
-        if (parseInt(amount) <= 0){
-          this.setState({
-            errorMessage: "Hmmmm... It looks like the amount you entered is invalid. \n Please review your transaction amount and ensure you provide a positive amount value."
-          });
-
-          // TODO: Update Alert to custom MUI Dialog Box
-          return alert(this.state.errorMessage);
-        }
-
+      else if (appname && dns && txDeadline) {
         const validDeadlineDate = moment(deadline).isValid();
         console.log("validDeadlineDate", validDeadlineDate);
 
         const transactionObj = {
-          counterparty: recipient,
-          amount,
+          counterparty: appname,
+          dns,
           notes,
           deadline: isoDeadline
         };
@@ -220,21 +186,13 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
   }
 
   resetMessage = () => {
-    // resetting the message to blank after confirmed transaction result in modal...
-    console.log('resetting the message property in the RequestProposalFormBtns component... >>> ');
     this.setState({ message: "" });
   }
 
   public render() {
-    const { deadlineTime, deadlineDate } = this.state;
     const { classes, txType } = this.props;
-    // console.log("Inside the RequestProposalFormBtns...", this.props);
-
-    const dateTimeNow: Date = new Date();
     const multiline:boolean = true;
     const fullWidth:boolean = true;
-    const okToConfirm:boolean = true;
-    const dialog:boolean = true;
 
 
     console.log("new Date().setMonth(new Date().getMonth() + 1): ", new Date());
@@ -248,14 +206,14 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
               <Paper className={classes.inputPaper} square={false} elevation={4}>
                  <TextField
                   className={classes.margin}
-                  label={(<div><PersonPin/><span>Counterparty</span></div>)}
+                  label={(<div><PersonPin/><span>hApp name</span></div>)}
                   variant="outlined"
-                  id="recipient-input"
-                  value={this.state.recipient}
-                  placeholder="HoloTester1--------------------------------------------------------------------------AAAEqzh31M"
-                  onChange={this.handleChange('recipient')}
+                  id="appname-input"
+                  value={this.state.appname}
+                  placeholder="Errand..."
+                  onChange={this.handleChange('appname')}
                   fullWidth={fullWidth}
-                  aria-describedby="recipient-input-text"
+                  aria-describedby="appname-input-text"
                   InputLabelProps={{
                     classes: {
                       root: classes.cssLabel,
@@ -277,15 +235,14 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
               <Paper className={classes.inputPaper} square={false} elevation={4}>
                  <TextField
                   className={classes.margin}
-                  label={(<div><img style={{ color:"#799ab6"}} width="20px" height="20px" src="/assets/icons/holo-icon_black.png" alt="holofuel_icon"/><span>Amount</span></div>)}
+                  label={(<div><PersonPin/><span>Domain Name</span></div>)}
                   variant="outlined"
-                  id="amount-input"
-                  type='number'
-                  value={this.state.amount}
-                  placeholder="335678976"
-                  onChange={this.handleChange('amount')}
+                  id="dns-input"
+                  value={this.state.dns}
+                  placeholder="errand.org"
+                  onChange={this.handleChange('dns')}
                   fullWidth={fullWidth}
-                  aria-describedby="amount-input-number"
+                  aria-describedby="dns-input-text"
                   InputLabelProps={{
                     classes: {
                       root: classes.cssLabel,
@@ -299,56 +256,6 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
                       notchedOutline: classes.notchedOutline
                     },
                   }}
-                />
-              </Paper>
-            </li>
-
-            <li className={classnames(classes.formList, classes.flexItem, classes.datetimeInput)}>
-              <Paper className={classes.inputPaper} square={false} elevation={4} style={{ marginBottom:'15px' }}>
-                <DateFormatInput
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.datetimeRoot,
-                      input: classes.customFormOutlinedInput,
-                      focused: classes.customFormFocused,
-                      notchedOutline: classes.notchedOutline
-                    },
-                  }}
-                  name='date-input'
-                  value={deadlineDate}
-                  onChange={this.onChangeDate}
-                  min={dateTimeNow}
-                  dialog={dialog}
-                  okToConfirm={okToConfirm}
-                  variant='outlined'
-                  fullWidth={fullWidth}
-                  transformOrigin={{vertical:'center', horizontal:'left'}}
-                  anchorOrigin={{vertical:'center', horizontal:'center'}}
-                  InputProps={{ endAdornment: ( <InputAdornment position="end"></InputAdornment> ), startAdornment: ( <InputAdornment position="start"><div><HourGlassIcon/><span>Delivery Date: </span></div></InputAdornment> )}}
-                />
-              </Paper>
-
-              <Paper className={classes.inputPaper} square={false} elevation={4}>
-                <TimeFormatInput
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.datetimeRoot,
-                      input: classes.customFormOutlinedInput,
-                      focused: classes.customFormFocused,
-                      notchedOutline: classes.notchedOutline
-                    },
-                  }}
-                  name='time-input'
-                  value={deadlineTime}
-                  onChange={this.onChangeTime}
-                  dialog={dialog}
-                  okToConfirm={okToConfirm}
-                  selectableMinutesInterval={5}
-                  variant='outlined'
-                  fullWidth={fullWidth}
-                  transformOrigin={{vertical:'center', horizontal:'left'}}
-                  anchorOrigin={{vertical:'center', horizontal:'left'}}
-                  InputProps={{ endAdornment: ( <InputAdornment position="end"></InputAdornment> ), startAdornment: ( <InputAdornment position="start"><div><Timer/><span>Delivery Time: </span></div></InputAdornment> )}}
                 />
               </Paper>
             </li>
@@ -372,8 +279,12 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
                     },
                   }}
                   id="notes-input"
-                  label={(<div><Message/><span>Notes</span></div>)}
-                  placeholder="Fuel for the study session and lunch."
+                  label={(<div><Message/><span>Bundle</span></div>)}
+                  placeholder={
+                    `{  ui-hash:Qouahsdfvasf,
+  dna-hash:[Qasdfasdvsnjfvkjn ...]
+}
+                    `}
                   multiline={multiline}
                   rows="4"
                   value={this.state.notes}
@@ -448,4 +359,4 @@ class RequestProposalFormBtns extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(styles)(RequestProposalFormBtns);
+export default withStyles(styles)(RegisterhAppForm);

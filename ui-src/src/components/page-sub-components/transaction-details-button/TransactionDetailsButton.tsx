@@ -232,7 +232,7 @@ class TransactionDetailsButton extends React.Component<Props, State> {
 
   resetMessage = () => {
     // resetting the message to blank after confirmed transaction result in modal...
-    console.log('resetting the message property in the RequestProposalFormBtns component... >>> ');
+    console.log('resetting the message property in the RegisterhAppForm component... >>> ');
     this.setState({ message: "" });
     this.props.resetPage();
   }

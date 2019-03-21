@@ -621,7 +621,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
        padding: theme.spacing.unit,
        margin: `${theme.spacing.unit}px 0`,
        marginTop: 25,
-       background:'#2e4f6a', // alternative-color : #808080
+       background:'#A9A9A9', // alternative-color : #808080
        border: '1px solid #808080', // ##e9ecef
        color: '#e9ecef'
      },
@@ -638,7 +638,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
        paddingBottom : 20,
        width: '85%',
        display:'flex',
-       background: '#2e4f6a',
+       background: '#A9A9A9',
        border: '2px solid #808080',
        borderRadius: 4,
        marginBottom: 115
