@@ -1,4 +1,4 @@
-// title constants
+// GLOBAL NAMING CONSTANTS
 export const APP_TITLE = "Holo Hosting";
 
 // saga constants
@@ -18,8 +18,13 @@ export const setPort = () => {
   return 'ERROR: REACT_APP_NODE_PORT not found at '+ process.env.REACT_APP_NODE_PORT;
 };
 
+/** ************************** HC ACTION Constants: ******************************** */
+// DNA_INSTANCE is now a env.process variable set within the package.json scripts:
 export const DNA_INSTANCE = setInstance();
+export const WHOAMI_ZOME_NAME = 'whoami';
+export const PROVIDER_ZOME_NAME = 'provider';
+export const HOST_ZOME_NAME = 'host';
 
-
-export const REGISTER_PROVIDER = DNA_INSTANCE+'/provider/register_as_provider'
-export const REGISTER_HOST = DNA_INSTANCE+'/host/register_as_host'
+// SET CALLSTRINGS
+// export const REGISTER_PROVIDER = DNA_INSTANCE+'/provider/register_as_provider'
+// export const REGISTER_HOST = DNA_INSTANCE+'/host/register_as_host'

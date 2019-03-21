@@ -17,12 +17,12 @@ import {
 import withStyles from '@material-ui/core/styles/withStyles';
 import RichTextInput from 'ra-input-rich-text';
 
-import CustomerReferenceField from '../visitors/CustomerReferenceField';
+import CustomerReferenceField from '../users/UsersReferenceField';
 import StarRatingField from '../reviews/StarRatingField';
-import Poster from './Poster';
-import { styles as createStyles } from './ProductCreate';
+import Poster from './HAppImg';
+import { styles as createStyles } from './HAppsCreate';
 
-const ProductTitle = ({ record }) => <span>Poster #{record.reference}</span>;
+const HAppsTitle = ({ record }) => <span>Poster #{record.reference}</span>;
 
 const styles = {
     ...createStyles,
@@ -34,15 +34,15 @@ const styles = {
     },
 };
 
-const ProductEdit = ({ classes, ...props }) => (
-    <Edit {...props} title={<ProductTitle />}>
+const HAppsEdit = ({ classes, ...props }) => (
+    <Edit {...props} title={<HAppsTitle />}>
         <TabbedForm>
-            <FormTab label="resources.products.tabs.image">
+            <FormTab label="resources.happs.tabs.image">
                 <Poster />
                 <TextInput source="image" options={{ fullWidth: true }} />
                 <TextInput source="thumbnail" options={{ fullWidth: true }} />
             </FormTab>
-            <FormTab label="resources.products.tabs.details" path="details">
+            <FormTab label="resources.happs.tabs.details" path="details">
                 <TextInput source="reference" />
                 <NumberInput source="price" className={classes.price} />
                 <NumberInput
@@ -61,12 +61,12 @@ const ProductEdit = ({ classes, ...props }) => (
                 <NumberInput source="stock" className={classes.stock} />
             </FormTab>
             <FormTab
-                label="resources.products.tabs.description"
+                label="resources.happs.tabs.description"
                 path="description"
             >
                 <RichTextInput source="description" addLabel={false} />
             </FormTab>
-            <FormTab label="resources.products.tabs.reviews" path="reviews">
+            <FormTab label="resources.happs.tabs.reviews" path="reviews">
                 <ReferenceManyField
                     reference="reviews"
                     target="product_id"
@@ -90,4 +90,4 @@ const ProductEdit = ({ classes, ...props }) => (
     </Edit>
 );
 
-export default withStyles(styles)(ProductEdit);
+export default withStyles(styles)(HAppsEdit);

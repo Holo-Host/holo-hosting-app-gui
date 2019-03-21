@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
 import { stringify } from 'query-string';
 // local component imports:
-import visitors from '../visitors';
+import users from '../users';
 
 const styles = {
     icon: { paddingRight: '0.5em' },
@@ -31,7 +31,7 @@ const LinkToRelatedCustomers = ({ classes, segment, translate }) => (
         }}
         className={classes.link}
     >
-        <visitors.icon className={classes.icon} />
+        <users.icon className={classes.icon} />
         {translate('resources.segments.fields.customers')}
     </Button>
 );

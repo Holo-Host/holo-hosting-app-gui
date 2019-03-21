@@ -14,7 +14,7 @@ const styles = {
     },
 };
 
-const Poster = withStyles(styles)(({ classes, record }) => (
+const HAppImg = withStyles(styles)(({ classes, record }) => (
     <Card className={classes.root}>
         <CardContent className={classes.content}>
             <img src={record.image} alt="" className={classes.img} />
@@ -22,4 +22,4 @@ const Poster = withStyles(styles)(({ classes, record }) => (
     </Card>
 ));
 
-export default Poster;
+export default HAppImg;

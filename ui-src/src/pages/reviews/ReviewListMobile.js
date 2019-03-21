@@ -13,7 +13,7 @@ import {
     TextField,
 } from 'react-admin';
 
-import AvatarField from '../visitors/AvatarField';
+import AvatarField from '../users/AvatarField';
 
 const styles = {
     root: {

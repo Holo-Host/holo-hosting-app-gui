@@ -1,5 +1,10 @@
 /* HC Action Constants Import: */
-import { REGISTER_PROVIDER, REGISTER_HOST } from '../../utils/constants';
+import { DNA_INSTANCE, PROVIDER_ZOME_NAME, HOST_ZOME_NAME } from '../../utils/constants';
+
+/* HC Action Constants Export: */
+export const REGISTER_PROVIDER = 'REGISTER_PROVIDER';
+export const REGISTER_HOST = 'REGISTER_HOST';
+
 /*  React Admin Imports  */
 // import { UPDATE } from 'react-admin';
 
@@ -7,13 +12,15 @@ import { REGISTER_PROVIDER, REGISTER_HOST } from '../../utils/constants';
 
 export function registerProvider() {
   return {
-    type: 'REGISTER_PROVIDER',
-    payload: {provider_doc:{
-      kyc_proof:""
-    }},
+    type: REGISTER_PROVIDER,
+    payload: {
+          provider_doc:{
+            kyc_proof:""
+        }
+      },
     meta: {
       holochainAction: true,
-      callString:REGISTER_PROVIDER,
+      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/register_as_provider`,
       // fetch: UPDATE,
       // resource: 'categories'
     },
@@ -36,13 +43,15 @@ export function registerProvider() {
 
 export function registerHost() {
   return {
-    type: 'REGISTER_HOST',
-    payload: {provider_doc:{
-      kyc_proof:""
-    }},
+    type: REGISTER_HOST,
+    payload: {
+        provider_doc:{
+          kyc_proof:""
+      }
+    },
     meta: {
       holochainAction: true,
-      callString:REGISTER_HOST,
+      callString:`${DNA_INSTANCE}/${HOST_ZOME_NAME}/register_as_host`,
       // fetch: UPDATE,
       // resource: 'categories'
     },

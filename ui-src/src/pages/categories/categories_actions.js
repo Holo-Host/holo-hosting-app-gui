@@ -1,7 +1,7 @@
 /* HC Action Constants Import: */
-import { DNA_INSTANCE, WHOAMI_ZOME_NAME } from './categories_constants';
+import { DNA_INSTANCE, WHOAMI_ZOME_NAME } from '../../utils/constants';
 /*  React Admin Imports  */
-import { UPDATE } from 'react-admin';
+// import { UPDATE } from 'react-admin';
 
 /* HC Action Constants Export: */
 export const FETCH_AGENT = 'FETCH_AGENT';

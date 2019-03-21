@@ -16,7 +16,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // local component imports:
 import SegmentsField from './SegmentsField';
 import SegmentInput from './SegmentInput';
-import CustomerLinkField from './CustomerLinkField';
+import UsersLinkField from './UsersLinkField';
 import ColoredNumberField from './ColoredNumberField';
 import MobileGrid from './MobileGrid';
 
@@ -45,7 +45,7 @@ const VisitorList = ({ classes, ...props }) => (
             xsmall={<MobileGrid />}
             medium={
                 <Datagrid>
-                    <CustomerLinkField />
+                    <UsersLinkField />
                     <DateField source="last_seen" type="date" />
                     <NumberField
                         source="nb_commands"

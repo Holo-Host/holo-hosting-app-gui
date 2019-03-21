@@ -2,8 +2,8 @@ import React from 'react';
 import { Datagrid, DateField, TextField } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import ProductReferenceField from '../products/ProductReferenceField';
-import CustomerReferenceField from '../visitors/CustomerReferenceField';
+import HAppsReferenceField from '../happs/HAppsReferenceField';
+import UsersReferenceField from '../users/UsersReferenceField';
 import StarRatingField from './StarRatingField';
 
 import rowStyle from './rowStyle';
@@ -30,8 +30,8 @@ const ReviewListDesktop = ({ classes, ...props }) => (
         {...props}
     >
         <DateField source="date" />
-        <CustomerReferenceField linkType={false} />
-        <ProductReferenceField linkType={false} />
+        <UsersReferenceField linkType={false} />
+        <HAppsReferenceField linkType={false} />
         <StarRatingField />
         <TextField source="comment" cellClassName={classes.comment} />
         <TextField source="status" />

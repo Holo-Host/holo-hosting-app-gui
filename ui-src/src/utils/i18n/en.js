@@ -14,13 +14,11 @@ export default {
         },
         dashboard: {
             monthly_revenue: 'Monthly Revenue',
-            new_orders: 'New Orders',
             pending_reviews: 'Pending Reviews',
-            new_users: 'New Customers',
-            pending_orders: 'Pending Orders',
+            new_users: 'New Users',
             order: {
                 items:
-                    'by %{customer_name}, one item |||| by %{customer_name}, %{nb_items} items',
+                    'by %{user_name}, one item |||| by %{user_name}, %{nb_items} items',
             },
             welcome: {
                 title: 'Welcome to Holo Hosting',
@@ -36,12 +34,12 @@ export default {
         menu: {
             sales: 'Sales',
             catalog: 'Catalog',
-            users: 'Customers',
+            users: 'Users',
         },
     },
     resources: {
         users: {
-            name: 'Customer |||| Customers',
+            name: 'Users |||| Users',
             fields: {
                 commands: 'Orders',
                 groups: 'Segments',
@@ -57,44 +55,11 @@ export default {
                 stats: 'Stats',
             },
             page: {
-                delete: 'Delete Customer',
+                delete: 'Delete User',
             },
         },
-        commands: {
-            name: 'Order |||| Orders',
-            title: 'Order %{reference}',
-            fields: {
-                basket: {
-                    delivery: 'Delivery',
-                    reference: 'Reference',
-                    quantity: 'Quantity',
-                    sum: 'Sum',
-                    tax_rate: 'Tax Rate',
-                    total: 'Total',
-                    unit_price: 'Unit Price',
-                },
-                customer_id: 'Customer',
-                date_gte: 'Passed Since',
-                date_lte: 'Passed Before',
-                total_gte: 'Min amount',
-                status: 'Status',
-                returned: 'Returned',
-            },
-        },
-        invoices: {
-            name: 'Invoice |||| Invoices',
-            fields: {
-                date: 'Invoice date',
-                customer_id: 'Customer',
-                command_id: 'Order',
-                date_gte: 'Passed Since',
-                date_lte: 'Passed Before',
-                total_gte: 'Min amount',
-                address: 'Address',
-            },
-        },
-        products: {
-            name: 'Poster |||| Posters',
+        happs: {
+            name: 'hApps |||| hApps',
             fields: {
                 category_id: 'Category',
                 height_gte: 'Min height',
@@ -120,16 +85,16 @@ export default {
         categories: {
             name: 'Category |||| Categories',
             fields: {
-                products: 'Products',
+                happs: 'hApps',
             },
         },
         reviews: {
             name: 'Review |||| Reviews',
             detail: 'Review detail',
             fields: {
-                customer_id: 'Customer',
+                user_id: 'User',
                 command_id: 'Order',
-                product_id: 'Product',
+                happ_id: 'hApp',
                 date_gte: 'Posted since',
                 date_lte: 'Posted before',
                 date: 'Date',
@@ -150,7 +115,7 @@ export default {
         segments: {
             name: 'Segments',
             fields: {
-                users: 'Customers',
+                users: 'Users',
                 name: 'Name',
             },
             data: {

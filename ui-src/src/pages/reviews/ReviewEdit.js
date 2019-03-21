@@ -10,8 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import CloseIcon from '@material-ui/icons/Close';
 
-import ProductReferenceField from '../products/ProductReferenceField';
-import CustomerReferenceField from '../visitors/CustomerReferenceField';
+import HAppsReferenceField from '../happs/HAppsReferenceField';
+import UsersReferenceField from '../users/UsersReferenceField';
 import StarRatingField from './StarRatingField';
 import ReviewEditToolbar from './ReviewEditToolbar';
 
@@ -65,11 +65,11 @@ const ReviewEdit = ({ classes, onCancel, ...props }) => (
                         resource="reviews"
                         toolbar={<ReviewEditToolbar />}
                     >
-                        <CustomerReferenceField
+                        <UsersReferenceField
                             formClassName={classes.inlineField}
                         />
 
-                        <ProductReferenceField
+                        <HAppsReferenceField
                             formClassName={classes.inlineField}
                         />
                         <DateField

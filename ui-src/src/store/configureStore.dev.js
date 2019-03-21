@@ -2,9 +2,8 @@ import {combineReducers, applyMiddleware, compose, createStore } from 'redux';
 // import { createHashHistory } from 'history';
 import { fromJS } from 'immutable';
 import { createLogger } from 'redux-logger';
-// import reducer from '../utils/reducer';
-import injectReducers from '../utils/injectReducers';
 import { reducer as formReducer } from 'redux-form';
+// import injectReducers from '../utils/injectReducers';
 // import * as appActions from '../containers/App/actions';
 
 // ** Middleware for ROUTING**
@@ -12,7 +11,9 @@ import { setPort } from '../utils/constants'
 import { routerMiddleware } from 'connected-react-router/immutable';
 // import { routerReducer } from 'react-router-redux';
 import { connectRouter } from 'connected-react-router'
-import {whoami , is_registered_provider, is_registered_host} from "../utils/injectReducers/categoriesReducer";
+import { whoami } from "../utils/injectReducers/categoriesReducer";
+import { is_registered_provider, is_registered_host } from "../utils/injectReducers/dashboardReducer";
+import { registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles } from "../utils/injectReducers/happsReducer";
 import theme from "../utils/injectReducers/themeReducer"
 // ** Middleware for Redux Saga **
 import createSagaMiddleware from 'redux-saga';
@@ -63,7 +64,10 @@ const configureStore = ({
         theme,
         whoami,
         is_registered_provider,
-        is_registered_host
+        is_registered_host,
+        registered_hApp_bundles,
+        current_hApp_bundle_details,
+        all_hApp_bundles
     });
     const resettableAppReducer = (state, action) => reducer(action.type !== USER_LOGOUT ? state : undefined, action);
 

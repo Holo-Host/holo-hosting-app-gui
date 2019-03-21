@@ -21,10 +21,10 @@ export const styles = {
     heightFormGroup: { display: 'inline-block', marginLeft: 32 },
 };
 
-const ProductCreate = ({ classes, ...props }) => (
+const HAppsCreate = ({ classes, ...props }) => (
     <Create {...props}>
         <TabbedForm>
-            <FormTab label="resources.products.tabs.image">
+            <FormTab label="resources.happs.tabs.image">
                 <TextInput
                     autoFocus
                     source="image"
@@ -37,7 +37,8 @@ const ProductCreate = ({ classes, ...props }) => (
                     validate={required()}
                 />
             </FormTab>
-            <FormTab label="resources.products.tabs.details" path="details">
+
+            <FormTab label="resources.happs.tabs.details" path="details">
                 <TextInput source="reference" validate={required()} />
                 <NumberInput
                     source="price"
@@ -69,8 +70,9 @@ const ProductCreate = ({ classes, ...props }) => (
                     className={classes.stock}
                 />
             </FormTab>
+            
             <FormTab
-                label="resources.products.tabs.description"
+                label="resources.happs.tabs.description"
                 path="description"
             >
                 <RichTextInput source="description" addLabel={false} />
@@ -79,4 +81,4 @@ const ProductCreate = ({ classes, ...props }) => (
     </Create>
 );
 
-export default withStyles(styles)(ProductCreate);
+export default withStyles(styles)(HAppsCreate);

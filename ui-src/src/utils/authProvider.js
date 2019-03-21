@@ -12,7 +12,7 @@ export default (type, params) => {
     //     return Promise.resolve();
     // }
     // if (type === AUTH_ERROR) {
-    //     return Promise.resolve();
+    //     return Promise.reject();
     // }
     // if (type === AUTH_CHECK) {
     //     return localStorage.getItem('username')

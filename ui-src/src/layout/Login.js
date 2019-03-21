@@ -1,7 +1,7 @@
 import React from 'react';
 import { Notification, translate, userLogin } from 'react-admin';
 import PropTypes from 'prop-types';
-import { propTypes, reduxForm, Field } from 'redux-form';
+import { propTypes, reduxForm } from 'redux-form'; // Field
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import Avatar from '@material-ui/core/Avatar';

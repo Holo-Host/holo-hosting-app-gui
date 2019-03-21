@@ -17,17 +17,17 @@ import {
 import withStyles from '@material-ui/core/styles/withStyles';
 
 // local component imports:
-import ProductReferenceField from '../products/ProductReferenceField';
+import HAppsReferenceField from '../happs/HAppsReferenceField';
 import StarRatingField from '../reviews/StarRatingField';
 import FullNameField from './FullNameField';
 import SegmentsInput from './SegmentsInput';
-import { styles } from './VisitorCreate';
+import { styles } from './UsersCreate';
 
-const VisitorTitle = ({ record }) =>
+const UserTitle = ({ record }) =>
     record ? <FullNameField record={record} size={32} /> : null;
 
-const VisitorEdit = ({ classes, ...props }) => (
-    <Edit title={<VisitorTitle />} {...props}>
+const UserEdit = ({ classes, ...props }) => (
+    <Edit title={<UserTitle />} {...props}>
         <TabbedForm>
             <FormTab label="resources.users.tabs.identity">
                 <TextInput
@@ -83,7 +83,7 @@ const VisitorEdit = ({ classes, ...props }) => (
                 >
                     <Datagrid filter={{ status: 'approved' }}>
                         <DateField source="date" />
-                        <ProductReferenceField />
+                        <HAppsReferenceField />
                         <StarRatingField />
                         <TextField
                             source="comment"
@@ -113,4 +113,4 @@ const VisitorEdit = ({ classes, ...props }) => (
     </Edit>
 );
 
-export default withStyles(styles)(VisitorEdit);
+export default withStyles(styles)(UserEdit);

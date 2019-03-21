@@ -7,7 +7,7 @@ import { translate, changeLocale, Title } from 'react-admin';
 import withStyles from '@material-ui/core/styles/withStyles';
 import compose from 'recompose/compose';
 // local component imports:
-import { changeTheme } from './actions';
+import { changeTheme } from './configuration_actions';
 
 const styles = {
     label: { width: '10em', display: 'inline-block' },

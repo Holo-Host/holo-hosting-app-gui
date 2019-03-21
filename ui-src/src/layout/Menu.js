@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import SettingsIcon from '@material-ui/icons/Settings';
-import LabelIcon from '@material-ui/icons/Label';
+// import LabelIcon from '@material-ui/icons/Label';
 import { withRouter } from 'react-router-dom';
 import {
     translate,
@@ -13,9 +13,9 @@ import {
 } from 'react-admin';
 
 // app page imports:
-// import reviews from '../pages/reviews';
-import visitors from '../pages/visitors';
-import products from '../pages/products';
+import reviews from '../pages/reviews';
+import users from '../pages/users';
+import happs from '../pages/happs';
 import categories from '../pages/categories';
 // local component imports:
 import SubMenu from './SubMenu';
@@ -47,14 +47,14 @@ class Menu extends Component {
                     isOpen={this.state.menuProducts}
                     sidebarIsOpen={open}
                     name="pos.menu.catalog"
-                    icon={<products.icon />}
+                    icon={<happs.icon />}
                 >
                     <MenuItemLink
-                        to={`/products`}
-                        primaryText={translate(`resources.products.name`, {
+                        to={`/happs`}
+                        primaryText={translate(`resources.happs.name`, {
                             smart_count: 2,
                         })}
-                        leftIcon={<products.icon />}
+                        leftIcon={<happs.icon />}
                         onClick={onMenuClick}
                     />
                     <MenuItemLink
@@ -66,30 +66,22 @@ class Menu extends Component {
                         onClick={onMenuClick}
                     />
                 </SubMenu>
-                <SubMenu
-                    handleToggle={() => this.handleToggle('menuCustomer')}
-                    isOpen={this.state.menuCustomer}
-                    sidebarIsOpen={open}
-                    name="pos.menu.users"
-                    icon={<visitors.icon />}
-                >
-                    <MenuItemLink
-                        to={`/users`}
-                        primaryText={translate(`resources.users.name`, {
-                            smart_count: 2,
-                        })}
-                        leftIcon={<visitors.icon />}
-                        onClick={onMenuClick}
-                    />
-                    <MenuItemLink
-                        to={`/segments`}
-                        primaryText={translate(`resources.segments.name`, {
-                            smart_count: 2,
-                        })}
-                        leftIcon={<LabelIcon />}
-                        onClick={onMenuClick}
-                    />
-                </SubMenu>
+                <MenuItemLink
+                    to={`/users`}
+                    primaryText={translate(`resources.users.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<users.icon />}
+                    onClick={onMenuClick}
+                />
+                <MenuItemLink
+                    to={`/reviews`}
+                    primaryText={translate(`resources.reviews.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<reviews.icon />}
+                    onClick={onMenuClick}
+                  />
 
                 <Responsive
                     xsmall={
@@ -128,11 +120,13 @@ const enhance = compose(
 
 export default enhance(Menu);
 
-/* <MenuItemLink
-*     to={`/reviews`}
-*     primaryText={translate(`resources.reviews.name`, {
-*         smart_count: 2,
-*     })}
-*     leftIcon={<reviews.icon />}
-*     onClick={onMenuClick}
-   /> */
+
+
+   // <MenuItemLink
+   //     to={`/segments`}
+   //     primaryText={translate(`resources.segments.name`, {
+   //         smart_count: 2,
+   //     })}
+   //     leftIcon={<LabelIcon />}
+   //     onClick={onMenuClick}
+   // />

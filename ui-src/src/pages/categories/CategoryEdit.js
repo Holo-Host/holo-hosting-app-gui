@@ -10,8 +10,8 @@ import {
     TextInput,
 } from 'react-admin';
 // local component imports:
-import ThumbnailField from '../products/ThumbnailField';
-import ProductRefField from '../products/ProductRefField';
+import ThumbnailField from '../happs/ThumbnailField';
+import HAppsRefField from '../happs/HAppsRefField';
 
 const CategoryTitle = translate(({ record, translate }) => (
     <span>
@@ -32,7 +32,7 @@ const CategoryEdit = props => (
             >
                 <Datagrid>
                     <ThumbnailField />
-                    <ProductRefField source="reference" />
+                    <HAppsRefField source="reference" />
                     <NumberField
                         source="price"
                         options={{ style: 'currency', currency: 'USD' }}
