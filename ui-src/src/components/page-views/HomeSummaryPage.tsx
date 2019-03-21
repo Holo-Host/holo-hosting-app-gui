@@ -44,14 +44,20 @@ class HomeSummaryPage extends React.Component<Props, State> {
     };
   };
 
+ testingCalls(){
+   // Testign Calls
+   this.props.register_hApp_bundle({ui_hash:"Quiououo", dna_list:["Qoauxjnva","Qkiauihsnvkk"]});
+   this.props.register_hApp_bundle({ui_hash:"Quiououo", dna_list:["Qoauxjnva","Qkiauihsnvkk"]});
+
+ }
   public componentDidMount () {
     this.props.is_registered_as_provider();
     this.props.is_registered_as_host();
     this.props.get_agent_details();
-    // this.props.list_transactions({});
-    // this.props.list_proposals();
-    // this.props.list_requests();
-    // this.props.list_pending();
+
+    this.testingCalls();
+    
+    this.props.get_all_hApps();
   }
 
   // componentDidUpdate(prevProps:any, prevState:any ) {

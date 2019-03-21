@@ -35,15 +35,20 @@ export interface StateProps {
   list_of_proposals: Array<any>,
   view_specific_request: Array<any>,
   view_specific_proposal: Array<any>,
+
   is_registered_provider:any,
   is_registered_host:any,
   agent_details:any,
+  all_hApps:any,
+  app_details:any,
 }
 export interface DispatchProps {
   is_registered_as_provider: () => void,
   is_registered_as_host: () => void,
   get_agent_details: () => void,
-
+  register_hApp_bundle: ({payload}:any) => void,
+  get_all_hApps:()=> void,
+  get_hApp_details:({payload}:any)=> void,
 }
 export type Props =  StateProps & DispatchProps & OwnProps;
 

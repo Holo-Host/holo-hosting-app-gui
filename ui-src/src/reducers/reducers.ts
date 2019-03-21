@@ -9,12 +9,26 @@ const DNA_INSTANCE = setInstance();
 export function transactionReducer (state: OriginalState = INITIAL_STATE, action: Action) {
   const { type, payload } = action;
   switch (type) {
+    /*Manages Provider Returns*/
    case `${DNA_INSTANCE}/${PROVIDER}/is_registered_as_provider_SUCCESS`: {
      return { ...state, is_registered_provider : payload };
    }
+   case `${DNA_INSTANCE}/${PROVIDER}/register_app_SUCCESS`: {
+     return { ...state};
+   }
+   case `${DNA_INSTANCE}/${PROVIDER}/get_app_details_SUCCESS`: {
+     return { ...state, app_details:payload};
+   }
+
+    /*Manages Host Returns*/
    case `${DNA_INSTANCE}/${HOST}/is_registered_as_host_SUCCESS`: {
      return { ...state, is_registered_host : payload };
    }
+   case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
+     return { ...state, all_hApps : payload };
+   }
+
+     /*Manages WhoAmI Returns*/
    case `${DNA_INSTANCE}/whoami/get_user_SUCCESS`: {
      return { ...state, agent_details : payload };
    }
@@ -24,7 +38,8 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
 }
 export default transactionReducer;
 
-
+// NOTE ::
+// Need to be removed Soon
 export type State = {
 // global identifiers :
   list_of_instance_info: Array<any>,
