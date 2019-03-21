@@ -103,13 +103,13 @@ class SummaryhAppsTables extends React.Component<Props, State> {
   }
 
   handleTableRefresh = () => {
-    const { txBatchType, txStartDate, txEndDate } = this.state;
-      this.props.list_transactions({state: txBatchType, since:txStartDate, until: txEndDate, limit: TABLE_DATA_BATCH_LIMIT });
+    // const { txBatchType, txStartDate, txEndDate } = this.state;
+      // this.props.list_transactions({state: txBatchType, since:txStartDate, until: txEndDate, limit: TABLE_DATA_BATCH_LIMIT });
   }
 
   handleReloadListOfTx = () => {
     this.setState({ txBatchType:"", txStartDate:"", txEndDate:"" });
-    this.props.list_transactions();
+    // this.props.list_transactions();
   }
 
   fetchNewData=()=>{

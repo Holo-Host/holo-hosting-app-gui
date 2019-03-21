@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/page-styles/DefaultPageMuiStyles'
 import Typography from '@material-ui/core/Typography';
 import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
-import RegisterhAppForm from '../page-sub-components/input-fields/RegisterhAppForm';
+// import RegisterhAppForm from '../page-sub-components/input-fields/RegisterhAppForm';
 
 export interface OwnProps {
   classes: any,
@@ -25,10 +25,10 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
     }
   };
 
-  sendProposal = async (txInfoObj: any) => {
-    const proposalResult = await this.props.propose_payment(txInfoObj); // send as JSON
-    this.sendConfirmationMessage(proposalResult, txInfoObj);
-  }
+  // sendProposal = async (txInfoObj: any) => {
+  //   const proposalResult = await this.props.propose_payment(txInfoObj); // send as JSON
+  //   this.sendConfirmationMessage(proposalResult, txInfoObj);
+  // }
 
   sendConfirmationMessage = (proposalResult: any, txInfoObj: any) => {
     this.setState({ confirmation: txInfoObj});
@@ -39,7 +39,7 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
   }
 
   public render () {
-    const { classes, transferBtnBar, ...newProps } = this.props;
+    const { classes } = this.props;
     const gutterBottom : boolean = true;
 
     return (
@@ -50,7 +50,7 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
        </Typography>
        <hr className={classnames(classes.horizontalLine)}/>
         <div style={{ margin:'0 auto' }}>
-          <RegisterhAppForm {...newProps} txType={this.props.txType} invokeProposal={this.sendProposal} invokeRequest={this.sendProposal}  />
+          {/*<RegisterhAppForm {...newProps} txType={this.props.txType} invokeProposal={this.sendProposal} invokeRequest={this.sendProposal}  />*/}
         </div>
       </div>
     </div>

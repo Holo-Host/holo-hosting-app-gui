@@ -18,7 +18,8 @@ export interface OwnProps {
   showTransferBar: (txType:any) => void,
   transferBtnBar: boolean,
   is_registered_provider:any,
-  is_registered_host:any
+  is_registered_host:any,
+  agent_details:any,
 }
 export type Props = OwnProps & StateProps & DispatchProps;
 export interface State {
@@ -46,21 +47,24 @@ class HomeSummaryPage extends React.Component<Props, State> {
   public componentDidMount () {
     this.props.is_registered_as_provider();
     this.props.is_registered_as_host();
+    this.props.get_agent_details();
     // this.props.list_transactions({});
     // this.props.list_proposals();
     // this.props.list_requests();
     // this.props.list_pending();
   }
 
-  componentDidUpdate(prevProps:any, prevState:any ) {
-    if (prevProps.list_transactions !== this.props.list_transactions || prevProps.list_pending !== this.props.list_pending ) {
-      this.render();
-    }
-  }
+  // componentDidUpdate(prevProps:any, prevState:any ) {
+  //   if (prevProps.list_transactions !== this.props.list_transactions || prevProps.list_pending !== this.props.list_pending ) {
+  //     this.render();
+  //   }
+  // }
 
    public render () {
       const { classes, transferBtnBar, ...newProps } = this.props;
       const gutterBottom : boolean = true;
+
+      console.log("-------------->",this.props);
 
       return (
         <div>
@@ -81,7 +85,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
               </div>
             </div>
             <hr style={{color:"#0e094b8f"}} />
-            <h3 className={classes.h3}>You Public Address : {this.props.ledger_state.credit ? `${this.props.ledger_state.credit}`: `N/A`} </h3>
+            <h3 className={classes.h3}>You Public Address : {this.props.agent_details ? `${this.props.agent_details.hash}`: `Loading...`} </h3>
           </div>
 
           <div>

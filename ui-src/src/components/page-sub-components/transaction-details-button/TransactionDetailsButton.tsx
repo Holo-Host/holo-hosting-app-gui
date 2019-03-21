@@ -175,7 +175,7 @@ class TransactionDetailsButton extends React.Component<Props, State> {
         request: originCommitHash
       }
       console.log("propose_tx_obj : ", approved_proposal_obj);
-      this.props.propose_payment(approved_proposal_obj);
+      // this.props.propose_payment(approved_proposal_obj);
       // const proposalResult = await this.props.propose_payment(approved_proposal_obj); //sending as JSON
       // this.sendConfirmationMessage(proposalResult, approved_proposal_obj);
     }
@@ -199,7 +199,7 @@ class TransactionDetailsButton extends React.Component<Props, State> {
         proposal_commit: eventCommitHash // commit address
       }
       console.log("receive_payment_obj : ", receive_payment_obj);
-      this.props.receive_payment(receive_payment_obj);
+      // this.props.receive_payment(receive_payment_obj);
       // const receivePaymentResult = await this.props.receive_payment(receive_payment_obj); //sending as JSON
       // this.sendConfirmationMessage(receivePaymentResult, receive_payment_obj);
     }

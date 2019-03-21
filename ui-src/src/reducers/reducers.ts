@@ -1,30 +1,22 @@
 import { ActionType } from 'typesafe-actions';
 import * as actions from '../actions/transactionActions';
 import { Ledger, ListTransactionsResult, Address, Proposal, Transaction, PendingResult } from '../utils/types';
-// import createMockApiData from '../utils/seed-data/mock-api-data';
-import { setInstance, TABLE_DATA_BATCH_LIMIT } from '../utils/constants'
+import { setInstance, TABLE_DATA_BATCH_LIMIT , PROVIDER, HOST} from '../utils/constants'
 export type Action = ActionType<typeof actions>;
 
-// FILE CONSTANTS:
 const DNA_INSTANCE = setInstance();
-// const TX_ZOME_NAME = 'transactions';
-const PROVIDER = 'provider';
-const HOST = 'host';
-// readonly (- permissioned) keyword causes compiler to error if one attempts to mutate the state
 
 export function transactionReducer (state: OriginalState = INITIAL_STATE, action: Action) {
   const { type, payload } = action;
-
   switch (type) {
-
    case `${DNA_INSTANCE}/${PROVIDER}/is_registered_as_provider_SUCCESS`: {
-     // console.log('LIST_REQUESTS_SUCCESS state', payload);
      return { ...state, is_registered_provider : payload };
    }
-
    case `${DNA_INSTANCE}/${HOST}/is_registered_as_host_SUCCESS`: {
-     // console.log('LIST_REQUESTS_SUCCESS state', payload);
      return { ...state, is_registered_host : payload };
+   }
+   case `${DNA_INSTANCE}/whoami/get_user_SUCCESS`: {
+     return { ...state, agent_details : payload };
    }
     default:
       return state;

@@ -13,3 +13,6 @@ export const setPort = () => {
   if (process.env.REACT_APP_NODE_PORT) return process.env.REACT_APP_NODE_PORT;
   return 'ERROR: REACT_APP_NODE_PORT not found at '+ process.env.REACT_APP_NODE_PORT;
 };
+
+export const PROVIDER = 'provider';
+export const HOST = 'host';
