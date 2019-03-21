@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+
+@keyframes holo-motion {
+  0%   { background-position: 0% 95%; }
+  50%  { background-position: 35% 19%; }
+  100% { background-position: 0% 95%; }
+}
+
+* {
+	font-family: 'Raleway', sans-serif;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+body, html{
+	padding:0;
+	margin:0;
+	background: #FFF;
+	text-align:center;
+}
+
+input {
+  background: #4c6880;
+  border: 1px solid #152838;
+  border-radius: 4px;
+  color: #152838;
+  margin: 2px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.increasedBalance:hover {
+  text-shadow: #001715 0.5px 0.8px 0px;
+}
+
+.decreasedBalance:hover {
+  text-shadow: #260124 0.5px 0.8px 0px;
+}
+
+.dialogPaper {
+  background: #4b6a7d;
+}
+
+/*******************************************************
+              React-Table Custom styles
+*******************************************************/
+
+.MuiListItem-root-111 {
+  display: 'inline';
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.ReactTable .rt-table {
+  overflow: hidden;
+}
+
+.ReactTable.-striped .rt-tr.-even {
+  background-color: #e9ecef; /* #c3cdd6 #9eb2c3, #5c7388 */
+  color: #13426a
+}
+
+.ReactTable.-striped .rt-tr.-odd {
+  background-color: #e9ecef; /* #63779082 #c3cdd6 #9eb2c3, #5c7388 */
+  color: #13426a
+}
+
+.ReactTable :hover {
+  color: #c3cdd6
+}
+
+.ReactTable .rt-tr {
+  border: 1px solid #d8dee3;
+  border-radius: 4px;
+  margin: 3px;
+}
+
+.ReactTable .-pagination .-pageInfo {
+  margin: 5px -7px;
+}
+
+.ReactTable .-pagination .-btn {
+  color: #d8dee3;
+  display: inline;
+  width:86%;
+}
+
+.ReactTable .rt-thead.-filters input,
+.ReactTable .rt-thead.-filters select {
+  /* background: #c3cdd6 !important; /*alternative: #567dbb , #4a4c84 */
+  color: #e0e9f6 !important;
+  border-bottom: 2px solid #13426a;
+}
+
+.ReactTable .-pagination input,
+.ReactTable .-pagination select {
+  color: #4b6a7d;
+  background-color: #b9c3cb;
+  border: 2px solid #d8dee3;
+  border-radius: 4px;
+}
+
+.ReactTable .rt-td {
+  white-space: normal;
+  padding: 3px;
+  margin: 0 auto;
+}
+
+/*******************************************************
+              Calendar Custom styles
+*******************************************************/
+.DateInput {
+  background: transparent;
+  color: white;
+}
+
+.DateInput_input__small {
+  background: #c3cdd6; /* alt color: #13426a */
+  color: #799ab6;
+}
+
+.DateRangePickerInput_arrow {
+  color: #799ab6;
+}
+
+.DateRangePickerInput__withBorder {
+  border: 1px solid #799ab6;
+  background: #c3cdd6;
+}
+
+.DateInput_input__focused {
+  border-bottom: 2px solid #696969;
+}
+
+.CalendarDay__selected_span {
+  background: #00838d;
+}
+
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #015363;
+}
+
+.DateRangePicker_picker {
+  position: absolute !important;
+  top:52px !important;
+}
+
+.DateRangePicker_picker .DateRangePicker_picker_1 .DateRangePicker_picker__directionLeft .DateRangePicker_picker__directionLeft_2 {
+  position: absolute !important;
+  top:52px !important;
+}
+
+.DateInput_fang {
+  position: relative !important;
+}
+
+/*******************************************************
+   Transaction-Type MUI Dropdown Button Custom styles
+*******************************************************/
+.MuiList-root.MuiList-padding {
+  background: #003087;
+}
+
+/* for the dropdown paper color:  */
+.MuiPaper-root-92 {
+  background: #696969;
+  border-color: #789bb4;
+}
+
+/* for the dropdown mui button border title  */
+.MuiFormLabel-root-531 {
+  color: #13426a;
+}
+
+/* for the dropdown mui button border  */
+.MuiOutlinedInput-root-545.MuiOutlinedInput-notchedOutline-552 {
+  border-color: #13426a !important;
+}
+
+.MuiSelect-selectMenu-552 {
+  background: #13426a;
+}
+
+.MuiListItem-root-273.MuiListItem-selected-284, .MuiListItem-root-273.MuiListItem-selected-284:hover, .MuiListItem-root-273.MuiListItem-selected-284:focus {
+  background: #003087;
+}

@@ -1,15 +1,26 @@
-# Don't check auto-generated stuff into git
-coverage
+# production
 ui
 ui-holohost
 tmp-storage
-
 ui-src/build
+
+# testing
+coverage
+
+# dependencies
+/node_modules
 ui-src/node_modules
-ui-src/.env
+ui-src/package-lock.json
+
+# misc
 stats.json
+ui-src/.DS_Store
+ui-src/.env.local
+ui-src/.env.development.local
+ui-src/.env.test.local
+ui-src/.env.production.local
 
 # Cruft
 .DS_Store
 npm-debug.log
-.idea
+yarn.lock
