@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/page-styles/DefaultPageMuiStyles'
 import Typography from '@material-ui/core/Typography';
 import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
-// import RegisterhAppForm from '../page-sub-components/input-fields/RegisterhAppForm';
+import RegisterhAppForm from '../page-sub-components/form/RegisterhAppForm';
 
 export interface OwnProps {
   classes: any,
@@ -45,12 +45,11 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
     return (
     <div>
       <div>
-        <Typography className={classnames(classes.pageHeader,classes.tableHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
+        <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
           Register hApp
        </Typography>
-       <hr className={classnames(classes.horizontalLine)}/>
         <div style={{ margin:'0 auto' }}>
-          {/*<RegisterhAppForm {...newProps} txType={this.props.txType} invokeProposal={this.sendProposal} invokeRequest={this.sendProposal}  />*/}
+          <RegisterhAppForm  />
         </div>
       </div>
     </div>
