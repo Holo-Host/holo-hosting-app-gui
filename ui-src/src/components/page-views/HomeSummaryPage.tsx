@@ -90,14 +90,17 @@ class HomeSummaryPage extends React.Component<Props, State> {
                 </Typography>
               </div>
             </div>
-            <hr style={{color:"#0e094b8f"}} />
-            <h3 className={classes.h3}>You Public Address : {this.props.agent_details ? `${this.props.agent_details.hash}`: `Loading...`} </h3>
+            <h3 className={classes.h3} style={{margin:'25px'}}>You Public Address : {this.props.agent_details ? `${this.props.agent_details.hash}`: `Loading...`} </h3>
           </div>
 
           <div>
-            <Typography className={classnames(classes.tableHeader, classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
-              All Register hApps
-            </Typography>
+            {this.props.all_hApps ?
+              <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
+                All Register hApps
+              </Typography>
+            :
+              <div/>
+            }
 
             <HAppTables {...newProps} />
 

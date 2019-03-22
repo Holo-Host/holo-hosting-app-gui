@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import { Redirect } from 'react-router-dom';
 // mui custom styling imports :
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
@@ -9,7 +10,9 @@ import Typography from '@material-ui/core/Typography'
 // local imports :
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import { HashString } from '../../../utils/types';
-import OutlinedButton from '../outlined-button/OutlinedButton';
+import Fab from '@material-ui/core/Fab';
+import SaveIcon from '@material-ui/icons/Save';
+import Tooltip from '@material-ui/core/Tooltip';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles'
 
 
@@ -18,24 +21,24 @@ export interface OwnProps {
   classes: any,
   showTransferBar: (txType:any) => void,
 
-  allAgentEmailAddresses: [string] | null,
+  allAgentHashAddresses: [string] | null,
   currentAgent: { agent: { Hash: HashString, Name: string } },
   fetchAgent: () => void,
 
   genCategory: (category: any) => void,
   fetchCategories: () => void,
 
-  genAgentEmailAddress: (emailAddress: any) => void
-  fetchAgentEmailAddresses: () => void
+  genAgentHashAddress: (hashAddress: any) => void
+  fetchAgentHashAddresses: () => void
 
-  setDefaultEmail: (defaultEmail: {header: any, body:any}) => void,
-  fetchDefaultEmail: () => Promise<any>,
+  setDefaultHash: (defaultHash: {header: any, body:any}) => void,
+  fetchDefaultHash: () => Promise<any>,
 }
 export type Props = OwnProps & StateProps & DispatchProps;
 export interface State {
   // The components optional internal state
-  primaryEmailAddress: string,
-  validate: { emailState: string },
+  hAppBundleHashAddress: string,
+  validate: { hashState: string },
   errorMessage: string,
   promptMessage: string,
   submitted: boolean,
@@ -45,43 +48,43 @@ class CreateNewSettings extends React.Component<Props, State>  {
   constructor(props: any) {
     super(props);
     this.state = {
-      primaryEmailAddress: "",
-      validate: { emailState: "" },
+      hAppBundleHashAddress: "",
+      validate: { hashState: "" },
       errorMessage: "",
       promptMessage: "",
       submitted: false,
     }
-    this.validateEmail = this.validateEmail.bind(this);
+    this.validateHash = this.validateHash.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.createAgentEmail = this.createAgentEmail.bind(this);
+    // this.createhAppBundleHash = this.createhAppBundleHash.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  public validateEmail(email:any) {
-    const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const { validate } = this.state;
-    if (emailRex.test(email)) {
-      validate.emailState = 'has-success'
-      this.setState({ primaryEmailAddress: email });
-      return true;
-    }
-    else {
-      validate.emailState = 'has-danger'
-      return false
-    }
+  public validateHash(hash:any) {
+    // const hashValidationRex = <HASH VALIDATION GOES HERE...>
+    // const { validate } = this.state;
+    // if (hashValidationRex.test(hash)) {
+    //   validate.hash = 'has-success';
+    //   this.setState({ hash });
+    //   return true;
+    // }
+    // else {
+    //   validate.hashState = 'has-danger'
+    //   return false
+    // }
   }
 
   public componentDidMount(){
-    // this.props.fetchDefaultEmail().then(()=>{
-    //   this.setState({...this.state, defaultEmailTemplateTitle: this.props.currentDefaultEmailTemplate!.title})
+    // this.props.fetchCurrenthAppBundleHash().then(()=>{
+    //   this.setState({...this.state, defaultHashTemplateTitle: this.props.currentDefaultHashTemplate!.title})
     // });
   }
 
   public handleChange = (eventCurrentTarget: any) => {
        // console.log("the event currentTarget: ", eventCurrentTarget);
        switch(eventCurrentTarget.id) {
-         case "primaryEmailAddress":
-            this.setState({ primaryEmailAddress: eventCurrentTarget!.value });
+         case "hAppBundleHashAddress":
+            this.setState({ hAppBundleHashAddress: eventCurrentTarget!.value });
              break;
 
           // other cases go here...
@@ -91,21 +94,21 @@ class CreateNewSettings extends React.Component<Props, State>  {
         }
      }
 
-     public createPrimaryEmail = async (event:any) => {
+     public createPrimaryHash = async (event:any) => {
        event.preventDefault();
-       const { primaryEmailAddress } = this.state;
-       console.log("HERE IS >> this.state.primaryEmailAddress : ", primaryEmailAddress);
+       const { hAppBundleHashAddress } = this.state;
+       console.log("HERE IS >> this.state.hAppBundleHashAddress : ", hAppBundleHashAddress);
 
-       const validateEmail = this.validateEmail(primaryEmailAddress);
-       console.log("Is Agent Email Validated? >>>", validateEmail);
+       const validateHash = this.validateHash(hAppBundleHashAddress);
+       console.log("Is Agent Hash Validated? >>>", validateHash);
 
-       if(primaryEmailAddress && validateEmail ) {
-         console.log("Here are the primaryEmailAddress details: ", primaryEmailAddress);
+       if(hAppBundleHashAddress && validateHash ) {
+         console.log("Here are the hAppBundleHashAddress details: ", hAppBundleHashAddress);
 
-         const genEmailBundle = { email: primaryEmailAddress }
-         JSON.stringify(genEmailBundle);
-         console.log("genEmailBundle foragenty Email API CALL", genEmailBundle);
-         // await this.props.genprimaryEmailAddress(genEmailBundle);
+         const genHashBundle = { hash: hAppBundleHashAddress }
+         JSON.stringify(genHashBundle);
+         console.log("genHashBundle foragenty Hash API CALL", genHashBundle);
+         // await this.props.genhAppBundleHashAddress(genHashBundle);
        }
      }
 
@@ -117,14 +120,14 @@ class CreateNewSettings extends React.Component<Props, State>  {
       event.preventDefault(event);
       // console.log("HANDLESUBMIT event >>> ", event);
       // console.log("HANDLESUBMIT this.state >>> ", this.state);
-      // this.createAgentEmail(event);
+      // this.createhAppBundleHash(event);
     }
 
   public render() {
     const { classes } = this.props;
     const gutterBottom : boolean = true;
     // console.log("SETTINGS this.props : ", this.props);
-    const { primaryEmailAddress} = this.state;
+    const { hAppBundleHashAddress} = this.state;
 
       return (
         <div className="CreateNewSettings">
@@ -141,9 +144,8 @@ class CreateNewSettings extends React.Component<Props, State>  {
             <div/>
           }
 
-
             <Typography className={classnames(classes.h3extraTopMargin, classes.h3)} variant="caption" gutterBottom={gutterBottom} component="h4" >
-              Personal Info
+              hApp Budle Hash
             </Typography>
 
             <FormControl className={classes.margin}>
@@ -162,13 +164,13 @@ class CreateNewSettings extends React.Component<Props, State>  {
                     notchedOutline: classes.notchedOutline,
                   },
                 }}
-                type="email"
-                label="Primary Email"
+                type="text"
+                label="hApp Bundle Hash"
                 variant="outlined"
-                name="primaryEmailAddress"
-                value={primaryEmailAddress}
+                name="hAppBundleHashAddress"
+                value={hAppBundleHashAddress}
                 onChange={e => this.handleChange(e!.currentTarget)}
-                id="primary-email-input"
+                id="primary-hash-input"
               />
             </FormControl>
 
@@ -176,15 +178,19 @@ class CreateNewSettings extends React.Component<Props, State>  {
             <br/>
             <br/>
 
-            <OutlinedButton
-              text="Save"
-              color="primary"
-              link="/home"
-              showTransferBar={this.props.showTransferBar}
-              fnName=""
-              style={{display: "block", margin:"auto", width:"5%", padding:"30px"
-            }}
-            />
+            <Link to='/home' className={classes.subheaderLink}>
+              <Tooltip title="Save" aria-label="Save">
+                <Fab
+                  color="default"
+                  style={{color:'#e7ebee', background:'#00838d'}}
+                  className={classes.formBtns}
+                  >
+                    <SaveIcon />
+                  </Fab>
+                </Tooltip>
+              </Link>
+
+
 
             {this.state.submitted ?
                 <Redirect

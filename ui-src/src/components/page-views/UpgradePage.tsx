@@ -68,11 +68,12 @@ class HoloSettings extends React.Component<Props, State> {
     return (
     <div>
       <br/>
-      <Typography className={classnames(classes.tableHeader, classes.profileHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
-        HoloFuel Settings
+      <Typography className={classnames(classes.profileHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
+        Upgrade Your hApp
       </Typography>
-
-        <br/>
+      <Typography className={classnames(classes.h3extraTopMargin)} variant="subheading" gutterBottom={gutterBottom} component="h2" >
+        Please type in the hash of the hApp Bundle you would like to update.
+      </Typography>
         <br/>
         <br/>
 

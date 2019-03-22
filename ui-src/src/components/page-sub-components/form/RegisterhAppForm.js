@@ -107,7 +107,7 @@ class RegisterhAppForm extends React.Component {
   }
 
   addDnaLine = () => {
-    // hack to add add'l lines... refactor asap
+    // hack to add add'l lines... refactor
     const newAmount = this.state.dnaAmount;
     newAmount.push('i');
 
@@ -117,7 +117,7 @@ class RegisterhAppForm extends React.Component {
   }
 
   removeDnaLine = () => {
-    // hack to add add'l lines... refactor asap
+    // hack to add add'l lines... refactor
     const newAmount = this.state.dnaAmount;
     newAmount.pop('i');
 
@@ -207,6 +207,21 @@ class RegisterhAppForm extends React.Component {
                    </FormControl>
                 </Grid>
 
+                <Grid item>
+                   <h4 className={classes.h4}>hAPP Category</h4>
+                   <FormControl className={classes.margin}>
+                    <RadioGroup
+                      name="categories"
+                      aria-label="Categories"
+                      value={this.state.categories}
+                      onChange={this.handleChange('categories')}
+                    >
+                    {this.state.listOfCategories.map(category => (
+                      <FormControlLabel value={category} control={<Radio color="default" style={{textTransform:"capitalize"}} />} label={category.split("_").join(" ")} key={category} />
+                     ))}
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
 
                 <Grid item>
                   <h4 className={classes.h4}>hApp Identifiers</h4>
@@ -229,13 +244,13 @@ class RegisterhAppForm extends React.Component {
                   <Grid item>
 
                   <Tooltip title="Submit" aria-label="Submit">
-                    <Fab color="primary" className={classes.formBtns} type='submit' >
+                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
                       <SendIcon />
                     </Fab>
                   </Tooltip>
 
                   <Tooltip title="Clear Values" aria-label="Clear Values">
-                    <Fab color="primary" className={classes.formBtns} onClick={this.clearValues} >
+                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
                       <ClearIcon />
                     </Fab>
                   </Tooltip>
@@ -251,44 +266,4 @@ class RegisterhAppForm extends React.Component {
 };
 export default withStyles(styles)(RegisterhAppForm);
 
-// onClick={this.handleSubmit}
-
-// export default reduxForm({
-//   form: 'RegisterhAppForm', // a unique identifier for this form
-//   validate,
-//   asyncValidate,
-// })(RegisterhAppForm);
-
-
-
-////////////////////////////////////////////////
-
-// const enhance = compose(
-//     reduxForm({
-//       form: 'RegisterhAppForm', // a unique identifier for this form
-//       validate,
-//       asyncValidate,
-//     }),
-//     withStyles(styles)
-// );
-
-// export default enhance(RegisterhAppForm);
-
-
-
 //
-// <Grid item>
-//    <h4 className={classes.h4}>hAPP Category</h4>
-//    <FormControl className={classes.margin}>
-//     <RadioGroup
-//       name="categories"
-//       aria-label="Categories"
-//       value={this.state.categories}
-//       onChange={this.handleChange('categories')}
-//     >
-//     {this.state.listOfCategories.map(category => (
-//       <FormControlLabel value={category} control={<Radio color="default" style={{textTransform:"capitalize"}} />} label={category.split("_").join(" ")} key={category} />
-//      ))}
-//     </RadioGroup>
-//   </FormControl>
-// </Grid>

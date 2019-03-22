@@ -12,9 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
 import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar';
 import ProfileInfoCard from '../page-sub-components/info-card/ProfileInfoCard';
-import QrGenerator from '../page-sub-components/qr-generator/QrGenerator';
-// import ProfileInfoCard from './page-sub-components/info-card/ProfileAccountOptsCard';
-// import Jdenticon from '../page-sub-components/avatar-generator/Jdenticon';
 
 export interface OwnProps {
   // These are props the component has received from its parent component
@@ -77,8 +74,8 @@ class AgentProfile extends React.Component<Props, State> {
 
     return (
     <div>
-      <Typography className={classnames(classes.tableHeader, classes.profileHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
-        HoloFuel Profile
+      <Typography className={classnames(classes.profileHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
+        Holo Hosting Profile
       </Typography>
       <br/>
       <br/>
@@ -90,11 +87,6 @@ class AgentProfile extends React.Component<Props, State> {
         name={this.state.agentData!.agentString}
         email={MOCK_EMAIL} dateJoined={MOCK_AGENT_JOIN_DATE}
       />
-
-      <div className={classes.jumbotronImg}>
-        <h4 className={classes.h4}> Your HoloFuel ID</h4>
-        <QrGenerator agentHash={this.state.agentData!.agentHash}/>
-      </div>
 
         <div>
         { transferBtnBar ?

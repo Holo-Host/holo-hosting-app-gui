@@ -18,7 +18,7 @@ body {
 body, html{
 	padding:0;
 	margin:0;
-	background: #FFF;
+	background: #e7ebee;
 	text-align:center;
 }
 
@@ -113,85 +113,4 @@ input {
   white-space: normal;
   padding: 3px;
   margin: 0 auto;
-}
-
-/*******************************************************
-              Calendar Custom styles
-*******************************************************/
-.DateInput {
-  background: transparent;
-  color: white;
-}
-
-.DateInput_input__small {
-  background: #c3cdd6; /* alt color: #13426a */
-  color: #799ab6;
-}
-
-.DateRangePickerInput_arrow {
-  color: #799ab6;
-}
-
-.DateRangePickerInput__withBorder {
-  border: 1px solid #799ab6;
-  background: #c3cdd6;
-}
-
-.DateInput_input__focused {
-  border-bottom: 2px solid #696969;
-}
-
-.CalendarDay__selected_span {
-  background: #00838d;
-}
-
-.CalendarDay__selected,
-.CalendarDay__selected:active,
-.CalendarDay__selected:hover {
-  background: #015363;
-}
-
-.DateRangePicker_picker {
-  position: absolute !important;
-  top:52px !important;
-}
-
-.DateRangePicker_picker .DateRangePicker_picker_1 .DateRangePicker_picker__directionLeft .DateRangePicker_picker__directionLeft_2 {
-  position: absolute !important;
-  top:52px !important;
-}
-
-.DateInput_fang {
-  position: relative !important;
-}
-
-/*******************************************************
-   Transaction-Type MUI Dropdown Button Custom styles
-*******************************************************/
-.MuiList-root.MuiList-padding {
-  background: #003087;
-}
-
-/* for the dropdown paper color:  */
-.MuiPaper-root-92 {
-  background: #696969;
-  border-color: #789bb4;
-}
-
-/* for the dropdown mui button border title  */
-.MuiFormLabel-root-531 {
-  color: #13426a;
-}
-
-/* for the dropdown mui button border  */
-.MuiOutlinedInput-root-545.MuiOutlinedInput-notchedOutline-552 {
-  border-color: #13426a !important;
-}
-
-.MuiSelect-selectMenu-552 {
-  background: #13426a;
-}
-
-.MuiListItem-root-273.MuiListItem-selected-284, .MuiListItem-root-273.MuiListItem-selected-284:hover, .MuiListItem-root-273.MuiListItem-selected-284:focus {
-  background: #003087;
 }

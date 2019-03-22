@@ -1,7 +1,7 @@
 import * as React from 'react';
 import HomeSummaryPage from '../components/page-views/HomeSummaryPage';
 import RegisterhAppPage from '../components/page-views/RegisterhAppPage';
-import SettingsHolo from "../components/page-views/SettingsHolo";
+import UpgradePage from "../components/page-views/UpgradePage";
 import AgentProfile from "../components/page-views/AgentProfile";
 import HoloFuelTransactionDetailPage from '../components/page-views/HoloFuelTransactionDetailPage';
 import { Ledger, ListTransactionsResult, PendingResult } from '../utils/types'; // RequestActionParam, ProposalActionParam, Address, DateTimeString
@@ -128,7 +128,7 @@ class HomeRouterContainer extends React.Component<Props, State> {
           :
             location.pathname === "/settings" ?
             // this should lead to the "settings" page for HoloFuel &/ Holo
-            <SettingsHolo
+            <UpgradePage
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}

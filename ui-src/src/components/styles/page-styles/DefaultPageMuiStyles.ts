@@ -78,6 +78,10 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
         background: 'rgba(0, 1, 127, 0.7)'
       }
     },
+    formBtns : {
+      margin: 5,
+      display: 'inline-flex'
+    },
     extraTopSpace: {
       marginTop: 16,
     },
@@ -122,11 +126,10 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       color: '#5c7388',
     },
     h3: {
-      color: '#0e094b', // 446164
+      color: '#00838d', // 446164 0e094b
       fontSize: 20,
       fontWeight: 300,
-      marginBottom: 5,
-      margin:0
+      margin:5,
     },
     h3extraTopMargin: {
       marginTop: 25,
@@ -141,8 +144,10 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       marginBottom: 3,
     },
     verticalLine : {
-      borderLeft:' 1px solid #0e094b', // #00838d
-      height: 'auto'
+      borderLeft:' 1px solid #bec4dd', // #00838d
+      height: 'auto',
+      position: 'relative',
+      bottom: '6px'
     },
     horizontalLine : {
       color:'#ced4da', // #00838d
@@ -179,6 +184,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
     },
     pageHeader: {
       fontSize: '3.125rem',
+      color: '#0e094b'
     },
     leadingTitle: {
       marginTop: 50,
@@ -268,12 +274,12 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       height: 90,
       diplay: 'block',
       boxSizing: 'border-box',
-      background: '#e9ecef',
+      background: '#fcfeff',
       padding: '1rem',
       textAlign: 'center',
       borderRadius: 10,
       marginBottom: '1rem',
-      border: '1px solid #808080'
+      border: '1px solid #bec4dd'
     },
     jumbotronImg: {
       display: 'block',

@@ -20,7 +20,7 @@ import Slide from '@material-ui/core/Slide';
 const styles = {
   root: {
     flexGrow: 1,
-    background: '#fbfbfb',
+    background: '#e9ecef',
     color:  '#057266f2',
     display: 'inline',
     // zIndex : 3
@@ -36,7 +36,7 @@ const styles = {
     color:"#bec4dd"
   },
   icon : {
-  color:"#bec4dd"
+  color:"#00838d"
 },
   minimizeHeader: {
     fontWeight: 300,
@@ -108,7 +108,7 @@ class AppNavBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="fixed" style={{margin: '0 auto',  background: "#D3D3D3"}}>
+        <AppBar position="fixed" style={{margin: '0 auto',  background: "#e9ecef"}}>
           <Toolbar>
 
             { scrolledUp ?
@@ -146,9 +146,10 @@ class AppNavBar extends React.Component {
                     <IconButton
                       className={classes.icon}
                       aria-haspopup="false"
-                      onClick={this.handleTransferBtnClick}
                     >
-                      <img src="/assets/icons/transfer.png" alt="transfer-logo" width="18px" height="18px"/>
+                      <Link to='/provider/hApps'>
+                        <img src="/assets/icons/transfer.png" alt="transfer-logo" width="18px" height="18px"/>
+                      </Link>
                     </IconButton>
                   </Grow>
 
