@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 // custom mui styles :
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Portal from '@material-ui/core/Portal';
@@ -65,12 +66,16 @@ class HomeSummaryPage extends React.Component<Props, State> {
   //     this.render();
   //   }
   // }
+  register_provider = () =>{
+    this.props.is_registered_as_provider();
+  }
+  register_host = () =>{
+    this.props.is_registered_as_host();
+  }
 
    public render () {
       const { classes, transferBtnBar, ...newProps } = this.props;
       const gutterBottom : boolean = true;
-
-      console.log("-------------->",this.props);
 
       return (
         <div>
@@ -79,14 +84,32 @@ class HomeSummaryPage extends React.Component<Props, State> {
               <div className={classes.flexItem}>
                 <h3 className={classes.h3}>Provider</h3>
                 <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                  {this.props.is_registered_provider ?  this.props.is_registered_provider.addresses.length !== 0 ? `Registered` : `Not Registered..` : `Loading...`}
+                  {this.props.is_registered_provider ?  this.props.is_registered_provider.addresses.length !== 0 ? `Registered` :
+                            <Button
+                              variant="outlined"
+                              color="primary"
+                              className={ classes.colButton }
+                              onClick={ this.register_provider }
+                              style={{margin:"3px"}}
+                            >
+                              Click to Register
+                            </Button> : `Loading...`}
                 </Typography>
               </div>
               <div className={classes.verticalLine}/>
               <div className={classes.flexItem}>
                 <h3 className={classes.h3}>Host</h3>
                 <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                {this.props.is_registered_host ?  this.props.is_registered_host.addresses.length !== 0 ? `Registered` : `Not Registered..` : `Loading...`}
+                {this.props.is_registered_host ?  this.props.is_registered_host.addresses.length !== 0 ? `Registered` :
+                          <Button
+                            variant="outlined"
+                            color="primary"
+                            className={ classes.colButton }
+                            onClick={ this.register_host }
+                            style={{margin:"3px"}}
+                          >
+                          Click to Register
+                          </Button> : `Loading...`}
                 </Typography>
               </div>
             </div>
