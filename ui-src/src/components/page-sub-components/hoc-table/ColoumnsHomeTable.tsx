@@ -8,11 +8,11 @@ const home_table_columns = (props: Props, state: any) => {
   // console.log("Table Columns State", state);
   const table_columns = [{
     Header: 'hApps',
-    accessor: 'hApps_hash',
+    accessor: 'app_bundle',
     filterAll: true,
       Cell: (row: any) => (
         <div style={{ padding: '5px' }}>
-        { row.value }
+        { row.value.ui_hash }
         </div>
       )
     }, {

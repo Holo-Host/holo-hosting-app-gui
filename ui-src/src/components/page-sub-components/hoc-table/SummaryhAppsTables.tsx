@@ -6,7 +6,7 @@ import "react-table/react-table.css";
 import { withStyles } from '@material-ui/core/styles';
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import home_table_columns from './ColoumnsHomeTable';
-import MuiSimpleTable from '../simple-table/MuiSimpleTable';
+import DropDownHomeTable from '../simple-table/DropDownHomeTable';
 import ErrorMessage from '../error-message/ErrorMessage';
 import NohAppsMessage from '../error-message/NohAppsMessage';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
@@ -85,9 +85,10 @@ class SummaryhAppsTables extends React.Component<Props, State> {
                 }
               }}
               SubComponent={(row:any) => {
+              // this.props.get_hApp_details({app_hash:row.original.hApps_hash});
               return (
                   <div className={classes.subtable} style={{ padding: "10px", margin: '0 auto', marginBottom:"8px", width:'95%' }}>
-                    <MuiSimpleTable
+                    <DropDownHomeTable
                       {...newProps}
                       rowInfo={row}
                     />
