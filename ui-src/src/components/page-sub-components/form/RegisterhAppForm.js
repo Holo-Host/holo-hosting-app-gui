@@ -172,6 +172,23 @@ class RegisterhAppForm extends React.Component {
           <Grid container>
             <form onSubmit={this.handleSubmit} className={classes.form}>
 
+
+              <Grid item>
+                <h4 className={classes.h4}>hApp Name</h4>
+                <FormControl className={classes.margin}>
+                  <TextField
+                    id="app_name"
+                    label="AppName"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.app_name}
+                    onChange={this.handleChange('app_name')}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                 </FormControl>
+              </Grid>
+
               <Grid item>
                 <h4 className={classes.textHeader} >UI Details</h4>
                 <FormControl className={classes.margin}>
@@ -197,7 +214,7 @@ class RegisterhAppForm extends React.Component {
                  </FormControl>
                 </Grid>
 
-{/*                <Grid item>
+                <Grid item>
                   <h4 className={classes.h4}>hApp Summary</h4>
                   <FormControl className={classes.margin}>
                     <TextField
@@ -213,7 +230,8 @@ class RegisterhAppForm extends React.Component {
                    </FormControl>
                 </Grid>
 
-                <Grid item>
+                {/*
+                  <Grid item>
                    <h4 className={classes.h4}>hAPP Category</h4>
                    <FormControl className={classes.margin}>
                     <RadioGroup
@@ -245,7 +263,8 @@ class RegisterhAppForm extends React.Component {
                     </Select>
                   </FormControl>
                 </Grid>
-*/}
+                */}
+
                 <div style={{marginTop:'150px', border:'5px solid white'}}>
                   <Grid item>
 

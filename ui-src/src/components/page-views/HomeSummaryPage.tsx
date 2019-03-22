@@ -61,15 +61,12 @@ class HomeSummaryPage extends React.Component<Props, State> {
 
   }
 
-  // componentDidUpdate(prevProps:any, prevState:any ) {
-  //   if (prevProps.list_transactions !== this.props.list_transactions || prevProps.list_pending !== this.props.list_pending ) {
-  //     this.render();
-  //   }
-  // }
   register_provider = () =>{
+    this.props.register_as_provider({provider_doc:{kyc_proof:""}});
     this.props.is_registered_as_provider();
   }
   register_host = () =>{
+    this.props.register_as_host({host_doc:{kyc_proof:""}});
     this.props.is_registered_as_host();
   }
 

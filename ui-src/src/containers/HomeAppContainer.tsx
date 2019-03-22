@@ -9,6 +9,8 @@ import {
   RegisterhAppBundle,
   GetAllhApps,
   GethAppDetails,
+  RegisterProvider,
+  RegisterHost,
 } from '../actions/transactionActions';
 import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
 
@@ -41,10 +43,6 @@ const mapStateToProps = ({ reducers }: any): StateProps => {
   agent_details:reducers.agent_details,
   all_hApps:reducers.all_hApps,
   app_details:reducers.app_details,
-
-
-
-
 // holofuel specific states :
 // TODO: DELETE THE FOLLOWING AND ALL REFERENCE TO IT WITHIN CODE...
   list_of_instance_info: reducers.list_of_instance_info,
@@ -70,10 +68,12 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
     is_registered_as_provider : () => {dispatch(IsRegisterProviderAction.create({}))},
     is_registered_as_host : () => {dispatch(IsRegisterHostAction.create({}))},
-    get_agent_details : () => {console.log("CALLING get_all_hApps!!!!"); dispatch(GetAgentDetails.create({}))},
+    get_agent_details : () => {dispatch(GetAgentDetails.create({}))},
     register_hApp_bundle : (payload) => {dispatch(RegisterhAppBundle.create(payload))},
     get_all_hApps : () => {dispatch(GetAllhApps.create({}))},
     get_hApp_details : (payload) => {dispatch(GethAppDetails.create(payload))},
+    register_as_host : (payload) => {dispatch(RegisterHost.create(payload))},
+    register_as_provider : (payload) => {dispatch(RegisterProvider.create(payload))},
   };
 }
 

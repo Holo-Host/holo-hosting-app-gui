@@ -20,6 +20,9 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
    case `${DNA_INSTANCE}/${PROVIDER}/get_app_details_SUCCESS`: {
      return { ...state, app_details:payload};
    }
+   case `${DNA_INSTANCE}/${PROVIDER}/register_as_provider_SUCCESS`: {
+     return { ...state };
+   }
 
     /*Manages Host Returns*/
    case `${DNA_INSTANCE}/${HOST}/is_registered_as_host_SUCCESS`: {
@@ -27,6 +30,9 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
    }
    case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
      return { ...state, all_hApps : refactorAllApps(payload) };
+   }
+   case `${DNA_INSTANCE}/${HOST}/register_as_host_SUCCESS`: {
+     return { ...state };
    }
 
      /*Manages WhoAmI Returns*/

@@ -25,15 +25,6 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
     }
   };
 
-  // sendProposal = async (txInfoObj: any) => {
-  //   const proposalResult = await this.props.propose_payment(txInfoObj); // send as JSON
-  //   this.sendConfirmationMessage(proposalResult, txInfoObj);
-  // }
-
-  sendConfirmationMessage = (proposalResult: any, txInfoObj: any) => {
-    this.setState({ confirmation: txInfoObj});
-  }
-
   resetMessage = () => {
     this.setState({ confirmation: "" });
   }
