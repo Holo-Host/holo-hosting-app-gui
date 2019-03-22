@@ -154,15 +154,8 @@ class RegisterhAppForm extends React.Component {
   };
 
   handleSubmit = () => {
-    console.log("state within submit call", this.state);
-
-    // HANDLE THE API CALLS HERE...
-    // REF: this.props.register_hApp_bundle({ui_hash:"Quiasdfouo", dna_list:["Qoauasdfxva","Qkiauiasdfnvkk"]});
-
     const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes}
-    console.log(' <><><><>< hAppAPIBundle <><><>', hAppAPIBundle);
     this.props.register_hApp_bundle(hAppAPIBundle)
-
     this.clearValues();
   };
 
@@ -204,7 +197,7 @@ class RegisterhAppForm extends React.Component {
                  </FormControl>
                 </Grid>
 
-                <Grid item>
+{/*                <Grid item>
                   <h4 className={classes.h4}>hApp Summary</h4>
                   <FormControl className={classes.margin}>
                     <TextField
@@ -252,9 +245,15 @@ class RegisterhAppForm extends React.Component {
                     </Select>
                   </FormControl>
                 </Grid>
-
+*/}
                 <div style={{marginTop:'150px', border:'5px solid white'}}>
                   <Grid item>
+
+                  <Tooltip title="Clear Values" aria-label="Clear Values">
+                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
+                      <ClearIcon />
+                    </Fab>
+                  </Tooltip>
 
                   <Tooltip title="Submit" aria-label="Submit">
                     <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
@@ -262,12 +261,7 @@ class RegisterhAppForm extends React.Component {
                     </Fab>
                   </Tooltip>
 
-                  <Tooltip title="Clear Values" aria-label="Clear Values">
-                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
-                      <ClearIcon />
-                    </Fab>
-                  </Tooltip>
-                </Grid>
+                  </Grid>
               </div>
 
             </form>
