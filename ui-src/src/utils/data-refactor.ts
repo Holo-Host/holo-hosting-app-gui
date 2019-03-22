@@ -6,7 +6,7 @@ export const table_data = (payload:any) => {
         app_bundle:bundle.app_bundle,
         app_details:bundle.app_details,
         payment_pref:bundle.payment_pref,
-        status:"Disable"
+        status:"Disabled"
       })
   })
   return table_data

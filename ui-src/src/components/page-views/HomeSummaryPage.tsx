@@ -46,7 +46,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
   };
 
  testingCalls(){
-   // Testign Calls
+   // Testing Calls
    this.props.register_hApp_bundle({ui_hash:"Quiououo", dna_list:["Qoauxjnva","Qkiauihsnvkk"]});
    this.props.register_hApp_bundle({ui_hash:"Quiasdfouo", dna_list:["Qoauasdfxva","Qkiauiasdfnvkk"]});
    this.props.get_all_hApps();
@@ -85,15 +85,15 @@ class HomeSummaryPage extends React.Component<Props, State> {
                 <h3 className={classes.h3}>Provider</h3>
                 <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
                   {this.props.is_registered_provider ?  this.props.is_registered_provider.addresses.length !== 0 ? `Registered` :
-                            <Button
-                              variant="outlined"
-                              color="primary"
-                              className={ classes.colButton }
-                              onClick={ this.register_provider }
-                              style={{margin:"3px"}}
-                            >
-                              Click to Register
-                            </Button> : `Loading...`}
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      className={ classes.colButton }
+                      onClick={ this.register_provider }
+                      style={{margin:"3px"}}
+                    >
+                      Click to Register
+                    </Button> : `Loading...`}
                 </Typography>
               </div>
               <div className={classes.verticalLine}/>
@@ -101,15 +101,15 @@ class HomeSummaryPage extends React.Component<Props, State> {
                 <h3 className={classes.h3}>Host</h3>
                 <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
                 {this.props.is_registered_host ?  this.props.is_registered_host.addresses.length !== 0 ? `Registered` :
-                          <Button
-                            variant="outlined"
-                            color="primary"
-                            className={ classes.colButton }
-                            onClick={ this.register_host }
-                            style={{margin:"3px"}}
-                          >
-                          Click to Register
-                          </Button> : `Loading...`}
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className={ classes.colButton }
+                    onClick={ this.register_host }
+                    style={{margin:"3px"}}
+                  >
+                  Click to Register
+                  </Button> : `Loading...`}
                 </Typography>
               </div>
             </div>

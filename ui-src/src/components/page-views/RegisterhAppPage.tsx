@@ -39,7 +39,7 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
   }
 
   public render () {
-    const { classes } = this.props;
+    const { classes, ...newProps } = this.props;
     const gutterBottom : boolean = true;
 
     return (
@@ -49,7 +49,7 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
           Register hApp
        </Typography>
         <div style={{ margin:'0 auto' }}>
-          <RegisterhAppForm  />
+          <RegisterhAppForm {...newProps} />
         </div>
       </div>
     </div>

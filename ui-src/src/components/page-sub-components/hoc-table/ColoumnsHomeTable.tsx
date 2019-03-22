@@ -7,7 +7,7 @@ const home_table_columns = (props: Props, state: any) => {
   // console.log("Table Columns Props", props);
   // console.log("Table Columns State", state);
   const table_columns = [{
-    Header: 'hApps',
+    Header: (row: any) => (<h4 style={{color:'#0e094b'}}>hApps</h4>),
     accessor: 'app_bundle',
     filterAll: true,
       Cell: (row: any) => (
@@ -16,7 +16,7 @@ const home_table_columns = (props: Props, state: any) => {
         </div>
       )
     }, {
-    Header: 'Enable/Disable',
+    Header: (row: any) => (<h4 style={{color:'#0e094b'}}>Status</h4>),
     accessor: 'status',
     filterAll: true,
     Cell: (row: any) => (

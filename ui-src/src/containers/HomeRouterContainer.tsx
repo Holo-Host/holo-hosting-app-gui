@@ -70,8 +70,9 @@ class HomeRouterContainer extends React.Component<Props, State> {
   };
 
   componentDidMount () {
+    this.props.get_all_hApps();
+    console.log("Should havce CALLED the get_all_hApps...", this.props);
     // this.props.fetch_agent_string();
-    // this.props.get_ledger_state();
   }
 
   toggleTransferBtnBar = (txType: any) => {
@@ -82,8 +83,8 @@ class HomeRouterContainer extends React.Component<Props, State> {
   }
 
 
-// Find a dynamic way to connect the ui to the dna >> play with info_instances && agent_string >> access prior to running?!?!
   public render() {
+    console.log("this.props", this.props);
     const { classes, staticContext, ...newProps } = this.props;
     const { location } = this.props.history;
 

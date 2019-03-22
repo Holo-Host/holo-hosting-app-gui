@@ -63,9 +63,11 @@ const styles = theme => ({
     margin: '0 auto'
   },
   textHeader: {
+    color:'#0e094b',
     marginBottom: 3
   },
   h4: {
+    color:'#0e094b',
     marginBottom: 5
   },
   formBtns : {
@@ -79,7 +81,7 @@ class RegisterhAppForm extends React.Component {
     super(props);
     this.state = {
       uiHash: '',
-      dnaHash: [],
+      dnaHashes: [],
       description: '',
       categories: [],
       tags: [],
@@ -102,9 +104,11 @@ class RegisterhAppForm extends React.Component {
     };
   };
 
-  componentDidMount = () => {
-
+  componentDidMount() {
+    console.log("ARE ALL THE DISPATCHED ACTIONS HERE??!?!?!?!")
+    // this.props.get_all_hApps();
   }
+
 
   addDnaLine = () => {
     // hack to add add'l lines... refactor
@@ -127,13 +131,13 @@ class RegisterhAppForm extends React.Component {
   }
 
   handleChange = (title) => (event) => {
-      this.setState({ [title]: event.target.value });
+    this.setState({ [title]: event.target.value });
   };
 
   clearValues = () => {
     this.setState({
       uiHash: '',
-      dnaHash: [""],
+      dnaHashes: [""],
       description: '',
       categories: [],
       tags: [],
@@ -142,22 +146,31 @@ class RegisterhAppForm extends React.Component {
   }
 
   handleDnaHashChange = (dnaNum) => (event) => {
-    const newDnaHashList = this.state.dnaHash;
+    const newDnaHashList = this.state.dnaHashes;
     dnaNum + 1;
     const testValue = newDnaHashList[dnaNum] = event.target.value;
 
-    this.setState({ dnaHash: newDnaHashList });
+    this.setState({ dnaHashes: newDnaHashList });
   };
 
   handleSubmit = () => {
     console.log("state within submit call", this.state);
+
     // HANDLE THE API CALLS HERE...
+    // REF: this.props.register_hApp_bundle({ui_hash:"Quiasdfouo", dna_list:["Qoauasdfxva","Qkiauiasdfnvkk"]});
+
+    const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes}
+    console.log(' <><><><>< hAppAPIBundle <><><>', hAppAPIBundle);
+    this.props.register_hApp_bundle(hAppAPIBundle)
+
+    this.clearValues();
   };
 
   render () {
     console.log("this.state", this.state);
+    console.log("this.props", this.props);
 
-    const { classes, handleSubmit, pristine, reset, submitting } = this.props;
+    const { classes } = this.props;
     const { spacing } = this.state;
 
     return (
@@ -177,16 +190,16 @@ class RegisterhAppForm extends React.Component {
                <Grid item>
                  <h4 className={classes.textHeader} style={{display:'inline-flex', marginRight:'5px'}}>DNA Details</h4>
                   <span onClick={this.addDnaLine} style={{display:'inline-flex'}}>
-                    <AddIcon/>
+                    <AddIcon style={{color:'#0e094b'}}/>
                   </span>
                   <span onClick={this.removeDnaLine} style={{display:'inline-flex'}}>
-                    <RemoveIcon/>
+                    <RemoveIcon style={{color:'#0e094b'}}/>
                   </span>
                   <br/>
                  <FormControl className={classes.margin}>
                     <InputLabel htmlFor="dna-hash" className={classes.textFormLabel}>Type in each DNA Hash</InputLabel>
                     {this.state.dnaAmount.map((value, i) => (
-                      <TextInput key={i} value={this.state.dnaHash[i]} onChange={this.handleDnaHashChange(i)}/>
+                      <TextInput key={i} value={this.state.dnaHashes[i]} onChange={this.handleDnaHashChange(i)}/>
                     ))}
                  </FormControl>
                 </Grid>

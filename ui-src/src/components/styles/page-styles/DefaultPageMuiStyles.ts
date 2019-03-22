@@ -199,7 +199,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       marginTop: 20,
       marginBottom: 5,
       backgroundColor: 'transparent', // #c3cdd6
-      border: 3,
+      border: '3px solid #c3cdd6',
       borderRadius: 4,
       zIndex: 2,
       overflow: 'hidden'
