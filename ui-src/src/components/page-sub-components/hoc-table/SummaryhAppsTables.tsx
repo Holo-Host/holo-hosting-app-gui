@@ -38,6 +38,10 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     return []
   }
 
+  onClick = () => {
+    console.log("*CLICK*")
+  }
+
   public render() {
     const { classes,
       ...newProps
@@ -53,7 +57,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
 
     console.log("In the table State: ", this.state)
 
-    const table_columns = home_table_columns(this.props, this.state);
+    const table_columns = home_table_columns(this.props, this.state, this.onClick);
     const table_data = this.fetchTableData();
 
     console.log("Table Data: ",table_data);

@@ -63,11 +63,11 @@ class HomeSummaryPage extends React.Component<Props, State> {
 
   register_provider = () =>{
     this.props.register_as_provider({provider_doc:{kyc_proof:""}});
-    this.props.is_registered_as_provider();
+    setTimeout(this.props.is_registered_as_provider, 2000);
   }
   register_host = () =>{
     this.props.register_as_host({host_doc:{kyc_proof:""}});
-    this.props.is_registered_as_host();
+    setTimeout(this.props.is_registered_as_host, 2000);
   }
 
    public render () {

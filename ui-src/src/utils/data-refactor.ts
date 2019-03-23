@@ -3,9 +3,10 @@ export const table_data = (payload:any) => {
   let table_data:any[]=[]
   payload.forEach((bundle:any)=>{
       table_data.push({
-        app_bundle:bundle.app_bundle,
-        app_details:bundle.app_details,
-        payment_pref:bundle.payment_pref,
+        app_hash:bundle.hash,
+        app_bundle:bundle.details.app_bundle,
+        app_details:bundle.details.app_details,
+        payment_pref:bundle.details.payment_pref,
         status:"Disabled"
       })
   })
@@ -15,7 +16,10 @@ export const table_data = (payload:any) => {
 export const refactorAllApps = ( payload:any ) => {
   let all_apps:any[]=[]
   payload.forEach((app:any)=>{
-    all_apps.push(JSON.parse(app).Ok);
+    all_apps.push({
+      hash:app.hash,
+      details: JSON.parse(app.details).Ok
+    });
   })
   return all_apps;
 }
