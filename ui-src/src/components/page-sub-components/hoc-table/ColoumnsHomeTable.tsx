@@ -4,8 +4,15 @@ import '../../styles/page-styles/scaffold-styles.css';
 import Button from '@material-ui/core/Button';
 // export type Props = DispatchProps & StateProps;
 
-const home_table_columns = (props: any, state: any,onClick:any) => {
-  console.log("Coloum props: ",props)
+const home_table_columns = (props: any, state: any) => {
+  const onClickEnable = (event:any) => {
+    console.log("*TODO : Send a request to the Interceptor to Enable*")
+  }
+
+  const onClickDisable = (event:any) => {
+    console.log("*TODO : Send a request to the Interceptor to Disable*")
+  }
+
   const table_columns = [{
     Header: (row: any) => (<h4 style={{color:'#0e094b'}}>hApps</h4>),
     accessor: 'app_hash',
@@ -21,9 +28,9 @@ const home_table_columns = (props: any, state: any,onClick:any) => {
     filterAll: true,
     Cell: (row: any) => (
       <div style={{ padding: '5px' }}>
-      { row.value === "Enabled" ? <Button variant="contained" onClick={onClick}>
+      { row.value === "Enabled" ? <Button variant="contained" onClick={onClickEnable.bind(props,row)}>
         Enable
-      </Button> :  <Button variant="contained" onClick={onClick}>
+      </Button> :  <Button variant="contained" value={row} onClick={onClickDisable.bind(props,row)}>
         Disable
       </Button> }
       </div>
