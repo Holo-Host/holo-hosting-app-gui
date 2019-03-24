@@ -58,40 +58,28 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
 
 export interface OwnProps {
   classes: any,
-  agentHash: string,
+  hash: string,
   name: string,
-  email: string,
-  dateJoined: string,
 }
 export type Props = OwnProps & StateProps & DispatchProps;
 
 
 function ProfileInfoCard(props: Props) {
-  const { classes, agentHash, name, email, dateJoined, ...newProps } = props;
-  // const bull = <span className={classes.bullet}>•</span>;
+  const { classes, hash, name, ...newProps } = props;
   return (
     <Card className={classes.card}>
       <div className={classes.details}>
         <CardContent>
-          {/* <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Main Identity
-          </Typography> */}
-           <Avatar className={classnames(classes.headerAvatar, classes.profile)}>
-             <Jdenticon hash={ agentHash } size="105px" {...newProps} />
-           </Avatar>
+         <Avatar className={classnames(classes.headerAvatar, classes.profile)}>
+           <Jdenticon hash={ hash } size="105px" {...newProps} />
+         </Avatar>
         </CardContent>
       </div>
       <CardContent className={classes.content}>
         <Typography className={classnames(classes.typography, classes.balanceHeader)} variant="h5" component="h2">
           {name}
         </Typography>
-        <Typography className={classnames(classes.typography, classes.title)} color="textSecondary" gutterBottom>
-          {email}
-        </Typography>
-        <hr/>
-        <Typography className={classnames(classes.typography, classes.pos)} color="textSecondary">
-          {dateJoined}
-        </Typography>
+          <hr/>
       </CardContent>
     </Card>
   );
