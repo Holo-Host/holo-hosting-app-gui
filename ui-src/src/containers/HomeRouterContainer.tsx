@@ -3,7 +3,6 @@ import HomeSummaryPage from '../components/page-views/HomeSummaryPage';
 import RegisterhAppPage from '../components/page-views/RegisterhAppPage';
 import UpgradePage from "../components/page-views/UpgradePage";
 import AgentProfile from "../components/page-views/AgentProfile";
-import HoloFuelTransactionDetailPage from '../components/page-views/HoloFuelTransactionDetailPage';
 import { Ledger, ListTransactionsResult, PendingResult } from '../utils/types'; // RequestActionParam, ProposalActionParam, Address, DateTimeString
 import AppNavBar from '../components/page-sub-components/app-nav-bar/AppNavBar';
 import SubNavBar from '../components/page-sub-components/app-nav-bar/SubNavBar';
@@ -73,8 +72,6 @@ class HomeRouterContainer extends React.Component<Props, State> {
 
   componentDidMount () {
     this.props.get_all_hApps();
-    console.log("Should havce CALLED the get_all_hApps...", this.props);
-    // this.props.fetch_agent_string();
   }
 
   toggleTransferBtnBar = (txType: any) => {
@@ -86,7 +83,7 @@ class HomeRouterContainer extends React.Component<Props, State> {
 
 
   public render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
     const { classes, staticContext, ...newProps } = this.props;
     const { location } = this.props.history;
 
@@ -118,16 +115,6 @@ class HomeRouterContainer extends React.Component<Props, State> {
               txType={this.state.transactionType}
               className={classes.appTable} {...this.props}
             />
-          :
-            location.pathname === "/holofueltransactiondetails" ?
-              // this should be the HoloFuel Transaction Details Page
-              <HoloFuelTransactionDetailPage
-                transferBtnBar={this.state.chooseTxBtnBarOpen}
-                showTransferBar={this.toggleTransferBtnBar}
-                txType={this.state.transactionType}
-                className={classes.appTable}
-                {...this.props}
-              />
           :
             location.pathname === "/settings" ?
             // this should lead to the "settings" page for HoloFuel &/ Holo

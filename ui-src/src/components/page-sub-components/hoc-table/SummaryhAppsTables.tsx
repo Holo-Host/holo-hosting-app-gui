@@ -38,8 +38,6 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     return []
   }
 
-
-
   public render() {
     const { classes,
       ...newProps
@@ -50,15 +48,10 @@ class SummaryhAppsTables extends React.Component<Props, State> {
         <ErrorMessage />
       </div>
     }
-
-    console.log("In the table props: ", this.props)
-
-    console.log("In the table State: ", this.state)
-
+    // console.log("In the table props: ", this.props)
     const table_columns = home_table_columns(this.props, this.state);
     const table_data = this.fetchTableData();
-
-    console.log("Table Data: ",table_data);
+    // console.log("Table Data: ",table_data);
     return (
     <div className={classes.transactionTablesContainer}>
 
@@ -87,7 +80,6 @@ class SummaryhAppsTables extends React.Component<Props, State> {
                 }
               }}
               SubComponent={(row:any) => {
-              // this.props.get_hApp_details({app_hash:row.original.hApps_hash});
               return (
                   <div className={classes.subtable} style={{ padding: "10px", margin: '0 auto', marginBottom:"8px", width:'95%' }}>
                     <DropDownHomeTable

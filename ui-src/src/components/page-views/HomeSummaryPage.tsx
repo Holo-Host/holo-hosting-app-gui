@@ -56,9 +56,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
     this.props.is_registered_as_provider();
     this.props.is_registered_as_host();
     this.props.get_agent_details();
-
     this.testingCalls();
-
   }
 
   register_provider = () =>{

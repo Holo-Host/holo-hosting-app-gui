@@ -25,7 +25,6 @@ import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 // LOCAL Imports
 import TextInput from '../input-fields/TextInput';
-import asyncValidate from '../../../utils/asyncValidate';
 import validate from '../../../utils/validate';
 
 const styles = theme => ({
