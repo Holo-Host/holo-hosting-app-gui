@@ -8,6 +8,7 @@ import { StateProps, DispatchProps } from '../../../containers/HomeRouterContain
 import home_table_columns from './ColoumnsHomeTable';
 import DropDownHomeTable from '../simple-table/DropDownHomeTable';
 import ErrorMessage from '../error-message/ErrorMessage';
+import ErrorNotRegisteredAsHost from '../error-message/NotRegisteredAsHost';
 import NohAppsMessage from '../error-message/NohAppsMessage';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 import {table_data} from '../../../utils/data-refactor'
@@ -43,6 +44,15 @@ class SummaryhAppsTables extends React.Component<Props, State> {
       ...newProps
     } = this.props;
 
+
+    if(this.props.is_registered_host){
+      if( this.props.is_registered_host.addresses.length === 0 ){
+        return <div>
+        <ErrorNotRegisteredAsHost />
+        </div>
+
+      }
+    }
     if (!this.props.all_hApps){
       return <div>
         <ErrorMessage />
@@ -51,7 +61,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     // console.log("In the table props: ", this.props)
     const table_columns = home_table_columns(this.props, this.state);
     const table_data = this.fetchTableData();
-    // console.log("Table Data: ",table_data);
+    console.log("Table Data: ",table_data);
     return (
     <div className={classes.transactionTablesContainer}>
 
