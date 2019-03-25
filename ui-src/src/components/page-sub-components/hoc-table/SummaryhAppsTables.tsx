@@ -32,7 +32,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
   }
 
   fetchTableData = () => {
-    console.log("fetching table : ", this.props)
+    // console.log("fetching table : ", this.props)
     if(this.props.all_hApps !== undefined)
     return table_data(this.props.all_hApps);
     else
@@ -61,7 +61,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     // console.log("In the table props: ", this.props)
     const table_columns = home_table_columns(this.props, this.state);
     const table_data = this.fetchTableData();
-    console.log("Table Data: ",table_data);
+    // console.log("Table Data: ",table_data);
     return (
     <div className={classes.transactionTablesContainer}>
 
