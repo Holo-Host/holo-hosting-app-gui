@@ -28,7 +28,6 @@ import LensIcon from '@material-ui/icons/LensOutlined';
 import Chip from '@material-ui/core/Chip';
 // LOCAL Imports
 import TextInput from '../input-fields/TextInput';
-import asyncValidate from '../../../utils/asyncValidate';
 import validate from '../../../utils/validate';
 
 const styles = theme => ({

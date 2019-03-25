@@ -8,6 +8,7 @@ import { StateProps, DispatchProps } from '../../../containers/HomeRouterContain
 import home_table_columns from './ColoumnsHomeTable';
 import DropDownHomeTable from '../simple-table/DropDownHomeTable';
 import ErrorMessage from '../error-message/ErrorMessage';
+import ErrorNotRegisteredAsHost from '../error-message/NotRegisteredAsHost';
 import NohAppsMessage from '../error-message/NohAppsMessage';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 import {table_data} from '../../../utils/data-refactor'
@@ -31,15 +32,11 @@ class SummaryhAppsTables extends React.Component<Props, State> {
   }
 
   fetchTableData = () => {
-    console.log("fetching table : ", this.props)
+    // console.log("fetching table : ", this.props)
     if(this.props.all_hApps !== undefined)
     return table_data(this.props.all_hApps);
     else
     return []
-  }
-
-  onClick = () => {
-    console.log("*CLICK*")
   }
 
   public render() {
@@ -47,20 +44,24 @@ class SummaryhAppsTables extends React.Component<Props, State> {
       ...newProps
     } = this.props;
 
+
+    if(this.props.is_registered_host){
+      if( this.props.is_registered_host.addresses.length === 0 ){
+        return <div>
+        <ErrorNotRegisteredAsHost />
+        </div>
+
+      }
+    }
     if (!this.props.all_hApps){
       return <div>
         <ErrorMessage />
       </div>
     }
-
-    console.log("In the table props: ", this.props)
-
-    console.log("In the table State: ", this.state)
-
-    const table_columns = home_table_columns(this.props, this.state, this.onClick);
+    // console.log("In the table props: ", this.props)
+    const table_columns = home_table_columns(this.props, this.state);
     const table_data = this.fetchTableData();
-
-    console.log("Table Data: ",table_data);
+    // console.log("Table Data: ",table_data);
     return (
     <div className={classes.transactionTablesContainer}>
 
@@ -89,7 +90,6 @@ class SummaryhAppsTables extends React.Component<Props, State> {
                 }
               }}
               SubComponent={(row:any) => {
-              // this.props.get_hApp_details({app_hash:row.original.hApps_hash});
               return (
                   <div className={classes.subtable} style={{ padding: "10px", margin: '0 auto', marginBottom:"8px", width:'95%' }}>
                     <DropDownHomeTable

@@ -1,4 +1,7 @@
 # Holo Hosting App GUI
+
+![GitHub last commit](https://img.shields.io/github/last-commit/holo-host/holo-hosting-app_GUI.svg)
+
 **Status:** Closed-Alpha. Early development and testing.
 
 The hosting app is a space for Hosts and App Providers to interact
@@ -90,4 +93,5 @@ Network spawned with bindings:
 
 ---
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
