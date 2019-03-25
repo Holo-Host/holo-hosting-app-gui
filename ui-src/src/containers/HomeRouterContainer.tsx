@@ -51,6 +51,9 @@ export interface DispatchProps {
   get_hApp_details:({payload}:any)=> void,
   register_as_host:({payload}:any)=> void,
   register_as_provider:({payload}:any)=> void,
+
+  add_domain_name:({payload}:any)=> void,
+  add_service_log_details:({payload}:any)=> void,
 }
 export type Props =  StateProps & DispatchProps & OwnProps;
 

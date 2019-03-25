@@ -12,6 +12,9 @@ export const RegisterhAppBundle = createHolochainAsyncAction<{}, Array<any>>(DNA
 export const GethAppDetails = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, PROVIDER, 'get_app_details');
 export const RegisterProvider = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, PROVIDER, 'register_as_provider');
 
+export const AddDomainName = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, PROVIDER, 'add_app_domain_name');
+export const AddServiceLogDetails = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, PROVIDER, 'add_service_log_details');
+
 /*Host Zome calls*/
 export const IsRegisterHostAction = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'is_registered_as_host');
 export const GetAllhApps = createHolochainAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'get_all_apps');

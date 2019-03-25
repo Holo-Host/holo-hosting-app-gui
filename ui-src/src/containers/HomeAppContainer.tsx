@@ -11,6 +11,8 @@ import {
   GethAppDetails,
   RegisterProvider,
   RegisterHost,
+  AddDomainName,
+  AddServiceLogDetails
 } from '../actions/transactionActions';
 import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
 
@@ -74,6 +76,9 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     get_hApp_details : (payload) => {dispatch(GethAppDetails.create(payload))},
     register_as_host : (payload) => {dispatch(RegisterHost.create(payload))},
     register_as_provider : (payload) => {dispatch(RegisterProvider.create(payload))},
+
+    add_domain_name : (payload) => {dispatch(AddDomainName.create(payload))},
+    add_service_log_details : (payload) => {dispatch(AddServiceLogDetails.create(payload))},
   };
 }
 

@@ -98,31 +98,10 @@ class RegisterhAppForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      uiHash: '',
-      dnaHashes: [],
-      description: '',
-      categories: [],
-      tags: [],
-      listOfTags: [ // change out with API once plugged in...
-        "minesweeper",
-        "microsoft_games",
-        "90s_games",
-        "live_streaming",
-        "chat",
-        "kanban_board"
-      ],
-      listOfCategories: [ // change out with API once plugged in...
-        "games",
-        "movies",
-        "developer_tools",
-        "admin_tools",
-      ],
-      dnaAmount: [''],
-      spacing: '16',
-      domainUrl: '',
+      holofuel_account:'',
       max_fuel_per_invoice: 0,
       max_unpaid_value: 0,
-      value: 50
+      spacing: '16',
     };
   };
 
@@ -131,26 +110,6 @@ class RegisterhAppForm extends React.Component {
     // this.props.get_all_hApps();
   }
 
-
-  addDnaLine = () => {
-    // hack to add add'l lines... refactor
-    const newAmount = this.state.dnaAmount;
-    newAmount.push('i');
-
-    this.setState({
-      dnaAmount: newAmount
-    })
-  }
-
-  removeDnaLine = () => {
-    // hack to add add'l lines... refactor
-    const newAmount = this.state.dnaAmount;
-    newAmount.pop('i');
-
-    this.setState({
-      dnaAmount: newAmount
-    })
-  }
 
   handleChange = (title) => (event) => {
     this.setState({ [title]: event.target.value });
@@ -165,41 +124,14 @@ class RegisterhAppForm extends React.Component {
 
   clearValues = () => {
     this.setState({
-      uiHash: '',
-      dnaHashes: [""],
-      description: '',
-      categories: [],
-      tags: [],
-      dnaAmount: [''],
-      domainUrl:'',
       max_fuel_per_invoice: 0,
       max_unpaid_value: 0
     })
   }
 
-  handleDnaHashChange = (dnaNum) => (event) => {
-    const newDnaHashList = this.state.dnaHashes;
-    dnaNum + 1;
-    const testValue = newDnaHashList[dnaNum] = event.target.value;
-
-    this.setState({ dnaHashes: newDnaHashList });
-  };
 
   handleSubmit = async () => {
-    // const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes};
-    const happBundleCall = this.props.register_hApp_bundle({ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes});
-    const app_hash = await new Promise(function(resolve, reject) {
-      const result = resolve(happBundleCall);
-      console.log("RESULT >> IS THIS THE app_hash?! :", result);
-    });
-
-    // const serviceLogAPIBundle = await {app_hash: this.state.app_hash, max_fuel_per_invoice:this.state.max_fuel_per_invoice, max_unpaid_value:this.state.max_unpaid_value};
-    // this.props.add_service_log_details(serviceLogAPIBundle);
-    //
-    // const domainUrlAPIBundle = await { domain_name:this.state.domainUrl, app_hash: this.state.app_hash };
     // this.props.add_domain_name(serviceLogAPIBundle);
-
-
     this.clearValues();
   };
 
@@ -218,43 +150,19 @@ class RegisterhAppForm extends React.Component {
 
 
               <Grid item>
-                <h4 className={classes.h4}>hApp Name</h4>
+                <h4 className={classes.h4}>HoloFuel Account</h4>
                 <FormControl className={classes.margin}>
                   <TextField
-                    id="app_name"
-                    label="App Name"
-                    value={this.state.app_name}
-                    onChange={this.handleChange('app_name')}
+                    id="holofuel_account"
+                    label="HoloFuel Account"
+                    value={this.state.holofuel_account}
+                    onChange={this.handleChange('holofuel_account')}
                     className={classes.textField}
                     margin="normal"
                   />
                  </FormControl>
               </Grid>
 
-              <Grid item>
-                <h4 className={classes.textHeader} >UI Details</h4>
-                <FormControl className={classes.margin}>
-                    <InputLabel htmlFor='ui-hash' className={classes.textFormLabel}>Type in the UI Hash</InputLabel>
-                    <TextInput value={this.state.uiHash} onChange={this.handleChange('uiHash')}/>
-                </FormControl>
-               </Grid>
-
-               <Grid item>
-                 <h4 className={classes.textHeader} style={{display:'inline-flex', marginRight:'5px'}}>DNA Details</h4>
-                  <span onClick={this.addDnaLine} style={{display:'inline-flex'}}>
-                    <AddIcon style={{color:'#0e094b'}}/>
-                  </span>
-                  <span onClick={this.removeDnaLine} style={{display:'inline-flex'}}>
-                    <RemoveIcon style={{color:'#0e094b'}}/>
-                  </span>
-                  <br/>
-                 <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="dna-hash" className={classes.textFormLabel}>Type in each DNA Hash</InputLabel>
-                    {this.state.dnaAmount.map((value, i) => (
-                      <TextInput key={i} value={this.state.dnaHashes[i]} onChange={this.handleDnaHashChange(i)}/>
-                    ))}
-                 </FormControl>
-                </Grid>
 
                 <Grid item>
                   <h4 className={classes.h4}>hApp Summary</h4>
@@ -367,5 +275,3 @@ class RegisterhAppForm extends React.Component {
   }
 };
 export default withStyles(styles)(RegisterhAppForm);
-
-//
