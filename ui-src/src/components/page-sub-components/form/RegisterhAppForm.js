@@ -152,13 +152,6 @@ class RegisterhAppForm extends React.Component {
     this.setState({ [title]: event.target.value });
   };
 
-  handleSliderChange = (event, value) => {
-      this.setState({
-        [event.currentTarget.id]: value
-      });
-    };
-
-
   clearValues = () => {
     this.setState({
       uiHash: '',
