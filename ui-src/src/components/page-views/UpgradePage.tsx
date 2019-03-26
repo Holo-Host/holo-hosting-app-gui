@@ -9,7 +9,9 @@ import Slide from '@material-ui/core/Slide';
 // local imports :
 import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
 import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar';
-import SettingFormParameters from '../page-sub-components/input-fields/SettingFormParameters';
+// import SettingFormParameters from '../page-sub-components/input-fields/SettingFormParameters';
+import RegisterHost from '../page-sub-components/form/RegisterHost'
+import RegisterProvider from '../page-sub-components/form/RegisterProvider'
 
 export interface OwnProps {
   classes: any,
@@ -68,16 +70,29 @@ class HoloSettings extends React.Component<Props, State> {
     return (
     <div>
       <br/>
+      <div>
       <Typography className={classnames(classes.profileHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
-        Upgrade Your hApp
+        Register As Host
       </Typography>
       <Typography className={classnames(classes.h3extraTopMargin)} variant="subheading" gutterBottom={gutterBottom} component="h2" >
-        Please type in the hash of the hApp Bundle you would like to update.
+        Please provide all the details to register as a Host.
       </Typography>
         <br/>
         <br/>
+      <RegisterHost />
+      </div>
+      <div>
+      <Typography className={classnames(classes.profileHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
+        Register As Provider
+      </Typography>
+      <Typography className={classnames(classes.h3extraTopMargin)} variant="subheading" gutterBottom={gutterBottom} component="h2" >
+        Please provide all the details to register as a Provider.
+      </Typography>
+        <br/>
+        <br/>
+      <RegisterProvider />
+      </div>
 
-        <SettingFormParameters {...newProps}/>
 
         <div>
           { transferBtnBar ?
