@@ -8,8 +8,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from '@material-ui/core/Typography';
 import HomeIcon from '@material-ui/icons/Home';
-import UploadIcon from '@material-ui/icons/CloudUpload';
-import UpgradeIcon from '@material-ui/icons/Update';
+import UploadIcon from '@material-ui/icons/OpenInBrowser';
+import UpgradeIcon from '@material-ui/icons/Settings';
 // Local Imports
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
@@ -78,7 +78,7 @@ class SubNavBar extends React.Component<Props, State> {
                 <UpgradeIcon style={{color:'#00838d'}} width="25px" height="25px"/>
               </ListItemIcon>
               <Typography variant="subheading" style={{color:"#00838d", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
-                Upgrade
+                Settings
               </Typography>
             </Link>
             </ListItem>

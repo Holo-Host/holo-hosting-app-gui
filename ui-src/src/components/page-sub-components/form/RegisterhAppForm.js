@@ -118,10 +118,7 @@ class RegisterhAppForm extends React.Component {
       ],
       dnaAmount: [''],
       spacing: '16',
-      domainUrl: '',
-      max_fuel_per_invoice: 0,
-      max_unpaid_value: 0,
-      value: 50
+      domainUrl: ''
     };
   };
 
@@ -170,9 +167,7 @@ class RegisterhAppForm extends React.Component {
       categories: [],
       tags: [],
       dnaAmount: [''],
-      domainUrl:'',
-      max_fuel_per_invoice: 0,
-      max_unpaid_value: 0
+      domainUrl:''
     })
   }
 
@@ -192,9 +187,6 @@ class RegisterhAppForm extends React.Component {
       console.log("RESULT >> IS THIS THE app_hash?! :", result);
     });
 
-    // const serviceLogAPIBundle = await {app_hash: this.state.app_hash, max_fuel_per_invoice:this.state.max_fuel_per_invoice, max_unpaid_value:this.state.max_unpaid_value};
-    // this.props.add_service_log_details(serviceLogAPIBundle);
-    //
     // const domainUrlAPIBundle = await { domain_name:this.state.domainUrl, app_hash: this.state.app_hash };
     // this.props.add_domain_name(serviceLogAPIBundle);
 
@@ -282,61 +274,6 @@ class RegisterhAppForm extends React.Component {
                       className={classes.textField}
                       margin="normal"
                     />
-                   </FormControl>
-                </Grid>
-
-                <Grid item>
-                  <h4 className={classes.h4}>Price Ceiling (per Invoice)</h4>
-                  <br/>
-                  <FormControl className={classes.margin}>
-                  <Chip
-                    label={`${this.state.max_fuel_per_invoice} HF`}
-                    className={classes.chip}
-                    color="primary"
-                    variant="outlined"
-                   />
-                  <Slider
-                    id="max_fuel_per_invoice"
-                    value={this.state.max_fuel_per_invoice}
-                    aria-labelledby="max_fuel_per_invoice"
-                    onChange={this.handleSliderChange}
-                    classes={{
-                      container: classes.slider,
-                      thumbIconWrapper: classes.thumbIconWrapper,
-                    }}
-                    min={0}
-                    max={50}
-                    step={1}
-                    thumb={<LensIcon style={{ color: '#4859b8' }} />}
-                  />
-                   </FormControl>
-                </Grid>
-
-
-                <Grid item>
-                  <h4 className={classes.h4}>Maximum Allowed Bad Debt (per Provider)</h4>
-                  <br/>
-                  <FormControl className={classes.margin}>
-                  <Chip
-                    label={`${this.state.max_unpaid_value} HF`}
-                    className={classes.chip}
-                    color="primary"
-                    variant="outlined"
-                   />
-                  <Slider
-                    id="max_unpaid_value"
-                    value={this.state.max_unpaid_value}
-                    aria-labelledby="max_unpaid_value"
-                    onChange={this.handleSliderChange}
-                    classes={{
-                      container: classes.slider,
-                      thumbIconWrapper: classes.thumbIconWrapper,
-                    }}
-                    min={0}
-                    max={100}
-                    step={1}
-                    thumb={<LensIcon style={{ color: '#4859b8' }} />}
-                  />
                    </FormControl>
                 </Grid>
 

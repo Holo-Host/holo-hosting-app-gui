@@ -107,9 +107,15 @@ class RegisterhAppForm extends React.Component {
 
   componentDidMount() {
     console.log("Check / verify accessible dispatched actions....")
-    // this.props.get_all_hApps();
+    // this.props.is_registered_as_host();
+    // this.props.get_agent_details();
   }
 
+
+  register_host = () =>{
+    this.props.register_as_host({host_doc:{kyc_proof:""}});
+    setTimeout(this.props.is_registered_as_host, 2000);
+  }
 
   handleChange = (title) => (event) => {
     this.setState({ [title]: event.target.value });
@@ -135,6 +141,7 @@ class RegisterhAppForm extends React.Component {
     this.clearValues();
   };
 
+
   render () {
     console.log("this.state", this.state);
     console.log("this.props", this.props);
@@ -148,6 +155,23 @@ class RegisterhAppForm extends React.Component {
           <Grid container>
             <form onSubmit={this.handleSubmit} className={classes.form}>
 
+
+            <Grid item>
+              <h4 className={classes.h4}>
+                { this.props.is_registered_host ?  this.props.is_registered_host.addresses.length !== 0 ? `Registered` :
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    className={ classes.colButton }
+                    onClick={ this.register_host }
+                    style={{margin:"3px"}}
+                  >
+                    Click to Register
+                  </Button>
+                :
+                  `Loading...`
+                }
+              </h4>
 
               <Grid item>
                 <h4 className={classes.h4}>HoloFuel Account</h4>
@@ -163,6 +187,19 @@ class RegisterhAppForm extends React.Component {
                  </FormControl>
               </Grid>
 
+              <Grid item>
+                <h4 className={classes.h4}>HoloFuel Account</h4>
+                <FormControl className={classes.margin}>
+                  <TextField
+                    id="holofuel_account"
+                    label="HoloFuel Account"
+                    value={this.state.holofuel_account}
+                    onChange={this.handleChange('holofuel_account')}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                 </FormControl>
+              </Grid>
 
                 <Grid item>
                   <h4 className={classes.h4}>hApp Summary</h4>
