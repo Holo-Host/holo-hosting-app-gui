@@ -10,29 +10,39 @@ const DNA_INSTANCE = setInstance();
 export function transactionReducer (state: OriginalState = INITIAL_STATE, action: Action) {
   const { type, payload } = action;
   switch (type) {
+
     /*Manages Provider Returns*/
    case `${DNA_INSTANCE}/${PROVIDER}/is_registered_as_provider_SUCCESS`: {
      return { ...state, is_registered_provider : payload };
    }
+   case `${DNA_INSTANCE}/${PROVIDER}/register_as_provider_SUCCESS`: {
+     return { ...state };
+   }
    case `${DNA_INSTANCE}/${PROVIDER}/register_app_SUCCESS`: {
-     return { ...state};
+     console.log(" !!! last_registered_hApp !!!! : ", payload)
+     return { ...state, last_registered_hApp: payload};
    }
    case `${DNA_INSTANCE}/${PROVIDER}/get_app_details_SUCCESS`: {
      return { ...state, app_details:payload};
    }
-   case `${DNA_INSTANCE}/${PROVIDER}/register_as_provider_SUCCESS`: {
-     return { ...state };
+   case `${DNA_INSTANCE}/${PROVIDER}/get_my_registered_app_SUCCESS`: {
+     const all_registered_apps = refactorAllApps(payload).toString();
+     const all_registered_hApps = [all_registered_apps];
+     return { ...state, all_registered_hApps };
    }
+
 
     /*Manages Host Returns*/
    case `${DNA_INSTANCE}/${HOST}/is_registered_as_host_SUCCESS`: {
      return { ...state, is_registered_host : payload };
    }
-   case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
-     return { ...state, all_hApps : refactorAllApps(payload) };
-   }
    case `${DNA_INSTANCE}/${HOST}/register_as_host_SUCCESS`: {
      return { ...state };
+   }
+   case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
+     const all_apps = refactorAllApps(payload).toString();
+     const all_hApps = [all_apps];
+     return { ...state, all_hApps };
    }
 
      /*Manages WhoAmI Returns*/
@@ -54,6 +64,9 @@ export type State = {
   my_agent_string: string,
   my_agent_hash: string,
   hf_base_dna_hash: string,
+  all_hApps: Array<any>,
+  all_registered_hApps: Array<any>,
+  last_registered_hApp: string,
 
 // holofuel specific states :
   ledger_state: Ledger,
@@ -71,6 +84,9 @@ export type State = {
 export type OriginalState = State | undefined;
 
 export const INITIAL_STATE: State = {
+  all_hApps: [],
+  all_registered_hApps:[],
+  last_registered_hApp: '',
   list_of_instance_info: [],
   list_of_agents: [],
   my_agent_string: '',

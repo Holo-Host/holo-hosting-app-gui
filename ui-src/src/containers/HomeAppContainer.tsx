@@ -6,13 +6,15 @@ import {
   IsRegisterProviderAction,
   IsRegisterHostAction,
   GetAgentDetails,
-  RegisterhAppBundle,
   GetAllhApps,
+  GetRegisteredApps,
   GethAppDetails,
   RegisterProvider,
   RegisterHost,
   AddDomainName,
-  AddServiceLogDetails
+  AddServiceLogDetails,
+  // RegisterhAppBundle,
+  register_hApp_bundle
 } from '../actions/transactionActions';
 import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
 
@@ -39,11 +41,13 @@ class HomeAppContainer extends React.Component<Props> {
 const mapStateToProps = ({ reducers }: any): StateProps => {
   // console.log("reducers", reducers);
   return {
-// global identifiers :
+// global identifiers :last_registered_hApplast_registered_hApp
   is_registered_provider:reducers.is_registered_provider,
   is_registered_host:reducers.is_registered_host,
   agent_details:reducers.agent_details,
   all_hApps:reducers.all_hApps,
+  all_registered_hApps:reducers.all_registered_hApps,
+  last_registered_hApp:reducers.last_registered_hApp,
   app_details:reducers.app_details,
 // holofuel specific states :
 // TODO: DELETE THE FOLLOWING AND ALL REFERENCE TO IT WITHIN CODE...
@@ -68,11 +72,12 @@ const mapStateToProps = ({ reducers }: any): StateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
+    register_hApp_bundle : (payload) => {dispatch(register_hApp_bundle(payload))},
     is_registered_as_provider : () => {dispatch(IsRegisterProviderAction.create({}))},
     is_registered_as_host : () => {dispatch(IsRegisterHostAction.create({}))},
     get_agent_details : () => {dispatch(GetAgentDetails.create({}))},
-    register_hApp_bundle : (payload) => {dispatch(RegisterhAppBundle.create(payload))},
     get_all_hApps : () => {dispatch(GetAllhApps.create({}))},
+    get_all_registered_hApps : () => {dispatch(GetRegisteredApps.create({}))},
     get_hApp_details : (payload) => {dispatch(GethAppDetails.create(payload))},
     register_as_host : (payload) => {dispatch(RegisterHost.create(payload))},
     register_as_provider : (payload) => {dispatch(RegisterProvider.create(payload))},

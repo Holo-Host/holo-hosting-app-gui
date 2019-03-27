@@ -39,6 +39,8 @@ export interface StateProps {
   is_registered_host:any,
   agent_details:any,
   all_hApps:any,
+  all_registered_hApps:any,
+  last_registered_hApp:any,
   app_details:any,
 }
 export interface DispatchProps {
@@ -47,6 +49,7 @@ export interface DispatchProps {
   get_agent_details: () => void,
   register_hApp_bundle: ({payload}:any) => void,
   get_all_hApps:()=> void,
+  get_all_registered_hApps:()=> void,
   get_hApp_details:({payload}:any)=> void,
   register_as_host:({payload}:any)=> void,
   register_as_provider:({payload}:any)=> void,

@@ -97,25 +97,12 @@ class RegisterhAppForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      app_name:'',
       uiHash: '',
       dnaHashes: [],
       description: '',
       categories: [],
       tags: [],
-      listOfTags: [ // change out with API once plugged in...
-        "minesweeper",
-        "microsoft_games",
-        "90s_games",
-        "live_streaming",
-        "chat",
-        "kanban_board"
-      ],
-      listOfCategories: [ // change out with API once plugged in...
-        "games",
-        "movies",
-        "developer_tools",
-        "admin_tools",
-      ],
       dnaAmount: [''],
       spacing: '16',
       domainUrl: ''
@@ -154,6 +141,7 @@ class RegisterhAppForm extends React.Component {
 
   clearValues = () => {
     this.setState({
+      app_name: '',
       uiHash: '',
       dnaHashes: [""],
       description: '',
@@ -172,24 +160,64 @@ class RegisterhAppForm extends React.Component {
     this.setState({ dnaHashes: newDnaHashList });
   };
 
+  handlesubmithAppBundle = async () => {
+    let hApp_call_res;
+    try {
+      new Promise((resolve, reject) => {
+        resolve(
+          this.props.register_hApp_bundle({ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes})
+        )
+        hApp_call_res = "call complete";
+      })
+    }
+    catch(err) {
+      console.log("Error occured when regeistering app", err);
+      hApp_call_res = "call errored"
+    }
+
+    console.log("hApp_call_res", hApp_call_res);
+    return hApp_call_res;
+  };
+
   handleSubmit = async () => {
-    // const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes};
-    const happBundleCall = this.props.register_hApp_bundle({ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes});
-    const app_hash = await new Promise(function(resolve, reject) {
-      const result = resolve(happBundleCall);
-      console.log("RESULT >> IS THIS THE app_hash?! :", result);
-    });
+    let app_hash;
+    const retrieve_hash = new Promise((resolve, reject) => {
+      this.handlesubmithAppBundle();
+    }).then(res => {
+      setTimeout(() => {
+        resolve(this.props.last_registered_hApp);
+      }, 4000)
+    })
+    app_hash = await retrieve_hash;
 
+    console.log("app_hash", app_hash)
+    // const app_hash = await this.handlesubmithAppBundle().then(res => {
+    //   console.log("res", res);
+    //   setTimeout(() => {
+    //     return this.props.last_registered_hApp;
+    //   }, 2000)
+    // })
+
+    console.log("handle_submit >> IS THIS THE app_hash?! :", app_hash);
+
+    // const app_details = {
+    //   name: this.state.app_name,
+    //   details:this.state.description
+    // };
+    // const addAppDetailsAPIBundle = await { app_details, app_hash };
+    // console.log("add_app_detailsAPIBundle", addAppDetailsAPIBundle);
+    // // this.props.add_app_details({ app_details, app_hash });
+    //
     // const domainUrlAPIBundle = await { domain_name:this.state.domainUrl, app_hash: this.state.app_hash };
-    // this.props.add_domain_name(serviceLogAPIBundle);
-
+    // console.log("domainUrlAPIBundle", domainUrlAPIBundle);
+    // this.props.add_domain_name(domainUrlAPIBundle);
 
     this.clearValues();
   };
 
   render () {
-    console.log("this.state", this.state);
-    console.log("this.props", this.props);
+    // console.log("this.state", this.state);
+    // console.log("this.props", this.props);
 
     const { classes } = this.props;
     const { spacing } = this.state;
@@ -235,7 +263,7 @@ class RegisterhAppForm extends React.Component {
                  <FormControl className={classes.margin}>
                     <InputLabel htmlFor="dna-hash" className={classes.textFormLabel}>Type in each DNA Hash</InputLabel>
                     {this.state.dnaAmount.map((value, i) => (
-                      <TextInput key={i} value={this.state.dnaHashes[i]} onChange={this.handleDnaHashChange(i)}/>
+                      <TextInput key={i} value={this.state.dnaHashes[i] } onChange={this.handleDnaHashChange(i)}/>
                     ))}
                  </FormControl>
                 </Grid>

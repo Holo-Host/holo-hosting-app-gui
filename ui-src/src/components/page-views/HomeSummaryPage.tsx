@@ -18,6 +18,7 @@ import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer'
 import HAppTables from '../page-sub-components/hoc-table/SummaryhAppsTables';
 import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar';
 import styles from '../styles/page-styles/DefaultPageMuiStyles';
+import { table_data } from '../../utils/data-refactor'
 import '../styles/page-styles/scaffold-styles.css';
 
 export type ClientType = {
@@ -76,12 +77,8 @@ class HomeSummaryPage extends React.Component<Props, State> {
     this.testingCalls();
   }
 
-  register_provider = () =>{
-    this.props.register_as_provider({provider_doc:{kyc_proof:""}});
-    setTimeout(this.props.is_registered_as_provider, 2000);
-  }
-
    public render () {
+     console.log(this.props);
       const { classes, transferBtnBar, ...newProps } = this.props;
       const gutterBottom : boolean = true;
 
@@ -133,7 +130,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
           </Paper>
 
           <div>
-            {this.props.all_hApps ?
+            { table_data!.length <= 0 ?
               <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
                 All Register hApps
               </Typography>
