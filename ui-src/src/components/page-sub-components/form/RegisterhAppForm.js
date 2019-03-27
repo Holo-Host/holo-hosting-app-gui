@@ -162,10 +162,15 @@ class RegisterhAppForm extends React.Component {
 
   handlesubmithAppBundle = async () => {
     let hApp_call_res;
+    const app_bundle= {
+      ui_hash: this.state.uiHash,
+      dna_list: this.state.dnaHashes
+    }
+
     try {
       new Promise((resolve, reject) => {
         resolve(
-          this.props.register_hApp_bundle({ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes})
+          this.props.register_hApp_bundle({app_bundle})
         )
         hApp_call_res = "call complete";
       })
@@ -179,38 +184,23 @@ class RegisterhAppForm extends React.Component {
     return hApp_call_res;
   };
 
-  handleSubmit = async () => {
-    let app_hash;
-    const retrieve_hash = new Promise((resolve, reject) => {
-      this.handlesubmithAppBundle();
-    }).then(res => {
-      setTimeout(() => {
-        resolve(this.props.last_registered_hApp);
-      }, 4000)
-    })
-    app_hash = await retrieve_hash;
+  handleSubmit = () => {
+    const app_bundle= {
+      ui_hash: this.state.uiHash,
+      dna_list: this.state.dnaHashes
+    }
 
-    console.log("app_hash", app_hash)
-    // const app_hash = await this.handlesubmithAppBundle().then(res => {
-    //   console.log("res", res);
-    //   setTimeout(() => {
-    //     return this.props.last_registered_hApp;
-    //   }, 2000)
-    // })
+    const app_details = {
+      name: this.state.app_name,
+      details:this.state.description
+    };
 
-    console.log("handle_submit >> IS THIS THE app_hash?! :", app_hash);
+    const domain_name = {
+      dns_name: this.state.domainUrl
+    }
 
-    // const app_details = {
-    //   name: this.state.app_name,
-    //   details:this.state.description
-    // };
-    // const addAppDetailsAPIBundle = await { app_details, app_hash };
-    // console.log("add_app_detailsAPIBundle", addAppDetailsAPIBundle);
-    // // this.props.add_app_details({ app_details, app_hash });
-    //
-    // const domainUrlAPIBundle = await { domain_name:this.state.domainUrl, app_hash: this.state.app_hash };
-    // console.log("domainUrlAPIBundle", domainUrlAPIBundle);
-    // this.props.add_domain_name(domainUrlAPIBundle);
+    this.props.register_hApp_bundle({ app_bundle, app_details, domain_name })
+    // console.log("app_register_call", app_register_call)
 
     this.clearValues();
   };

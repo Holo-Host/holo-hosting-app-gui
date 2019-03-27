@@ -13,7 +13,7 @@ import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar'
 import RegisterHost from '../page-sub-components/form/RegisterHost'
 import RegisterProvider from '../page-sub-components/form/RegisterProvider'
 import NohAppsMessage from '../page-sub-components/error-message/NohAppsMessage';
-import Registered from '../page-sub-components/error-message/NohAppsMessage';
+import Registered from '../page-sub-components/error-message/Registered';
 
 export interface OwnProps {
   classes: any,
@@ -67,14 +67,17 @@ class HoloSettings extends React.Component<Props, State> {
     const { classes, transferBtnBar, showTransferBar, txType, ...newProps } = this.props;
     const gutterBottom : boolean = true;
     // const { agentHash, agentString } = this.state.agentData;
-    console.log("check out the contents / body of the state.agentData obj: ", this.state.agentData)
+    console.log("check out the contents / body of the state.agentData obj: ", this.state.agentData);
+
+    console.log(this.props.is_registered_provider === undefined );
+    console.log( this.props.is_registered_host === undefined);
 
     if( this.props.is_registered_provider === undefined || this.props.is_registered_host === undefined ) {
       return   <NohAppsMessage tableText="New"/>
     }
 
-    if( this.props.is_registered_provider.addresses.length && this.props.is_registered_host.addresses.length ) {
-      return   <Registered tableText="New"/>
+    if( this.props.is_registered_host.addresses.length && this.props.is_registered_provider.addresses.length ) {
+      return   <Registered />
     }
 
     return (

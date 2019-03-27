@@ -138,7 +138,7 @@ class RegisterHost extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.register_as_host({provider_doc:{kyc_proof:""}});
+    this.props.register_as_host({host_doc:{kyc_proof:""}});
     setTimeout(this.props.is_registered_host, 2000);
 
     this.clearValues();
