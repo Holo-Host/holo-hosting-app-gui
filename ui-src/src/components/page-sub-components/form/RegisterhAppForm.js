@@ -199,7 +199,7 @@ class RegisterhAppForm extends React.Component {
       dns_name: this.state.domainUrl
     }
 
-    this.props.register_hApp_bundle({ app_bundle, app_details, domain_name })
+      this.props.register_hApp_bundle({ app_bundle, app_details, domain_name })
     // console.log("app_register_call", app_register_call)
 
     this.clearValues();
