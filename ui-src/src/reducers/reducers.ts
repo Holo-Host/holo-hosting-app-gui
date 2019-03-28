@@ -40,9 +40,7 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
      return { ...state };
    }
    case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
-     const all_apps = refactorAllApps(payload).toString();
-     const all_hApps = [all_apps];
-     return { ...state, all_hApps };
+     return { ...state, all_hApps : refactorAllApps(payload) };
    }
 
      /*Manages WhoAmI Returns*/
