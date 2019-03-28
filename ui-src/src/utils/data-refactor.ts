@@ -1,5 +1,5 @@
 export const table_data = (payload:any) => {
-  console.log("Refactoring data",payload)
+  // console.log("Refactoring data",payload)
   let table_data:any[]=[]
   payload.forEach((bundle:any)=>{
       table_data.push({

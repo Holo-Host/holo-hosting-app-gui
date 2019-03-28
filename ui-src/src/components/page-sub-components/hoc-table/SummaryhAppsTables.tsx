@@ -55,7 +55,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     }
     if (!this.props.all_hApps){
       return <div>
-        <ErrorMessage />
+      <NohAppsMessage tableText="New"/>
       </div>
     }
     // console.log("In the table props: ", this.props)
@@ -66,7 +66,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     <div className={classes.transactionTablesContainer}>
 
       { table_data!.length <= 0 ?
-        <NohAppsMessage tableText="New"/>
+        <ErrorMessage />
       :
       <div className={classnames(classes.tableContainer)}>
             <AdvancedExpandReactTable
