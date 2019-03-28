@@ -23,6 +23,9 @@ import SendIcon from '@material-ui/icons/Send';
 import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
+import Slider from '@material-ui/lab/Slider';
+import LensIcon from '@material-ui/icons/LensOutlined';
+import Chip from '@material-ui/core/Chip';
 // LOCAL Imports
 import TextInput from '../input-fields/TextInput';
 import validate from '../../../utils/validate';
@@ -72,6 +75,21 @@ const styles = theme => ({
   formBtns : {
     margin: 5,
     display: 'inline-flex'
+  },
+  slider: {
+    padding: '22px 0px',
+  },
+  thumbIcon: {
+    borderRadius: '50%',
+  },
+  thumbIconWrapper: {
+    backgroundColor: '#fff',
+  },
+  chip: {
+     margin: theme.spacing.unit,
+     width: '20%',
+     margin: '0 auto',
+     color: '#4859b8'
   }
 });
 
@@ -81,7 +99,9 @@ class RegisterHost extends React.Component {
     this.state = {
       kyc_details: "",
       hfaccount: '',
-      spacing: '16',
+      max_fuel_per_invoice: 0,
+      max_unpaid_value: 0,
+      spacing: '16'
     };
   };
 
@@ -94,12 +114,11 @@ class RegisterHost extends React.Component {
     this.setState({ [title]: event.target.value });
   };
 
-  clearValues = () => {
-    this.setState({
-      kyc_details: "",
-      hfaccount: '',
-    })
-  }
+  handleSliderChange = (event, value) => {
+      this.setState({
+        [event.currentTarget.id]: value
+      });
+    };
 
   handleDnaHashChange = (dnaNum) => (event) => {
     const newDnaHashList = this.state.dnaHashes;
@@ -109,9 +128,19 @@ class RegisterHost extends React.Component {
     this.setState({ dnaHashes: newDnaHashList });
   };
 
+  clearValues = () => {
+    this.setState({
+      kyc_details: "",
+      hfaccount: '',
+      max_fuel_per_invoice: 0,
+      max_unpaid_value: 0
+    })
+  }
+
   handleSubmit = () => {
-    const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes}
-    this.props.register_hApp_bundle(hAppAPIBundle)
+    this.props.register_as_host({host_doc:{kyc_proof:""}});
+    setTimeout(this.props.is_registered_host, 2000);
+
     this.clearValues();
   };
 
@@ -129,7 +158,6 @@ class RegisterHost extends React.Component {
             <form onSubmit={this.handleSubmit} className={classes.form}>
 
             <div style={{marginTop:'10px', border:'5px solid white'}}>
-
               <Grid item>
                 <h4 className={classes.h4}>KYC Details</h4>
                 <FormControl className={classes.margin}>
@@ -153,8 +181,62 @@ class RegisterHost extends React.Component {
                     <TextInput value={this.state.uiHash} onChange={this.handleChange('hfaccount')}/>
                 </FormControl>
                </Grid>
-                  <Grid item>
 
+               <Grid item>
+                 <h4 className={classes.h4}>Price Ceiling (per Invoice)</h4>
+                 <br/>
+                 <FormControl className={classes.margin}>
+                 <Chip
+                   label={`${this.state.max_fuel_per_invoice} HF`}
+                   className={classes.chip}
+                   color="primary"
+                   variant="outlined"
+                  />
+                 <Slider
+                   id="max_fuel_per_invoice"
+                   value={this.state.max_fuel_per_invoice}
+                   aria-labelledby="max_fuel_per_invoice"
+                   onChange={this.handleSliderChange}
+                   classes={{
+                     container: classes.slider,
+                     thumbIconWrapper: classes.thumbIconWrapper,
+                   }}
+                   min={0}
+                   max={50}
+                   step={1}
+                   thumb={<LensIcon style={{ color: '#4859b8' }} />}
+                 />
+                  </FormControl>
+               </Grid>
+
+               <Grid item>
+                 <h4 className={classes.h4}>Maximum Allowed Bad Debt (per Provider)</h4>
+                 <br/>
+                 <FormControl className={classes.margin}>
+                 <Chip
+                   label={`${this.state.max_unpaid_value} HF`}
+                   className={classes.chip}
+                   color="primary"
+                   variant="outlined"
+                  />
+                 <Slider
+                   id="max_unpaid_value"
+                   value={this.state.max_unpaid_value}
+                   aria-labelledby="max_unpaid_value"
+                   onChange={this.handleSliderChange}
+                   classes={{
+                     container: classes.slider,
+                     thumbIconWrapper: classes.thumbIconWrapper,
+                   }}
+                   min={0}
+                   max={100}
+                   step={1}
+                   thumb={<LensIcon style={{ color: '#4859b8' }} />}
+                 />
+                  </FormControl>
+               </Grid>
+
+               <Grid item>
                   <Tooltip title="Clear Values" aria-label="Clear Values">
                     <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
                       <ClearIcon />
@@ -166,8 +248,7 @@ class RegisterHost extends React.Component {
                       <SendIcon />
                     </Fab>
                   </Tooltip>
-
-                  </Grid>
+               </Grid>
               </div>
 
             </form>

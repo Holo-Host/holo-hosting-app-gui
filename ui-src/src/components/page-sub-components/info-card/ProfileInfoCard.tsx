@@ -80,6 +80,9 @@ function ProfileInfoCard(props: Props) {
           {name}
         </Typography>
           <hr/>
+          <Typography className={classnames(classes.typography, classes.balanceHeader)} variant="caption" component="h6" style={{fontSize:'.55rem'}}>
+            {hash}
+          </Typography>
       </CardContent>
     </Card>
   );

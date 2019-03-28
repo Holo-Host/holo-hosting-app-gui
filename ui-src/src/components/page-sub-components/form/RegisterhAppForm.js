@@ -23,6 +23,9 @@ import SendIcon from '@material-ui/icons/Send';
 import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
+import Slider from '@material-ui/lab/Slider';
+import LensIcon from '@material-ui/icons/LensOutlined';
+import Chip from '@material-ui/core/Chip';
 // LOCAL Imports
 import TextInput from '../input-fields/TextInput';
 import validate from '../../../utils/validate';
@@ -72,6 +75,21 @@ const styles = theme => ({
   formBtns : {
     margin: 5,
     display: 'inline-flex'
+  },
+  slider: {
+    padding: '22px 0px',
+  },
+  thumbIcon: {
+    borderRadius: '50%',
+  },
+  thumbIconWrapper: {
+    backgroundColor: '#fff',
+  },
+  chip: {
+     margin: theme.spacing.unit,
+     width: '20%',
+     margin: '0 auto',
+     color: '#4859b8'
   }
 });
 
@@ -79,32 +97,20 @@ class RegisterhAppForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      app_name:'',
       uiHash: '',
       dnaHashes: [],
       description: '',
       categories: [],
       tags: [],
-      listOfTags: [ // change out with API once plugged in...
-        "minesweeper",
-        "microsoft_games",
-        "90s_games",
-        "live_streaming",
-        "chat",
-        "kanban_board"
-      ],
-      listOfCategories: [ // change out with API once plugged in...
-        "games",
-        "movies",
-        "developer_tools",
-        "admin_tools",
-      ],
       dnaAmount: [''],
       spacing: '16',
+      domainUrl: ''
     };
   };
 
   componentDidMount() {
-    console.log("ARE ALL THE DISPATCHED ACTIONS HERE??!?!?!?!")
+    console.log("Check / verify accessible dispatched actions....")
     // this.props.get_all_hApps();
   }
 
@@ -135,12 +141,14 @@ class RegisterhAppForm extends React.Component {
 
   clearValues = () => {
     this.setState({
+      app_name: '',
       uiHash: '',
       dnaHashes: [""],
       description: '',
       categories: [],
       tags: [],
-      dnaAmount: ['']
+      dnaAmount: [''],
+      domainUrl:''
     })
   }
 
@@ -152,15 +160,54 @@ class RegisterhAppForm extends React.Component {
     this.setState({ dnaHashes: newDnaHashList });
   };
 
+  handlesubmithAppBundle = async () => {
+    let hApp_call_res;
+    const app_bundle= {
+      ui_hash: this.state.uiHash,
+      dna_list: this.state.dnaHashes
+    }
+
+    try {
+      new Promise((resolve, reject) => {
+        resolve(
+          this.props.register_hApp_bundle({app_bundle})
+        )
+        hApp_call_res = "call complete";
+      })
+    }
+    catch(err) {
+      console.log("Error occured when regeistering app", err);
+      hApp_call_res = "call errored"
+    }
+
+    console.log("hApp_call_res", hApp_call_res);
+    return hApp_call_res;
+  };
+
   handleSubmit = () => {
-    const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes}
-    this.props.register_hApp_bundle(hAppAPIBundle)
+    const app_bundle= {
+      ui_hash: this.state.uiHash,
+      dna_list: this.state.dnaHashes
+    }
+
+    const app_details = {
+      name: this.state.app_name,
+      details:this.state.description
+    };
+
+    const domain_name = {
+      dns_name: this.state.domainUrl
+    }
+
+      this.props.register_hApp_bundle({ app_bundle, app_details, domain_name })
+    // console.log("app_register_call", app_register_call)
+
     this.clearValues();
   };
 
   render () {
-    console.log("this.state", this.state);
-    console.log("this.props", this.props);
+    // console.log("this.state", this.state);
+    // console.log("this.props", this.props);
 
     const { classes } = this.props;
     const { spacing } = this.state;
@@ -177,9 +224,7 @@ class RegisterhAppForm extends React.Component {
                 <FormControl className={classes.margin}>
                   <TextField
                     id="app_name"
-                    label="AppName"
-                    multiline
-                    rowsMax="4"
+                    label="App Name"
                     value={this.state.app_name}
                     onChange={this.handleChange('app_name')}
                     className={classes.textField}
@@ -208,7 +253,7 @@ class RegisterhAppForm extends React.Component {
                  <FormControl className={classes.margin}>
                     <InputLabel htmlFor="dna-hash" className={classes.textFormLabel}>Type in each DNA Hash</InputLabel>
                     {this.state.dnaAmount.map((value, i) => (
-                      <TextInput key={i} value={this.state.dnaHashes[i]} onChange={this.handleDnaHashChange(i)}/>
+                      <TextInput key={i} value={this.state.dnaHashes[i] } onChange={this.handleDnaHashChange(i)}/>
                     ))}
                  </FormControl>
                 </Grid>
@@ -229,55 +274,34 @@ class RegisterhAppForm extends React.Component {
                    </FormControl>
                 </Grid>
 
-                {/*
-                  <Grid item>
-                   <h4 className={classes.h4}>hAPP Category</h4>
-                   <FormControl className={classes.margin}>
-                    <RadioGroup
-                      name="categories"
-                      aria-label="Categories"
-                      value={this.state.categories}
-                      onChange={this.handleChange('categories')}
-                    >
-                    {this.state.listOfCategories.map(category => (
-                      <FormControlLabel value={category} control={<Radio color="default" style={{textTransform:"capitalize"}} />} label={category.split("_").join(" ")} key={category} />
-                     ))}
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-
                 <Grid item>
-                  <h4 className={classes.h4}>hApp Identifiers</h4>
+                  <h4 className={classes.h4}>Domain URL</h4>
                   <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="tags">Tags</InputLabel>
-                    <Select
-                      multiple
-                      onChange={this.handleChange('tags')}
-                      input={<Input id="select-multiple" />}
-                      value={this.state.tags}
-                    >
-                    {this.state.listOfTags.map(tag => (
-                       <MenuItem value={tag} key={tag} style={{textTransform:"capitalize"}}>{tag.split("_").join(" ")}</MenuItem>
-                     ))}
-                    </Select>
-                  </FormControl>
+                    <TextField
+                      id="domainUrl"
+                      label="Domain Url"
+                      value={this.state.domainUrl}
+                      onChange={this.handleChange('domainUrl')}
+                      className={classes.textField}
+                      margin="normal"
+                    />
+                   </FormControl>
                 </Grid>
-                */}
 
                 <div style={{marginTop:'150px', border:'5px solid white'}}>
                   <Grid item>
 
-                  <Tooltip title="Clear Values" aria-label="Clear Values">
-                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
-                      <ClearIcon />
-                    </Fab>
-                  </Tooltip>
+                    <Tooltip title="Clear Values" aria-label="Clear Values">
+                      <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
+                        <ClearIcon />
+                      </Fab>
+                    </Tooltip>
 
-                  <Tooltip title="Submit" aria-label="Submit">
-                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
-                      <SendIcon />
-                    </Fab>
-                  </Tooltip>
+                    <Tooltip title="Submit" aria-label="Submit">
+                      <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
+                        <SendIcon />
+                      </Fab>
+                    </Tooltip>
 
                   </Grid>
               </div>

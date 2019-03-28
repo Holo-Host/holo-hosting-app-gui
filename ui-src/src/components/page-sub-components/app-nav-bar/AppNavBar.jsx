@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -16,6 +15,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Grow from '@material-ui/core/Grow';
 import Slide from '@material-ui/core/Slide';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import HomeIcon from '@material-ui/icons/Home';
+import UploadIcon from '@material-ui/icons/OpenInBrowser';
+import UpgradeIcon from '@material-ui/icons/Settings';
+
 
 const styles = {
   root: {
@@ -134,7 +138,10 @@ class AppNavBar extends React.Component {
                       aria-haspopup="false"
                     >
                       <Link to='/home'>
-                        <img src="/assets/icons/tx-history.png" alt="tx-history-logo" width="18px" height="18px"/>
+                        {/* <img src="/assets/icons/tx-history.png" alt="tx-history-logo" width="18px" height="18px"/> */}
+                        <IconButton className={classes.icon}>
+                          <HomeIcon />
+                        </IconButton>
                       </Link>
                     </IconButton>
                   </Grow>
@@ -148,7 +155,10 @@ class AppNavBar extends React.Component {
                       aria-haspopup="false"
                     >
                       <Link to='/provider/hApps'>
-                        <img src="/assets/icons/transfer.png" alt="transfer-logo" width="18px" height="18px"/>
+                        {/* <img src="/assets/icons/tx-history.png" alt="tx-history-logo" width="18px" height="18px"/> */}
+                        <IconButton className={classes.icon}>
+                          <UploadIcon />
+                        </IconButton>
                       </Link>
                     </IconButton>
                   </Grow>
@@ -162,7 +172,10 @@ class AppNavBar extends React.Component {
                       aria-haspopup="false"
                     >
                       <Link to='/settings'>
-                        <img src="/assets/icons/settings.png" alt="settings-logo" width="18px" height="18px"/>
+                        {/* <img src="/assets/icons/tx-history.png" alt="tx-history-logo" width="18px" height="18px"/> */}
+                        <IconButton className={classes.icon}>
+                          <UpgradeIcon />
+                        </IconButton>
                       </Link>
                     </IconButton>
                   </Grow>

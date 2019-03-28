@@ -110,8 +110,9 @@ class RegisterProvider extends React.Component {
   };
 
   handleSubmit = () => {
-    const hAppAPIBundle = {ui_hash: this.state.uiHash, dna_list: this.state.dnaHashes}
-    this.props.register_hApp_bundle(hAppAPIBundle)
+    this.props.register_as_provider({provider_doc:{kyc_proof:""}});
+    setTimeout(this.props.is_registered_as_provider, 2000);
+
     this.clearValues();
   };
 

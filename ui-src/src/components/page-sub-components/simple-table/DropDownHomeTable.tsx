@@ -5,9 +5,12 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Today from '@material-ui/icons/Today';
-import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
-import MessageIcon from '@material-ui/icons/Message';
+// import Today from '@material-ui/icons/Today';
+// import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
+
+import Code from '@material-ui/icons/Code';
+import Description from '@material-ui/icons/Description';
+// import MessageIcon from '@material-ui/icons/Message';
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
 
@@ -39,6 +42,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
   public render() {
     const { classes } = this.props;
     const {
+      app_hash,
       app_bundle,
       app_details
      } = this.props.rowInfo.original;
@@ -50,23 +54,29 @@ class DropDownHomeTable extends React.Component<Props, State> {
           <Table className={classes.muiSimpleTable}>
             <TableBody>
               <TableRow key={'0'}>
-                <TableCell className={classes.tableCell} align="center" scope="currentRow">
-                  <Today/> UI Hash
+              <TableCell className={classes.tableCell} align="center" scope="currentRow">
+                <Code/> hApp Hash
+              </TableCell>
+              <TableCell className={classes.tableCell} align="center" scope="currentRow">
+                  <Code/> UI Hash
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
-                  <HourGlassIcon/> DNA Hash
+                  <Code/> DNA Hash
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
-                  <MessageIcon/> Details
+                  <Description/> Details
                 </TableCell>
               </TableRow>
               <TableRow key={'1'}>
                 <TableCell align="center" className={classes.tableCell}>
+                    <h4>{ app_hash }</h4>
+                </TableCell>
+                <TableCell align="center" className={classes.tableCell}>
                     <h4>{ app_bundle.ui_hash }</h4>
-                    </TableCell>
+                </TableCell>
                 <TableCell align="center" className={classes.tableCell} scope="currentRow">
                     <h4>{ app_bundle.dna_list }</h4>
-                    </TableCell>
+                </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
                   {app_details}
                 </TableCell>

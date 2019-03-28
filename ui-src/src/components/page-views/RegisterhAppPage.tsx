@@ -36,7 +36,7 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
     return (
     <div>
       <div>
-        <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
+        <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} style={{ color:'#0000008a' }} component="h3" >
           Register hApp
        </Typography>
         <div style={{ margin:'0 auto' }}>

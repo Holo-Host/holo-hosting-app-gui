@@ -15,7 +15,7 @@ const home_table_columns = (props: any, state: any) => {
 
   const table_columns = [{
     Header: (row: any) => (<h4 style={{color:'#0e094b'}}>hApps</h4>),
-    accessor: 'app_hash',
+    accessor: 'app_name',
     filterAll: true,
     Cell: (row: any) => (
       <div style={{ padding: '5px' }}>

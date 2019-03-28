@@ -1,17 +1,30 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 // custom mui styles :
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Paper from '@material-ui/core/Paper';
 import Portal from '@material-ui/core/Portal';
 import Slide from '@material-ui/core/Slide';
+import TagFacesIcon from '@material-ui/icons/TagFaces';
+import Dashboard from '@material-ui/icons/Dashboard';
 // local imports
 import { StateProps, DispatchProps } from '../../containers/HomeRouterContainer';
 import HAppTables from '../page-sub-components/hoc-table/SummaryhAppsTables';
 import BottomMenuBar from '../page-sub-components/bottom-menu-bar/BottomMenuBar';
 import styles from '../styles/page-styles/DefaultPageMuiStyles';
+import { table_data } from '../../utils/data-refactor'
 import '../styles/page-styles/scaffold-styles.css';
+
+export type ClientType = {
+   key: number,
+   label: string
+};
 
 export interface OwnProps {
   classes: any,
@@ -30,6 +43,7 @@ export interface State {
   currentTxBatchInfo: {newer:{}, over:{}} | null,
   data: {} | null,
   prevProps: any,
+  clientType: Array<ClientType>
 }
 
 class HomeSummaryPage extends React.Component<Props, State> {
@@ -41,8 +55,12 @@ class HomeSummaryPage extends React.Component<Props, State> {
       txBatchType: "",
       currentTxBatchInfo: null,
       data: {},
-      prevProps: {}
-    };
+      prevProps: {},
+      clientType: [
+        { key: 0, label: 'Host' },
+        { key: 1, label: 'Provider'}
+      ]
+    }
   };
 
  testingCalls(){
@@ -59,60 +77,60 @@ class HomeSummaryPage extends React.Component<Props, State> {
     this.testingCalls();
   }
 
-  register_provider = () =>{
-    this.props.register_as_provider({provider_doc:{kyc_proof:""}});
-    setTimeout(this.props.is_registered_as_provider, 2000);
-  }
-  register_host = () =>{
-    this.props.register_as_host({host_doc:{kyc_proof:""}});
-    setTimeout(this.props.is_registered_as_host, 2000);
-  }
-
    public render () {
+     console.log(this.props);
       const { classes, transferBtnBar, ...newProps } = this.props;
       const gutterBottom : boolean = true;
 
       return (
         <div>
-          <div className={classes.jumbotron}>
-            <div className={classnames(classes.flexContainer, classes.reducedJumbotron)}>
-              <div className={classes.flexItem}>
-                <h3 className={classes.h3}>Provider</h3>
-                <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                  {this.props.is_registered_provider ?  this.props.is_registered_provider.addresses.length !== 0 ? `Registered` :
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      className={ classes.colButton }
-                      onClick={ this.register_provider }
-                      style={{margin:"3px"}}
-                    >
-                      Click to Register
-                    </Button> : `Loading...`}
-                </Typography>
-              </div>
-              <div className={classes.verticalLine}/>
-              <div className={classes.flexItem}>
-                <h3 className={classes.h3}>Host</h3>
-                <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                {this.props.is_registered_host ?  this.props.is_registered_host.addresses.length !== 0 ? `Registered` :
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    className={ classes.colButton }
-                    onClick={ this.register_host }
-                    style={{margin:"3px"}}
-                  >
-                  Click to Register
-                  </Button> : `Loading...`}
-                </Typography>
-              </div>
-            </div>
-            <h3 className={classes.h3} style={{margin:'25px'}}>You Public Address : {this.props.agent_details ? `${this.props.agent_details.hash}`: `Loading...`} </h3>
-          </div>
+          <Paper className={classes.root}>
+            {this.state.clientType.map(data => {
+              let icon = null;
+              let api = null;
+              if (data.label === 'Provider') {
+                icon = <Dashboard />;
+                api = this.props.is_registered_provider;
+              }
+              else {
+                icon = <TagFacesIcon />;
+                api = this.props.is_registered_host;
+              }
+
+
+              return (
+                <Card
+                  key={data.key}
+                  className={classes.card}
+                  style={{ flex:'auto' }}
+                >
+                <CardContent>
+                  <h3 className={classes.h3}>{data.label}</h3>
+                  <span style={{color:'#00838d'}}>{icon}</span>
+                  <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
+                    { api ?  api.addresses.length !== 0 ? `Registered` :
+                      <CardActions>
+                        <Link to="/settings" style={{ flex:'auto', textDecoration:'none' }}>
+                          <Button
+                            variant="outlined"
+                            color="primary"
+                          >
+                            Click to Register
+                          </Button>
+                        </Link>
+                      </CardActions>
+                      :
+                      `Loading...`
+                    }
+                  </Typography>
+                </CardContent>
+                </Card>
+              );
+            })}
+          </Paper>
 
           <div>
-            {this.props.all_hApps ?
+            { table_data!.length <= 0 ?
               <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} component="h3" >
                 All Register hApps
               </Typography>
