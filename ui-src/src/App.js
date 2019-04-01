@@ -71,7 +71,7 @@ class App extends Component {
 
         return (
             <Admin
-                title={this.props.data || ''}
+                title=''
                 dataProvider={dataProvider}
                 customReducers={{
                   theme: themeReducer,
