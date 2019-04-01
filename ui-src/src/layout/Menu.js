@@ -17,6 +17,8 @@ import reviews from '../pages/reviews';
 import users from '../pages/users';
 import happs from '../pages/happs';
 import categories from '../pages/categories';
+
+import posts from '../pages/posts';
 // local component imports:
 import SubMenu from './SubMenu';
 
@@ -82,6 +84,14 @@ class Menu extends Component {
                     leftIcon={<reviews.icon />}
                     onClick={onMenuClick}
                   />
+                  <MenuItemLink
+                      to={`/posts`}
+                      primaryText={translate(`resources.happs.name`, {
+                          smart_count: 2,
+                      })}
+                      leftIcon={<reviews.icon />}
+                      onClick={onMenuClick}
+                    />
 
                 <Responsive
                     xsmall={

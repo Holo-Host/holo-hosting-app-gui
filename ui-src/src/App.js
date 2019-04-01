@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Admin, Resource } from 'react-admin';
 
+
 // app utils imports:
 import customRoutes from './utils/routes';
 import authProvider from './utils/authProvider';
@@ -13,12 +14,14 @@ import themeReducer from './utils/injectReducers/themeReducer';
 import {  is_registered_provider, is_registered_host } from "./utils/injectReducers/dashboardReducer";
 import { whoami } from "./utils/injectReducers/categoriesReducer";
 import {  registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles } from "./utils/injectReducers/happsReducer";
-import restProvider from 'ra-data-simple-rest';
-// import dataProviderFactory from './dataProvider';
-// import fakeServerFactory from './fakeServer';
+
+// import restProvider from 'ra-data-simple-rest';
+import dataProviderFactory from './utils/dataProvider';
+import fakeServerFactory from './utils/fakeRest';
 
 // app custom layout & style imports:
-import { Login, Layout, Menu } from './layout';
+import { Layout, Menu } from './layout';
+import Login from './pages/login/Login';
 import './App.css';
 
 // app page imports:
@@ -27,6 +30,10 @@ import categories from './pages/categories';
 import reviews from './pages/reviews';
 import { Dashboard } from './pages/dashboard';
 import users from './pages/users';
+
+import { PostsCreate, PostsEdit, PostsShow } from './pages/posts';
+// import posts from './pages/posts';
+
 
 const i18nProvider = locale => {
     if (locale === 'fr') {
@@ -40,16 +47,10 @@ class App extends Component {
     state = { dataProvider: null };
 
     async componentWillMount() {
-        // this.restoreFetch = await fakeServerFactory(
-        //     process.env.REACT_APP_DATA_PROVIDER
-        // );
-        //
-        // const dataProvider = await dataProviderFactory(
-        //     process.env.REACT_APP_DATA_PROVIDER
-        // );
+        this.restoreFetch = await fakeServerFactory('rest');
 
-        const dataProvider = restProvider('http://localhost:8800');
-
+        const dataProvider = await dataProviderFactory('rest');
+        // const dataProvider = restProvider('http://localhost:8800');
         this.setState({ dataProvider });
     }
 
@@ -70,14 +71,16 @@ class App extends Component {
 
         return (
             <Admin
-                title=""
+                title={this.props.data || ''}
                 dataProvider={dataProvider}
                 customReducers={{
                   theme: themeReducer,
                   whoami,
                   is_registered_provider,
                   is_registered_host,
-                  registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles
+                  registered_hApp_bundles,
+                  current_hApp_bundle_details,
+                  all_hApp_bundles
                 }}
                 customSagas={sagas}
                 customRoutes={customRoutes}
@@ -93,6 +96,7 @@ class App extends Component {
                 <Resource name="categories" {...categories} />
                 <Resource name="users" {...users} />
                 <Resource name="reviews" {...reviews} />
+                <Resource name="posts" show={PostsShow} create={PostsCreate} edit={PostsEdit} />
             </Admin>
         );
     }

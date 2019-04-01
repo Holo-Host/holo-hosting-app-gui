@@ -45,7 +45,12 @@ const getColsForWidth = width => {
 const times = (nbChildren, fn) =>
     Array.from({ length: nbChildren }, (_, key) => fn(key));
 
-const LoadingGridList = ({ width, classes, nbItems = 10 }) => (
+const LoadingGridList = (props) => {
+  console.log("GridList PROPS", props);
+  const { classes, ids, data, basePath, width } = props;
+  const nbItems = 9
+
+  return (
     <div className={classes.root}>
         <MuiGridList
             cellHeight={180}
@@ -60,9 +65,14 @@ const LoadingGridList = ({ width, classes, nbItems = 10 }) => (
             ))}
         </MuiGridList>
     </div>
-);
+  );
+}
 
-const LoadedGridList = ({ classes, ids, data, basePath, width }) => (
+const LoadedGridList = (props) => {
+  console.log("GridList PROPS", props);
+  const { classes, ids, data, basePath, width } = props;
+
+  return (
     <div className={classes.root}>
         <MuiGridList
             cellHeight={180}
@@ -99,7 +109,8 @@ const LoadedGridList = ({ classes, ids, data, basePath, width }) => (
             ))}
         </MuiGridList>
     </div>
-);
+  );
+}
 
 const GridList = ({ loadedOnce, ...props }) =>
     loadedOnce ? <LoadedGridList {...props} /> : <LoadingGridList {...props} />;

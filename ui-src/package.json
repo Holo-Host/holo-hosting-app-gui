@@ -14,7 +14,6 @@
         "@material-ui/icons": "~1.1.0",
         "connected-react-router": "^6.3.2",
         "data-generator": "^1.0.0",
-        "fakerest": "~2.1.0",
         "fetch-mock": "~6.3.0",
         "json-graphql-server": "~2.1.1",
         "ra-data-fakerest": "^2.0.0",
@@ -35,7 +34,8 @@
         "redux-form": "^8.1.0",
         "redux-immutable": "^4.0.0",
         "redux-logger": "^3.0.6",
-        "redux-saga": "~0.16.0"
+        "redux-saga": "~0.16.0",
+        "sinon": "^7.3.1"
     },
     "scripts": {
         "start-ui-agent1": "PORT=8800 REACT_APP_NODE_PORT=3000 REACT_APP_DNA_INSTANCE=test-instance NODE_ENV=development PUBLIC_URL='./' react-scripts start",
@@ -49,5 +49,8 @@
         "not dead",
         "not ie <= 10",
         "not op_mini all"
-    ]
+    ],
+    "devDependencies": {
+        "fakerest": "^2.1.0"
+    }
 }

@@ -31,21 +31,23 @@ const QuickFilter = translate(
         <Chip className={classes.root} label={translate(label)} />
     ))
 );
-
 export const HAppsFilter = props => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
+
         <ReferenceInput
-            source="category_id"
-            reference="categories"
+            source="happs_id"
+            reference="happs"
             sort={{ field: 'id', order: 'ASC' }}
         >
             <SelectInput source="name" />
         </ReferenceInput>
+
         <NumberInput source="width_gte" />
         <NumberInput source="width_lte" />
         <NumberInput source="height_gte" />
         <NumberInput source="height_lte" />
+
         <QuickFilter
             label="resources.happs.fields.stock_lte"
             source="stock_lte"
@@ -102,4 +104,35 @@ const enhance = compose(
 );
 
 export default enhance(HAppsList);
-// export default HAppsList;
+
+// <Filter {...props}>
+//     <SearchInput source="q" alwaysOn />
+//     <ReferenceInput
+//         source="category_id"  {/* // happs_id */}
+//         reference="categories"  {/* // happs */}
+//         sort={{ field: 'id', order: 'ASC' }}
+//     >
+//         <SelectInput source="name" /> {/* // should THE SOURCE this be NAME or HASH ?!/! */}
+//     </ReferenceInput>
+//
+//     <NumberInput source="width_gte" /> {/* // source = "ui_hash" */}
+//     <NumberInput source="width_lte" />  {/* // source = "dna_hash" (one within the list) */}
+//     <NumberInput source="height_gte" />
+//     <NumberInput source="height_lte" />
+//
+//     {/*
+//       // <ReferenceInput
+//     //     source="review_id" // category_id
+//     //     reference="reviews" // categories
+//     //     sort={{ field: 'id', order: 'ASC' }}
+//     // >
+//     //     <SelectInput source="name" /> // source = STAR RATING...
+//     // </ReferenceInput>
+//     */}
+//
+//     <QuickFilter
+//         label="resources.happs.fields.stock_lte"
+//         source="stock_lte"
+//         defaultValue={10}
+//     />
+// </Filter>
