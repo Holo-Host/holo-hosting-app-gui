@@ -12,6 +12,7 @@
         "@holochain/hc-web-client": "^0.1.2",
         "@material-ui/core": "~1.4.0",
         "@material-ui/icons": "~1.1.0",
+        "@material-ui/lab": "^3.0.0-alpha.30",
         "connected-react-router": "^6.3.2",
         "data-generator": "^1.0.0",
         "fetch-mock": "~6.3.0",

@@ -2,33 +2,25 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { Field, reduxForm } from 'redux-form';
 import compose from 'recompose/compose';
+import { translate, changeLocale, Toolbar } from 'react-admin';
+import { Field, reduxForm } from 'redux-form';
 // MUI Component and Style Imports :
 import TextField from '@material-ui/core/TextField';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import withStyles from '@material-ui/core/styles/withStyles';
 import SendIcon from '@material-ui/icons/Send';
 import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
-import Slider from '@material-ui/lab/Slider';
-import LensIcon from '@material-ui/icons/LensOutlined';
-import Chip from '@material-ui/core/Chip';
-
 import RichTextInput from 'ra-input-rich-text';
 import {
   NumberInput,
@@ -123,25 +115,31 @@ const styles = theme => ({
   }
 });
 
-// export const styles = {
-//     main: { width: '5em' },
-// };
-
 const getDefaultDate = () => new Date();
-const HappsCreateToolbar = props => (
+const RegisterToolbar = props => (
   <Toolbar {...props}>
+      <Tooltip title="Submit Values" aria-label="Submit Values">
       <SaveButtonComponent
-          label={translate("posts.action.save_and_edit")}
+          label={<SendIcon/>}
           redirect="show"
-          submitOnEnter={true}
+          submitOnEnter={false}
+          onClick={this.clearValues}
       />
+      </Tooltip>
       {/* <SaveButton
           label={translate("posts.action.save_and_edit")}
           redirect="show"
           submitOnEnter={true}
       />   */}
+      <Tooltip title="Clear Values" aria-label="Clear Values">
+      <Button
+          label={<ClearIcon/>}
+          onClick={this.clearValues}
+      />
+      </Tooltip>
   </Toolbar>
 );
+
 
 
 class Register extends React.Component {
@@ -367,18 +365,7 @@ class Register extends React.Component {
 
                   <div style={{marginTop:'150px', border:'5px solid white'}}>
                     <Grid item>
-
-                      <Tooltip title="Clear Values" aria-label="Clear Values">
-                        <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
-                          <ClearIcon />
-                        </Fab>
-                      </Tooltip>
-
-                      <Tooltip title="Submit" aria-label="Submit">
-                        <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
-                          <SendIcon />
-                        </Fab>
-                      </Tooltip>
+                      <RegisterToolbar />
                     </Grid>
                 </div>
 

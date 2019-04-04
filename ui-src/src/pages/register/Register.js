@@ -13,7 +13,8 @@ import RegisterProvider from './RegisterProvider'
 import NohAppsMessage from './NohAppsMessage';
 import Registered from './RegisteredMessage';
 
-import { fetchhAppBundles, raFetchhAppBundles, makeCustomRAcall, registerAsProvider, isRegisteredAsProvider, registerhAppBundle } from '../happs/happs_actions';
+import { fetchhAppBundles, raFetchhAppBundles, makeCustomRAcall, registerhAppBundle } from '../happs/happs_actions';
+import {registerAsProvider, isRegisteredAsProvider, registerAsHost, isRegisteredAsHost } from '../dashboard/dashboard_actions';
 import { fetchAgent } from '../categories/categories_actions';
 
 
@@ -46,8 +47,8 @@ class Register extends React.Component<Props, State> {
 
   componentDidMount () {
     console.log("PROPS : ", this.props);
-    this.props.is_registered_as_provider();
-    this.props.is_registered_as_host();
+    this.props.isRegisteredAsProvider();
+    this.props.isRegisteredAsHost();
 
 // instead of props call (while awaiting completion), set state for moment..
     let newAccess = Object.assign({}, this.state.agentData);
@@ -65,18 +66,18 @@ class Register extends React.Component<Props, State> {
     console.log(this.props.registered_as_provider === undefined );
     console.log( this.props.registered_as_host === undefined);
 
-    if( this.props.registered_as_provider === undefined || this.props.registered_as_host === undefined ) {
+    if( this.props.registered_as_provider === null || this.props.registered_as_host === null ) {
       return   <NohAppsMessage tableText="New"/>
     }
 
-    if( this.props.registered_as_host.addresses.length && this.props.registered_as_provider.addresses.length ) {
+    if( this.props.registered_as_host.host_address && this.props.registered_as_provider.provider_address ) {
       return   <Registered />
     }
 
     return (
       <div>
         <br/>
-        { this.props.registered_as_provider.addresses.length ?
+        { this.props.registered_as_host.host_address ?
             <div />
           :
           <div>
@@ -94,7 +95,7 @@ class Register extends React.Component<Props, State> {
         }
 
 
-      { this.props.registered_as_provider.addresses.length ?
+      { this.props.registered_as_provider.provider_address ?
           <div />
         :
         <div>
@@ -119,19 +120,15 @@ const mapStateToProps = state => ({
     whoami: state.whoami,
     registered_as_host: state.registered_hApp_bundles,
     registered_as_provider: state.registered_hApp_bundles,
-    locale: state.i18n.locale,
-    registered_hApp_bundles: state.registered_hApp_bundles,
-    current_hApp_bundle_details: state.current_hApp_bundle_details,
-    all_hApp_bundles: state.all_hApp_bundles,
+    locale: state.i18n.locale
 });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
       registerAsProvider,
       isRegisteredAsProvider,
-      registerhAppBundle,
-      fetchhAppBundles,
-      raFetchhAppBundles,
+      registerAsHost,
+      isRegisteredAsHost,
       changeLocale,
       fetchAgent,
       makeCustomRAcall

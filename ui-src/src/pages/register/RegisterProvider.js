@@ -1,7 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Field, reduxForm } from 'redux-form';
 import compose from 'recompose/compose';
+import { translate, changeLocale, Toolbar, TextInput } from 'react-admin';
+import { Field, reduxForm } from 'redux-form';
 // MUI Component and Style Imports :
 import TextField from '@material-ui/core/TextField';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -15,8 +16,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import withStyles from '@material-ui/core/styles/withStyles';
 import SendIcon from '@material-ui/icons/Send';
@@ -24,7 +24,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveIcon from '@material-ui/icons/RemoveCircleOutline';
 // LOCAL Imports
-import TextInput from '../../app-components/TextInput';
+import SaveButtonComponent from "../../app-components/SaveButton";
 
 const styles = {
   root: {
@@ -73,6 +73,30 @@ const styles = {
     display: 'inline-flex'
   }
 };
+
+const RegisterToolbar = props => (
+  <Toolbar {...props}>
+      <Tooltip title="Submit Values" aria-label="Submit Values">
+      <SaveButtonComponent
+          label={<SendIcon/>}
+          redirect="show"
+          submitOnEnter={false}
+          onClick={this.clearValues}
+      />
+      </Tooltip>
+      {/* <SaveButton
+          label={translate("posts.action.save_and_edit")}
+          redirect="show"
+          submitOnEnter={true}
+      />   */}
+      <Tooltip title="Clear Values" aria-label="Clear Values">
+      <Button
+          label={<ClearIcon/>}
+          onClick={this.clearValues}
+      />
+      </Tooltip>
+  </Toolbar>
+);
 
 class RegisterProvider extends React.Component {
   constructor(props){
@@ -153,21 +177,10 @@ class RegisterProvider extends React.Component {
                     <TextInput value={this.state.uiHash} onChange={this.handleChange('hfaccount')}/>
                 </FormControl>
                </Grid>
-                  <Grid item>
 
-                  <Tooltip title="Clear Values" aria-label="Clear Values">
-                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
-                      <ClearIcon />
-                    </Fab>
-                  </Tooltip>
-
-                  <Tooltip title="Submit" aria-label="Submit">
-                    <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
-                      <SendIcon />
-                    </Fab>
-                  </Tooltip>
-
-                  </Grid>
+                <Grid item>
+                  <RegisterToolbar />
+                </Grid>
               </div>
 
             </form>
@@ -177,6 +190,17 @@ class RegisterProvider extends React.Component {
     )
   }
 };
+
 export default withStyles(styles)(RegisterProvider);
 
+// <Tooltip title="Clear Values" aria-label="Clear Values">
+//   <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} onClick={this.clearValues} >
+//     <ClearIcon />
+//   </Fab>
+// </Tooltip>
 //
+// <Tooltip title="Submit" aria-label="Submit">
+//   <Fab color="primary" className={classes.formBtns} style={{color:'#e7ebee', background:'#00838d'}} type='submit' >
+//     <SendIcon />
+//   </Fab>
+// </Tooltip>
