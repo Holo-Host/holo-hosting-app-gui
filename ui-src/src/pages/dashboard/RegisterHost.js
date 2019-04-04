@@ -33,12 +33,15 @@ class RegisterHost extends React.Component {
    registerHost = () => {
      this.props.registerAsHost({host_doc:{kyc_proof:""}});
    }
-
     render() {
+        console.log("REGISTER HOST PROPS: ",this.props);
         const { registered_as_host, classes,translate } = this.props;
+        if(registered_as_host === null || registered_as_host === undefined){
+          return <NotRegistered type="host" />
+        }
         return (
           <div className={classes.main}>
-            {registered_as_host ?
+            {registered_as_host.addresses.length !== 0 ?
               <div>
                 <Typography className={classes.title} color="textSecondary">
                   {translate('pos.dashboard.registerHost.is_host_title')}

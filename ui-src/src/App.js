@@ -13,9 +13,9 @@ import history from './utils/history';
 
 // page reducers
 import themeReducer from './utils/injectReducers/themeReducer';
-import {  registered_as_provider, registered_as_host } from "./utils/injectReducers/dashboardReducer";
+import {  is_registered_as_provider, is_registered_as_host } from "./utils/injectReducers/dashboardReducer";
 import { whoami } from "./utils/injectReducers/categoriesReducer";
-import {  registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles } from "./utils/injectReducers/happsReducer";
+import {  registered_as_provider,registered_as_host,registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles } from "./utils/injectReducers/happsReducer";
 
 // import restProvider from 'ra-data-simple-rest';
 import dataProviderFactory from './utils/dataProvider';

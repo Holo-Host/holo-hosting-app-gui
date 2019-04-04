@@ -43,10 +43,14 @@ class RegisterProvider extends React.Component {
     }
 
     render() {
-        const { registered_as_provider, classes, translate } = this.props;
+      console.log("REGISTER PROVIDER PROPS: ",this.props);
+      const { registered_as_provider, classes, translate } = this.props;
+      if(registered_as_provider === null || registered_as_provider === undefined){
+        return <NotRegistered type="provider" />
+      }
         return (
           <div className={classes.main}>
-            {registered_as_provider ?
+            {registered_as_provider.addresses.length !== 0  ?
               <div>
                 <Typography className={classnames(classes.messageText, classes.title)} color="textSecondary">
                   {translate('pos.dashboard.registerProvider.is_provider_title')}
