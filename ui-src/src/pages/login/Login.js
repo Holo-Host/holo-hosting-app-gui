@@ -112,11 +112,11 @@ class Login extends React.Component {
             <div className={classes.main}>
                 <Card className={classes.card}>
 
-                    <div className={classes.avatar}>
+                 {/*<div className={classes.avatar}>
                       <TestButton/>
                       <div>{whoami ? `MyAgentHash: ${whoami.hash}` : null }</div>
                     </div>
-                    <br/>
+                    <br/>*/ }
 
                     <div className={classes.avatar}>
                         <Avatar className={classes.icon}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { translate } from 'react-admin';
 import compose from 'recompose/compose';
@@ -19,6 +20,17 @@ const styles = theme => ({
     },
     title: {
         padding: '0 16px',
+    },
+    centerButton: {
+      display: 'block',
+      margin: '0 auto'
+    },
+    messageText: {
+      justifyContent:'center',
+      color:"#0e094b",
+      padding: 4,
+      margin: '0 auto',
+      fontWeight:'normal'
     }
 });
 
@@ -36,7 +48,7 @@ class RegisterProvider extends React.Component {
           <div className={classes.main}>
             {registered_as_provider ?
               <div>
-                <Typography className={classes.title} color="textSecondary">
+                <Typography className={classnames(classes.messageText, classes.title)} color="textSecondary">
                   {translate('pos.dashboard.registerProvider.is_provider_title')}
                 </Typography>
 
@@ -48,7 +60,7 @@ class RegisterProvider extends React.Component {
             :
 
               <div>
-                <Typography className={classes.title} color="textSecondary">
+                <Typography className={classnames(classes.messageText, classes.title)} color="textSecondary">
                   {translate('pos.dashboard.registerProvider.not_provider_title')}
                 </Typography>
 
@@ -56,8 +68,8 @@ class RegisterProvider extends React.Component {
                   <NotRegistered type="provider" />
                 </div>
 
-                <Button onClick={this.registerProvider}>
-                  <HomeIcon style={{ paddingRight: '0.5em' }} />
+                <Button onClick={this.registerProvider} className={classes.centerButton}>
+                  <HomeIcon style={{ margin: '0 auto', fontSize:'3em'}} />
                 </Button>
               </div>
             }

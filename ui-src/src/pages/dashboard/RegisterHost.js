@@ -19,6 +19,10 @@ const styles = theme => ({
     },
     title: {
         padding: '0 16px',
+    },
+    centerButton:{
+      display: 'block',
+      margin: '0 auto'
     }
 });
 
@@ -39,20 +43,20 @@ class RegisterHost extends React.Component {
                 <Typography className={classes.title} color="textSecondary">
                   {translate('pos.dashboard.registerHost.is_host_title')}
                 </Typography>
-                <RegisteredDash />
+                <RegisteredDash/>
               </div>
 
             :
 
               <div>
-                <Typography className={classes.title} color="textSecondary">
+                <Typography className={classes.title} color="textSecondary" >
                 {translate('pos.dashboard.registerHost.not_host_title')}
                 </Typography>
 
                 <NotRegistered type="host" />
 
-                <Button onClick={this.registerHost}>
-                  <DnsIcon style={{ paddingRight: '0.5em' }} />
+                <Button onClick={this.registerHost} className={classes.centerButton}>
+                  <DnsIcon style={{ margin: '0 auto', fontSize:'3em'}} />
                 </Button>
               </div>
             }
