@@ -17,10 +17,15 @@ export const IS_REGISTERED_AS_HOST = 'IS_REGISTERED_AS_HOST';
 export function registerAsProvider(payload) {
   return {
     type: REGISTER_AS_PROVIDER,
-    payload,
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"register_as_provider",
+      params:payload
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/register_as_provider`,
+      callString:`call`,
     }
   }
 };
@@ -28,10 +33,15 @@ export function registerAsProvider(payload) {
 export function isRegisteredAsProvider() {
   return {
     type: IS_REGISTERED_AS_PROVIDER,
-    payload: [],
+    payload: {
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"is_registered_as_provider",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/is_registered_as_provider`,
+      callString:`call`,
     }
   }
 };
@@ -40,10 +50,15 @@ export function isRegisteredAsProvider() {
 export function registerAsHost(payload) {
   return {
     type: REGISTER_AS_HOST,
-    payload,
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:HOST_ZOME_NAME,
+      function:"register_as_host",
+      params:payload
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${HOST_ZOME_NAME}/register_as_host`,
+      callString:`call`,
     }
   }
 };
@@ -51,10 +66,15 @@ export function registerAsHost(payload) {
 export function isRegisteredAsHost() {
   return {
     type: IS_REGISTERED_AS_HOST,
-    payload: [],
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:HOST_ZOME_NAME,
+      function:"is_registered_as_host",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${HOST_ZOME_NAME}/is_registered_as_host`,
+      callString:`call`,
     }
   }
 };

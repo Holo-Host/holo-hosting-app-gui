@@ -22,10 +22,15 @@ export const FETCH_ALL_HAPP_BUNDLES = 'FETCH_ALL_HAPP_BUNDLES';
 export function registerAsProvider(payload) {
   return {
     type: REGISTER_AS_PROVIDER,
-    payload,
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"register_as_provider",
+      params:payload
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/register_as_provider`,
+      callString:`call`,
     }
   }
 };
@@ -33,10 +38,15 @@ export function registerAsProvider(payload) {
 export function isRegisteredAsProvider() {
   return {
     type: IS_REGISTERED_AS_PROVIDER,
-    payload: [],
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"is_registered_as_provider",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/is_registered_as_provider`,
+      callString:`call`,
     }
   }
 };
@@ -45,10 +55,15 @@ export function isRegisteredAsProvider() {
 export function registerhAppBundle(payload) {
   return {
     type: REGISTER_HAPP_BUNDLE,
-    payload,
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"register_app",
+      params:payload
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/register_app`,
+      callString:`call`,
     }
   }
 };
@@ -57,10 +72,15 @@ export function registerhAppBundle(payload) {
 export function fetchhAppBundles() {
   return {
     type: FETCH_HAPP_BUNDLES,
-    payload:[],
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"get_my_registered_app_list",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/get_my_registered_app_list`,
+      callString:`call`,
     }
   }
 };
@@ -69,10 +89,15 @@ export function fetchhAppBundles() {
 export function gethAppBundleDetails(payload) {
   return {
     type: FETCH_HAPP_BUNDLE_DETAILS,
-    payload,
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:PROVIDER_ZOME_NAME,
+      function:"get_app_details",
+      params:payload
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${PROVIDER_ZOME_NAME}/get_app_details`,
+      callString:`call`,
     }
   }
 };
@@ -149,10 +174,15 @@ export function makeCustomRAcall (type, resource, params, basePath) {
 export function registerAsHost(payload) {
   return {
     type: REGISTER_AS_HOST,
-    payload,
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:HOST_ZOME_NAME,
+      function:"register_as_host",
+      params:payload
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${HOST_ZOME_NAME}/register_as_host`,
+      callString:`call`,
     }
   }
 };
@@ -160,10 +190,15 @@ export function registerAsHost(payload) {
 export function isRegisteredAsHost() {
   return {
     type: IS_REGISTERED_AS_HOST,
-    payload: [],
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:HOST_ZOME_NAME,
+      function:"is_registered_as_host",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${HOST_ZOME_NAME}/is_registered_as_host`,
+      callString:`call`,
     }
   }
 };
@@ -172,10 +207,14 @@ export function isRegisteredAsHost() {
 export function fetchAllhAppBundles() {
   return {
     type: FETCH_ALL_HAPP_BUNDLES,
-    payload: {},
+    payload:{
+      instance_id:DNA_INSTANCE,
+      zome:HOST_ZOME_NAME,
+      function:"get_all_apps",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString:`${DNA_INSTANCE}/${HOST_ZOME_NAME}/get_all_apps`,
-    }
+      callString:`call`   }
   }
 };

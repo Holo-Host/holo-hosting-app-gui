@@ -12,10 +12,15 @@ export const FETCH_AGENT = 'FETCH_AGENT';
 export function fetchAgent() {
   return {
     type: FETCH_AGENT,
-    payload: {},
+    payload: {
+      instance_id:DNA_INSTANCE,
+      zome:WHOAMI_ZOME_NAME,
+      function:"get_user",
+      params:{}
+    },
     meta: {
       holochainAction: true,
-      callString: `${DNA_INSTANCE}/${WHOAMI_ZOME_NAME}/get_user`,
+      callString: `call`,
       // fetch: UPDATE,
       // resource: 'categories'
     },

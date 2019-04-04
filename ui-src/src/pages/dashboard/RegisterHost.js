@@ -31,7 +31,7 @@ class RegisterHost extends React.Component {
    }
 
     render() {
-        const { registered_as_host, classes } = this.props;
+        const { registered_as_host, classes,translate } = this.props;
         return (
           <div className={classes.main}>
             {registered_as_host ?
@@ -46,7 +46,7 @@ class RegisterHost extends React.Component {
 
               <div>
                 <Typography className={classes.title} color="textSecondary">
-                  {translate('pos.dashboard.registerHost.not_host_title')}
+                {translate('pos.dashboard.registerHost.not_host_title')}
                 </Typography>
 
                 <NotRegistered type="host" />

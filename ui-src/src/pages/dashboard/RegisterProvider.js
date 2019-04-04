@@ -31,7 +31,7 @@ class RegisterProvider extends React.Component {
     }
 
     render() {
-        const { registered_as_provider, classes } = this.props;
+        const { registered_as_provider, classes, translate } = this.props;
         return (
           <div className={classes.main}>
             {registered_as_provider ?
