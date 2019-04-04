@@ -86,9 +86,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
- // return bindActionCreators(ContainerApiActions, dispatch);
   return bindActionCreators({
-      // hAppBundleActions,
       fetchhAppBundles,
       changeLocale,
       fetchAgent,
@@ -104,35 +102,3 @@ const enhance = compose(
 );
 
 export default enhance(HAppsList);
-
-// <Filter {...props}>
-//     <SearchInput source="q" alwaysOn />
-//     <ReferenceInput
-//         source="category_id"  {/* // happs_id */}
-//         reference="categories"  {/* // happs */}
-//         sort={{ field: 'id', order: 'ASC' }}
-//     >
-//         <SelectInput source="name" /> {/* // should THE SOURCE this be NAME or HASH ?!/! */}
-//     </ReferenceInput>
-//
-//     <NumberInput source="width_gte" /> {/* // source = "ui_hash" */}
-//     <NumberInput source="width_lte" />  {/* // source = "dna_hash" (one within the list) */}
-//     <NumberInput source="height_gte" />
-//     <NumberInput source="height_lte" />
-//
-//     {/*
-//       // <ReferenceInput
-//     //     source="review_id" // category_id
-//     //     reference="reviews" // categories
-//     //     sort={{ field: 'id', order: 'ASC' }}
-//     // >
-//     //     <SelectInput source="name" /> // source = STAR RATING...
-//     // </ReferenceInput>
-//     */}
-//
-//     <QuickFilter
-//         label="resources.happs.fields.stock_lte"
-//         source="stock_lte"
-//         defaultValue={10}
-//     />
-// </Filter>

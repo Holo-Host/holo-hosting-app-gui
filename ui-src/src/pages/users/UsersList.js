@@ -1,69 +1,72 @@
 import React from 'react';
+
+import memoize from 'lodash/memoize';
+import UsersEditEmbedded from './UsersEditEmbedded';
+import PeopleIcon from '@material-ui/icons/People';
+
+import Aside from './Aside';
 import {
-    BooleanField,
+    BulkDeleteWithConfirmButton,
     Datagrid,
-    DateField,
-    DateInput,
-    EditButton,
     Filter,
     List,
-    NullableBooleanInput,
-    NumberField,
     Responsive,
     SearchInput,
+    SimpleList,
+    TextField,
+    TextInput,
 } from 'react-admin';
-import withStyles from '@material-ui/core/styles/withStyles';
-// local component imports:
-import SegmentsField from './SegmentsField';
-import SegmentInput from './SegmentInput';
-import UsersLinkField from './UsersLinkField';
-import ColoredNumberField from './ColoredNumberField';
-import MobileGrid from './MobileGrid';
+export const UserIcon = PeopleIcon;
 
-const VisitorFilter = props => (
+
+const UsersFilter = ({ permissions, ...props }) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <DateInput source="last_seen_gte" />
-        <NullableBooleanInput source="has_ordered" />
-        <NullableBooleanInput source="has_newsletter" defaultValue />
-        <SegmentInput />
+        <TextInput source="name" />
+        {permissions === 'admin' ? <TextInput source="role" /> : null}
     </Filter>
 );
 
-const styles = {
-    nb_commands: { color: 'purple' },
-};
+const UsersBulkActionButtons = props => (
+    <BulkDeleteWithConfirmButton {...props} />
+);
 
-const VisitorList = ({ classes, ...props }) => (
+const rowClick = memoize(permissions => (id, basePath, record) => {
+    return permissions === 'admin'
+        ? Promise.resolve('edit')
+        : Promise.resolve('show');
+});
+
+const UsersList = ({ permissions, ...props }) => (
     <List
         {...props}
-        filters={<VisitorFilter />}
-        sort={{ field: 'last_seen', order: 'DESC' }}
-        perPage={25}
+        filters={<UsersFilter permissions={permissions} />}
+        filterDefaultValues={{ role: 'user' }}
+        sort={{ field: 'name', order: 'ASC' }}
+        aside={<Aside />}
+        bulkActionButtons={<UsersBulkActionButtons />}
     >
         <Responsive
-            xsmall={<MobileGrid />}
+            small={
+                <SimpleList
+                    primaryText={record => record.name}
+                    secondaryText={record =>
+                        permissions === 'admin' ? record.role : null
+                    }
+                />
+            }
             medium={
-                <Datagrid>
-                    <UsersLinkField />
-                    <DateField source="last_seen" type="date" />
-                    <NumberField
-                        source="nb_commands"
-                        label="resources.users.fields.commands"
-                        className={classes.nb_commands}
-                    />
-                    <ColoredNumberField
-                        source="total_spent"
-                        options={{ style: 'currency', currency: 'USD' }}
-                    />
-                    <DateField source="latest_purchase" showTime />
-                    <BooleanField source="has_newsletter" label="News." />
-                    <SegmentsField />
-                    <EditButton />
+                <Datagrid
+                    rowClick={rowClick(permissions)}
+                    expand={<UsersEditEmbedded />}
+                >
+                    <TextField source="id" />
+                    <TextField source="name" />
+                    {permissions === 'admin' && <TextField source="role" />}
                 </Datagrid>
             }
         />
     </List>
 );
 
-export default withStyles(styles)(VisitorList);
+export default UsersList;

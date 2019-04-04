@@ -7,13 +7,16 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 // app setup imports:
 import englishMessages from './utils/i18n/en';
 import { configureStore } from './store/configureStore';
+
+// import { createBrowserHistory } from 'history';
 import history from './utils/history';
 import App from './App';
-// import 'sanitize.css/sanitize.css';
+import dataProviderFactory from './utils/dataProvider';
+// const dataProvider = restProvider('http://path.to.my.api/');
 import './index.css';
 
 const authProvider = () => Promise.resolve();
-// const dataProvider = restProvider('http://path.to.my.api/');
+// import 'sanitize.css/sanitize.css';
 
 const i18nProvider = locale => {
     if (locale === 'fr') {
@@ -23,11 +26,17 @@ const i18nProvider = locale => {
     return englishMessages;
 };
 
+const dataProvider = async() => {
+  const dataResult = await dataProviderFactory('rest');
+  return dataResult;
+}
+console.log("dataProvider inside of INDEX.js", dataProvider)
+
 const initialState = {
-  // dataProvider,
+  dataProvider,
   authProvider,
   i18nProvider,
-  history
+  // history
 };
 const store = configureStore(initialState);
 const MOUNT_REACT_NODE = document.getElementById('root');

@@ -15,6 +15,8 @@ import { connect } from '@holochain/hc-web-client'; // '@holochain/hc-web-client
 // import createRootReducer from '../utils/rootReducer';
 import { setPort } from '../utils/constants'
 
+import history from '../utils/history';
+
 // ** Middleware for React-Admin **
 import {
     adminReducer,
@@ -31,17 +33,18 @@ const router = routerMiddleware();
 const sagaMiddleware = createSagaMiddleware();
 const enhancer = applyMiddleware(sagaMiddleware, router, holochain);
 const configureStore = ({
-  // dataProvider,
+    dataProvider,
     authProvider,
     i18nProvider = defaultI18nProvider,
     locale = 'en',
-    history
+    // history
 }) => {
+  console.log("insider the CONFIGURE STORE : DATAPROVIDER : ", dataProvider );
 
   const initialState = {
     i18nProvider: defaultI18nProvider,
     locale: 'en',
-    history
+    // history
   }
 
   const reducer = combineReducers({

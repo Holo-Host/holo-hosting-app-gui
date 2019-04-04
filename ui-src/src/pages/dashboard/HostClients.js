@@ -1,3 +1,6 @@
+// FOR BOTH HOSTS to monitor hosting clients.
+// Holo Netowrk STATS >> the # of holo users for which a Host is providing hosting services... (ie how many instances/agents are being served at any point in time)
+
 import React from 'react';
 import compose from 'recompose/compose';
 import Card from '@material-ui/core/Card';
@@ -7,18 +10,18 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CustomerIcon from '@material-ui/icons/PersonAdd';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
+import CustomerIcon from '@material-ui/icons/PersonAdd';
 
 import CardIcon from './CardIcon';
 
 const styles = theme => ({
     main: {
         flex: '1',
-        marginLeft: '1em',
-        marginTop: 20,
+        marginLeft: '1.5em',
+        marginTop: '2.5em',
     },
     card: {
         padding: '16px 0',
@@ -40,40 +43,17 @@ const styles = theme => ({
     },
 });
 
-const NewUsers = ({ visitors = [], nb, translate, classes }) => (
+// HoloClients >> the # of holo users for which a Host is providing hosting services...
+const hostClients = ({ users, nb, translate, classes }) => (
     <div className={classes.main}>
-        <CardIcon Icon={CustomerIcon} bgColor="#4caf50" />
+        <CardIcon Icon={CustomerIcon} bgColor="#07626d" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.new_customers')}
+                {translate('pos.dashboard.host_clients')}
             </Typography>
-            <Typography
-                variant="headline"
-                component="h2"
-                className={classes.value}
-            >
-                {nb}
+            <Typography variant="headline" component="h2">
+                {users}
             </Typography>
-            <Divider />
-            <List>
-                {visitors.map(record => (
-                    <ListItem
-                        button
-                        to={`/users/${record.id}`}
-                        component={Link}
-                        key={record.id}
-                    >
-                        <Avatar
-                            src={`${record.avatar}?size=32x32`}
-                            className={classes.avatar}
-                        />
-                        <ListItemText
-                            primary={`${record.first_name} ${record.last_name}`}
-                            className={classes.listItemText}
-                        />
-                    </ListItem>
-                ))}
-            </List>
         </Card>
     </div>
 );
@@ -83,4 +63,4 @@ const enhance = compose(
     translate
 );
 
-export default enhance(NewUsers);
+export default enhance(hostClients);

@@ -5,8 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
 import { stringify } from 'query-string';
-// local component imports:
-import users from '../users';
+import RegisterIcon from '@material-ui/icons/Assignment';
 
 const styles = {
     icon: { paddingRight: '0.5em' },
@@ -16,13 +15,13 @@ const styles = {
     },
 };
 
-const LinkToRelatedCustomers = ({ classes, segment, translate }) => (
+const LinkToRelatedRegisterForm = ({ classes, segment, translate }) => (
     <Button
         size="small"
         color="primary"
         component={Link}
         to={{
-            pathname: '/customers',
+            pathname: '/register',
             search: stringify({
                 page: 1,
                 perPage: 25,
@@ -31,8 +30,8 @@ const LinkToRelatedCustomers = ({ classes, segment, translate }) => (
         }}
         className={classes.link}
     >
-        <users.icon className={classes.icon} />
-        {translate('resources.segments.fields.customers')}
+        <RegisterIcon className={classes.icon} />
+        {translate('resources.register.host')}
     </Button>
 );
 
@@ -40,4 +39,4 @@ const enhance = compose(
     withStyles(styles),
     translate
 );
-export default enhance(LinkToRelatedCustomers);
+export default enhance(LinkToRelatedRegisterForm);

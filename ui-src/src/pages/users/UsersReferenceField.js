@@ -1,17 +1,16 @@
 import React from 'react';
 import { ReferenceField } from 'react-admin';
-// local component imports:
-import FullNameField from './FullNameField';
+import FullNameField from '../../app-components/FullNameField';
 
-const CustomerReferenceField = props => (
-    <ReferenceField source="customer_id" reference="users" {...props}>
+const UserReferenceField = props => (
+    <ReferenceField source="user_id" reference="users" {...props}>
         <FullNameField />
     </ReferenceField>
 );
 
-CustomerReferenceField.defaultProps = {
-    source: 'customer_id',
+UserReferenceField.defaultProps = {
+    source: 'user_id',
     addLabel: true,
 };
 
-export default CustomerReferenceField;
+export default UserReferenceField;

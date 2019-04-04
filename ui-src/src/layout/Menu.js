@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import SettingsIcon from '@material-ui/icons/Settings';
+import RegisterIcon from '@material-ui/icons/Assignment';
 // import LabelIcon from '@material-ui/icons/Label';
 import { withRouter } from 'react-router-dom';
 import {
@@ -17,7 +18,6 @@ import reviews from '../pages/reviews';
 import users from '../pages/users';
 import happs from '../pages/happs';
 import categories from '../pages/categories';
-
 import posts from '../pages/posts';
 // local component imports:
 import SubMenu from './SubMenu';
@@ -85,11 +85,19 @@ class Menu extends Component {
                     onClick={onMenuClick}
                   />
                   <MenuItemLink
-                      to={`/posts`}
-                      primaryText={translate(`resources.happs.name`, {
+                      to={`/register`}
+                      primaryText={translate(`resources.register.name`, {
                           smart_count: 2,
                       })}
-                      leftIcon={<reviews.icon />}
+                      leftIcon={<RegisterIcon />}
+                      onClick={onMenuClick}
+                    />
+                  <MenuItemLink
+                      to={`/posts`}
+                      primaryText={translate(`resources.posts.name`, {
+                          smart_count: 2,
+                      })}
+                      leftIcon={<posts.icon />}
                       onClick={onMenuClick}
                     />
 

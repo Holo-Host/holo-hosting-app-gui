@@ -1,45 +1,134 @@
-import React from 'react';
-import { Create, Edit, SimpleForm, DisabledInput, TextInput, DateInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton, CardActions, ShowButton, required, minLength, maxLength } from 'react-admin';
-import Button from '@material-ui/core/Button';
+
 import RichTextInput from 'ra-input-rich-text';
+import React from 'react';
+import {
+    AutocompleteArrayInput,
+    ArrayInput,
+    BooleanInput,
+    CheckboxGroupInput,
+    Datagrid,
+    DateField,
+    DateInput,
+    DisabledInput,
+    Edit,
+    CardActions,
+    CloneButton,
+    ShowButton,
+    EditButton,
+    FormTab,
+    ImageField,
+    ImageInput,
+    LongTextInput,
+    NumberInput,
+    ReferenceArrayInput,
+    ReferenceManyField,
+    SelectInput,
+    SimpleFormIterator,
+    TabbedForm,
+    TextField,
+    TextInput,
+    minValue,
+    number,
+    required,
+} from 'react-admin'; // eslint-disable-line import/no-unresolved
+import PostTitle from './PostTitle';
 
-const PostTitle = ({ record }) => {
-    return <span>Post {record ? `"${record.title}"` : ''}</span>;
-};
-
-const validateRequired = () => {
-  // TODO: add the custom validation code HERE...
-  console.log("validateRequired fn needed...");
-}
-const validateFirstName = [required(), minLength(2), maxLength(15)];
-
-const customAction = (event, resource, type, props) => {
-  console.log("inside the cusomtAction", props);
-}
-const PostEditActions = ({ basePath, data, resource }) => (
-    <CardActions>
-        <ShowButton basePath={basePath} record={data} />
-        {/* Add your custom actions */}
-        <Button color="primary" onClick={(e) => customAction(e, "happs", "RA_FETCH_HAPP_BUNDLES", this.props)}>Custom Action</Button>
+const EditActions = ({
+    basePath,
+    className,
+    data,
+    hasShow,
+    hasList,
+    resource,
+    ...rest
+}) => (
+    <CardActions className={className} {...rest}>
+        <CloneButton
+            className="button-clone"
+            basePath={basePath}
+            record={data}
+        />
+        {hasShow && <ShowButton basePath={basePath} record={data} />}
     </CardActions>
 );
-export const PostsEdit = (props) => (
-    <Edit title={<PostTitle />} actions={<PostEditActions />} {...props}>
-        <SimpleForm>
-            <DisabledInput label="Id" source="id" />
-            <TextInput source="title" validate={required()} />
-            <TextInput label="First Name" source="firstName" validate={validateFirstName} />
-            <LongTextInput source="teaser" validate={required()} />
-            <RichTextInput source="body" />
-            <DateInput label="Publication date" source="published_at" />
 
-            <ReferenceManyField label="Comments" reference="comments" target="post_id">
-                <Datagrid>
-                    <TextField source="body" />
-                    <DateField source="created_at" />
-                    <EditButton />
-                </Datagrid>
-            </ReferenceManyField>
-        </SimpleForm>
+const PostsEdit = props => (
+    <Edit title={<PostTitle />} actions={<EditActions />} {...props}>
+        <TabbedForm defaultValue={{ average_note: 0 }}>
+            <FormTab label="post.form.summary">
+                <DisabledInput source="id" />
+                <TextInput source="title" validate={required()} resettable />
+                <LongTextInput
+                    source="teaser"
+                    validate={required()}
+                    resettable
+                />
+                <CheckboxGroupInput
+                    source="notifications"
+                    choices={[
+                        { id: 12, name: 'Ray Hakt' },
+                        { id: 31, name: 'Ann Gullar' },
+                        { id: 42, name: 'Sean Phonee' },
+                    ]}
+                />
+                <ImageInput multiple source="pictures" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+            <FormTab label="post.form.body">
+                <RichTextInput
+                    source="body"
+                    label=""
+                    validate={required()}
+                    addLabel={false}
+                />
+            </FormTab>
+            <FormTab label="post.form.miscellaneous">
+                <ReferenceArrayInput
+                    reference="tags"
+                    source="tags"
+                    filter={{ published: true }}
+                >
+                    <AutocompleteArrayInput />
+                </ReferenceArrayInput>
+                <ArrayInput source="backlinks">
+                    <SimpleFormIterator>
+                        <DateInput source="date" />
+                        <TextInput source="url" />
+                    </SimpleFormIterator>
+                </ArrayInput>
+                <DateInput source="published_at" options={{ locale: 'pt' }} />
+                <SelectInput
+                    resettable
+                    source="category"
+                    choices={[
+                        { name: 'Tech', id: 'tech' },
+                        { name: 'Lifestyle', id: 'lifestyle' },
+                    ]}
+                />
+                <NumberInput
+                    source="average_note"
+                    validate={[required(), number(), minValue(0)]}
+                />
+                <BooleanInput source="commentable" defaultValue />
+                <DisabledInput source="views" />
+            </FormTab>
+            <FormTab label="post.form.comments">
+                <ReferenceManyField
+                    reference="comments"
+                    target="post_id"
+                    addLabel={false}
+                >
+                    <Datagrid>
+                        <DateField source="created_at" />
+                        <TextField source="author.name" />
+                        <TextField source="body" />
+                        <EditButton />
+                    </Datagrid>
+                </ReferenceManyField>
+            </FormTab>
+        </TabbedForm>
     </Edit>
 );
+
+export default PostsEdit;

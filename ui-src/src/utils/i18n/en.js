@@ -13,49 +13,67 @@ export default {
             dark: 'Dark',
         },
         dashboard: {
+            registered_happs: 'Registered hApps',
             monthly_revenue: 'Monthly Revenue',
+            host_clients: 'Currently Hosted',
             pending_reviews: 'Pending Reviews',
-            new_users: 'New Users',
             order: {
                 items:
                     'by %{user_name}, one item |||| by %{user_name}, %{nb_items} items',
             },
             welcome: {
-                title: 'Welcome to Holo Hosting',
+                title: 'Welcome ',
                 subtitle:
-                    "This is the admin of an imaginary poster shop. Fell free to explore and modify the data - it's local to your computer, and will reset each time you reload.",
-                not_provider: 'I am Not a hApp Provider',
-                not_host: 'I am not a Host',
+                    "This is the admin of an Holo Hosting App, the place where Hosts and Providers can connect to share and distribute use of hApps."
             },
             registerProvider: {
-              not_provider:"I am Not a hApp Provider"
+              not_provider_title:"You are not yet registered as a hApp Provider",
+              is_provider_title:"Provider Snapshot"
+            },
+            registerHost: {
+              not_host_title: 'You are yet registered as a Host',
+              is_host_title:"Provider Snapshot"
+            },
+            NotRegistered: {
+              host: 'To view and amange all enabled hApps for Hosting, please first register as a Host.',
+              provider: "To activate and manage hApps you've enabled hApps for Hosting, please first register as a Provider."
             }
         },
         menu: {
-            sales: 'Sales',
-            catalog: 'Catalog',
+            sales: 'Dashboard',
+            catalog: 'hApp Catalog',
             users: 'Users',
+            reviews: 'Reviews'
         },
     },
     resources: {
         users: {
             name: 'Users |||| Users',
             fields: {
-                commands: 'Orders',
-                groups: 'Segments',
-                last_seen_gte: 'Visited Since',
                 name: 'Name',
-                total_spent: 'Total spent',
+                last_seen_gte: 'Visited Since',
             },
             tabs: {
                 identity: 'Identity',
                 address: 'Address',
-                orders: 'Orders',
                 reviews: 'Reviews',
                 stats: 'Stats',
             },
             page: {
-                delete: 'Delete User',
+              delete: 'Delete User',
+            },
+            list: {
+                search: 'Search',
+            },
+            form: {
+                summary: 'Summary',
+            },
+            edit: {
+                title: 'User "%{title}"',
+            },
+            action: {
+                save_and_add: 'Save and Add',
+                save_and_show: 'Save and Show',
             },
         },
         happs: {
@@ -88,6 +106,10 @@ export default {
                 happs: 'hApps',
             },
         },
+        register: {
+          host: 'Register',
+          provider:'Register'
+        },
         reviews: {
             name: 'Review |||| Reviews',
             detail: 'Review detail',
@@ -112,20 +134,44 @@ export default {
                 rejected_error: 'Error: Review not rejected',
             },
         },
-        segments: {
-            name: 'Segments',
-            fields: {
-                users: 'Users',
-                name: 'Name',
+        posts: {
+          name: 'Post |||| Posts',
+          fields: {
+               average_note: 'Average note',
+               body: 'Body',
+               comments: 'Comments',
+               commentable: 'Commentable',
+               commentable_short: 'Com.',
+               created_at: 'Created at',
+               notifications: 'Notifications recipients',
+               nb_view: 'Nb views',
+               password: 'Password (if protected post)',
+               pictures: 'Related Pictures',
+               published_at: 'Published at',
+               teaser: 'Teaser',
+               tags: 'Tags',
+               title: 'Title',
+               views: 'Views',
+               authors: 'Authors',
             },
-            data: {
-                compulsive: 'Compulsive',
-                collector: 'Collector',
-                ordered_once: 'Ordered once',
-                regular: 'Regular',
-                returns: 'Returns',
-                reviewer: 'Reviewer',
+            list: {
+                search: 'Search',
             },
+            form: {
+                summary: 'Summary',
+                body: 'Body',
+                miscellaneous: 'Miscellaneous',
+                comments: 'Comments',
+            },
+            edit: {
+                title: 'Post "%{title}"',
+            },
+            action: {
+              save_and_edit: 'Save and Edit',
+              save_and_add: 'Save and Add',
+              save_and_show: 'Save and Show',
+              save_with_average_note: 'Save with Note',
+            }
         },
     },
 };

@@ -1,3 +1,5 @@
+import { refactorAllApps } from '../constants'
+
 /***************************************************** HAPP PROVIDER REDUCERS *****************************************************/
 const previousProviderRegState = {
   confirmed: false,
@@ -18,7 +20,10 @@ export const registered_as_provider = (previousState = previousProviderRegState,
 /********************************************************************************/
 export const registered_hApp_bundles = (previousState = null, { type, payload }) => {
     if (type === "FETCH_HAPP_BUNDLES_SUCCESS") {
-        return payload;
+      // const all_registered_apps = refactorAllApps(payload).toString();
+      // const all_registered_hApps = [all_registered_apps];
+      // return all_registered_hApps;
+      return payload;
     }
     return previousState;
 }
@@ -33,9 +38,11 @@ export const RA_current_hApp_bundle_details = (previousState = null, { type, pay
 /********************************************************************************/
 /********************************************************************************/
 
-export const current_hApp_bundle_details = (previousState = null, { type, payload }) => {
+export const current_hApp_bundle_details = (previousState = {details:[]}, { type, payload }) => {
   if (type === "FETCH_HAPP_BUNDLE_DETAILS_SUCCESS") {
-    return payload;
+    const appDetails = previousState.details;
+    appDetails.push(payload);
+    return {...previousState, appDetails};
   }
   return previousState;
 }
@@ -59,7 +66,8 @@ export const registered_as_host = (previousState = previousHostRegState, { type,
 
 export const all_hApp_bundles = (previousState = null, { type, payload }) => {
     if (type === "FETCH_ALL_HAPP_BUNDLES_SUCCESS") {
-        return payload;
+      return { all_hApps : refactorAllApps(payload) };
+        // return payload;
     }
     return previousState;
 }

@@ -7,10 +7,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import CommentIcon from '@material-ui/icons/Comment';
 import Divider from '@material-ui/core/Divider';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-admin';
+import CommentIcon from '@material-ui/icons/Comment';
 
 import CardIcon from './CardIcon';
 
@@ -19,8 +19,8 @@ import StarRatingField from '../reviews/StarRatingField';
 const styles = theme => ({
     main: {
         flex: '1',
-        marginRight: '1em',
-        marginTop: 20,
+        marginLeft: '1.5em',
+        marginTop: '2.5em',
     },
     titleLink: { textDecoration: 'none', color: 'inherit' },
     card: {

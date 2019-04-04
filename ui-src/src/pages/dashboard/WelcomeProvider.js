@@ -9,8 +9,8 @@ import Typography from '@material-ui/core/Typography';
 // import HomeIcon from '@material-ui/icons/Home';
 import { withStyles } from '@material-ui/core/styles';
 import { translate } from 'react-admin';
-import RegisterProvider from './registerProvider';
-import RegisterHost from './registerHost';
+import RegisterProvider from './RegisterProvider';
+import RegisterHost from './RegisterHost';
 
 const styles = {
     media: {
@@ -21,24 +21,17 @@ const styles = {
     },
     cardTitle: {
       width: '100%',
-      margin: '0 auto'
+      margin: '0 auto',
+      textAlign: 'center'
     }
 };
 
-const mediaUrl = 'https://source.unsplash.com/random/1600x900/daily';
-
-const Welcome = ({ classes, translate, username}) => (
+// const mediaUrl = 'https://source.unsplash.com/random/1600x900/daily';
+const WelcomeProvider = ({ classes, translate, agent}) => (
     <Card>
-      <CardContent>
-        <Typography variant="headline" component="h2" className={classes.cardTitle}>
-          {translate('pos.dashboard.welcome.title') + ` ${username}`}
-        </Typography>
-      </CardContent>
         <CardActions style={{ justifyContent: 'center' }}>
           <RegisterProvider/>
-          <RegisterHost/>
         </CardActions>
-        <CardMedia image={mediaUrl} className={classes.media} />
     </Card>
 );
 
@@ -47,4 +40,6 @@ const enhance = compose(
     translate
 );
 
-export default enhance(Welcome);
+export default enhance(WelcomeProvider);
+
+// <CardMedia image={mediaUrl} className={classes.media} />

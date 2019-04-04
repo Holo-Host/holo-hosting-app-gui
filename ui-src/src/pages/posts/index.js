@@ -1,11 +1,14 @@
-// import PostIcon from '@material-ui/icons/Star';
-// import PostsList from './PostsList';
-// import { PostsEdit } from './PostEdits';
-// import { PostsCreate } from './PostsCreate';
-//
-// export default {
-//   icon: PostsIcon,
-//   list: PostsList,
-//   create: PostsCreate,
-//   edit: PostsEdit,
-// };
+
+import BookIcon from '@material-ui/icons/Bookmark';
+import PostCreate from './PostsCreate';
+import PostEdit from './PostsEdit';
+import PostList from './PostsList';
+import PostShow from './PostsShow';
+
+export default {
+    list: PostList,
+    create: PostCreate,
+    edit: PostEdit,
+    show: PostShow,
+    icon: BookIcon,
+};

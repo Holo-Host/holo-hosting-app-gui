@@ -1,12 +1,11 @@
 import React from 'react';
-import pure from 'recompose/pure';
-// local component imports:
 import AvatarField from './AvatarField';
+import pure from 'recompose/pure';
 
-const FullNameField = ({ record = {}, size }) => (
+const FullNameField = ({ agent = {}, size }) => (
     <div style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'center' }}>
-        <AvatarField record={record} size={size} />
-        &nbsp;{record.first_name} {record.last_name}
+        <AvatarField agent={agent} size={size} />
+        &nbsp;{agent.first_name} {agent.last_name}
     </div>
 );
 
@@ -14,7 +13,7 @@ const PureFullNameField = pure(FullNameField);
 
 PureFullNameField.defaultProps = {
     source: 'last_name',
-    label: 'resources.users.fields.name',
+    label: 'resources.customers.fields.name',
 };
 
 export default PureFullNameField;

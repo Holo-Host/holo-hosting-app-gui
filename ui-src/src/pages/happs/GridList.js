@@ -1,4 +1,6 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import MuiGridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -8,6 +10,9 @@ import withWidth from '@material-ui/core/withWidth';
 import { Link } from 'react-router-dom';
 import { NumberField } from 'react-admin';
 import { linkToRecord } from 'ra-core';
+
+import ThumbnailField from '../../app-components/ThumbnailField';
+import { fetchAllhAppBundles } from './happs_actions';
 
 const styles = theme => ({
     root: {
@@ -46,7 +51,7 @@ const times = (nbChildren, fn) =>
     Array.from({ length: nbChildren }, (_, key) => fn(key));
 
 const LoadingGridList = (props) => {
-  console.log("GridList PROPS", props);
+  console.log("LoadingGridList PROPS", props);
   const { classes, ids, data, basePath, width } = props;
   const nbItems = 9
 
@@ -68,54 +73,90 @@ const LoadingGridList = (props) => {
   );
 }
 
-const LoadedGridList = (props) => {
-  console.log("GridList PROPS", props);
-  const { classes, ids, data, basePath, width } = props;
+class GridList extends React.Component {
+  componentDidMount = async() => {
+      // const all_bundles = await this.props.fetchhAppBundles();
+      // const bundle_details = all_bundles.addresses
+      // bundle_details.map(hash => {
+      //   console.log("bundle_details hash", hash);
+      //   this.props.gethAppBundleDetails(hash);
+      // })
 
-  return (
-    <div className={classes.root}>
-        <MuiGridList
-            cellHeight={180}
-            cols={getColsForWidth(width)}
-            className={classes.gridList}
-        >
-            {ids.map(id => (
-                <GridListTile
-                    component={Link}
-                    key={id}
-                    to={linkToRecord(basePath, data[id].id)}
-                >
-                    <img src={data[id].thumbnail} alt="" />
+      this.props.fetchAllhAppBundles();
+  }
+
+  render () {
+    console.log("GridList PROPS, Step 1", this.props);
+    const { classes, ids, data, basePath, width, registered_hApp_bundles, all_hApp_bundles } = this.props;
+
+    if(!registered_hApp_bundles || registered_hApp_bundles === undefined) {
+      return  <LoadingGridList {...this.props} />
+    }
+
+
+    console.log("registered_hApp_bundles", registered_hApp_bundles);
+    const { addresses } = registered_hApp_bundles;
+    // const { details } = current_hApp_bundle_details;
+
+    return (
+      <div className={classes.root}>
+          <MuiGridList
+              cellHeight={180}
+              cols={getColsForWidth(width)}
+              className={classes.gridList}
+          >
+              {addresses.map((hash, id) => (
+                  <GridListTile
+                      component={Link}
+                      key={id}
+                      to={`${basePath}/${id}`}
+                  >
+                    <ThumbnailField hash={hash}/>
                     <GridListTileBar
                         className={classes.tileBar}
-                        title={data[id].reference}
+                        title={hash}
                         subtitle={
-                            <span>
-                                {data[id].width}x{data[id].height},{' '}
-                                <NumberField
-                                    className={classes.price}
-                                    source="price"
-                                    record={data[id]}
-                                    color="inherit"
-                                    options={{
-                                        style: 'currency',
-                                        currency: 'USD',
-                                    }}
-                                />
-                            </span>
+                          <span>
+                              <NumberField
+                                  className={classes.price}
+                                  source="price"
+                                  record={id}
+                                  color="inherit"
+                                  options={{
+                                      style: 'currency',
+                                      currency: 'USD',
+                                  }}
+                              />
+                          </span>
                         }
-                    />
-                </GridListTile>
-            ))}
-        </MuiGridList>
-    </div>
-  );
+                      />
+                  </GridListTile>
+              ))}
+          </MuiGridList>
+      </div>
+    );
+  }
 }
 
-const GridList = ({ loadedOnce, ...props }) =>
-    loadedOnce ? <LoadedGridList {...props} /> : <LoadingGridList {...props} />;
+
+const mapStateToProps = state => ({
+    whoami: state.whoami,
+    all_hApp_bundles: state.all_hApp_bundles,
+    registered_hApp_bundles: state.registered_hApp_bundles,
+    current_hApp_bundle_details: state.current_hApp_bundle_details,
+    locale: state.i18n.locale,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+      fetchAllhAppBundles,
+    },
+    dispatch
+  )
+}
 
 const enhance = compose(
+    connect(mapStateToProps, mapDispatchToProps),
     withWidth(),
     withStyles(styles)
 );

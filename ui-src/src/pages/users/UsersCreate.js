@@ -1,61 +1,61 @@
 import React from 'react';
 import {
     Create,
-    DateInput,
     FormTab,
-    LongTextInput,
+    SaveButton,
+    AutocompleteInput,
     TabbedForm,
     TextInput,
+    Toolbar,
+    required,
 } from 'react-admin';
-import withStyles from '@material-ui/core/styles/withStyles';
 
-export const styles = {
-    first_name: { display: 'inline-block' },
-    last_name: { display: 'inline-block', marginLeft: 32 },
-    email: { width: 544 },
-    address: { maxWidth: 544 },
-    zipcode: { display: 'inline-block' },
-    city: { display: 'inline-block', marginLeft: 32 },
-    comment: {
-        maxWidth: '20em',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-    },
-};
+import Aside from './Aside';
 
-const VisitorCreate = ({ classes, ...props }) => (
-    <Create {...props}>
-        <TabbedForm>
-            <FormTab label="resources.users.tabs.identity">
+const UserEditToolbar = ({ permissions, ...props }) => (
+    <Toolbar {...props}>
+        <SaveButton
+            label="user.action.save_and_show"
+            redirect="show"
+            submitOnEnter={true}
+        />
+        {permissions === 'admin' && (
+            <SaveButton
+                label="user.action.save_and_add"
+                redirect={false}
+                submitOnEnter={false}
+                variant="flat"
+            />
+        )}
+    </Toolbar>
+);
+
+const UsersCreate = ({ permissions, ...props }) => (
+    <Create {...props} aside={<Aside />}>
+        <TabbedForm toolbar={<UserEditToolbar permissions={permissions} />}>
+            <FormTab label="user.form.summary" path="">
                 <TextInput
+                    source="name"
+                    defaultValue="Slim Shady"
                     autoFocus
-                    source="first_name"
-                    formClassName={classes.first_name}
+                    validate={required()}
                 />
-                <TextInput
-                    source="last_name"
-                    formClassName={classes.last_name}
-                />
-                <TextInput
-                    type="email"
-                    source="email"
-                    validation={{ email: true }}
-                    fullWidth={true}
-                    formClassName={classes.email}
-                />
-                <DateInput source="birthday" />
             </FormTab>
-            <FormTab label="resources.users.tabs.address" path="address">
-                <LongTextInput
-                    source="address"
-                    formClassName={classes.address}
-                />
-                <TextInput source="zipcode" formClassName={classes.zipcode} />
-                <TextInput source="city" formClassName={classes.city} />
-            </FormTab>
+            {permissions === 'admin' && (
+                <FormTab label="user.form.security" path="security">
+                    <AutocompleteInput
+                        source="role"
+                        choices={[
+                            { id: '', name: 'None' },
+                            { id: 'admin', name: 'Admin' },
+                            { id: 'user', name: 'User' },
+                            { id: 'user_simple', name: 'UserSimple' },
+                        ]}
+                    />
+                </FormTab>
+            )}
         </TabbedForm>
     </Create>
 );
 
-export default withStyles(styles)(VisitorCreate);
+export default UsersCreate;

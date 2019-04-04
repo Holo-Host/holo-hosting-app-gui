@@ -2,19 +2,30 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
+import RichTextInput from 'ra-input-rich-text';
 import {
     Create,
-    FormTab,
     NumberInput,
     ReferenceInput,
     SelectInput,
-    TabbedForm,
     TextInput,
     required,
     translate,
-    changeLocale
+    changeLocale,
+    ArrayInput,
+    AutocompleteInput,
+    BooleanInput,
+    DateInput,
+    FormDataConsumer,
+    LongTextInput,
+    SaveButton,
+    SimpleForm,
+    SimpleFormIterator,
+    Toolbar,
+    crudCreate
 } from 'react-admin';
-import RichTextInput from 'ra-input-rich-text';
+
+import SaveButtonComponent from "../../app-components/SaveButton";
 
 import { fetchhAppBundles, raFetchhAppBundles, makeCustomRAcall, registerAsProvider, isRegisteredAsProvider, registerhAppBundle } from './happs_actions';
 import { fetchAgent } from '../categories/categories_actions';
@@ -29,6 +40,23 @@ export const styles = {
     heightFormGroup: { display: 'inline-block', marginLeft: 32 },
 };
 
+const getDefaultDate = () => new Date();
+
+const HappsCreateToolbar = props => (
+    <Toolbar {...props}>
+        <SaveButtonComponent
+            label={translate("posts.action.save_and_edit")}
+            redirect="show"
+            submitOnEnter={true}
+        />
+        <SaveButton
+            label={translate("posts.action.save_and_edit")}
+            redirect="show"
+            submitOnEnter={true}
+        />
+    </Toolbar>
+);
+
 class HAppsCreate  extends React.Component {
   constructor(props){
     super(props);
@@ -38,8 +66,7 @@ class HAppsCreate  extends React.Component {
     };
   };
 
-  testingCalls(){
-    // Testing Calls
+  createDummyAppCalls(){
     const app_bundle_1 = {
       ui_hash:"Quiououo",
       dna_list:["Qoauxjnva","Qkiauihsnvkk"]
@@ -48,7 +75,6 @@ class HAppsCreate  extends React.Component {
       ui_hash:"Qmuiasdfouo",
       dna_list:["Qmoauasdfxva","Qmkiauiasdfnvkk"]
     }
-
     const app_details = {
       name: "app name",
       details: "description of app"
@@ -57,106 +83,116 @@ class HAppsCreate  extends React.Component {
     const domain_name = {
       dns_name: "findmewhereiam.com"
     }
-
     this.props.registerhAppBundle({app_bundle: app_bundle_1, app_details, domain_name});
     this.props.registerhAppBundle({app_bundle: app_bundle_2, app_details, domain_name});
-
     this.props.fetchhAppBundles();
   }
 
  componentDidMount () {
-   // this.props.registerAsHost({host_doc:{kyc_proof:""}});
-   // this.props.isRegisteredAsHost();
    this.props.registerAsProvider({provider_doc:{kyc_proof:""}});
    this.props.isRegisteredAsProvider();
 
-   this.testingCalls();
- }
-
- handleRACall= (event, resource, type) => {
-   console.log("inside the handleClick", this.props);
-   // console.log("Check for props.record >> ", this.props);
-   const { raFetchhAppBundles, basePath, registered_hApp_bundles, makeCustomRAcall } = this.props; // record,
-
-   let addresses = registered_hApp_bundles === null ? [] : registered_hApp_bundles.addresses;
-   let ids = [];
-   for (let appHash in addresses) {
-     ids.push(appHash);
-   }
-   let data = [];
-   for (let appHash of addresses) {
-     data.push(appHash);
-   }
-   const params = {
-     id: ids,
-     data
-   };
-
-   console.log("params >> ", params);
-
-   // raFetchhAppBundles(ids, data, type, basePath); // record.id, record,
-   makeCustomRAcall(type, resource, params, basePath)
+   this.createDummyAppCalls();
  }
 
   render() {
-    const { classes, ...newProps } = this.props
+    const { classes, permissions, ...newProps } = this.props
     console.log("HAppsCreate >>>> Current PROPS", this.props);
 
     return (
       <Create {...this.props}>
-          <TabbedForm>
-              <FormTab label="resources.happs.tabs.image">
-                  <TextInput
-                      autoFocus
-                      source="image"
-                      options={{ fullWidth: true }}
-                      validate={required()}
-                  />
-                  <TextInput
-                      source="thumbnail"
-                      options={{ fullWidth: true }}
-                      validate={required()}
-                  />
+        <SimpleForm
+            toolbar={<HappsCreateToolbar />}
+            defaultValue={{ average_note: 0 }}
+            validate={values => {
+                const errors = {};
+                ['title', 'teaser'].forEach(field => {
+                    if (!values[field]) {
+                        errors[field] = ['Required field'];
+                    }
+                });
 
-                  <button onClick={(event) => this.handleRACall(event, "happs", "RA_FETCH_HAPP_BUNDLES")}>Test RA CALL</button>
+                if (values.average_note < 0 || values.average_note > 5) {
+                    errors.average_note = ['Should be between 0 and 5'];
+                }
 
-              </FormTab>
-
-              <FormTab label="resources.happs.tabs.details" path="details">
-                  <TextInput source="reference" validate={required()} />
-                  <NumberInput
-                      source="price"
-                      validate={required()}
-                      className={classes.price}
-                  />
-                  <NumberInput
-                      source="width"
-                      validate={required()}
-                      className={classes.width}
-                      formClassName={classes.widthFormGroup}
-                  />
-                  <NumberInput
-                      source="height"
-                      validate={required()}
-                      className={classes.height}
-                      formClassName={classes.heightFormGroup}
-                  />
-                  <ReferenceInput
-                      source="category_id"
-                      reference="categories"
-                      allowEmpty
-                  >
-                      <SelectInput source="name" />
-                  </ReferenceInput>
-              </FormTab>
-
-              <FormTab
-                  label="resources.happs.tabs.description"
-                  path="description"
-              >
-                  <RichTextInput source="description" addLabel={false} />
-              </FormTab>
-          </TabbedForm>
+                return errors;
+            }}
+        >
+            <TextInput autoFocus source="title" />
+            <LongTextInput source="teaser" />
+            <RichTextInput source="body" />
+            <FormDataConsumer>
+                {({ formData, ...rest }) =>
+                    formData.title && (
+                        <NumberInput
+                            source="average_note"
+                            defaultValue={5}
+                            {...rest}
+                        />
+                    )
+                }
+            </FormDataConsumer>
+            <DateInput source="published_at" defaultValue={getDefaultDate} />
+            <BooleanInput source="commentable" defaultValue />
+            <ArrayInput
+                source="backlinks"
+                defaultValue={[
+                    {
+                        date: new Date().toISOString(),
+                        url: 'http://google.com',
+                    },
+                ]}
+            >
+                <SimpleFormIterator>
+                    <DateInput source="date" />
+                    <TextInput source="url" />
+                </SimpleFormIterator>
+            </ArrayInput>
+            {permissions === 'admin' && (
+                <ArrayInput source="authors">
+                    <SimpleFormIterator>
+                        <ReferenceInput
+                            label="User"
+                            source="user_id"
+                            reference="users"
+                        >
+                            <AutocompleteInput />
+                        </ReferenceInput>
+                        <FormDataConsumer>
+                            {({
+                                formData,
+                                scopedFormData,
+                                getSource,
+                                ...rest
+                            }) =>
+                                scopedFormData.user_id ? (
+                                    <SelectInput
+                                        label="Role"
+                                        source={getSource('role')}
+                                        choices={[
+                                            {
+                                                id: 'headwriter',
+                                                name: 'Head Writer',
+                                            },
+                                            {
+                                                id: 'proofreader',
+                                                name: 'Proof reader',
+                                            },
+                                            {
+                                                id: 'cowriter',
+                                                name: 'Co-Writer',
+                                            },
+                                        ]}
+                                        {...rest}
+                                    />
+                                ) : null
+                            }
+                        </FormDataConsumer>
+                    </SimpleFormIterator>
+                </ArrayInput>
+            )}
+        </SimpleForm>
       </Create>
     )
   }
@@ -173,9 +209,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
- // return bindActionCreators(ContainerApiActions, dispatch);
   return bindActionCreators({
-      // hAppBundleActions,
       registerAsProvider,
       isRegisteredAsProvider,
       registerhAppBundle,
@@ -196,3 +230,26 @@ const enhance = compose(
 );
 
 export default enhance(HAppsCreate);
+
+
+
+// handleRACall= (event, resource, type) => {
+//   console.log("inside the handleClick", this.props);
+//   const { raFetchhAppBundles, basePath, registered_hApp_bundles, makeCustomRAcall } = this.props; // record,
+//
+//   let addresses = registered_hApp_bundles === null ? [] : registered_hApp_bundles.addresses;
+//   let ids = [];
+//   for (let appHash in addresses) {
+//     ids.push(appHash);
+//   }
+//   let data = [];
+//   for (let appHash of addresses) {
+//     data.push(appHash);
+//   }
+//   const params = {
+//     id: ids,
+//     data
+//   };
+//   console.log("params >> ", params);
+//   makeCustomRAcall(type, resource, params, basePath)
+// }

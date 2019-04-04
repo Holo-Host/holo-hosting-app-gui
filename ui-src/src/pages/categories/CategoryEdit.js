@@ -10,7 +10,7 @@ import {
     TextInput,
 } from 'react-admin';
 // local component imports:
-import ThumbnailField from '../happs/ThumbnailField';
+import ThumbnailField from '../../app-components/ThumbnailField';
 import HAppsRefField from '../happs/HAppsRefField';
 
 const CategoryTitle = translate(({ record, translate }) => (

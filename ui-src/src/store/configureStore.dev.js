@@ -21,6 +21,8 @@ import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
 // import * as groupOne from 'app/saga/injectedSagas'
 
+import history from '../utils/history';
+
 // ** Middleware for React-Admin **
 import {
     adminReducer,
@@ -42,16 +44,16 @@ const hcWc = connect(url);
 const sagaMiddleware = createSagaMiddleware();
 
 const configureStore = ({
-  // dataProvider,
+    dataProvider,
     authProvider,
     i18nProvider = defaultI18nProvider,
     locale = 'en',
-    history
+    // history
 }) => {
     const initialState = {
       i18nProvider: defaultI18nProvider,
       locale: 'en',
-      history
+      // history
     }
 
     const reducer = combineReducers({

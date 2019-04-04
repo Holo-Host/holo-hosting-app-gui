@@ -1,116 +1,79 @@
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
-    Datagrid,
-    DateField,
-    DateInput,
+    DeleteWithConfirmButton,
+    DisabledInput,
     Edit,
-    EditButton,
     FormTab,
-    LongTextInput,
-    NullableBooleanInput,
-    NumberField,
-    ReferenceManyField,
+    SaveButton,
+    SelectInput,
     TabbedForm,
-    TextField,
     TextInput,
+    Toolbar,
+    required,
 } from 'react-admin';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core';
 
-// local component imports:
-import HAppsReferenceField from '../happs/HAppsReferenceField';
-import StarRatingField from '../reviews/StarRatingField';
-import FullNameField from './FullNameField';
-import SegmentsInput from './SegmentsInput';
-import { styles } from './UsersCreate';
+import UsersTitle from './UsersTitle';
+import Aside from './Aside';
 
-const UserTitle = ({ record }) =>
-    record ? <FullNameField record={record} size={32} /> : null;
+const toolbarStyles = {
+    toolbar: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+};
 
-const UserEdit = ({ classes, ...props }) => (
-    <Edit title={<UserTitle />} {...props}>
-        <TabbedForm>
-            <FormTab label="resources.users.tabs.identity">
+/**
+ * Custom Toolbar for the Edit form
+ *
+ * Save with undo, but delete with confirm
+ */
+const UsersEditToolbar = withStyles(toolbarStyles)(props => (
+    <Toolbar {...props}>
+        <SaveButton />
+        <DeleteWithConfirmButton />
+    </Toolbar>
+));
+
+const UsersEdit = ({ permissions, ...props }) => (
+    <Edit title={<UsersTitle />} aside={<Aside />} {...props}>
+        <TabbedForm
+            defaultValue={{ role: 'user' }}
+            toolbar={<UsersEditToolbar />}
+        >
+            <FormTab label="user.form.summary" path="">
+                {permissions === 'admin' && <DisabledInput source="id" />}
                 <TextInput
-                    source="first_name"
-                    formClassName={classes.first_name}
-                />
-                <TextInput
-                    source="last_name"
-                    formClassName={classes.last_name}
-                />
-                <TextInput
-                    type="email"
-                    source="email"
-                    validation={{ email: true }}
-                    fullWidth={true}
-                    formClassName={classes.email}
-                />
-                <DateInput source="birthday" />
-            </FormTab>
-            <FormTab label="resources.users.tabs.address" path="address">
-                <LongTextInput
-                    source="address"
-                    formClassName={classes.address}
-                />
-                <TextInput source="zipcode" formClassName={classes.zipcode} />
-                <TextInput source="city" formClassName={classes.city} />
-            </FormTab>
-            <FormTab label="resources.users.tabs.orders" path="orders">
-                <ReferenceManyField
-                    addLabel={false}
-                    sort={{ field: 'date', order: 'DESC' }}
-                    reference="commands"
-                    target="customer_id"
-                >
-                    <Datagrid>
-                        <DateField source="date" />
-                        <TextField source="reference" />
-                        <NumberField
-                            source="total"
-                            options={{ style: 'currency', currency: 'USD' }}
-                        />
-                        <TextField source="status" />
-                        <EditButton />
-                    </Datagrid>
-                </ReferenceManyField>
-            </FormTab>
-            <FormTab label="resources.users.tabs.reviews" path="reviews">
-                <ReferenceManyField
-                    addLabel={false}
-                    sort={{ field: 'date', order: 'DESC' }}
-                    reference="reviews"
-                    target="customer_id"
-                >
-                    <Datagrid filter={{ status: 'approved' }}>
-                        <DateField source="date" />
-                        <HAppsReferenceField />
-                        <StarRatingField />
-                        <TextField
-                            source="comment"
-                            cellClassName={classes.comment}
-                        />
-                        <EditButton style={{ padding: 0 }} />
-                    </Datagrid>
-                </ReferenceManyField>
-            </FormTab>
-            <FormTab label="resources.users.tabs.stats" path="stats">
-                <SegmentsInput />
-                <NullableBooleanInput source="has_newsletter" />
-                <DateField
-                    source="first_seen"
-                    style={{ width: 128, display: 'inline-block' }}
-                />
-                <DateField
-                    source="latest_purchase"
-                    style={{ width: 128, display: 'inline-block' }}
-                />
-                <DateField
-                    source="last_seen"
-                    style={{ width: 128, display: 'inline-block' }}
+                    source="name"
+                    defaultValue="Joel Ulahanna"
+                    validate={required()}
                 />
             </FormTab>
+            {permissions === 'admin' && (
+                <FormTab label="user.form.security" path="security">
+                    <SelectInput
+                        source="role"
+                        validate={required()}
+                        choices={[
+                            { id: '', name: 'None' },
+                            { id: 'admin', name: 'Admin' },
+                            { id: 'user', name: 'User' },
+                        ]}
+                        defaultValue={'user'}
+                    />
+                </FormTab>
+            )}
         </TabbedForm>
     </Edit>
 );
 
-export default withStyles(styles)(UserEdit);
+UsersEdit.propTypes = {
+    id: PropTypes.any.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    permissions: PropTypes.string,
+};
+
+export default UsersEdit;

@@ -1,12 +1,13 @@
-import UsersIcon from '@material-ui/icons/People';
-// local component imports:
-import UsersList from './UsersList';
-import UsersCreate from './UsersCreate';
-import UsersEdit from './UsersEdit';
+import PeopleIcon from '@material-ui/icons/People';
+import UserCreate from './UsersCreate';
+import UserEdit from './UsersEdit';
+import UserList from './UsersList';
+import UserShow from './UsersShow';
 
 export default {
-    list: UsersList,
-    create: UsersCreate,
-    edit: UsersEdit,
-    icon: UsersIcon,
+    list: UserList,
+    create: UserCreate,
+    edit: UserEdit,
+    show: UserShow,
+    icon: PeopleIcon,
 };

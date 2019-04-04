@@ -2,12 +2,14 @@
 import React, { Component } from 'react';
 import { Admin, Resource } from 'react-admin';
 
-
 // app utils imports:
 import customRoutes from './utils/routes';
 import authProvider from './utils/authProvider';
 import sagas from './utils/injectSagas/review_sagas';
 import englishMessages from './utils/i18n/en';
+// import { createBrowserHistory } from 'history';
+import history from './utils/history';
+
 
 // page reducers
 import themeReducer from './utils/injectReducers/themeReducer';
@@ -31,8 +33,8 @@ import reviews from './pages/reviews';
 import { Dashboard } from './pages/dashboard';
 import users from './pages/users';
 
-import { PostsCreate, PostsEdit, PostsShow } from './pages/posts';
-// import posts from './pages/posts';
+import posts from './pages/posts';
+// import { PostsCreate, PostsEdit, PostsShow } from './pages/posts';
 
 
 const i18nProvider = locale => {
@@ -72,6 +74,7 @@ class App extends Component {
         return (
             <Admin
                 title=''
+                history={history}
                 dataProvider={dataProvider}
                 customReducers={{
                   theme: themeReducer,
@@ -92,11 +95,18 @@ class App extends Component {
                 locale="en"
                 i18nProvider={i18nProvider}
             >
+                {/* / {permissions => [
+                //   <Resource name="posts" {...posts} />,
+                //   <Resource name="comments" {...comments} />,
+                //   permissions ? <Resource name="users" {...users} /> : null,
+                //   <Resource name="tags" {...tags} />,
+                // ]} / */}
+
+                <Resource name="users" {...users} />
                 <Resource name="happs" {...happs} />
                 <Resource name="categories" {...categories} />
-                <Resource name="users" {...users} />
                 <Resource name="reviews" {...reviews} />
-                <Resource name="posts" show={PostsShow} create={PostsCreate} edit={PostsEdit} />
+                {/* <Resource name="posts" {...posts} /> */}
             </Admin>
         );
     }
