@@ -43,7 +43,7 @@ class RegisterHost extends React.Component {
                 <Typography className={classes.title} color="textSecondary">
                   {translate('pos.dashboard.registerHost.is_host_title')}
                 </Typography>
-                <RegisteredDash/>
+                <RegisteredDash type="host"/>
               </div>
 
             :

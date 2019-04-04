@@ -13,7 +13,7 @@ import history from './utils/history';
 
 // page reducers
 import themeReducer from './utils/injectReducers/themeReducer';
-import {  is_registered_provider, is_registered_host } from "./utils/injectReducers/dashboardReducer";
+import {  registered_as_provider, registered_as_host } from "./utils/injectReducers/dashboardReducer";
 import { whoami } from "./utils/injectReducers/categoriesReducer";
 import {  registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles } from "./utils/injectReducers/happsReducer";
 
@@ -79,8 +79,8 @@ class App extends Component {
                 customReducers={{
                   theme: themeReducer,
                   whoami,
-                  is_registered_provider,
-                  is_registered_host,
+                  registered_as_provider,
+                  registered_as_host,
                   registered_hApp_bundles,
                   current_hApp_bundle_details,
                   all_hApp_bundles

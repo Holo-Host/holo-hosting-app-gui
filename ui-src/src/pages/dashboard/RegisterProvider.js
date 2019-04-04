@@ -53,7 +53,7 @@ class RegisterProvider extends React.Component {
                 </Typography>
 
                 <div className={classes.media} >
-                  <RegisteredDash />
+                  <RegisteredDash type="provider" />
                 </div>
               </div>
 
