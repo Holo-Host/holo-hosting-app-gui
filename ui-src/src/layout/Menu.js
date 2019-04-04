@@ -76,14 +76,14 @@ class Menu extends Component {
                     leftIcon={<users.icon />}
                     onClick={onMenuClick}
                 />
-                <MenuItemLink
+                {/* <MenuItemLink
                     to={`/reviews`}
                     primaryText={translate(`resources.reviews.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<reviews.icon />}
                     onClick={onMenuClick}
-                  />
+                  /> */}
                   <MenuItemLink
                       to={`/register`}
                       primaryText={translate(`resources.register.name`, {
@@ -92,14 +92,14 @@ class Menu extends Component {
                       leftIcon={<RegisterIcon />}
                       onClick={onMenuClick}
                     />
-                  <MenuItemLink
+                    {/* <MenuItemLink
                       to={`/posts`}
                       primaryText={translate(`resources.posts.name`, {
                           smart_count: 2,
                       })}
                       leftIcon={<posts.icon />}
                       onClick={onMenuClick}
-                    />
+                    /> */}
 
                 <Responsive
                     xsmall={
