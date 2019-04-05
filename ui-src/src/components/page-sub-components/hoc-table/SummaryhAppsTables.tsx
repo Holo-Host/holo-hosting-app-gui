@@ -5,7 +5,7 @@ import { advancedExpandTableHOC } from "./HocSystemTable";
 import "react-table/react-table.css";
 import { withStyles } from '@material-ui/core/styles';
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
-import home_table_columns from './ColoumnsHomeTable';
+import home_table_columns from './ColumnsHomeTable';
 import DropDownHomeTable from '../simple-table/DropDownHomeTable';
 import ErrorMessage from '../error-message/ErrorMessage';
 import ErrorNotRegisteredAsHost from '../error-message/NotRegisteredAsHost';
