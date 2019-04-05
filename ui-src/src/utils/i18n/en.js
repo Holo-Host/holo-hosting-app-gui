@@ -31,8 +31,8 @@ export default {
               is_provider_title:"Provider Snapshot"
             },
             registerHost: {
-              not_host_title: 'You are yet registered as a Host',
-              is_host_title:"Provider Snapshot"
+              not_host_title: 'You are not yet registered as a Host',
+              is_host_title:"Host Snapshot"
             },
             NotRegistered: {
               host: 'To view and amange all enabled hApps for Hosting, please first register as a Host.',

@@ -11,7 +11,7 @@ export const saveWithNote = (resource, values, basePath, redirectTo) => {
 
 class SaveButtonComponent extends Component {
     handleClick = () => {
-      console.log("I'm inside the handler for SaveWithNoteButtonComponent");
+      console.log("I'm inside the handler for SaveWithNoteButtonComponent", this.props);
         const { resource, basePath, handleSubmit, redirect, saveWithNote } = this.props;
         return handleSubmit(values => {
           saveWithNote(resource, values, basePath, redirect);
@@ -19,6 +19,7 @@ class SaveButtonComponent extends Component {
     };
 
     render() {
+        console.log("I'm OUTSIDE the handler for SaveWithNoteButtonComponent", this.props);
         const { handleSubmitWithRedirect, saveWithNote, ...props } = this.props;
         return (
             <SaveButton

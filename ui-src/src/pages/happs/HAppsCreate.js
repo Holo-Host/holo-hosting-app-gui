@@ -3,8 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import RichTextInput from 'ra-input-rich-text';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import SendIcon from '@material-ui/icons/Send';
+import ClearIcon from '@material-ui/icons/Clear';
 import {
     Create,
+    List,
     NumberInput,
     ReferenceInput,
     SelectInput,
@@ -22,14 +27,62 @@ import {
     SimpleForm,
     SimpleFormIterator,
     Toolbar,
+    Filter,
+    SearchInput,
     crudCreate
 } from 'react-admin';
 
 import SaveButtonComponent from "../../app-components/SaveButton";
 
+
 import { fetchhAppBundles, raFetchhAppBundles, makeCustomRAcall, registerAsProvider, isRegisteredAsProvider, registerhAppBundle } from './happs_actions';
 import { fetchAgent } from '../categories/categories_actions';
 import withStyles from '@material-ui/core/styles/withStyles';
+
+//////////////////
+import GridList from './GridList';
+import Chip from '@material-ui/core/Chip';
+
+const quickFilterStyles = {
+    root: {
+        marginBottom: '0.7em',
+    },
+};
+
+const QuickFilter = translate(
+    withStyles(quickFilterStyles)(({ classes, label, translate }) => (
+        <Chip className={classes.root} label={translate(label)} />
+    ))
+);
+export const HAppsFilter = props => (
+    <Filter {...props}>
+        <SearchInput source="q" alwaysOn />
+
+        <ReferenceInput
+            source="happs_id"
+            reference="happs"
+            sort={{ field: 'id', order: 'ASC' }}
+        >
+            <SelectInput source="name" />
+        </ReferenceInput>
+
+        <NumberInput source="width_gte" />
+        <NumberInput source="width_lte" />
+        <NumberInput source="height_gte" />
+        <NumberInput source="height_lte" />
+
+        <QuickFilter
+            label="resources.happs.fields.stock_lte"
+            source="stock_lte"
+            defaultValue={10}
+        />
+    </Filter>
+)
+/////////////////////
+//
+// import { fetchhAppBundles, raFetchhAppBundles, makeCustomRAcall, registerAsProvider, isRegisteredAsProvider, registerhAppBundle } from './happs_actions';
+// import { fetchAgent } from '../categories/categories_actions';
+// import withStyles from '@material-ui/core/styles/withStyles';
 
 export const styles = {
     stock: { width: '5em' },
@@ -42,20 +95,57 @@ export const styles = {
 
 const getDefaultDate = () => new Date();
 
-const HappsCreateToolbar = props => (
-    <Toolbar {...props}>
-        <SaveButtonComponent
-            label={translate("posts.action.save_and_edit")}
-            redirect="show"
-            submitOnEnter={true}
-        />
-        <SaveButton
-            label={translate("posts.action.save_and_edit")}
-            redirect="show"
-            submitOnEnter={true}
-        />
-    </Toolbar>
-);
+// const HappsCreateToolbar = props => (
+//     <Toolbar {...props}>
+//         <SaveButtonComponent
+//             label={translate("posts.action.save_and_edit")}
+//             redirect="show"
+//             submitOnEnter={true}
+//         />
+//     </Toolbar>
+// );
+
+class HappsCreateToolbar extends React.Component {
+  triggerList = () => {
+    console.log("LIST PROPS INSIDE OF CREATE", this.props)
+    return (
+      <List
+          {...this.props}
+          filters={<HAppsFilter />}
+          perPage={20}
+          sort={{ field: 'id', order: 'ASC' }}
+      >
+      <h2>Hello LIst</h2>
+      </List>
+    );
+  }
+  render() {
+    return (
+        <Toolbar {...this.props}>
+            <SaveButton
+                label={translate("posts.action.save_and_edit")}
+                redirect="show"
+                submitOnEnter={true}
+                onClick={this.triggerList}
+            />
+        </Toolbar>
+    );
+  }
+}
+
+// const HappsCreateToolbar = props => (
+//   <Toolbar {...props}>
+//       <Tooltip title="Submit Values" aria-label="Submit Values">
+//       <SaveButtonComponent
+//           label={<SendIcon/>}
+//           redirect="show"
+//           submitOnEnter={false}
+//           onClick={this.clearValues}
+//       />
+//       </Tooltip>
+//   </Toolbar>
+// );
+
 
 class HAppsCreate  extends React.Component {
   constructor(props){
@@ -120,33 +210,21 @@ class HAppsCreate  extends React.Component {
             }}
         >
             <TextInput autoFocus source="title" />
-            <LongTextInput source="teaser" />
-            <RichTextInput source="body" />
-            <FormDataConsumer>
-                {({ formData, ...rest }) =>
-                    formData.title && (
-                        <NumberInput
-                            source="average_note"
-                            defaultValue={5}
-                            {...rest}
-                        />
-                    )
-                }
-            </FormDataConsumer>
-            <DateInput source="published_at" defaultValue={getDefaultDate} />
-            <BooleanInput source="commentable" defaultValue />
+            <LongTextInput source="description" />
+            <TextInput autoFocus source="Domain Name" />
+            {/*<BooleanInput source="commentable" defaultValue /> */}
+
+            <TextInput autoFocus source="Ui Hash" />
             <ArrayInput
-                source="backlinks"
+                source="dna Hash"
                 defaultValue={[
                     {
-                        date: new Date().toISOString(),
-                        url: 'http://google.com',
+                        hash: ''
                     },
                 ]}
             >
                 <SimpleFormIterator>
-                    <DateInput source="date" />
-                    <TextInput source="url" />
+                    <TextInput source="hash" />
                 </SimpleFormIterator>
             </ArrayInput>
             {permissions === 'admin' && (

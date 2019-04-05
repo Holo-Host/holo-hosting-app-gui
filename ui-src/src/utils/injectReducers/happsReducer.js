@@ -65,6 +65,7 @@ export const registered_as_host = (previousState = previousHostRegState, { type,
 }
 
 export const all_hApp_bundles = (previousState = null, { type, payload }) => {
+  console.log("payload:---> ",payload);
     if (type === "FETCH_ALL_HAPP_BUNDLES_SUCCESS") {
       return { all_hApps : refactorAllApps(payload) };
         // return payload;

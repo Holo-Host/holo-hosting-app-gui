@@ -12,7 +12,7 @@ import { routerMiddleware } from 'connected-react-router/immutable';
 // import { routerReducer } from 'react-router-redux';
 import { connectRouter } from 'connected-react-router'
 import { whoami } from "../utils/injectReducers/categoriesReducer";
-// import { is_registered_provider, is_registered_host } from "../utils/injectReducers/dashboardReducer";
+import { is_registered_as_provider, is_registered_as_host } from "../utils/injectReducers/dashboardReducer";
 import { registered_as_provider, registered_as_host } from "../utils/injectReducers/happsReducer";
 import { registered_hApp_bundles, current_hApp_bundle_details, all_hApp_bundles } from "../utils/injectReducers/happsReducer";
 import theme from "../utils/injectReducers/themeReducer"
@@ -68,6 +68,8 @@ const configureStore = ({
         whoami,
         registered_as_provider,
         registered_as_host,
+        is_registered_as_provider,
+        is_registered_as_host,
         registered_hApp_bundles,
         current_hApp_bundle_details,
         all_hApp_bundles

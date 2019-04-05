@@ -44,13 +44,13 @@ class RegisterProvider extends React.Component {
 
     render() {
       console.log("REGISTER PROVIDER PROPS: ",this.props);
-      const { registered_as_provider, classes, translate } = this.props;
-      if(registered_as_provider === null || registered_as_provider === undefined){
+      const { is_registered_as_provider, classes, translate } = this.props;
+      if(is_registered_as_provider === null || is_registered_as_provider === undefined){
         return <NotRegistered type="provider" />
       }
         return (
           <div className={classes.main}>
-            {registered_as_provider.addresses.length !== 0  ?
+            {is_registered_as_provider.addresses.length > 0 ?
               <div>
                 <Typography className={classnames(classes.messageText, classes.title)} color="textSecondary">
                   {translate('pos.dashboard.registerProvider.is_provider_title')}
@@ -84,8 +84,9 @@ class RegisterProvider extends React.Component {
 
 const mapStateToProps = state => ({
     whoami: state.whoami,
-    registered_as_provider: state.registered_hApp_bundles,
-    locale: state.i18n.locale
+    registered_as_provider: state.registered_as_provider,
+    locale: state.i18n.locale,
+    is_registered_as_provider:state.is_registered_as_provider
 });
 const enhance = compose(
     connect(mapStateToProps, { registerAsProvider, isRegisteredAsProvider }),

@@ -81,6 +81,8 @@ class App extends Component {
                   whoami,
                   registered_as_provider,
                   registered_as_host,
+                  is_registered_as_provider,
+                  is_registered_as_host,
                   registered_hApp_bundles,
                   current_hApp_bundle_details,
                   all_hApp_bundles

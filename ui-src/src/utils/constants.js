@@ -33,7 +33,7 @@ export const HOST_ZOME_NAME = 'host';
 /** ************************** Happs Reducer Constants: ******************************** */
 export const refactorAllApps = ( payload ) => {
   console.log("allApps payload : ", payload)
-  let all_apps;
+  let all_apps=[];
   payload.forEach(app=>{
     all_apps.push({
       hash: app.hash,
