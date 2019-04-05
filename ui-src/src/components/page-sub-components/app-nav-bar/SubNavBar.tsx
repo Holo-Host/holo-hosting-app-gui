@@ -78,7 +78,7 @@ class SubNavBar extends React.Component<Props, State> {
                 <UpgradeIcon style={{color:'#00838d'}} width="25px" height="25px"/>
               </ListItemIcon>
               <Typography variant="subheading" style={{color:"#00838d", fontWeight: "bold", textDecoration: "none", display: "inline" }} gutterBottom={gutterBottom}>
-                Settings
+                Profile Upgrade
               </Typography>
             </Link>
             </ListItem>

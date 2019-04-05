@@ -174,7 +174,7 @@ class RegisterHost extends React.Component {
                  </FormControl>
               </Grid>
 
-              <Grid item>
+{/*              <Grid item>
                 <h4 className={classes.textHeader} >HoloFuel Account</h4>
                 <FormControl className={classes.margin}>
                     <InputLabel htmlFor='hf-account' className={classes.textFormLabel}>Type in your HoloFuel Account Number</InputLabel>
@@ -235,6 +235,7 @@ class RegisterHost extends React.Component {
                  />
                   </FormControl>
                </Grid>
+          */}
 
                <Grid item>
                   <Tooltip title="Clear Values" aria-label="Clear Values">

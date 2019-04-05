@@ -14,12 +14,12 @@ const home_table_columns = (props: any, state: any) => {
   }
 
   const table_columns = [{
-    Header: (row: any) => (<h4 style={{color:'#0e094b'}}>hApps</h4>),
+    Header: (row: any) => (<h4 style={{color:'#0e094b', fontSize:'1em'}}>hApps</h4>),
     accessor: 'app_name',
     filterAll: true,
     Cell: (row: any) => (
-      <div style={{ padding: '5px' }}>
-      { row.value }
+      <div >
+        <h3 style={{fontSize:'1.5rem'}}>{ row.value }</h3>
       </div>
     )
     }, {
@@ -29,9 +29,9 @@ const home_table_columns = (props: any, state: any) => {
     Cell: (row: any) => (
       <div style={{ padding: '5px' }}>
       { row.value === "Enabled" ? <Button variant="contained" onClick={onClickEnable.bind(props,row)}>
-        Enable
-      </Button> :  <Button variant="contained" value={row} onClick={onClickDisable.bind(props,row)}>
         Disable
+      </Button> :  <Button variant="contained" value={row} onClick={onClickDisable.bind(props,row)}>
+        Enable
       </Button> }
       </div>
     )

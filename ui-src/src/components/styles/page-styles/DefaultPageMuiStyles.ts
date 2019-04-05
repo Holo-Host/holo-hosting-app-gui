@@ -199,7 +199,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       marginTop: 20,
       marginBottom: 5,
       backgroundColor: 'transparent', // #c3cdd6
-      border: '3px solid #c3cdd6',
+      border: '3px solid #00838d',
       borderRadius: 4,
       zIndex: 2,
       overflow: 'hidden'
@@ -229,7 +229,7 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
       color: '#13426a',
       "&:hover": {
         color: '#c3cdd6',
-        background: '#13426a'
+        background: '#00838d'
       }
     },
     subtableHeader : {
@@ -660,9 +660,9 @@ const styles: StyleRulesCallback  = (theme: Theme) => ({
        minWidth: '80%'
      },
      tableCell: {
-       fontSize: '.7rem',
+       fontSize: '.9rem',
        textTransform: 'capitalize',
-       color: '#808080 !important',
+       color: '#0b1a42 !important',
        padding: 0,
        minWidth: 20,
        maxWidth: 71,

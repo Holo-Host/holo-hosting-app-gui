@@ -11,7 +11,9 @@ import ErrorMessage from '../error-message/ErrorMessage';
 import ErrorNotRegisteredAsHost from '../error-message/NotRegisteredAsHost';
 import NohAppsMessage from '../error-message/NohAppsMessage';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
-import {table_data} from '../../../utils/data-refactor'
+import {table_data} from '../../../utils/data-refactor';
+import Typography from '@material-ui/core/Typography';
+
 export interface OwnProps {
   classes: any
 }
@@ -44,7 +46,8 @@ class SummaryhAppsTables extends React.Component<Props, State> {
       ...newProps
     } = this.props;
 
-
+    const gutterBottom:boolean = true;
+    
     if(this.props.is_registered_host){
       if( this.props.is_registered_host.addresses.length === 0 ){
         return <div>
@@ -69,7 +72,10 @@ class SummaryhAppsTables extends React.Component<Props, State> {
         <ErrorMessage />
       :
       <div className={classnames(classes.tableContainer)}>
-            <AdvancedExpandReactTable
+        <Typography className={classnames(classes.pageHeader)} variant="display2" gutterBottom={gutterBottom} style={{ color:'#0000008a' }} component="h3" >
+          All Registered hApps
+       </Typography>
+              <AdvancedExpandReactTable
               className={classnames("-striped", "-highlight", classes.table)}
               showPagination={false}
               pageSize={table_data!.length}
