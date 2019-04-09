@@ -8,11 +8,12 @@
     "start-dna-agent2": "cd ./HoloHostingApp && HC_N3H_PATH=/home/lisa/n3h HC_AGENT=testAgent2 hc run --port 3100",
     "start-ui-agent1": "cd ui-src && npm run start-ui-agent1",
     "start-ui-agent2": "cd ui-src && npm run start-ui-agent2",
-    "build": "cd ui-src && npm run build"
+    "build": "cd ui-src && npm run build",
+    "build-HHA": "cd ui-src && REACT_APP_NODE_PORT=7777 REACT_APP_DNA_INSTANCE=holo-hosting-app react-scripts-ts build && node copy-to-ui.js",
   },
   "authors": [
     "Lisa Jetton",
-    "Zo-el"
+    "zo-el"
   ],
   "license": "MIT",
   "dependencies": {}

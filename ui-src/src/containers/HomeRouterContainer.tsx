@@ -110,7 +110,6 @@ class HomeRouterContainer extends React.Component<Props, State> {
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}
-              className={classes.appTable}
               {...newProps}
             />
           :
@@ -119,7 +118,7 @@ class HomeRouterContainer extends React.Component<Props, State> {
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}
-              className={classes.appTable} {...this.props}
+              {...newProps}
             />
           :
             location.pathname === "/settings" ?
@@ -128,7 +127,6 @@ class HomeRouterContainer extends React.Component<Props, State> {
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}
-              className={classes.appTable}
               {...this.props}
             />
           :
@@ -137,7 +135,6 @@ class HomeRouterContainer extends React.Component<Props, State> {
               transferBtnBar={this.state.chooseTxBtnBarOpen}
               showTransferBar={this.toggleTransferBtnBar}
               txType={this.state.transactionType}
-              className={classes.appTable}
               {...this.props}
             />
           }
