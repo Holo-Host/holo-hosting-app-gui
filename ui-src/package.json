@@ -1,5 +1,5 @@
 {
-  "name": "holofuel-gui",
+  "name": "holo-hosting-gui",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:4141",

@@ -10,7 +10,6 @@ coverage
 # dependencies
 /node_modules
 ui-src/node_modules
-ui-src/package-lock.json
 
 # misc
 stats.json
@@ -23,4 +22,3 @@ ui-src/.env.production.local
 # Cruft
 .DS_Store
 npm-debug.log
-yarn.lock

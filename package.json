@@ -4,12 +4,13 @@
   "description": "The hosting app is a space for Hosts and App Providers to interact",
   "main": "index.js",
   "scripts": {
+    "install": "cd ui-src && npm install",
     "start-dna-agent1": "cd ./HoloHostingApp && HC_N3H_PATH=/home/lisa/n3h HC_AGENT=testAgent1 hc run --port 3000",
     "start-dna-agent2": "cd ./HoloHostingApp && HC_N3H_PATH=/home/lisa/n3h HC_AGENT=testAgent2 hc run --port 3100",
     "start-ui-agent1": "cd ui-src && npm run start-ui-agent1",
     "start-ui-agent2": "cd ui-src && npm run start-ui-agent2",
     "build": "cd ui-src && npm run build",
-    "build-HHA": "cd ui-src && REACT_APP_NODE_PORT=7777 REACT_APP_DNA_INSTANCE=holo-hosting-app react-scripts-ts build && node copy-to-ui.js",
+    "build-HHA": "cd ui-src && REACT_APP_NODE_PORT=7777 REACT_APP_DNA_INSTANCE=holo-hosting-app react-scripts-ts build && node copy-to-ui.js"
   },
   "authors": [
     "Lisa Jetton",

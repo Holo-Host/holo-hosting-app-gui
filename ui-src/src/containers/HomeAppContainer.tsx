@@ -13,8 +13,7 @@ import {
   RegisterHost,
   AddDomainName,
   AddServiceLogDetails,
-  // RegisterhAppBundle,
-  register_hApp_bundle
+  RegisterhAppBundle
 } from '../actions/transactionActions';
 import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
 
@@ -72,7 +71,7 @@ const mapStateToProps = ({ reducers }: any): StateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
-    register_hApp_bundle : (payload) => {dispatch(register_hApp_bundle(payload))},
+    register_hApp_bundle : (payload) => {dispatch(RegisterhAppBundle.create(payload))},
     is_registered_as_provider : () => {dispatch(IsRegisterProviderAction.create({}))},
     is_registered_as_host : () => {dispatch(IsRegisterHostAction.create({}))},
     get_agent_details : () => {dispatch(GetAgentDetails.create({}))},
