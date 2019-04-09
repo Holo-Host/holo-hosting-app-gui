@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 // import Today from '@material-ui/icons/Today';
 // import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
 
+import Layers from '@material-ui/icons/Layers';
 import Code from '@material-ui/icons/Code';
 import Description from '@material-ui/icons/Description';
 // import MessageIcon from '@material-ui/icons/Message';
@@ -55,7 +56,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
             <TableBody>
               <TableRow key={'0'}>
               <TableCell className={classes.tableCell} align="center" scope="currentRow">
-                <Code/> hApp Hash
+                <Layers/> hApp Bundle Hash
               </TableCell>
               <TableCell className={classes.tableCell} align="center" scope="currentRow">
                   <Code/> UI Hash
@@ -64,7 +65,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
                   <Code/> DNA Hash
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
-                  <Description/> Details
+                  <Description/> Description
                 </TableCell>
               </TableRow>
               <TableRow key={'1'}>

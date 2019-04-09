@@ -184,8 +184,8 @@ export const advancedExpandTableHOC = TableComponent =>
           style: {
             overflowX: scroll,
             fontSize: '.7525rem',
-            background: rowInfo.index === this.state.selected ? '#13426a' : rowInfo.row.rowNumberType === 'odd' ? '#63779082' : '#e9ecef',
-            color: rowInfo.index === this.state.selected ? '#d8dee3' : '#808080'
+            background: rowInfo.index === this.state.selected ? '#00838d' : rowInfo.row.rowNumberType === 'odd' ? '#63779082' : '#e9ecef',
+            color: rowInfo.index === this.state.selected ? '#13426a' : '#808080'
           }
         }
       }
