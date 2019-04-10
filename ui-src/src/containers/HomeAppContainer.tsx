@@ -13,7 +13,10 @@ import {
   RegisterHost,
   AddDomainName,
   AddServiceLogDetails,
-  RegisterhAppBundle
+  RegisterhAppBundle,
+  GetMyEnabledApps,
+  EnableApp,
+  DisableApp
 } from '../actions/transactionActions';
 import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
 
@@ -48,6 +51,7 @@ const mapStateToProps = ({ reducers }: any): StateProps => {
   all_registered_hApps:reducers.all_registered_hApps,
   last_registered_hApp:reducers.last_registered_hApp,
   app_details:reducers.app_details,
+  my_enabled_apps:reducers.my_enabled_apps,
 // holofuel specific states :
 // TODO: DELETE THE FOLLOWING AND ALL REFERENCE TO IT WITHIN CODE...
   list_of_instance_info: reducers.list_of_instance_info,
@@ -80,9 +84,11 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     get_hApp_details : (payload) => {dispatch(GethAppDetails.create(payload))},
     register_as_host : (payload) => {dispatch(RegisterHost.create(payload))},
     register_as_provider : (payload) => {dispatch(RegisterProvider.create(payload))},
-
     add_domain_name : (payload) => {dispatch(AddDomainName.create(payload))},
     add_service_log_details : (payload) => {dispatch(AddServiceLogDetails.create(payload))},
+    get_enabled_app_list : () => {dispatch(GetMyEnabledApps.create({}))},
+    enable_app : (payload) => {dispatch(EnableApp.create(payload))},
+    disable_app : (payload) => {dispatch(DisableApp.create(payload))},
   };
 }
 

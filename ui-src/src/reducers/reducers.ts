@@ -42,6 +42,9 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
    case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
      return { ...state, all_hApps : refactorAllApps(payload) };
    }
+   case `${DNA_INSTANCE}/${HOST}/get_enabled_app_list_SUCCESS`: {
+     return { ...state, my_enabled_apps : payload };
+   }
 
      /*Manages WhoAmI Returns*/
    case `${DNA_INSTANCE}/whoami/get_user_SUCCESS`: {

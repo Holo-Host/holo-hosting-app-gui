@@ -5,8 +5,8 @@
   "proxy": "http://localhost:4141",
   "description": "Simple and intuitive interface allowing users to transact with Holo Fuel.",
   "scripts": {
-    "start-ui-agent1": "PORT=8800 REACT_APP_NODE_PORT=3000 REACT_APP_DNA_INSTANCE=test-instance react-scripts-ts start",
-    "start-ui-agent2": "PORT=9300 REACT_APP_NODE_PORT=3100 REACT_APP_DNA_INSTANCE=test-instance react-scripts-ts start",
+    "start-ui-agent1": "PORT=8800 REACT_APP_NODE_PORT=4000 REACT_APP_DNA_INSTANCE=test-instance react-scripts-ts start",
+    "start-ui-agent2": "PORT=9300 REACT_APP_NODE_PORT=4100 REACT_APP_DNA_INSTANCE=test-instance react-scripts-ts start",
     "start-web": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.base.js",
     "build": "react-scripts-ts build && node copy-to-ui.js",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",

@@ -19,3 +19,7 @@ export const GetRegisteredApps = createHolochainZomeCallAsyncAction<{}, Array<an
 export const IsRegisterHostAction = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'is_registered_as_host');
 export const GetAllhApps = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'get_all_apps');
 export const RegisterHost = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'register_as_host');
+export const GetMyEnabledApps = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'get_enabled_app_list');
+
+export const EnableApp = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'enable_app');
+export const DisableApp = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'disable_app');
