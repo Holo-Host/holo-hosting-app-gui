@@ -104,9 +104,9 @@ class App extends Component {
                 //   <Resource name="tags" {...tags} />,
                 // ]} / */}
 
-                <Resource name="users" {...users} />
                 <Resource name="happs" {...happs} />
-                <Resource name="categories" {...categories} />
+                {/* <Resource name="users" {...users} />*/}
+                {/* <Resource name="categories" {...categories} />*/}
                 {/* <Resource name="reviews" {...reviews} /> */}
                 {/* <Resource name="posts" {...posts} /> */}
             </Admin>

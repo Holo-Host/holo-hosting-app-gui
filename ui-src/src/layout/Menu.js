@@ -44,7 +44,16 @@ class Menu extends Component {
             <div>
                 {' '}
                 <DashboardMenuItem onClick={onMenuClick} />
-                <SubMenu
+                <MenuItemLink
+                    to={`/happs`}
+                    primaryText={translate(`resources.happs.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<happs.icon />}
+                    onClick={onMenuClick}
+                />
+
+                {/* <SubMenu
                     handleToggle={() => this.handleToggle('menuProducts')}
                     isOpen={this.state.menuProducts}
                     sidebarIsOpen={open}
@@ -59,7 +68,7 @@ class Menu extends Component {
                         leftIcon={<happs.icon />}
                         onClick={onMenuClick}
                     />
-                    <MenuItemLink
+                     <MenuItemLink
                         to={`/categories`}
                         primaryText={translate(`resources.categories.name`, {
                             smart_count: 2,
@@ -67,15 +76,15 @@ class Menu extends Component {
                         leftIcon={<categories.icon />}
                         onClick={onMenuClick}
                     />
-                </SubMenu>
-                <MenuItemLink
+                </SubMenu> */}
+                {/* <MenuItemLink
                     to={`/users`}
                     primaryText={translate(`resources.users.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<users.icon />}
                     onClick={onMenuClick}
-                />
+                /> */}
                 {/* <MenuItemLink
                     to={`/reviews`}
                     primaryText={translate(`resources.reviews.name`, {
