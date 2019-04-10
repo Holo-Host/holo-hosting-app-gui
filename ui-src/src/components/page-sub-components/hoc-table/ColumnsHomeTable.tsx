@@ -6,22 +6,23 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 const home_table_columns = (props: any, state: any) => {
-  const onClickEnable = (event:any) => {
-    console.log("*TODO : Send a request to the Interceptor to Enable*",event.original.app_hash)
-    axios.post('http://localhost:9999/holo/happs/install', {
-      happId: event.original.app_hash,
-    },
-    {headers:{
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'application/json'
-    }})
-    .then(function (response) {
-      console.log("Axios Completed: ", response);
-      props.enable_app({app_hash:event.original.app_hash})
+
+  const onClickEnable = async(event:any) => {
+    const postData = {happId: event.original.app_hash};
+    let axiosConfig = {
+       headers: {
+           'Content-Type': 'application/json',
+           "Access-Control-Allow-Origin": "*"
+       }
+     };
+
+    axios.post('http://localhost:9999/holo/happs/install', postData, axiosConfig)
+    .then((res) => {
+      console.log("Aixos RECEIVED: ", res);
     })
-    .catch(function (error) {
-      console.log("Axios Error: ",error);
-    });
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    })
   }
 
   const onClickDisable = (event:any) => {
