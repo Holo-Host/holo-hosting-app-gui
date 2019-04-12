@@ -45,7 +45,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
     const {
       app_hash,
       app_bundle,
-      app_details
+      // app_details
      } = this.props.rowInfo.original;
 
      console.log("Props of the DropDownHomeTable: ", this.props)
@@ -79,7 +79,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
                     <h4>{ app_bundle.dna_list }</h4>
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
-                  {app_details}
+                  {/*{app_details}*/}
                 </TableCell>
               </TableRow>
             </TableBody>

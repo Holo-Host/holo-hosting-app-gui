@@ -98,7 +98,7 @@ class RegisterhAppForm extends React.Component {
     super(props);
     this.state = {
       app_name:'',
-      uiHash: '',
+      happHash: '',
       dnaHashes: [],
       description: '',
       categories: [],
@@ -142,7 +142,7 @@ class RegisterhAppForm extends React.Component {
   clearValues = () => {
     this.setState({
       app_name: '',
-      uiHash: '',
+      happHash: '',
       dnaHashes: [""],
       description: '',
       categories: [],
@@ -163,7 +163,7 @@ class RegisterhAppForm extends React.Component {
   handlesubmithAppBundle = async () => {
     let hApp_call_res;
     const app_bundle= {
-      ui_hash: this.state.uiHash,
+      ui_hash: this.state.happHash,
       dna_list: this.state.dnaHashes
     }
 
@@ -185,21 +185,22 @@ class RegisterhAppForm extends React.Component {
   };
 
   handleSubmit = () => {
+
+
     const app_bundle= {
-      ui_hash: this.state.uiHash,
-      dna_list: this.state.dnaHashes
+      happ_hash: this.state.happHash,
     }
 
-    const app_details = {
-      name: this.state.app_name,
-      details:this.state.description
-    };
+    // const app_details = {
+    //   name: this.state.app_name,
+    //   details:this.state.description
+    // };
 
     const domain_name = {
       dns_name: this.state.domainUrl
     }
 
-      this.props.register_hApp_bundle({ app_bundle, app_details, domain_name })
+      this.props.register_hApp_bundle({ app_bundle, domain_name })
     // console.log("app_register_call", app_register_call)
 
     this.clearValues();
@@ -218,61 +219,13 @@ class RegisterhAppForm extends React.Component {
           <Grid container>
             <form onSubmit={this.handleSubmit} className={classes.form}>
 
-
               <Grid item>
-                <h4 className={classes.h4}>hApp Name</h4>
+                <h4 className={classes.textHeader} >hApp Hash</h4>
                 <FormControl className={classes.margin}>
-                  <TextField
-                    id="app_name"
-                    label="App Name"
-                    value={this.state.app_name}
-                    onChange={this.handleChange('app_name')}
-                    className={classes.textField}
-                    margin="normal"
-                  />
-                 </FormControl>
-              </Grid>
-
-              <Grid item>
-                <h4 className={classes.textHeader} >UI Details</h4>
-                <FormControl className={classes.margin}>
-                    <InputLabel htmlFor='ui-hash' className={classes.textFormLabel}>Type in the UI Hash</InputLabel>
-                    <TextInput value={this.state.uiHash} onChange={this.handleChange('uiHash')}/>
+                    <InputLabel htmlFor='ui-hash' className={classes.textFormLabel}>Type in the hApp Hash</InputLabel>
+                    <TextInput value={this.state.happHash} onChange={this.handleChange('happHash')}/>
                 </FormControl>
                </Grid>
-
-               <Grid item>
-                 <h4 className={classes.textHeader} style={{display:'inline-flex', marginRight:'5px'}}>DNA Details</h4>
-                  <span onClick={this.addDnaLine} style={{display:'inline-flex'}}>
-                    <AddIcon style={{color:'#0e094b'}}/>
-                  </span>
-                  <span onClick={this.removeDnaLine} style={{display:'inline-flex'}}>
-                    <RemoveIcon style={{color:'#0e094b'}}/>
-                  </span>
-                  <br/>
-                 <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="dna-hash" className={classes.textFormLabel}>Type in each DNA Hash</InputLabel>
-                    {this.state.dnaAmount.map((value, i) => (
-                      <TextInput key={i} value={this.state.dnaHashes[i] } onChange={this.handleDnaHashChange(i)}/>
-                    ))}
-                 </FormControl>
-                </Grid>
-
-                <Grid item>
-                  <h4 className={classes.h4}>hApp Summary</h4>
-                  <FormControl className={classes.margin}>
-                    <TextField
-                      id="description"
-                      label="Description"
-                      multiline
-                      rowsMax="4"
-                      value={this.state.description}
-                      onChange={this.handleChange('description')}
-                      className={classes.textField}
-                      margin="normal"
-                    />
-                   </FormControl>
-                </Grid>
 
                 <Grid item>
                   <h4 className={classes.h4}>Domain URL</h4>
