@@ -1,0 +1,60 @@
+[[agents]]
+id = "liza_id"
+name = "Li-za"
+public_address = "HcSCJ4iA73hcM5Byi3vRq6t7sHj3Hh7jiG34sibNrEDx7q9eGYS3BGJJr5tbqtr"
+keystore_file = "/home/zo-el/.config/holochain/keys/HcSCJ4iA73hcM5Byi3vRq6t7sHj3Hh7jiG34sibNrEDx7q9eGYS3BGJJr5tbqtr"
+
+# DNA and Instance of the HApp Store
+[[dnas]]
+id = "happ_store_dna"
+file = "dna/HAppStore/dist/HAppStore.dna.json"
+hash = "Qm328wyq38924x"
+
+[[instances]]
+id = "happ-store-instance"
+dna = "happ_store_dna"
+agent = "liza_id"
+[instances.logger]
+type = "simple"
+file = "app_spec2.log"
+[instances.storage]
+type = "file"
+path = "tmp-storage-1"
+
+# DNA and Instance of the HoloHostingApp
+[[dnas]]
+id = "hha_dna"
+file = "dna/HoloHostingApp/dist/HoloHostingApp.dna.json"
+hash = "QmSqPoNS5n1GnaBmJXq42RK3FdZaAKnid1ueBnMbuyJYCD"
+
+[[instances]]
+id = "holo-hosting-app"
+dna = "hha_dna"
+agent = "liza_id"
+[instances.logger]
+type = "simple"
+file = "app_spec.log"
+[instances.storage]
+type = "file"
+path = "tmp-storage-2"
+
+[[interfaces]]
+id = "websocket_interface"
+[interfaces.driver]
+type = "websocket"
+port = 7777
+[[interfaces.instances]]
+id = "holo-hosting-app"
+[[interfaces.instances]]
+id = "happ-store-instance"
+
+[[ui_bundles]]
+id = "main"
+root_dir = "./ui"
+hash = "Qm000"
+
+[[ui_interfaces]]
+id = "ui-interface"
+bundle = "main"
+port = 8000
+dna_interface = "websocket_interface"

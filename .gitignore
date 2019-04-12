@@ -22,3 +22,6 @@ ui-src/.env.production.local
 # Cruft
 .DS_Store
 npm-debug.log
+
+tmp-storage-1
+tmp-storage-2
