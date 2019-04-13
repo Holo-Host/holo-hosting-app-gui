@@ -56,6 +56,7 @@ export interface DispatchProps {
 
   add_domain_name:({payload}:any)=> void,
   add_service_log_details:({payload}:any)=> void,
+  get_app_details_from_hstore:({payload}:any)=>void
 }
 export type Props =  StateProps & DispatchProps & OwnProps;
 

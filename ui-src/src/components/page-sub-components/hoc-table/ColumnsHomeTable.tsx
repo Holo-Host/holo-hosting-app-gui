@@ -15,6 +15,7 @@ const home_table_columns = (props: any, state: any) => {
 
   const onClickView = (event:any) => {
     console.log("*TODO : View Details*")
+    props.get_app_details_from_hstore({app_hash:event.original.app_bundle.happ_hash})
   }
 
   const table_columns = [{

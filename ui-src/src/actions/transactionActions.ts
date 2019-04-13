@@ -1,5 +1,5 @@
 import { createHolochainZomeCallAsyncAction } from '@holochain/hc-redux-middleware';
-import { setInstance, PROVIDER, HOST } from '../utils/constants'
+import { setInstance, PROVIDER, HOST, HAPP_STORE_INSTANCE_ID } from '../utils/constants'
 const DNA_INSTANCE = setInstance();
 
 
@@ -19,3 +19,8 @@ export const GetRegisteredApps = createHolochainZomeCallAsyncAction<{}, Array<an
 export const IsRegisterHostAction = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'is_registered_as_host');
 export const GetAllhApps = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'get_all_apps');
 export const RegisterHost = createHolochainZomeCallAsyncAction<{}, Array<any>>(DNA_INSTANCE, HOST, 'register_as_host');
+
+
+
+/*HApps Store Call*/
+export const GetDetailsFromHStore = createHolochainZomeCallAsyncAction<{}, Array<any>>(HAPP_STORE_INSTANCE_ID, "happs", 'get_app');

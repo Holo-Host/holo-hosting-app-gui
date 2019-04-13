@@ -25,3 +25,5 @@ npm-debug.log
 
 tmp-storage-1
 tmp-storage-2
+
+conductor-config.toml
