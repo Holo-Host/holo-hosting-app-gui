@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "install": "cd ui-src && npm install",
-    "start-dna-agent1": "cd ./dna/HoloHostingApp && HC_N3H_PATH=/home/lisa/n3h HC_AGENT=testAgent1 hc run --port 4000",
-    "start-dna-agent2": "cd ./dna/HoloHostingApp && HC_N3H_PATH=/home/lisa/n3h HC_AGENT=testAgent2 hc run --port 4100",
+    "start-dna-agent1": "cd ./dna/HoloHostingApp && HC_N3H_PATH=~/n3h HC_AGENT=testAgent1 hc run --port 4000",
+    "start-dna-agent2": "cd ./dna/HoloHostingApp && HC_N3H_PATH=~/n3h HC_AGENT=testAgent2 hc run --port 4100",
     "start-ui-agent1": "cd ui-src && npm run start-ui-agent1",
     "start-ui-agent2": "cd ui-src && npm run start-ui-agent2",
     "build": "cd ui-src && npm run build",

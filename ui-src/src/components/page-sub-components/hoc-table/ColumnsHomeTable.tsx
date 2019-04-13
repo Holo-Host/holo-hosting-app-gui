@@ -13,16 +13,33 @@ const home_table_columns = (props: any, state: any) => {
     console.log("*TODO : Send a request to the Interceptor to Disable*")
   }
 
+  const onClickView = (event:any) => {
+    console.log("*TODO : View Details*")
+  }
+
   const table_columns = [{
     Header: (row: any) => (<h4 style={{color:'#0e094b', fontSize:'1em'}}>hApps</h4>),
-    accessor: 'app_name',
+    accessor: 'app_hash',
     filterAll: true,
     Cell: (row: any) => (
       <div >
         <h3 style={{fontSize:'1.5rem'}}>{ row.value }</h3>
       </div>
     )
-    }, {
+    },
+    {
+    Header: (row: any) => (<h4 style={{color:'#0e094b'}}>Status</h4>),
+    accessor: 'Details',
+      filterAll: true,
+    Cell: (row: any) => (
+      <div style={{ padding: '5px' }}>
+      <Button variant="contained" value={row} onClick={onClickView.bind(props,row)}>
+        View
+      </Button>
+      </div>
+    )
+  },
+   {
     Header: (row: any) => (<h4 style={{color:'#0e094b'}}>Status</h4>),
     accessor: 'status',
     filterAll: true,
@@ -35,7 +52,7 @@ const home_table_columns = (props: any, state: any) => {
       </Button> }
       </div>
     )
-    }]
+  }]
   return table_columns;
 };
 

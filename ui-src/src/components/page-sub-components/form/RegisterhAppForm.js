@@ -160,33 +160,7 @@ class RegisterhAppForm extends React.Component {
     this.setState({ dnaHashes: newDnaHashList });
   };
 
-  handlesubmithAppBundle = async () => {
-    let hApp_call_res;
-    const app_bundle= {
-      ui_hash: this.state.happHash,
-      dna_list: this.state.dnaHashes
-    }
-
-    try {
-      new Promise((resolve, reject) => {
-        resolve(
-          this.props.register_hApp_bundle({app_bundle})
-        )
-        hApp_call_res = "call complete";
-      })
-    }
-    catch(err) {
-      console.log("Error occured when regeistering app", err);
-      hApp_call_res = "call errored"
-    }
-
-    console.log("hApp_call_res", hApp_call_res);
-    return hApp_call_res;
-  };
-
   handleSubmit = () => {
-
-
     const app_bundle= {
       happ_hash: this.state.happHash,
     }

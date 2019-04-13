@@ -1,8 +1,8 @@
 [[agents]]
 id = "liza_id"
 name = "Li-za"
-public_address = "HcSCJ4iA73hcM5Byi3vRq6t7sHj3Hh7jiG34sibNrEDx7q9eGYS3BGJJr5tbqtr"
-keystore_file = "/home/zo-el/.config/holochain/keys/HcSCJ4iA73hcM5Byi3vRq6t7sHj3Hh7jiG34sibNrEDx7q9eGYS3BGJJr5tbqtr"
+public_address = ""
+keystore_file = ""
 
 # DNA and Instance of the HApp Store
 [[dnas]]
@@ -11,7 +11,7 @@ file = "dna/HAppStore/dist/HAppStore.dna.json"
 hash = "Qm328wyq38924x"
 
 [[instances]]
-id = "happ-store-instance"
+id = "happ-store"
 dna = "happ_store_dna"
 agent = "liza_id"
 [instances.logger]
@@ -46,7 +46,7 @@ port = 7777
 [[interfaces.instances]]
 id = "holo-hosting-app"
 [[interfaces.instances]]
-id = "happ-store-instance"
+id = "happ-store"
 
 [[ui_bundles]]
 id = "main"
@@ -56,5 +56,16 @@ hash = "Qm000"
 [[ui_interfaces]]
 id = "ui-interface"
 bundle = "main"
+port = 8800
+dna_interface = "websocket_interface"
+
+[[ui_bundles]]
+id = "happ_store_main"
+root_dir = "./ui-happ-store"
+hash = "Qm000"
+
+[[ui_interfaces]]
+id = "happ-store-ui-interface"
+bundle = "happ_store_main"
 port = 8000
 dna_interface = "websocket_interface"

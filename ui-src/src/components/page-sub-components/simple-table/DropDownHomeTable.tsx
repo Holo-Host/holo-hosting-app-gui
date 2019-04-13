@@ -9,8 +9,8 @@ import Paper from '@material-ui/core/Paper';
 // import HourGlassIcon from '@material-ui/icons/HourglassEmpty';
 
 import Layers from '@material-ui/icons/Layers';
-import Code from '@material-ui/icons/Code';
-import Description from '@material-ui/icons/Description';
+// import Code from '@material-ui/icons/Code';
+// import Description from '@material-ui/icons/Description';
 // import MessageIcon from '@material-ui/icons/Message';
 import { StateProps, DispatchProps } from '../../../containers/HomeRouterContainer';
 import styles from '../../styles/page-styles/DefaultPageMuiStyles';
@@ -43,10 +43,9 @@ class DropDownHomeTable extends React.Component<Props, State> {
   public render() {
     const { classes } = this.props;
     const {
-      app_hash,
+      // app_hash,
       app_bundle,
-      // app_details
-     } = this.props.rowInfo.original;
+    } = this.props.rowInfo.original;
 
      console.log("Props of the DropDownHomeTable: ", this.props)
      return (
@@ -58,7 +57,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
               <TableCell className={classes.tableCell} align="center" scope="currentRow">
                 <Layers/> hApp Bundle Hash
               </TableCell>
-              <TableCell className={classes.tableCell} align="center" scope="currentRow">
+          {/*    <TableCell className={classes.tableCell} align="center" scope="currentRow">
                   <Code/> UI Hash
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
@@ -67,20 +66,21 @@ class DropDownHomeTable extends React.Component<Props, State> {
                 <TableCell align="center" className={classes.tableCell}>
                   <Description/> Description
                 </TableCell>
+              */}
               </TableRow>
               <TableRow key={'1'}>
                 <TableCell align="center" className={classes.tableCell}>
-                    <h4>{ app_hash }</h4>
+                    <h4>{ app_bundle.happ_hash }</h4>
                 </TableCell>
-                <TableCell align="center" className={classes.tableCell}>
+                {/*<TableCell align="center" className={classes.tableCell}>
                     <h4>{ app_bundle.ui_hash }</h4>
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell} scope="currentRow">
                     <h4>{ app_bundle.dna_list }</h4>
                 </TableCell>
                 <TableCell align="center" className={classes.tableCell}>
-                  {/*{app_details}*/}
                 </TableCell>
+                */}
               </TableRow>
             </TableBody>
           </Table>
