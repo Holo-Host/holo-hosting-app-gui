@@ -4,9 +4,9 @@ export const table_data = (payload:any) => {
   payload.forEach((bundle:any)=>{
       table_data.push({
         app_hash:bundle.hash,
-        app_name:bundle.details.app_details[0].entry.name,
+        // app_name:bundle.details.app_details[0].entry.name,
         app_bundle:bundle.details.app_bundle,
-        app_details:bundle.details.app_details[0].entry.details,
+        // app_details:bundle.details.app_details[0].entry.details,
         payment_pref:bundle.details.payment_pref,
         status:"Disabled"
       })

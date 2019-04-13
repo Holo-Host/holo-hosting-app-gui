@@ -47,7 +47,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     } = this.props;
 
     const gutterBottom:boolean = true;
-    
+
     if(this.props.is_registered_host){
       if( this.props.is_registered_host.addresses.length === 0 ){
         return <div>
