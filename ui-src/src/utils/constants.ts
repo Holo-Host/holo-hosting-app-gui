@@ -16,3 +16,5 @@ export const setPort = () => {
 
 export const PROVIDER = 'provider';
 export const HOST = 'host';
+
+export const HAPP_STORE_INSTANCE_ID = "happ-store";

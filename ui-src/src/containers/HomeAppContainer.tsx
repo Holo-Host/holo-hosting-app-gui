@@ -16,6 +16,7 @@ import {
   RegisterhAppBundle,
   GetMyEnabledApps,
   EnableApp,
+  GetDetailsFromHStore,
   DisableApp
 } from '../actions/transactionActions';
 import HomeRouterContainer, { StateProps, DispatchProps } from './HomeRouterContainer';
@@ -86,6 +87,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     register_as_provider : (payload) => {dispatch(RegisterProvider.create(payload))},
     add_domain_name : (payload) => {dispatch(AddDomainName.create(payload))},
     add_service_log_details : (payload) => {dispatch(AddServiceLogDetails.create(payload))},
+    get_app_details_from_hstore : (payload) => {dispatch(GetDetailsFromHStore.create(payload))},
     get_enabled_app_list : () => {dispatch(GetMyEnabledApps.create({}))},
     enable_app : (payload) => {dispatch(EnableApp.create(payload))},
     disable_app : (payload) => {dispatch(DisableApp.create(payload))},
