@@ -3,10 +3,25 @@ import * as React from 'react';
 import '../../styles/page-styles/scaffold-styles.css';
 import Button from '@material-ui/core/Button';
 // export type Props = DispatchProps & StateProps;
-
+import axios from 'axios';
 const home_table_columns = (props: any, state: any) => {
   const onClickEnable = (event:any) => {
-    console.log("*TODO : Send a request to the Interceptor to Enable*")
+    const postData = {happId: event.original.app_hash};
+   let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
+      }
+    };
+
+   axios.post('http://localhost:9999/holo/happs/install', postData, axiosConfig)
+   .then((res) => {
+     console.log("RESPONSE RECEIVED: ", res);
+     // call to ENABLE app here (upon success...).
+   })
+   .catch((err) => {
+     console.log("AXIOS ERROR: ", err);
+   })
   }
 
   const onClickDisable = (event:any) => {
@@ -28,9 +43,9 @@ const home_table_columns = (props: any, state: any) => {
     filterAll: true,
     Cell: (row: any) => (
       <div style={{ padding: '5px' }}>
-      { row.value === "Enabled" ? <Button variant="contained" onClick={onClickEnable.bind(props,row)}>
+      { row.value === "Enabled" ? <Button variant="contained" onClick={onClickDisable.bind(props,row)}>
         Disable
-      </Button> :  <Button variant="contained" value={row} onClick={onClickDisable.bind(props,row)}>
+      </Button> :  <Button variant="contained" value={row} onClick={onClickEnable.bind(props,row)}>
         Enable
       </Button> }
       </div>
