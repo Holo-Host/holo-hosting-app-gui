@@ -42,7 +42,7 @@ path = "tmp-storage-2"
 id = "websocket_interface"
 [interfaces.driver]
 type = "websocket"
-port = 7777
+port = 1111
 [[interfaces.instances]]
 id = "holo-hosting-app"
 [[interfaces.instances]]
@@ -61,7 +61,7 @@ dna_interface = "websocket_interface"
 
 [[ui_bundles]]
 id = "happ_store_main"
-root_dir = "./ui-happ-store"
+root_dir = "/home/zo-el/Documents/GitRepo/Holochain/holo-hosting/HApps-Store/ui-happ-store"
 hash = "Qm000"
 
 [[ui_interfaces]]
