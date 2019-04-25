@@ -18,7 +18,12 @@ ui-src/.env.local
 ui-src/.env.development.local
 ui-src/.env.test.local
 ui-src/.env.production.local
-
+ui-happ-store/
 # Cruft
 .DS_Store
 npm-debug.log
+
+tmp-storage-1
+tmp-storage-2
+
+conductor-config.toml

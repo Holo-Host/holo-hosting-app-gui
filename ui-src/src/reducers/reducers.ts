@@ -1,7 +1,7 @@
 import { ActionType } from 'typesafe-actions';
 import * as actions from '../actions/transactionActions';
 import { Ledger, ListTransactionsResult, Address, Proposal, Transaction, PendingResult } from '../utils/types';
-import { setInstance, TABLE_DATA_BATCH_LIMIT , PROVIDER, HOST} from '../utils/constants'
+import { setInstance, TABLE_DATA_BATCH_LIMIT , PROVIDER, HOST, HAPP_STORE_INSTANCE_ID} from '../utils/constants'
 export type Action = ActionType<typeof actions>;
 import { refactorAllApps } from '../utils/data-refactor'
 
@@ -42,11 +42,20 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
    case `${DNA_INSTANCE}/${HOST}/get_all_apps_SUCCESS`: {
      return { ...state, all_hApps : refactorAllApps(payload) };
    }
+   case `${DNA_INSTANCE}/${HOST}/get_enabled_app_list_SUCCESS`: {
+     return { ...state, my_enabled_apps : payload };
+   }
 
      /*Manages WhoAmI Returns*/
    case `${DNA_INSTANCE}/whoami/get_user_SUCCESS`: {
      return { ...state, agent_details : payload };
    }
+
+   /*Manages happ Returns*/
+ case `${HAPP_STORE_INSTANCE_ID}/happs/get_app_SUCCESS`: {
+   console.log("App Details: ",payload)
+   return { ...state, agent_details : payload };
+ }
     default:
       return state;
   }

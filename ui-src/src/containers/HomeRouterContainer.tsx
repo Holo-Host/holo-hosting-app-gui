@@ -42,6 +42,7 @@ export interface StateProps {
   all_registered_hApps:any,
   last_registered_hApp:any,
   app_details:any,
+  my_enabled_apps:any,
 }
 export interface DispatchProps {
   is_registered_as_provider: () => void,
@@ -56,6 +57,10 @@ export interface DispatchProps {
 
   add_domain_name:({payload}:any)=> void,
   add_service_log_details:({payload}:any)=> void,
+  get_app_details_from_hstore:({payload}:any)=>void
+  get_enabled_app_list:()=>void,
+  enable_app:({payload}:any)=>void,
+  disable_app:({payload}:any)=>void,
 }
 export type Props =  StateProps & DispatchProps & OwnProps;
 

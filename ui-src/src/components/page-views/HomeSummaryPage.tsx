@@ -65,8 +65,6 @@ class HomeSummaryPage extends React.Component<Props, State> {
 
  testingCalls(){
    // Testing Calls
-   this.props.register_hApp_bundle({ui_hash:"Quiououo", dna_list:["Qoauxjnva","Qkiauihsnvkk"]});
-   this.props.register_hApp_bundle({ui_hash:"Quiasdfouo", dna_list:["Qoauasdfxva","Qkiauiasdfnvkk"]});
    this.props.get_all_hApps();
 
  }
@@ -74,6 +72,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
     this.props.is_registered_as_provider();
     this.props.is_registered_as_host();
     this.props.get_agent_details();
+    this.props.get_enabled_app_list();
     this.testingCalls();
   }
 
