@@ -97,6 +97,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
               }
 
 
+
               return (
                 <Card
                   key={data.key}
@@ -107,7 +108,7 @@ class HomeSummaryPage extends React.Component<Props, State> {
                   <h3 className={classes.h3}>{data.label}</h3>
                   <span style={{color:'#00838d'}}>{icon}</span>
                   <Typography className={classes.balanceHeader} variant="caption" gutterBottom={gutterBottom} component="h3" >
-                    { api ?  api.addresses.length !== 0 ? `Registered` :
+                    { api ? api.links.length !== 0 ? `Registered` :
                       <CardActions>
                         <Link to="/settings" style={{ flex:'auto', textDecoration:'none' }}>
                           <Button

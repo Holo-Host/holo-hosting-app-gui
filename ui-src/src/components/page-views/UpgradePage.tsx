@@ -76,14 +76,14 @@ class HoloSettings extends React.Component<Props, State> {
       return   <NohAppsMessage tableText="New"/>
     }
 
-    if( this.props.is_registered_host.addresses.length && this.props.is_registered_provider.addresses.length ) {
+    if( this.props.is_registered_host.links.length && this.props.is_registered_provider.links.length ) {
       return   <Registered />
     }
 
     return (
       <div>
         <br/>
-        { this.props.is_registered_host.addresses.length ?
+        { this.props.is_registered_host.links.length ?
             <div />
           :
           <div>
@@ -100,7 +100,7 @@ class HoloSettings extends React.Component<Props, State> {
         }
 
 
-      { this.props.is_registered_provider.addresses.length ?
+      { this.props.is_registered_provider.links.length ?
           <div />
         :
         <div>

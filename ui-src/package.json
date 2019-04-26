@@ -7,6 +7,7 @@
   "scripts": {
     "start-ui-agent1": "PORT=8800 REACT_APP_NODE_PORT=4000 REACT_APP_DNA_INSTANCE=test-instance react-scripts-ts start",
     "start-ui-agent2": "PORT=9300 REACT_APP_NODE_PORT=4100 REACT_APP_DNA_INSTANCE=test-instance react-scripts-ts start",
+    "start-ui-HHA": "REACT_APP_NODE_PORT=1111 REACT_APP_DNA_INSTANCE=holo-hosting-app react-scripts-ts start",
     "start-web": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.base.js",
     "build": "react-scripts-ts build && node copy-to-ui.js",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
