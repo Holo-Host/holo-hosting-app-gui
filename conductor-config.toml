@@ -1,8 +1,8 @@
 [[agents]]
 id = "liza_id"
 name = "Li-za"
-public_address = "HcSCJ4iA73hcM5Byi3vRq6t7sHj3Hh7jiG34sibNrEDx7q9eGYS3BGJJr5tbqtr"
-keystore_file = "/home/zo-el/.config/holochain/keys/HcSCJ4iA73hcM5Byi3vRq6t7sHj3Hh7jiG34sibNrEDx7q9eGYS3BGJJr5tbqtr"
+public_address = "HcScJ77H3rsOgEjebtoXZ8oU4UCgjndk9fTvkVt77C84CnnwcJ3OMfg5K8m7dga"
+keystore_file = "/home/lisa/.config/holochain/keys/HcScJ77H3rsOgEjebtoXZ8oU4UCgjndk9fTvkVt77C84CnnwcJ3OMfg5K8m7dga"
 
 # DNA and Instance of the HApp Store
 [[dnas]]
