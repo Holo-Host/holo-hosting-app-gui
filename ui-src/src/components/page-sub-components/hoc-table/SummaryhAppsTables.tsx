@@ -49,7 +49,7 @@ class SummaryhAppsTables extends React.Component<Props, State> {
     const gutterBottom:boolean = true;
 
     if(this.props.is_registered_host){
-      if( this.props.is_registered_host.addresses.length === 0 ){
+      if( this.props.is_registered_host.links.length === 0 ){
         return <div>
         <ErrorNotRegisteredAsHost />
         </div>

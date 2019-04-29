@@ -41,7 +41,7 @@ class RegisterhAppFormPage extends React.Component<Props, State> {
     if( this.props.is_registered_provider === undefined) {
       return   <NohAppsMessage tableText="New"/>
     }
-    if(this.props.is_registered_provider.addresses.length === 0) {
+    if(this.props.is_registered_provider.links.length === 0) {
       return   <NotRegisteredAsProvider />
     }
     return (

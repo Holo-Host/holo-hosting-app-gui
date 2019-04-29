@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 // export type Props = DispatchProps & StateProps;
 import axios from 'axios';
 
+
 const home_table_columns = (props: any, state: any) => {
 
   const onClickEnable = async(event:any) => {
@@ -18,7 +19,8 @@ const home_table_columns = (props: any, state: any) => {
 
     axios.post('http://localhost:9999/holo/happs/install', postData, axiosConfig)
     .then((res) => {
-      console.log("Aixos RECEIVED: ", res);
+      console.log("RESPONSE RECEIVED: ", res);
+      // call to ENABLE app here (upon success...).
     })
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);
@@ -26,9 +28,9 @@ const home_table_columns = (props: any, state: any) => {
   }
 
   const onClickDisable = (event:any) => {
-    console.log("*TODO : Send a request to the Interceptor to Disable*")
+    console.log("TODO : Send a request to the Interceptor to Disable")
     props.disable_app({app_hash:event.original.app_hash})
-}
+  }
 
   const onClickView = (event:any) => {
     console.log("*TODO : View Details*")
