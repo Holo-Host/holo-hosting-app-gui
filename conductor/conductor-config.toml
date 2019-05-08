@@ -3,8 +3,8 @@
 [[agents]]
 id = "holo_user1"
 name = "HoloHostTester1"
-public_address = "HcSCIO673E5jZgov7zKONWh7Aqwzo6rmrVXmv634W7Yht3reoJJk6rchvnjtzwz"
-key_file = "/home/zo-el/.config/holochain/keys/HcSCIO673E5jZgov7zKONWh7Aqwzo6rmrVXmv634W7Yht3reoJJk6rchvnjtzwz"
+public_address = "HcSCIhuHW8rjqm6c33YWAV3V77ugJ54vef5KPtRWPgudgyj79Y9XiVH4NuDxyji"
+keystore_file = "/home/lisa/.config/holochain/keys/HcSCIhuHW8rjqm6c33YWAV3V77ugJ54vef5KPtRWPgudgyj79Y9XiVH4NuDxyji"
 
 # [[agents]]
 # id = "test_agent2"
