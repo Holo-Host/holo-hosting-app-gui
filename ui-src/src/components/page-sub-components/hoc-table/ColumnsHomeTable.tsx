@@ -20,7 +20,9 @@ const home_table_columns = (props: any, state: any) => {
     axios.post('http://localhost:9999/holo/happs/install', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
-      // call to ENABLE app here (upon success...).
+      // TODO: UPDATE THE ENABLE_APP Call to redux here (upon success...).
+      const hAppHash = {app_hash: res};
+      axios.post('http://localhost:9999/holo/happs/enable_app', hAppHash, axiosConfig);
     })
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);
