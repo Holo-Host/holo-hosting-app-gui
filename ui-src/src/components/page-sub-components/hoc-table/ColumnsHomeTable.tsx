@@ -19,9 +19,10 @@ const home_table_columns = (props: any, state: any) => {
 
     axios.post('http://localhost:9999/holo/happs/install', postData, axiosConfig)
     .then((res) => {
-      console.log("RESPONSE RECEIVED (Should be happ address): ", res);
+      console.log("RESPONSE RECEIVED (Should be happ address): ", JSON.parse(res.config.data).happId);
       // TODO: UPDATE THE ENABLE_APP Call to redux here (upon success...).
-      const hAppHash = res;
+      let hAppHash = JSON.parse(res.config.data);
+      hAppHash = hAppHash.happId;
       props.enable_app({app_hash:hAppHash});
 
       // const hAppHash = {app_hash: res};
