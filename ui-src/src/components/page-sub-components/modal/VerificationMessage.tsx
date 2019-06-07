@@ -95,7 +95,7 @@ class VerficationModal extends React.Component<Props, State>  {
     public render() {
       const { classes } = this.props;
       const fullScreen: boolean = false;
-      console.log("VERIFCATION MODAL STATE - is the state set with txobj? ", this.state);
+      // console.log("VERIFCATION MODAL STATE - is the state set with txobj? ", this.state);
       const { messageAsObj } = this.state;
       return (
           <Grid xs={12} >

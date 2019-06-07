@@ -86,7 +86,7 @@ class RegisterProvider extends React.Component {
   };
 
   componentDidMount() {
-    console.log("ARE ALL THE DISPATCHED ACTIONS HERE??!?!?!?!")
+    // console.log("ARE ALL THE DISPATCHED ACTIONS HERE??!?!?!?!")
     // this.props.get_all_hApps();
   }
 

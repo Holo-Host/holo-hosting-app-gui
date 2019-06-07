@@ -176,7 +176,6 @@ export const advancedExpandTableHOC = TableComponent =>
 // TODO: Correct the color toggle... doesn't reset to odd color....
     getTrProps=(state, rowInfo) => {
       if (rowInfo && rowInfo.row && rowInfo !== undefined) {
-        // console.log("THIS IS YOUR ROW INFO ... inside the the HocSystemTable addon...", rowInfo);
         return {
           onClick: (e) => {
             this.handleClick(rowInfo.index);

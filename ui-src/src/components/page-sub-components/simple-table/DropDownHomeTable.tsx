@@ -47,7 +47,7 @@ class DropDownHomeTable extends React.Component<Props, State> {
       app_bundle,
     } = this.props.rowInfo.original;
 
-     console.log("Props of the DropDownHomeTable: ", this.props)
+     // console.log("Props of the DropDownHomeTable: ", this.props)
      return (
       <div style={{ width:'100%' }}>
         <Paper className={classes.muiSimpleTableRoot}>

@@ -19,7 +19,7 @@ const home_table_columns = (props: any, state: any) => {
 
     axios.post('http://localhost:9999/holo/happs/install', postData, axiosConfig)
     .then((res) => {
-      console.log("RESPONSE RECEIVED (Should be happ address): ", JSON.parse(res.config.data).happId);
+      // console.log("RESPONSE RECEIVED (Should be happ address): ", JSON.parse(res.config.data).happId);
       // TODO: UPDATE THE ENABLE_APP Call to redux here (upon success...).
       let hAppHash = JSON.parse(res.config.data);
       hAppHash = hAppHash.happId;
@@ -34,12 +34,13 @@ const home_table_columns = (props: any, state: any) => {
   }
 
   const onClickDisable = (event:any) => {
+    // TODO : Send a request to the Interceptor to Disable"
     console.log("TODO : Send a request to the Interceptor to Disable")
     props.disable_app({app_hash:event.original.app_hash})
   }
 
   const onClickView = (event:any) => {
-    console.log("*TODO : View Details*")
+    // TODO : *View Details*
     props.get_app_details_from_hstore({app_hash:event.original.app_bundle.happ_hash})
   }
 

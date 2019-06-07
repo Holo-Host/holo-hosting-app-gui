@@ -92,12 +92,11 @@ class RegisterhAppForm extends React.Component<Props, State> {
   };
 
   onChangeDate = (deadlineDate:Date) => {
-    console.log('deadlineDate: ', deadlineDate)
     this.setState({deadlineDate})
   }
   onChangeTime = (deadlineTime:Date) => {
 
-    console.log('deadlineTime: ', deadlineTime)
+    // console.log('deadlineTime: ', deadlineTime)
     this.setState({deadlineTime})
   }
 
@@ -110,7 +109,7 @@ class RegisterhAppForm extends React.Component<Props, State> {
     })
 
     // Now send obj to parent component for API invocation :
-    console.log("propose_tx_obj : ", tx_obj);
+    // console.log("propose_tx_obj : ", tx_obj);
     this.props.invokeProposal(tx_obj);
   };
 
@@ -123,7 +122,7 @@ class RegisterhAppForm extends React.Component<Props, State> {
     })
 
     // Now send obj to parent component for API invocation :
-    console.log("request_tx_obj : ", tx_obj);
+    // console.log("request_tx_obj : ", tx_obj);
     this.props.invokeRequest(tx_obj);
   };
 
@@ -137,23 +136,23 @@ class RegisterhAppForm extends React.Component<Props, State> {
       const timeMinutes= this.state.deadlineTime.getMinutes();
       const deadlineString  = new Date(year,month,day,timeHours,timeMinutes, 0);
       const txDeadline = moment(deadlineString);
-      console.log("deadline", txDeadline);
+      // console.log("deadline", txDeadline);
 
       this.setState({
         deadline: txDeadline,
         transactionType
       });
-      console.log('Check for Deadline in State', this.state);
+      // console.log('Check for Deadline in State', this.state);
       this.digestTxContent(txDeadline);
     });
   }
 
   digestTxContent = (txDeadline:Moment) => {
     const { appname, dns, deadline, notes } = this.state;
-    console.log("deadline", deadline);
+    // console.log("deadline", deadline);
 
     const isoDeadline: Moment = moment(txDeadline, moment.ISO_8601);
-    console.log("deadline >> isoDeadline", isoDeadline);
+    // console.log("deadline >> isoDeadline", isoDeadline);
 
     // NOTE : verify the tx inputs here :
       // 1. Deadline: make sure the deadline datetime is not less than current datetime (ie: cannot choose  past date as the datetime for the transaction deadline)
@@ -170,7 +169,7 @@ class RegisterhAppForm extends React.Component<Props, State> {
       }
       else if (appname && dns && txDeadline) {
         const validDeadlineDate = moment(deadline).isValid();
-        console.log("validDeadlineDate", validDeadlineDate);
+        // console.log("validDeadlineDate", validDeadlineDate);
 
         const transactionObj = {
           counterparty: appname,
@@ -193,9 +192,6 @@ class RegisterhAppForm extends React.Component<Props, State> {
     const { classes, txType } = this.props;
     const multiline:boolean = true;
     const fullWidth:boolean = true;
-
-
-    console.log("new Date().setMonth(new Date().getMonth() + 1): ", new Date());
 
     return (
       <div>
