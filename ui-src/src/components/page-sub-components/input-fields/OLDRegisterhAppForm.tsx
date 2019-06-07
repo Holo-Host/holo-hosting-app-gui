@@ -148,7 +148,7 @@ class RegisterhAppForm extends React.Component<Props, State> {
   }
 
   digestTxContent = (txDeadline:Moment) => {
-    const { appname, dns, deadline, notes } = this.state;
+    const { appname, dns, notes } = this.state;
     // console.log("deadline", deadline);
 
     const isoDeadline: Moment = moment(txDeadline, moment.ISO_8601);
@@ -168,7 +168,7 @@ class RegisterhAppForm extends React.Component<Props, State> {
         return alert(this.state.errorMessage);
       }
       else if (appname && dns && txDeadline) {
-        const validDeadlineDate = moment(deadline).isValid();
+        // const validDeadlineDate = moment(deadline).isValid();
         // console.log("validDeadlineDate", validDeadlineDate);
 
         const transactionObj = {
