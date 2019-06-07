@@ -22,7 +22,7 @@ class QrGenerator extends React.Component{
    generateQR = async text => {
     try {
       const qrPng = await QRCode.toDataURL(text);
-      console.log(qrPng);
+      // console.log(qrPng);
       this.setState({ qrPng });
     } catch (err) {
       console.error(err)

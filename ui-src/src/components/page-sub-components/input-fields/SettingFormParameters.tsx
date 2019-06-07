@@ -97,17 +97,17 @@ class CreateNewSettings extends React.Component<Props, State>  {
      public createPrimaryHash = async (event:any) => {
        event.preventDefault();
        const { hAppBundleHashAddress } = this.state;
-       console.log("HERE IS >> this.state.hAppBundleHashAddress : ", hAppBundleHashAddress);
+       // console.log("HERE IS >> this.state.hAppBundleHashAddress : ", hAppBundleHashAddress);
 
        const validateHash = this.validateHash(hAppBundleHashAddress);
-       console.log("Is Agent Hash Validated? >>>", validateHash);
+       // console.log("Is Agent Hash Validated? >>>", validateHash);
 
        if(hAppBundleHashAddress && validateHash ) {
-         console.log("Here are the hAppBundleHashAddress details: ", hAppBundleHashAddress);
+         // console.log("Here are the hAppBundleHashAddress details: ", hAppBundleHashAddress);
 
          const genHashBundle = { hash: hAppBundleHashAddress }
          JSON.stringify(genHashBundle);
-         console.log("genHashBundle foragenty Hash API CALL", genHashBundle);
+         // console.log("genHashBundle foragenty Hash API CALL", genHashBundle);
          // await this.props.genhAppBundleHashAddress(genHashBundle);
        }
      }

@@ -110,7 +110,7 @@ class RegisterhAppForm extends React.Component {
   };
 
   componentDidMount() {
-    console.log("Check / verify accessible dispatched actions....")
+    // console.log("Check / verify accessible dispatched actions....")
     // this.props.get_all_hApps();
   }
 

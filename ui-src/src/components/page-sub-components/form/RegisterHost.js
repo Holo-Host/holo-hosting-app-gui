@@ -106,7 +106,7 @@ class RegisterHost extends React.Component {
   };
 
   componentDidMount() {
-    console.log("ARE ALL THE DISPATCHED ACTIONS HERE??!?!?!?!")
+    // console.log("ARE ALL THE DISPATCHED ACTIONS HERE??!?!?!?!")
     // this.props.get_all_hApps();
   }
 
@@ -145,8 +145,8 @@ class RegisterHost extends React.Component {
   };
 
   render () {
-    console.log("this.state", this.state);
-    console.log("this.props", this.props);
+    // console.log("this.state", this.state);
+    // console.log("this.props", this.props);
 
     const { classes } = this.props;
     const { spacing } = this.state;

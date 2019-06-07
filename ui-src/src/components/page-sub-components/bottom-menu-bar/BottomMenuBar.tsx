@@ -19,7 +19,6 @@ export type Props = OwnProps & StateProps & DispatchProps;
 
 function BottomMenuBar(props: Props) {
   const { classes } = props;
-  console.log("BottomMenuBar-> Props::",props);
   return (
     <React.Fragment>
       <CssBaseline />

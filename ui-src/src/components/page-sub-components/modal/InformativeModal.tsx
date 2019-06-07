@@ -64,7 +64,7 @@ class informativeModal extends React.Component<Props, State>  {
   };
 
   public render() {
-    console.log("PROPS inside the informative-dialog-modal", this.props);
+    // console.log("PROPS inside the informative-dialog-modal", this.props);
     const { classes, confirmMessage } = this.props;
     const parsedMessage = JSON.parse(confirmMessage);
     const fullScreen: boolean = false;

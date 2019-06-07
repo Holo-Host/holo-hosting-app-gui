@@ -19,7 +19,7 @@ export function transactionReducer (state: OriginalState = INITIAL_STATE, action
      return { ...state };
    }
    case `${DNA_INSTANCE}/${PROVIDER}/register_app_SUCCESS`: {
-     console.log(" !!! last_registered_hApp !!!! : ", payload)
+     // console.log(" !!! last_registered_hApp !!!! : ", payload)
      return { ...state, last_registered_hApp: payload};
    }
    case `${DNA_INSTANCE}/${PROVIDER}/get_app_details_SUCCESS`: {

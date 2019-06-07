@@ -46,13 +46,13 @@ class HoloSettings extends React.Component<Props, State> {
       const data = { agentHash: my_agent_hash, agentString: my_agent_string };
       const prevProps = state.prevProps || {};
       const agentData = prevProps.value !== data ? data : state.agentData
-      console.log("agentData", agentData);
+      // console.log("agentData", agentData);
       return ({ agentData, prevProps: agentData });
     }
   }
 
   componentDidMount () {
-    console.log("PROPS : ", this.props);
+    // console.log("PROPS : ", this.props);
     this.props.is_registered_as_provider();
     this.props.is_registered_as_host();
 
@@ -63,14 +63,10 @@ class HoloSettings extends React.Component<Props, State> {
   }
 
   public render () {
-    console.log('Props in AgentProfile:', this.props);
+    // console.log('Props in AgentProfile:', this.props);
     const { classes, transferBtnBar, showTransferBar, txType, ...newProps } = this.props;
     const gutterBottom : boolean = true;
     // const { agentHash, agentString } = this.state.agentData;
-    console.log("check out the contents / body of the state.agentData obj: ", this.state.agentData);
-
-    console.log(this.props.is_registered_provider === undefined );
-    console.log( this.props.is_registered_host === undefined);
 
     if( this.props.is_registered_provider === undefined || this.props.is_registered_host === undefined ) {
       return   <NohAppsMessage tableText="New"/>

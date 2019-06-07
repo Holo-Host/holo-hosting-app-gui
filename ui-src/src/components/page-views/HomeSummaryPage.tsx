@@ -77,7 +77,6 @@ class HomeSummaryPage extends React.Component<Props, State> {
   }
 
    public render () {
-     console.log(this.props);
       const { classes, transferBtnBar, ...newProps } = this.props;
       const gutterBottom : boolean = true;
 

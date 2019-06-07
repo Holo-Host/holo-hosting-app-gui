@@ -39,14 +39,12 @@ class DropDownInputFilter extends React.Component<Props, State> {
   }
 
   handleChange = (name: any) => (event: any) => {
-    console.log("NAME IN DROPDOWN BTN: ", event.target.value);
     let dataItem : string = event.target.value;
     this.setState({ dataItem });
     // this.setState({ [name]: Number(event.target.value) });
   };
 
   public render() {
-    console.log("STATE IN DROPDOWN BTN: ", this.state);
     const { classes, dropdownListData, dropDownHeader, handleNewType } = this.props;
     const gutterBottom : boolean = true;
     const select : boolean = true;
