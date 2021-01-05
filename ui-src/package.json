@@ -32,7 +32,7 @@
     "@material-ui/lab": "^3.0.0-alpha.30",
     "@types/luxon": "^1.10.2",
     "@types/redux-form": "^8.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.15.0",
     "bluebird": "^3.5.3",
     "classnames": "^2.2.6",
